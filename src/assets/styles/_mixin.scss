@@ -1,0 +1,130 @@
+@import "./colors.scss";
+
+  $base_font_size: 16;
+
+  @mixin font-size($pixels) {
+    font-size: $pixels + px !important;
+    font-size: ($pixels / $base_font_size) + rem;
+  }
+
+
+  /*Padding classes*/
+  $level: 40;
+  $amount: 8px;
+
+  @mixin margin-classes {
+    @for $i from 0 through $level {
+      $margin: $i * $amount;
+      /* margin #{$margin} */
+      .sma#{$i} {
+        margin: $margin !important;
+      }
+      .sml#{$i} {
+        margin-left: $margin !important;
+      }
+      .smr#{$i} {
+        margin-right: $margin !important;
+      }
+      .smt#{$i} {
+        margin-top: $margin !important;
+      }
+      .smb#{$i} {
+        margin-bottom: $margin !important;
+      }
+      .smx#{$i} {
+        margin-left: $margin !important;
+        margin-right: $margin !important;
+      }
+      .smy#{$i} {
+        margin-top: $margin !important;
+        margin-bottom: $margin !important;
+      }
+      .sfont#{$i} {
+        font-size: $i + px !important;
+      }
+      .sf#{$i}00{
+        font-weight: $i * 100 !important;
+      }
+    }
+  }
+  @include margin-classes;
+
+  @mixin padding-classes {
+    @for $i from 0 through $level {
+      $padding: $i * $amount;
+      /* padding #{$padding} */
+
+      .spa#{$i} {
+        padding: $padding !important;
+      }
+      .spl#{$i} {
+        padding-left: $padding !important;
+      }
+      .spr#{$i} {
+        padding-right: $padding !important;
+      }
+      .spt#{$i} {
+        padding-top: $padding !important;
+      }
+      .spb#{$i} {
+        padding-bottom: $padding !important;
+      }
+      .spx#{$i} {
+        padding-left: $padding !important;
+        padding-right: $padding !important;
+      }
+      .spy#{$i} {
+        padding-top: $padding !important;
+        padding-bottom: $padding !important;
+      }
+      .spxsa#{$i}{
+        padding: $padding / 2 !important;
+      }
+      .spxsx#{$i}{
+        padding-left: $padding / 2 !important;
+        padding-right: $padding / 2 !important;
+      }
+      .spxsb#{$i} {
+        padding-bottom: $padding/2 !important;
+      }
+    }
+  }
+  @include padding-classes;
+
+  /*
+  EX:
+  <div class="bpa1 bpl1 bml1"></div>
+  */
+
+  // Default Mixins
+  @mixin noshadowradius {
+    box-shadow: none !important;
+    border-radius: initial !important;
+  }
+  @mixin nospacearound {
+    margin: 0px;
+    padding: 0px;
+  }
+  @mixin nomargin {
+    margin: 0px;
+  }
+  @mixin nopadding {
+    padding: 0px;
+  }
+
+
+
+// }
+
+$level: 58;
+  @mixin font-classes {
+    @for $i from 0 through $level {
+    .sfont#{$i} {
+      font-size: $i + px !important;
+    }
+    .l-h-#{$i}{
+      line-height: $i + px !important;
+    }
+    }
+  }
+  @include font-classes;

@@ -1,0 +1,13 @@
+@import "./colors.scss";
+
+.haveForm{
+  input{
+    background: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 100%;
+    padding: 9px 16px;
+    margin-bottom: 16px;
+  }
+}

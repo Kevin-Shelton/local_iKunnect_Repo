@@ -1,0 +1,15 @@
+.appFooter{
+  &__main{
+    padding: 75px 0 75px 0;
+  }
+  &__copy{
+    background: #1A1B2B;
+    color: #808082;
+    padding: 20px 0;
+    font-size: 14px;
+    .nav-item{
+      margin-right: 16px;
+      cursor: pointer;
+    }
+  }
+}

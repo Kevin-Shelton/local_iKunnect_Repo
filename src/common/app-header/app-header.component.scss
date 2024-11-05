@@ -1,0 +1,53 @@
+.featureGuide{
+  background: #7540C4;
+  color: white;
+  padding: 11px 0;
+  margin-bottom: 5px;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  button{
+    margin-left: 40px;
+  }
+  i{
+    cursor: pointer;
+  }
+}
+.clientHead{
+  background-color: #7FC338;
+  color: white;
+}
+.spacer{
+  flex-grow: 1;
+}
+.white-color{
+  color: white;
+}
+.clientHead{
+  font-family: "Inter", sans-serif;
+  padding: 7px 0 8px;
+  .nav-item{
+    font-weight: 400;
+    cursor: pointer;
+    font-size: 12px;
+  }
+}
+.konnectHead{
+  font-family: "Inter", sans-serif;
+  padding: 28px 0;
+  img{
+    cursor: pointer;
+  }
+  .headnav{
+    .nav-item{
+      color: black;
+      margin: 0 30px;
+      font-weight: 400;
+      cursor: pointer;
+      font-size: 15px;
+      a{
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+}
