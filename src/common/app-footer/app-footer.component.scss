@@ -1,0 +1,40 @@
+.appFooter{
+  &__main{
+    padding: 75px 0 75px 0;
+    img{
+      margin-bottom: 48px;
+    }
+    span{
+      line-height: 16px;
+      display: block;
+    }
+    p{
+      font-size: 16px;
+      font-weight: 700;
+    }
+    ul{
+      padding: 0;
+      list-style: none;
+      color: black;
+      line-height: 21px;
+      li{
+        margin-bottom: 16px;
+        cursor: pointer;
+        a{
+          color:black;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  &__copy{
+    background: #1A1B2B;
+    color: #808082;
+    padding: 20px 0;
+    font-size: 14px;
+    .nav-item{
+      margin-right: 16px;
+      cursor: pointer;
+    }
+  }
+}

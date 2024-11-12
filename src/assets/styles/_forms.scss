@@ -1,0 +1,33 @@
+@import "./colors.scss";
+
+.haveForm{
+  label{
+    display: block;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 8px;
+    font-family: "Montserrat", sans-serif;
+  }
+  .mat-mdc-form-field{
+    width: 100%;
+  }
+  .mat-mdc-checkbox{
+    label{
+      margin-bottom: 0 !important;
+    }
+  }
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+  height: 40px;
+  align-items: center; // Center align the input text vertically if needed
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  top: 0;
+  bottom: 0;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0 8px; // Adjust padding to fit the smaller height
+}
+
