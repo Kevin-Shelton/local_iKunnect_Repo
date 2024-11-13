@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './transform-customer-service.component.html',
-  styleUrl: './transform-customer-service.component.scss'
+  styleUrl: './transform-customer-service.component.scss',
 })
-export class TransformCustomerServiceComponent {
-
-}
+export class TransformCustomerServiceComponent {}
