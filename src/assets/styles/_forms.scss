@@ -17,6 +17,15 @@
     }
   }
 }
+.plainField{
+  width: 100%;
+  height: 44px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  line-height: normal;
+  padding-left: 16px;
+}
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
   height: 40px;
   align-items: center; // Center align the input text vertically if needed

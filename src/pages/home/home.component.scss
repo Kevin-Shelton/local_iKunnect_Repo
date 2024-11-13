@@ -23,14 +23,28 @@ p{
   padding: 50px 0;
   color: white;
   ul{
+    margin-top: 20px;
     li{
       list-style: none;
       font-size: 20px;
+      display: flex;
+      align-items: center;
+      i{
+        margin-right: 10px;
+        color: #7540C4;
+        font-weight: bold;
+        font-size: 28px;
+      }
     }
   }
 }
 .meetYourOucomes{
   padding: 90px 0 90px 0;
+  color: black;
+  h5{
+    color: #7540C4;
+    font-family: "Montserrat", sans-serif;
+  }
   .lightBlue{
     border-radius: 28px;
     &__text{
@@ -79,7 +93,12 @@ p{
       border-radius: 28px;
       box-sizing: border-box;
       min-height: 504px;
+      h2{
+        font-family: "Poppins", sans-serif;
+        font-size: 32px;
+      }
       p{
+        font-family: Arial, Helvetica, sans-serif;
         line-height: 24px;
       }
       img{

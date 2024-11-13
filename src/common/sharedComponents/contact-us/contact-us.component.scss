@@ -1,0 +1,46 @@
+.contactUs{
+  background: #1A1B2B;
+  color: white;
+  text-align: center;
+  padding: 100px 0;
+  a{
+    color: white;
+    text-decoration: none;
+    margin-top: 8px;
+    display: inline-block;
+  }
+  p{
+    color: #7FC338;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  &--each{
+    text-align: left;
+    padding: 24px 48px;
+    border: 3px solid #8FC44C;
+    border-radius: 12px;
+    min-height: 290px;
+    border: 3px solid;
+    // background: linear-gradient(113.11deg, #8FC44C -3.91%, #FFFFFF 44.91%, rgba(143, 196, 76, 0.7) 73.71%);
+    h5{
+      text-align: center;
+      // margin-bottom: 38px;
+      font-family: "Montserrat", sans-serif;
+    }
+    .row{
+      flex-wrap: nowrap;
+    }
+    .column{
+      width: 140px;
+      margin: 0 auto;
+      img{
+        margin-right: 10px;
+      }
+    }
+    // border-image:  linear-gradient(113.11deg, #8FC44C -3.91%, #FFFFFF 44.91%, rgba(143, 196, 76, 0.7) 73.71%);
+    // border-radius: 15px; /* this doesn't work */
+    // border-width: 4px;
+    // border-style: solid;
+    // border-image-slice: 1;
+  }
+}
