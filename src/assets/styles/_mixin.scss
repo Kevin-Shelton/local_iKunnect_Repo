@@ -77,16 +77,6 @@
         padding-top: $padding !important;
         padding-bottom: $padding !important;
       }
-      .spxsa#{$i}{
-        padding: $padding / 2 !important;
-      }
-      .spxsx#{$i}{
-        padding-left: $padding / 2 !important;
-        padding-right: $padding / 2 !important;
-      }
-      .spxsb#{$i} {
-        padding-bottom: $padding/2 !important;
-      }
     }
   }
   @include padding-classes;
