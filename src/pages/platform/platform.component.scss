@@ -1,0 +1,372 @@
+.platform-page-banner {
+  background-image: linear-gradient(180deg, #f4fdf4 5%, #ffffff 95%);
+}
+.inner-banner {
+  text-align: center;
+  padding: 120px 140px 40px 140px;
+  h2 {
+    font-size: 55px;
+    line-height: 66px;
+    margin: 0 0 36px 0;
+    padding: 0;
+    font-weight: 500;
+    span {
+      color: #8fc44c;
+    }
+  }
+  p {
+    margin-bottom: 30px;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 500;
+    padding: 0 120px;
+  }
+}
+
+.image-slider {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding-bottom: 20px;
+  overflow: hidden;
+  .item {
+    animation: imagesSlideAnimate 60s linear infinite;
+    img {
+    }
+  }
+  &:hover .item {
+    animation-play-state: paused;
+  }
+}
+@keyframes imagesSlideAnimate {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-1800px, 0, 0);
+  }
+}
+
+.del-support {
+  text-align: center;
+  h2 {
+    font-size: 48px;
+    line-height: 56px;
+    margin: 50px 0 22px 0;
+    font-weight: 500;
+    span {
+      color: #8fc44c;
+    }
+  }
+  p {
+    color: #808082;
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 50px;
+  }
+}
+.del-tab-cont {
+  padding: 0 90px 0 0;
+  h6 {
+    margin: 0 0 30px 0;
+    font-size: 32px;
+    line-height: 42px;
+    font-weight: 500;
+  }
+  .see-all-btn {
+    padding: 0;
+    margin-left: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    i {
+      font-size: 20px;
+    }
+  }
+}
+.kunnect-works {
+  .title {
+    text-align: center;
+    margin: 60px 0 40px 0;
+    span {
+      color: #8fc44c;
+      font-size: 24px;
+      line-height: 30px;
+    }
+    h3 {
+      margin: 0;
+      font-size: 48px;
+      line-height: 72px;
+    }
+  }
+}
+
+.kunnect-works-cards {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+  .img-card {
+    display: inline-flex;
+    width: calc(50% - 20px);
+    flex-direction: column;
+    background: #f4fdf4;
+    border-radius: 30px;
+    .cont {
+      padding: 54px 54px 10px 54px;
+    }
+    h6 {
+      font-size: 32px;
+      line-height: 42px;
+      font-weight: 500;
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+    }
+    p {
+      font-size: 18px;
+      line-height: 24px;
+      min-height: 72px;
+      margin: 12px 0 24px 0;
+    }
+    figure {
+      margin: 0;
+      border-radius: 30px;
+      text-align: center;
+      img {
+        max-height: 230px;
+      }
+    }
+  }
+}
+.pricing-table {
+  background: #1a1b2b;
+  padding: 95px 0 110px 0;
+  margin-top: 100px;
+  h2 {
+    text-align: center;
+    font-size: 48px;
+    line-height: 72px;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 65px;
+    span {
+      color: #8fc44c;
+    }
+  }
+  .custom-table {
+    width: 100%;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    th {
+      background: transparent;
+      border-bottom: 1px solid #ffffff;
+      padding: 0 20px;
+      .col-title {
+        background: #535460;
+        width: 100%;
+        display: block;
+        padding: 20px 0;
+        text-align: center;
+        font-size: 24px;
+        line-height: 36px;
+        font-weight: 500;
+      }
+    }
+    tr:last-child {
+      td {
+        border-bottom: none;
+      }
+    }
+    td {
+      background: transparent;
+      padding: 20px 0;
+      border-bottom: 1px solid #7b7b7b;
+
+      .price-col {
+        text-align: center;
+        font-size: 24px;
+        line-height: 36px;
+        span {
+          display: block;
+          font-size: 64px;
+          line-height: 72px;
+          color: #8fc44c;
+          font-weight: 500;
+        }
+      }
+      .price-label {
+        color: #bbbbc2;
+        font-size: 20px;
+        line-height: 30px;
+      }
+      .check-icon {
+        text-align: center;
+        color: #8fc44c;
+        i {
+          font-size: 48px;
+        }
+      }
+    }
+  }
+}
+.kunnect-compare {
+  padding: 100px 20px;
+  .title {
+    text-align: center;
+    h3 {
+      font-size: 48px;
+      line-height: 58px;
+      margin-bottom: 10px;
+      padding: 0 120px;
+      span {
+        color: #8fc44c;
+      }
+    }
+    p {
+      font-size: 24px;
+      line-height: 30px;
+      color: #808082;
+    }
+  }
+  .heading {
+    padding-bottom: 32px;
+    border-bottom: 1px solid #000;
+    margin-bottom: 30px;
+    margin-top: 70px;
+    .vs-text {
+      font-size: 24px;
+      line-height: 30px;
+      color: #808082;
+      font-style: italic;
+    }
+    .comp-text {
+      font-size: 32px;
+      line-height: 40px;
+      font-weight: 500;
+    }
+  }
+  .compare-row {
+    align-items: center;
+    margin-bottom: 50px;
+    .compare-box {
+      background: #b0dfa2;
+      padding: 20px;
+      border-radius: 16px;
+      font-weight: 500;
+      text-align: center;
+      font-size: 16px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 88px;
+      &.light {
+        background: #dfeae5;
+      }
+    }
+    .compare-label {
+      text-align: center;
+      span {
+        font-size: 24px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.transformCustomer--right {
+  position: relative;
+  min-height: 400px;
+}
+.image-container {
+  display: flex;
+  justify-content: center;
+  // position: relative;
+  align-items: center;
+  // gap: 10px; /* Space between images */
+}
+
+.image1,
+.image2,
+.image3 {
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  position: absolute;
+}
+
+.image1 {
+  animation-name: floatAnimation1;
+  bottom: 15px;
+  left: 4%;
+}
+
+.image2 {
+  animation-name: floatAnimation2;
+  right: 15%;
+  bottom: 56px;
+  z-index: 1;
+}
+
+.image3 {
+  animation-name: floatAnimation3;
+  top: 20px;
+  right: calc(50% - 80px);
+  > img {
+    width: 260px;
+  }
+}
+
+@keyframes floatAnimation1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-10px, -5px);
+  }
+  50% {
+    transform: translate(10px, 5px);
+  }
+  75% {
+    transform: translate(-5px, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes floatAnimation2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, 5px);
+  }
+  50% {
+    transform: translate(-10px, -5px);
+  }
+  75% {
+    transform: translate(5px, -10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes floatAnimation3 {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(8px, -8px);
+  }
+  50% {
+    transform: translate(-8px, 8px);
+  }
+  75% {
+    transform: translate(5px, -5px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
