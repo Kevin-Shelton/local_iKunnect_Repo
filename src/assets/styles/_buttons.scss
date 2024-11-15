@@ -48,6 +48,26 @@
     padding: 16px 40px;
     font-size: 24px;
   }
+  &.checkoutBtn{
+    background: #F3D847;
+    border: 0;
+    color: black;
+    i{
+      color: black;
+      margin-right: 8px;
+    }
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+  &.secondaryBtn{
+    background: #8FC44C;
+    border: solid 2px #8FC44C;
+    &:hover{
+      background-color: white;
+      color: #8FC44C;
+    }
+  }
 }
 .borderBtn {
   background: none;
