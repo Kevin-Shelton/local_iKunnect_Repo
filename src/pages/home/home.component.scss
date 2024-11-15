@@ -283,3 +283,29 @@ p {
     }
   }
 }
+
+.home-tabs-cont {
+  h6 {
+    font-size: 32px;
+    line-height: 42px;
+    margin: 0 0 10px 0;
+  }
+  p {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 32px;
+  }
+  .see-all-btn {
+    padding: 0;
+    margin-left: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    i {
+      font-size: 20px;
+    }
+    &:hover {
+      background: transparent;
+    }
+  }
+}
