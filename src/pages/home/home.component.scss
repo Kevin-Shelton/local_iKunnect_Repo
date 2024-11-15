@@ -4,6 +4,59 @@ p{
     color: red;
   }
 }
+.haveVideo{
+  position: relative;
+  padding-bottom: 40px;
+  min-height: 680px;
+  padding: 0 0 40px;
+  &::before{
+    background: linear-gradient(103.99deg, #7540C4 15.98%, #8FC44C 57.49%, #7540C4 88.51%);
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+  }
+  &--video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 640px;
+    object-fit: cover;
+    z-index: -1; /* Optional: Puts the video behind other content */
+  }
+  .Overlay{
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 73%);
+    width: 100%;
+    height: 320px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 35px;
+  }
+  .headContent{
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    color: white;
+    z-index: 2;
+    &--head{
+      text-align: right;
+      font-size: 55px;
+      line-height: 66px;
+      font-weight: 700;
+      margin-bottom: 80px;
+    }
+    &--content{
+      font-size: 24px;
+      line-height: 30px;
+      font-weight: 500;
+      margin-bottom: 80px;
+    }
+  }
+}
 .feature-section{
   background: #1A1B2B;
   padding-bottom: 86px;
@@ -93,6 +146,10 @@ p{
       border-radius: 28px;
       box-sizing: border-box;
       min-height: 504px;
+      background-image: url(./../../assets/images/gradiunt-bg.png);
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: cover;
       h2{
         font-family: "Poppins", sans-serif;
         font-size: 32px;
@@ -107,9 +164,6 @@ p{
         bottom: 0;
         right: 0;
       }
-      background: url(./../../assets/images/gradiunt-bg.png) no-repeat 100%;
-      background-position: 0 0;
-      background-size: cover;
     }
   }
 }
@@ -117,13 +171,19 @@ p{
   background-image: url(./../../assets/images/green-graident-bg.png);
   background-color: #effbec;
   padding: 40px 0 100px;
+  position: relative;
   .accordion{
     background: transparent;
     .accordion-item{
       background-color: transparent;
       border-bottom: solid 1px #B4DAB3;
-      h2{
-
+      .accordion-body{
+        text-align: left;
+        padding-left: 0;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 500;
+        font-family: "Montserrat", sans-serif;
       }
       .show{
         border-bottom: solid 3px #8FC44C;
@@ -132,7 +192,9 @@ p{
         background: transparent;
         font-size: 24px;
         font-weight: 500;
-        border-bottom: solid 3px transparent;
+        padding-left: 0;
+        border-bottom: solid 3px #8FC44C;
+        color: #1A1B2B;
         &:focus{
           box-shadow: none;
         }
@@ -144,10 +206,17 @@ p{
       }
     }
   }
+  &::after{
+    position: absolute;
+    bottom: 0;
+    content: '';
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 62%);
+    height: 100px;
+    width: 100%;
+  }
 }
 .integrations{
   padding: 100px 0;
-
 }
 
 .basic-accordion{
@@ -174,6 +243,38 @@ p{
       button{
         border-bottom: solid 3px #8FC44C;
       }
+    }
+  }
+}
+
+.resources{
+  background: #f1fdf4;
+  padding: 80px 0 100px;
+  &--head{
+    font-family: "Poppins", sans-serif;
+    font-size: 48px;
+    line-height: 58px;
+    font-weight: 500;
+  }
+}
+.resources--card{
+  border-radius: 30px;
+  border: 0;
+  overflow: hidden;
+  .card-body{
+    padding: 24px;
+    .card-title{
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 27px;
+    }
+  }
+  .flatBtn{
+    margin-top: 16px;
+    color: #8FC44C;
+    i{
+      color: #8FC44C;
     }
   }
 }
