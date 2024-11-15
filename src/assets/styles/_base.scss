@@ -5,8 +5,9 @@
   margin: 0;
 }
 
-
-
+body:has(.homepage){
+  overflow-x: hidden;
+}
 .text-uppercase {
   text-transform: uppercase;
 }
@@ -84,5 +85,10 @@
         font-family: Arial, Helvetica, sans-serif;
       }
     }
+  }
+}
+.md-full{
+  @media screen and (max-width:768px) {
+    width: 100% !important;
   }
 }
