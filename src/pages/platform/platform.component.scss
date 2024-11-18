@@ -273,3 +273,342 @@
     }
   }
 }
+
+@media (max-width: 1199px) {
+  .inner-banner {
+    padding: 40px 100px;
+    h2 {
+      font-size: 40px;
+      line-height: 56px;
+    }
+    p {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+  .del-support {
+    h2 {
+      font-size: 36px;
+      line-height: 50px;
+      margin: 24px 0 16px 0;
+    }
+    p {
+      font-size: 20px;
+      line-height: 30px;
+      margin-bottom: 20px;
+    }
+  }
+  .del-tab-cont {
+    padding: 0;
+    h6 {
+      margin: 0 0 30px 0;
+      font-size: 30px;
+      line-height: 40px;
+    }
+  }
+  .kunnect-works .title {
+    h3 {
+      font-size: 40px;
+      line-height: 60px;
+    }
+    span {
+      font-size: 20px;
+      line-height: 26px;
+    }
+  }
+  .kunnect-works-cards {
+    .img-card {
+      h6 {
+        font-size: 26px;
+        line-height: 32px;
+      }
+      p {
+        font-size: 16px;
+        line-height: 20px;
+      }
+      .cont {
+        padding: 32px 32px 10px 32px;
+      }
+      figure img {
+        max-height: 180px;
+        max-width: 100%;
+      }
+    }
+  }
+  .pricing-table {
+    padding: 52px 0 52px 0;
+    margin-top: 50px;
+    h2 {
+      font-size: 30px;
+      line-height: 46px;
+      margin-bottom: 32px;
+    }
+    .custom-table {
+      th .col-title {
+        padding: 16px 0;
+        font-size: 22px;
+        line-height: 28px;
+      }
+      td {
+        .price-label {
+          font-size: 18px;
+          line-height: 26px;
+        }
+        .price-col {
+          font-size: 20px;
+          line-height: 26px;
+          span {
+            font-size: 40px;
+            line-height: 50px;
+          }
+        }
+        .check-icon i {
+          font-size: 36px;
+        }
+      }
+    }
+  }
+  .kunnect-compare {
+    .title {
+      h3 {
+        font-size: 32px;
+        line-height: 40px;
+        margin-bottom: 10px;
+        padding: 0 160px;
+      }
+      p {
+        font-size: 20px;
+      }
+    }
+    .heading {
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      margin-top: 30px;
+      .comp-text {
+        font-size: 26px;
+        line-height: 32px;
+      }
+      img {
+        max-height: 26px;
+      }
+    }
+    .compare-row {
+      .compare-box {
+        padding: 16px;
+        font-size: 14px;
+      }
+    }
+  }
+  .custom-tabs {
+    padding: 40px;
+    .nav-link {
+      font-size: 18px;
+      line-height: 22px;
+    }
+    .nav-item {
+      margin-right: 24px;
+      width: calc(100% / 6 - 24px);
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .inner-banner {
+    padding: 40px;
+    h2 {
+      font-size: 30px;
+      line-height: 46px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      line-height: 26px;
+    }
+  }
+  .image-slider .item img {
+    max-height: 150px;
+  }
+  .del-support {
+    h2 {
+      font-size: 26px;
+      line-height: 36px;
+    }
+    p {
+      font-size: 18px;
+      line-height: 26px;
+    }
+  }
+  .transformCustomer--right {
+    max-width: 100%;
+  }
+  .custom-tabs {
+    padding: 0;
+    .nav-item {
+      margin-right: 16px;
+      width: calc(16.6666666667% - 16px);
+    }
+    .nav-link {
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .call-actions {
+      flex-direction: column;
+      padding-right: 40px;
+      gap: 20px;
+    }
+  }
+  .del-tab-cont h6 {
+    font-size: 24px;
+    line-height: 36px;
+  }
+  .kunnect-works {
+    .title {
+      span {
+        font-size: 18px;
+        line-height: 26px;
+      }
+      h3 {
+        font-size: 30px;
+        line-height: 50px;
+      }
+    }
+  }
+  .kunnect-works-cards {
+    .img-card h6 {
+      font-size: 22px;
+    }
+  }
+  .pricing-table {
+    h2 {
+      font-size: 26px;
+      line-height: 36px;
+    }
+  }
+  .custom-table {
+    th .col-title {
+      font-size: 16px;
+    }
+    td {
+      .price-label {
+        font-size: 16px;
+        line-height: 22px;
+      }
+      .price-col {
+        font-size: 16px;
+        line-height: 22px;
+        span {
+          font-size: 32px;
+          line-height: 40px;
+        }
+      }
+      .check-icon i {
+        font-size: 28px;
+      }
+    }
+  }
+  .kunnect-compare {
+    .title {
+      h3 {
+        font-size: 26px;
+        line-height: 40px;
+      }
+      p {
+        font-size: 18px;
+      }
+    }
+    .compare-row {
+      margin-bottom: 24px;
+
+      .compare-label span {
+        font-size: 20px;
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .inner-banner,
+  .del-support {
+    padding: 20px;
+    h2 {
+      font-size: 24px;
+      line-height: 36px;
+    }
+    p {
+      font-size: 14px;
+      line-height: 22px;
+      padding: 0;
+    }
+  }
+  .del-tab-cont {
+    h6 {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+  .custom-tabs {
+    padding: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    .nav-item {
+      margin: 0;
+      width: 100%;
+    }
+  }
+  .pricing-table {
+    table {
+      width: 767px;
+    }
+  }
+  .kunnect-works {
+    h3 {
+      font-size: 24px;
+      line-height: 36px;
+    }
+    span {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+  .kunnect-works-cards {
+    gap: 20px;
+    .img-card {
+      width: 100%;
+    }
+  }
+  .pricing-table .custom-table {
+    width: 767px;
+  }
+  .kunnect-compare {
+    padding: 40px 20px 20px 20px;
+    .title {
+      h3 {
+        font-size: 24px;
+        line-height: 36px;
+        padding: 0;
+      }
+    }
+    .compare-row {
+      border: 1px solid #888;
+      padding: 20px;
+      border-radius: 10px;
+      gap: 16px;
+      div[class*="col-"] {
+        width: 100%;
+        padding: 0;
+      }
+    }
+  }
+}
+@media (max-width: 576px) {
+  .kunnect-compare {
+    .heading {
+      .comp-text {
+        font-size: 20px;
+        line-height: 26px;
+      }
+      img {
+        max-height: 20px;
+      }
+    }
+  }
+}
