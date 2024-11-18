@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './app-header.component.scss'
 })
 export class AppHeaderComponent {
+  isClosed: boolean = false;
 
+  closeFeatureGuide(): void {
+    this.isClosed = true;
+  }
 }

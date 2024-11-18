@@ -4,6 +4,7 @@
   background: transparent;
   border: transparent;
   &:has(i) {
+    text-align: left;
     display: inline-flex;
     align-items: center;
     i {

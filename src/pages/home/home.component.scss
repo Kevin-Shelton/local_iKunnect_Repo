@@ -53,6 +53,8 @@ p {
       line-height: 66px;
       font-weight: 700;
       margin-bottom: 80px;
+
+
     }
     &--content {
       font-size: 24px;
@@ -152,11 +154,14 @@ p {
       border-radius: 28px;
       box-sizing: border-box;
       min-height: 504px;
-      background-image: url(./../../assets/images/gradiunt-bg.png);
       background-repeat: no-repeat;
       background-position: 0 0;
+      background-image: url(./../../assets/images/gradiunt-bg-hover.png);
       background-size: cover;
-      h2 {
+      &:hover{
+        background-image: url(./../../assets/images/gradiunt-bg.png);
+      }
+      h2{
         font-family: "Poppins", sans-serif;
         font-size: 32px;
       }
@@ -223,6 +228,9 @@ p {
 }
 .integrations {
   padding: 100px 0;
+  .md-full{
+    margin-top: 220px;
+  }
 }
 
 .basic-accordion {
@@ -251,38 +259,81 @@ p {
     }
   }
 }
+.clients{
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@media screen and (max-width: 1080px) {
+  .clients {
+    animation: scrollMarquee 15s linear infinite;
+  }
+}
+@media screen and (max-width:768px) {
+  .integrations .md-full{
+      margin-top: 0px;
+    }
+.bar-img{
+max-width: 88% !important;
+}
+.sfont48{
+  font-size: 28px !important;
+  line-height: normal !important;
+}
+h2{
+  font-size: 22px !important;
+}
+.sfont24{
+  font-size: 18px !important;
+  line-height: normal !important;
+}
 
-.resources {
-  background: #f1fdf4;
-  padding: 80px 0 100px;
-  &--head {
-    font-family: "Poppins", sans-serif;
-    font-size: 48px;
-    line-height: 58px;
-    font-weight: 500;
+}
+@media screen and (max-width:578px) {
+  .headContent--head{
+    font-size: 28px !important;
+    line-height: normal !important;
   }
 }
-.resources--card {
-  border-radius: 30px;
-  border: 0;
-  overflow: hidden;
-  .card-body {
-    padding: 24px;
-    .card-title {
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      font-size: 20px;
-      line-height: 27px;
-    }
-  }
-  .flatBtn {
-    margin-top: 16px;
-    color: #8fc44c;
-    i {
-      color: #8fc44c;
-    }
-  }
-}
+// .resources {
+//   background: #f1fdf4;
+//   padding: 80px 0 100px;
+//   &--head {
+//     font-family: "Poppins", sans-serif;
+//     font-size: 48px;
+//     line-height: 58px;
+//     font-weight: 500;
+//   }
+// }
+// .resources--card {
+//   border-radius: 30px;
+//   border: 0;
+//   overflow: hidden;
+//   .card-body {
+//     padding: 24px;
+//     .card-title {
+//       font-family: "Poppins", sans-serif;
+//       font-weight: 600;
+//       font-size: 20px;
+//       line-height: 27px;
+//     }
+//   }
+//   .flatBtn {
+//     margin-top: 16px;
+//     color: #8fc44c;
+//     i {
+//       color: #8fc44c;
+//     }
+//   }
+// }
 
 .home-tabs-cont {
   h6 {
