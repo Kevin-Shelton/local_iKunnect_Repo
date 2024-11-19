@@ -19,5 +19,5 @@ export const routes: Routes = [
   { path: 'platform', pathMatch: 'full', component: PlatformComponent },
   { path: 'resources', pathMatch: 'full', component: ResourcesComponent },
   { path: 'support', pathMatch: 'full', component: SupportComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
