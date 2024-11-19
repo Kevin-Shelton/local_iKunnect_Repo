@@ -26,6 +26,16 @@
       }
     }
   }
+  &.tabs-3 {
+    .nav-tabs {
+      .nav-item {
+        width: calc(33.3% - 36px);
+      }
+      .nav-link {
+        padding-right: 50px;
+      }
+    }
+  }
   &.tabs-4 {
     .nav-tabs {
       .nav-item {
