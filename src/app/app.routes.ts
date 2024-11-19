@@ -5,6 +5,7 @@ import { DemoComponent } from '../pages/demo/demo.component';
 import { SelfcheckoutComponent } from '../pages/selfcheckout/selfcheckout.component';
 import { PlatformComponent } from '../pages/platform/platform.component';
 import { SupportComponent } from '../pages/support/support.component';
+import { SolutionsComponent } from '../pages/solutions/solutions.component';
 
 export const routes: Routes = [
   { path: 'home', pathMatch: 'full', component: HomeComponent },
@@ -17,5 +18,6 @@ export const routes: Routes = [
   },
   { path: 'platform', pathMatch: 'full', component: PlatformComponent },
   { path: 'support', pathMatch: 'full', component: SupportComponent },
+  { path: 'solutions', pathMatch: 'full', component: SolutionsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
