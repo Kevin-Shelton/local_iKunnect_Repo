@@ -6,6 +6,7 @@ import { SelfcheckoutComponent } from '../pages/selfcheckout/selfcheckout.compon
 import { PlatformComponent } from '../pages/platform/platform.component';
 import {ResourcesComponent} from '../pages/resources/resources.component';
 import { SupportComponent } from '../pages/support/support.component';
+import { PaymentComponent } from '../pages/selfcheckout/components/payment/payment.component';
 
 export const routes: Routes = [
   { path: 'home', pathMatch: 'full', component: HomeComponent },
@@ -15,6 +16,11 @@ export const routes: Routes = [
     path: 'self-checkout',
     pathMatch: 'full',
     component: SelfcheckoutComponent,
+  },
+  {
+    path: 'payment',
+    pathMatch: 'full',
+    component: PaymentComponent,
   },
   { path: 'platform', pathMatch: 'full', component: PlatformComponent },
   { path: 'resources', pathMatch: 'full', component: ResourcesComponent },
