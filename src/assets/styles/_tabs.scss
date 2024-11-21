@@ -26,6 +26,16 @@
       }
     }
   }
+  &.tabs-3 {
+    .nav-tabs {
+      .nav-item {
+        width: calc(33.3% - 36px);
+      }
+      .nav-link {
+        padding-right: 50px;
+      }
+    }
+  }
   &.tabs-4 {
     .nav-tabs {
       .nav-item {
@@ -33,6 +43,24 @@
       }
       .nav-link {
         padding-right: 50px;
+      }
+    }
+  }
+  &.vertical-tabs {
+    .nav-tabs {
+      display: flex;
+      flex-direction: column;
+      .nav-item {
+        width: 100%;
+        margin: 0;
+      }
+      .nav-link {
+        border-top: none;
+        border-bottom: 3px solid #e7f6d5;
+        &.active {
+          background: transparent;
+          border-color: #8fc44c;
+        }
       }
     }
   }

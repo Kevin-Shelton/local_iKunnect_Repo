@@ -5,6 +5,10 @@ import { DemoComponent } from '../pages/demo/demo.component';
 import { SelfcheckoutComponent } from '../pages/selfcheckout/selfcheckout.component';
 import { PlatformComponent } from '../pages/platform/platform.component';
 import {BookademoComponent} from '../pages/bookademo/bookademo.component';
+import {ResourcesComponent} from '../pages/resources/resources.component';
+import { SupportComponent } from '../pages/support/support.component';
+import { SolutionsComponent } from '../pages/solutions/solutions.component';
+
 export const routes: Routes = [
   { path: 'home', pathMatch: 'full', component: HomeComponent },
   { path: 'about', pathMatch: 'full', component: AboutComponent },
@@ -16,5 +20,8 @@ export const routes: Routes = [
   },
   { path: 'platform', pathMatch: 'full', component: PlatformComponent },
   { path: 'bookademo', pathMatch: 'full', component: BookademoComponent },
+  { path: 'resources', pathMatch: 'full', component: ResourcesComponent },
+  { path: 'support', pathMatch: 'full', component: SupportComponent },
+  { path: 'solutions', pathMatch: 'full', component: SolutionsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];

@@ -178,4 +178,7 @@ div.resources--card{
       color: #8FC44C;
     }
   }
+  &.hasBorder{
+    border: solid 4px #e4dfea !important;
+  }
 }
