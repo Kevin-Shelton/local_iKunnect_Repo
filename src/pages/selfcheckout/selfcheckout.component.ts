@@ -39,7 +39,5 @@ export class SelfcheckoutComponent {
     this.paymentInfo = {amount: 10000};
   }
 
-  licenseSeatChange(noOfLicenses: number) {
-    
-  }
+  
 }
