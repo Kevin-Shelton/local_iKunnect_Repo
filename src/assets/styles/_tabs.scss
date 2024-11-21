@@ -46,6 +46,24 @@
       }
     }
   }
+  &.vertical-tabs {
+    .nav-tabs {
+      display: flex;
+      flex-direction: column;
+      .nav-item {
+        width: 100%;
+        margin: 0;
+      }
+      .nav-link {
+        border-top: none;
+        border-bottom: 3px solid #e7f6d5;
+        &.active {
+          background: transparent;
+          border-color: #8fc44c;
+        }
+      }
+    }
+  }
 }
 .dark-theme {
   .custom-tabs {
