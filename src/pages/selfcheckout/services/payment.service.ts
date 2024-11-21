@@ -9,8 +9,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class PaymentService {
 
-  private licenseSource = new BehaviorSubject<number>(1);
-  currentLicense = this.licenseSource.asObservable();
   private stripePromise: Promise<Stripe | null>;
 
   constructor() {
@@ -29,8 +27,5 @@ export class PaymentService {
       });
   }
 
-  changelicense(noOfLinces: number) {
-    console.log('change licenseSource in ::: ', noOfLinces);
-    this.licenseSource.next(noOfLinces);
-  }
+ 
 }

@@ -3,6 +3,7 @@ import { Stripe, PaymentIntentResult, StripeCardElementOptions } from '@stripe/s
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaymentService } from '../../services/payment.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -20,11 +21,13 @@ export class PaymentComponent implements OnInit {
   stripeElements!: any;
   constructor(
     private readonly paymentService: PaymentService,
+    private readonly router: Router,
   ) {
    
   }
 
   async ngOnInit() {
+    console.log('router:::::::::; ',this.router)
     console.log('paymentInfo ::::::::::::::',this.paymentInfo)
   const response =   await  this.paymentService.getStripeIntent(this.paymentInfo);
   const { clientSecret, dpmCheckerLink } = await response.json();
@@ -57,12 +60,12 @@ export class PaymentComponent implements OnInit {
       confirmParams: {
         
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:4200/payment",
+        return_url: "http://localhost:4200/self-checkout",
       },
     });
   
     console.log('----------------------------');
-    console.log('paymentIntent :: res ::::::',res);
+   // console.log('paymentIntent :: res ::::::',res);
 
    
   }

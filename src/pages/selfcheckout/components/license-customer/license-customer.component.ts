@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PaymentService } from '../../services/payment.service';
+import { PaymentHelperService } from '../../services/helper.service';
 
 @Component({
   selector: 'app-license-customer',
@@ -11,7 +12,7 @@ import { PaymentService } from '../../services/payment.service';
 export class LicenseCustomerComponent  {
   noOfLicenseSeats: number = 1;
 
-  constructor(private readonly paymentService: PaymentService){
+  constructor(private readonly paymentService: PaymentHelperService){
 
   }
 

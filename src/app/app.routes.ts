@@ -14,7 +14,6 @@ export const routes: Routes = [
   { path: 'demo', pathMatch: 'full', component: DemoComponent },
   {
     path: 'self-checkout',
-    pathMatch: 'full',
     component: SelfcheckoutComponent,
   },
   { path: 'platform', pathMatch: 'full', component: PlatformComponent },
