@@ -17,11 +17,6 @@ export const routes: Routes = [
     pathMatch: 'full',
     component: SelfcheckoutComponent,
   },
-  {
-    path: 'payment',
-    pathMatch: 'full',
-    component: PaymentComponent,
-  },
   { path: 'platform', pathMatch: 'full', component: PlatformComponent },
   { path: 'resources', pathMatch: 'full', component: ResourcesComponent },
   { path: 'support', pathMatch: 'full', component: SupportComponent },
