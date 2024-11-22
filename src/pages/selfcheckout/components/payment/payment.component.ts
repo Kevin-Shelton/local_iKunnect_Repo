@@ -13,23 +13,21 @@ import { Router } from '@angular/router';
   styleUrl: './payment.component.scss'
 })
 export class PaymentComponent implements OnInit {
- @Input() paymentInfo!: {amount: number};
+ @Input() paymentInfo!: {amount: string};
 
   stripe: Stripe | null = null;
   message: string | null = null;
   clientSecret!: string;
   stripeElements!: any;
   constructor(
-    private readonly paymentService: PaymentService,
-    private readonly router: Router,
+    private readonly paymentService: PaymentService
   ) {
    
   }
 
   async ngOnInit() {
-    console.log('router:::::::::; ',this.router)
-    console.log('paymentInfo ::::::::::::::',this.paymentInfo)
-  const response =   await  this.paymentService.getStripeIntent(this.paymentInfo);
+    this.stripe = await this.paymentService.getStripe();
+  const response =   await  this.paymentService.getStripeIntent(Number(this.paymentInfo.amount));
   const { clientSecret, dpmCheckerLink } = await response.json();
  
   await this.initStripe(clientSecret, dpmCheckerLink)
@@ -37,7 +35,7 @@ export class PaymentComponent implements OnInit {
   }
 
  async initStripe(clientSecret:string, dpmCheckerLink:any) {
-    this.stripe = await this.paymentService.getStripe();
+ 
     this.stripeElements = this.stripe?.elements({clientSecret, appearance:{
       theme: 'stripe',
     } });
@@ -51,11 +49,11 @@ export class PaymentComponent implements OnInit {
     }
   }
 
-  async pay() {
+   async pay() {
     console.log('res is :::::::',this.clientSecret);
     console.log('pay bill ', this.stripeElements)
  
-    const res= await this.stripe?.confirmPayment({
+     await this.stripe?.confirmPayment({
       elements:this.stripeElements,
       confirmParams: {
         

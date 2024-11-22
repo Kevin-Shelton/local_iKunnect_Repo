@@ -1,9 +1,9 @@
 <div class="paymentbody">
-     <form>
+   
         <div id="payment-element">
             <!--Stripe.js injects the Payment Element-->
           </div>
-      <button (click)="pay()" type="submit">Pay now</button>
-    </form>
+      <button (click)="pay()"  type="submit">Pay now</button>
+  
     <div *ngIf="message">{{ message }}</div>
 </div>

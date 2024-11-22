@@ -19,11 +19,12 @@ export class PaymentService {
     return this.stripePromise;
   }
 
-  async getStripeIntent(paymentInfo: {amount:number}) {
-  return await fetch("http://localhost:4242/create-payment-intent", {
+  async getStripeIntent(amount: number) {
+    console.log('payment amount is ::::::: ',amount)
+  return await fetch(`https://dev-auth-api.ikunnect.com/create-payment-intent?amount=${amount}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items:  [{ id: "xl-tshirt", amount: 1000 }] }),
+        body: JSON.stringify({}),
       });
   }
 

@@ -60,6 +60,7 @@
                 Checkout
               </button>
               <app-payment *ngIf="showCardDetails" [paymentInfo]="paymentInfo"> </app-payment>
+              <div *ngIf="statusText"> {{statusText}}</div>
             </div>
             <div class="col-xs-12 col-md-6 selfcheckout--right">
               <h5 class="smb2">Your order</h5>

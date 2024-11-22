@@ -22,6 +22,7 @@ constructor(private readonly paymentService: PaymentHelperService){
       next: res => {
         this.noOfLicenses = res;
         this.subTotalAmount = (this.noOfLicenses * this.amountForLicense).toFixed(2);
+        this.paymentService.changeTotalAmount(this.subTotalAmount);
       }
     })
   }
