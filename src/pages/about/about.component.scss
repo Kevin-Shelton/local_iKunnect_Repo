@@ -92,6 +92,15 @@
     }
     &-col {
       width: calc(50% - 27px);
+      &:hover {
+        .img-card-cont {
+          background: linear-gradient(
+            150deg,
+            rgb(243, 253, 244) 10%,
+            rgb(193 249 218) 100%
+          );
+        }
+      }
     }
     &-cont {
       background: linear-gradient(
