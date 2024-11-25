@@ -4,10 +4,11 @@ import { AboutComponent } from '../pages/about/about.component';
 import { DemoComponent } from '../pages/demo/demo.component';
 import { SelfcheckoutComponent } from '../pages/selfcheckout/selfcheckout.component';
 import { PlatformComponent } from '../pages/platform/platform.component';
-import {BookademoComponent} from '../pages/bookademo/bookademo.component';
-import {ResourcesComponent} from '../pages/resources/resources.component';
+import { BookademoComponent } from '../pages/bookademo/bookademo.component';
+import { ResourcesComponent } from '../pages/resources/resources.component';
 import { SupportComponent } from '../pages/support/support.component';
 import { SolutionsComponent } from '../pages/solutions/solutions.component';
+import { PricingComponent } from '../pages/pricing/pricing.component';
 
 export const routes: Routes = [
   { path: 'home', pathMatch: 'full', component: HomeComponent },
@@ -22,6 +23,6 @@ export const routes: Routes = [
   { path: 'resources', pathMatch: 'full', component: ResourcesComponent },
   { path: 'support', pathMatch: 'full', component: SupportComponent },
   { path: 'solutions', pathMatch: 'full', component: SolutionsComponent },
-  { path: '**', redirectTo: '/home', pathMatch: 'full' },
-  
+  { path: '*', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'pricing', pathMatch: 'full', component: PricingComponent },
 ];
