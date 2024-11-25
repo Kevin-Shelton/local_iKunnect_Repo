@@ -24,8 +24,13 @@
 @import "./responsive";
 // @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-body {
-  @include media-breakpoint-up(sm) {
-    background-color: red;
+.chat-panel {
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    &-thumb {
+      background: #d9d9d9;
+      border-radius: 6px;
+    }
   }
 }
