@@ -259,24 +259,8 @@ p {
     }
   }
 }
-.clients{
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-}
-@keyframes scrollMarquee {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-@media screen and (max-width: 1080px) {
-  .clients {
-    animation: scrollMarquee 15s linear infinite;
-  }
-}
+
+
 @media screen and (max-width:768px) {
   .integrations .md-full{
       margin-top: 0px;

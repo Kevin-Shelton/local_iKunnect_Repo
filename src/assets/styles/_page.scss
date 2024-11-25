@@ -269,6 +269,31 @@ div.resources--card {
       rgba(244, 253, 244, 1) 90%,
       rgba(255, 255, 255, 1) 100%
     );
+    .switch{
+      width: 320px;
+      font-size: 18px;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      margin: 0 auto 40px;
+      .m-45{
+        max-width: 45px;
+      }
+      > div{
+        padding: 0 10px 0 0;
+      }
+      .form-check{
+        width: 40px;
+      }
+      .form-check-input:checked {
+        background-color: #7540C4;
+        border-color: #7540C4;
+      }
+    }
+    p{
+      color: black;
+      font-size: 20px;
+      font-weight: 500;
+    }
     .title {
       text-align: center;
       h3 {
@@ -361,5 +386,24 @@ div.resources--card {
     .custom-table {
       width: 767px;
     }
+  }
+}
+.clients{
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-width: 1080px) {
+  .clients {
+    animation: scrollMarquee 15s linear infinite;
+  }
+}
+
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }

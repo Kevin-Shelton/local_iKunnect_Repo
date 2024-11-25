@@ -72,3 +72,10 @@
 
   }
 }
+
+.haveClients{
+  overflow-x: hidden;
+  .row{
+    flex-wrap: nowrap !important;
+  }
+}
