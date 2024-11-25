@@ -45,14 +45,24 @@
   }
   @media (max-width: 991px) {
     &--row {
-      gap: 20px;
+      //gap: 20px;
     }
     &--each {
+      padding: 16px;
+      min-height: 330px;
       h5 {
         text-align: left;
+        margin-bottom: 20px !important;
       }
       .column {
         width: inherit;
+      }
+      img {
+        width: 30px;
+      }
+      .row {
+        flex-direction: column;
+        gap: 10px;
       }
     }
   }
