@@ -641,7 +641,7 @@
         </div>
       </div>
 
-      <button class="primaryBtn mt-5">LET’S CHAT</button>
+      <button (click)="isChatEnabled = true" class="primaryBtn mt-5">LET’S CHAT</button>
     </div>
   </div>
   <!-- <div class="col-12">
@@ -899,5 +899,5 @@
     </div>
   </div>
   <app-book-consultation [title]="title" class="spa0 col-12" />
-  <app-lets-talk></app-lets-talk>
+  <app-lets-chat *ngIf="isChatEnabled"></app-lets-chat>
 </div>

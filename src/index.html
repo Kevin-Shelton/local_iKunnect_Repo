@@ -17,5 +17,11 @@
       once: true, // Animation will happen only once
     });
   </script>
+   <script src="http://3.140.137.224:8080/assets/chat/chat-no-jquery.min.js"></script>
+   <script>
+     (function () {
+       new ZammadChat({ fontSize: "12px", chatId: 3, show: true ,host: 'ws://3.140.137.224:8080/ws'});
+     })();
+   </script>
 </body>
 </html>

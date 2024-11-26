@@ -45,7 +45,7 @@
   }
   .chat-body {
     padding: 20px 20px;
-    height: calc(100vh - 265px);
+    height: calc(100% - 140px);
     overflow: auto;
     .msg-block {
       display: flex;
