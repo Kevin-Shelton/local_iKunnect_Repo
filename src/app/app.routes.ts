@@ -9,7 +9,7 @@ import { ResourcesComponent } from '../pages/resources/resources.component';
 import { SupportComponent } from '../pages/support/support.component';
 import { SolutionsComponent } from '../pages/solutions/solutions.component';
 import { PricingComponent } from '../pages/pricing/pricing.component';
-
+import {ContactusComponent} from '../pages/contactus/contactus.component'
 export const routes: Routes = [
   { path: 'home', pathMatch: 'full', component: HomeComponent },
   { path: 'about', pathMatch: 'full', component: AboutComponent },
@@ -25,4 +25,5 @@ export const routes: Routes = [
   { path: 'solutions', pathMatch: 'full', component: SolutionsComponent },
   { path: '*', redirectTo: '/home', pathMatch: 'full' },
   { path: 'pricing', pathMatch: 'full', component: PricingComponent },
+  { path: 'contact-us', pathMatch: 'full', component: ContactusComponent },
 ];
