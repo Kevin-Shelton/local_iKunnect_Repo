@@ -8,12 +8,10 @@
       <div class="container-xl">
         <div class="inner-banner">
           <h2 class="f-p" data-aos="flip-up" data-aos-duration="500">
-            We empower strategic advantage
+           {{herosConfig.title}}
           </h2>
           <p class="f-m" data-aos="fade-down" data-aos-duration="600">
-            We provide a comprehensive range of professional services paired
-            with cutting-edge technology to make your call center more efficient
-            and profitable.
+            {{herosConfig.description}}
           </p>
           <div>
             <button
@@ -21,6 +19,7 @@
               class="primaryBtn text-uppercase"
               data-aos="fade-down"
               data-aos-duration="600"
+              (click)="isChatEnabled = true"
             >
               LET'S CHAT
             </button>
@@ -251,4 +250,5 @@
     </div>
     <app-book-consultation [title]="title" class="spa0 col-12" />
   </div>
+  <app-lets-chat *ngIf="isChatEnabled"></app-lets-chat>
 </div>

@@ -3,22 +3,18 @@ import {BookConsultationComponent} from '../../common/sharedComponents/book-cons
 import {TransformCustomerServiceComponent} from '../../common/sharedComponents/transform-customer-service/transform-customer-service.component';
 import { LicensePlanPricing } from '../../config/license-bundle-pricing';
 import { CommonModule } from '@angular/common';
+import { PlanType } from '../../models/website-models';
+import { Router } from '@angular/router';
+import { PaymentHelperService } from '../selfcheckout/services/helper.service';
+import { PricingTableComponent } from './components/pricing-table/pricing-table.component';
 @Component({
   selector: 'app-pricing',
   standalone: true,
-  imports: [BookConsultationComponent, TransformCustomerServiceComponent, CommonModule],
+  imports: [BookConsultationComponent, TransformCustomerServiceComponent, CommonModule, PricingTableComponent],
   templateUrl: './pricing.component.html',
   styleUrl: './pricing.component.scss'
 })
 export class PricingComponent {
   title: string = 'Powering Exceptional \n Customer Journey.';
-  plans= LicensePlanPricing;
-
   
-  isText(type: string) {
-    return type !== 'cross' && type !== 'tick'
-  }
-  getDataType(val: string, type: string) {
-    return val === type;
-  }
 }
