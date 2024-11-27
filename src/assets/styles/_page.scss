@@ -54,7 +54,7 @@
 }
 .units {
   border: 3px solid #bbbbc2;
-  padding: 32px 40px 12px;
+  padding: 16px 8px 16px;
   margin-bottom: 80px;
   background: linear-gradient(
     124deg,
@@ -76,7 +76,7 @@
   }
   i {
     color: black;
-    font-size: 24px;
+    font-size: 18px;
     cursor: pointer;
   }
   input[type="number"]::-webkit-outer-spin-button,
@@ -96,6 +96,26 @@
 
   //   }
   // }
+  table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px;
+    // border: solid 1px #ccc;
+    tr{
+      // border-bottom: solid 1px #ccc;
+    }
+    td{
+      vertical-align: middle;
+      font-weight: 500;
+      input{
+        margin-bottom: 0;
+        text-align: center;
+      }
+      .ellipsis-singleline {
+        max-width: 100%;
+      }
+    }
+  }
 }
 // .selfcheckout {
 //   position: relative;
@@ -234,7 +254,7 @@ div.resources--card {
       }
 
     }
-    
+
     td {
       background: transparent;
       padding: 20px 0;
@@ -277,26 +297,7 @@ div.resources--card {
       rgba(244, 253, 244, 1) 90%,
       rgba(255, 255, 255, 1) 100%
     );
-    .switch{
-      width: 320px;
-      font-size: 18px;
-      font-family: "Poppins", sans-serif;
-      font-weight: 500;
-      margin: 0 auto 40px;
-      .m-45{
-        max-width: 45px;
-      }
-      > div{
-        padding: 0 10px 0 0;
-      }
-      .form-check{
-        width: 40px;
-      }
-      .form-check-input:checked {
-        background-color: #7540C4;
-        border-color: #7540C4;
-      }
-    }
+
     p{
       color: black;
       font-size: 20px;
@@ -335,6 +336,7 @@ div.resources--card {
       }
     }
   }
+
   @media (max-width: 1199px) {
     .custom-table {
       th .col-title {
@@ -414,4 +416,33 @@ div.resources--card {
   100% {
     transform: translateX(-100%);
   }
+}
+
+.switch{
+  width: 340px;
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin: 0 auto;
+  label{
+    font-size: 16px !important;
+    font-weight: 600 !important;
+  }
+  .m-45{
+    max-width: 45px;
+  }
+  > div{
+    padding: 0 10px 0 0 !important;
+  }
+  .form-check{
+    width: 40px;
+  }
+  .form-check-input:checked {
+    background-color: #7540C4;
+    border-color: #7540C4;
+  }
+}
+.align-just-center{
+  display: flex;
+  justify-content: center;
 }
