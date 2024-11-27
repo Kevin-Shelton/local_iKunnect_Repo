@@ -226,11 +226,15 @@ div.resources--card {
         font-weight: 500;
       }
     }
-    tr:last-child {
-      td {
-        border-bottom: none;
+    tr {
+      &:last-child, &.title {
+        td {
+          border-bottom: none;
+        }
       }
+
     }
+    
     td {
       background: transparent;
       padding: 20px 0;

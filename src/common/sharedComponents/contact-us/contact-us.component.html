@@ -93,8 +93,10 @@
       class="primaryBtn md sfont13 smt5"
       data-aos="fade-up"
       data-aos-duration="2000"
+      (click)="isChatEnabled = true"
     >
-      LET’S CHAT
+    LET'S CHAT
     </button>
   </div>
+  <app-lets-chat *ngIf="isChatEnabled"></app-lets-chat>
 </div>

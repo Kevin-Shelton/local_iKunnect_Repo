@@ -1,0 +1,208 @@
+<div class="pricing-table">
+    <div class="title">
+      <h3 class="f-p" data-aos="fade-down" data-aos-duration="500">
+        Pricing Plans
+      </h3>
+
+      <p class="f-m" data-aos="fade-down" data-aos-duration="600">
+        Plans to help every business dominate customer service for today's
+        world
+      </p>
+      <div class="row switch">
+        <div class="col-auto">
+          <label class="form-check-label" for="flexSwitchCheckChecked">Monthly</label>
+        </div>
+        <div class="col-auto m-45">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+          </div>
+        </div>
+        <div class="col-auto">
+          <label class="form-check-label" for="flexSwitchCheckChecked">Annual (save up to 25%)</label>
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th width="25%"></th>
+            <th>
+              <span class="col-title">Trial</span>
+            </th>
+            <th>
+              <span class="col-title">Startup</span>
+            </th>
+            <th>
+              <span class="col-title">Growth</span>
+            </th>
+            <th>
+              <span class="col-title">Scale</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span class="price-label">
+                Select a plan based on your exact needs
+              </span>
+            </td>
+            <td>
+              <div class="price-col">
+                <span>$-</span>
+              </div>
+            </td>
+            <td>
+              <div class="price-col">
+                <span>$500</span>
+                
+              </div>
+            </td>
+            <td>
+              <div class="price-col">
+                <span>$1,500</span>
+               
+              </div>
+            </td>
+            <td>
+              <div class="price-col">
+                <span>$5,000</span>
+               
+              </div>
+            </td>
+          </tr>
+          @for (license of plans.licenses; track license.name) {
+          <tr class="title">
+            <td>
+              <span class="price-label"> {{license.name}} </span>
+            </td>
+            <td>                   
+              <div *ngIf="getDataType(license.trial, 'cross')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="getDataType(license.trial, 'tick')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="isText(license.trial)" class="check-icon">
+                {{license.trial}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="getDataType(license.starUp, 'cross')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="getDataType(license.starUp, 'tick')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="isText(license.starUp)" class="check-icon">
+                {{license.starUp}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="getDataType(license.growth, 'cross')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="getDataType(license.growth, 'tick')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="isText(license.growth)" class="check-icon">
+                {{license.growth}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="getDataType(license.scale, 'cross')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="getDataType(license.scale, 'tick')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="isText(license.scale)" class="check-icon">
+                {{license.scale}}
+              </div>
+            </td>
+          </tr>
+        }
+        <tr>
+          <td colspan="5"></td>
+        </tr>
+        @for (feature of plans.features; track feature.name) {
+          <tr class="title">
+            <td>
+              <span class="price-label"> {{feature.name}} </span>
+            </td>
+            <td>                   
+              <div *ngIf="getDataType(feature.trial, 'cross')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="getDataType(feature.trial, 'tick')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="isText(feature.trial)" class="check-icon">
+                {{feature.trial}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="getDataType(feature.starUp, 'cross')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="getDataType(feature.starUp, 'tick')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="isText(feature.starUp)" class="check-icon">
+                {{feature.starUp}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="getDataType(feature.growth, 'cross')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="getDataType(feature.growth, 'tick')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="isText(feature.growth)" class="check-icon">
+                {{feature.growth}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="getDataType(feature.scale, 'cross')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="getDataType(feature.scale, 'tick')" class="check-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div *ngIf="isText(feature.scale)" class="check-icon">
+                {{feature.scale}}
+              </div>
+            </td>
+          </tr>
+        }
+          <tr>
+            <td>
+              
+            </td>
+            <td>
+              <div class="text-center">
+                <button (click)="buyPlan('Trial')" class="primaryBtn">Free Trial</button>
+              </div>
+            </td>
+            <td>
+              <div class="text-center" >
+                <button (click)="buyPlan('StartUp')" class="primaryBtn">Buy Now</button>
+              </div>
+            </td>
+            <td>
+              <div class="text-center">
+                <button (click)="buyPlan('Growth')" class="primaryBtn">Buy Now</button>
+              </div>
+            </td>
+            <td>
+              <div class="text-center">
+                <button (click)="buyPlan('Scale')"  class="primaryBtn">Buy Now</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

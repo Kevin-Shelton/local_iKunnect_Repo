@@ -3,7 +3,9 @@ import { AboutComponent } from '../about/about.component';
 import { BookConsultationComponent } from '../../common/sharedComponents/book-consultation/book-consultation.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { LetsTalkComponent } from '../../common/sharedComponents/lets-talk/lets-talk.component';
+import { LetsChatComponent } from '../../common/sharedComponents/lets-chat/lets-chat.component';
+import { CommonModule } from '@angular/common';
+import { HerosData } from '../../config/heros';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -12,11 +14,17 @@ import { LetsTalkComponent } from '../../common/sharedComponents/lets-talk/lets-
     BookConsultationComponent,
     MatInputModule,
     MatFormFieldModule,
-    LetsTalkComponent,
+    LetsChatComponent,
+    CommonModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  isChatEnabled: boolean = false;
   title: string = 'Powering Exceptional \n Customer Journey.';
+  herosConfig= HerosData.home
+  constructor() {
+    console.log('hero config is :::: ',this.herosConfig)
+  }
 }
