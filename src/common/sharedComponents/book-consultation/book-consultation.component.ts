@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-book-consultation',
@@ -9,4 +9,8 @@ import { Component, Input } from '@angular/core';
 })
 export class BookConsultationComponent {
   @Input() title!: string; // Use ! to assert that title will be initialized later
+  @Output() bookConsultEvt: EventEmitter<string> = new EventEmitter();
+  bookConsult() {
+    this.bookConsultEvt.emit('');
+  }
 }
