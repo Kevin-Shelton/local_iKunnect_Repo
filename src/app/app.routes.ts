@@ -23,6 +23,6 @@ export const routes: Routes = [
   { path: 'resources', pathMatch: 'full', component: ResourcesComponent },
   { path: 'support', pathMatch: 'full', component: SupportComponent },
   { path: 'solutions', pathMatch: 'full', component: SolutionsComponent },
-  { path: '*', redirectTo: '/home', pathMatch: 'full' },
   { path: 'pricing', pathMatch: 'full', component: PricingComponent },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
