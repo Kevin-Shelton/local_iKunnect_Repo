@@ -19,13 +19,18 @@ export class PaymentService {
     return this.stripePromise;
   }
 
-  async getStripeIntent(amount: number) {
+  async getStripeSession(amount: number) {
     console.log('payment amount is ::::::: ',amount)
-  return await fetch(`https://dev-auth-api.ikunnect.com/create-payment-intent?amount=${amount}`, {
+  return await fetch(`http://localhost:4242/create-checkout-session`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({}),
+        body: JSON.stringify({priceId: 'price_1QPugJLmtmaPxNqrw4tsXoZT', quantity: 1}),
       });
+  }
+
+  async getStripeSessionStatus(sessionId: string) {
+    console.log('payment sessionId is ::::::: ',sessionId)
+  return await fetch(`http://localhost:4242/session-status?session_id=${sessionId}`);
   }
 
  
