@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { BookConsultationComponent } from '../../common/sharedComponents/book-consultation/book-consultation.component';
+import { PricingTableComponent } from '../pricing/components/pricing-table/pricing-table.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-platform',
   standalone: true,
-  imports: [BookConsultationComponent],
+  imports: [BookConsultationComponent, PricingTableComponent, CommonModule],
   templateUrl: './platform.component.html',
   styleUrl: './platform.component.scss',
 })
