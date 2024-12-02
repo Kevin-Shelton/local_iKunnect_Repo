@@ -1,52 +1,222 @@
-.featureGuide{
-  background: #7540C4;
+.featureGuide {
+  background: #7540c4;
   color: white;
   padding: 11px 0;
-  margin-bottom: 5px;
+  //margin-bottom: 5px;
   font-family: "Inter", sans-serif;
   font-size: 15px;
-  button{
+  button {
     margin-left: 40px;
   }
-  i{
+  i {
     cursor: pointer;
   }
 }
-.clientHead{
-  background-color: #7FC338;
+.clientHead {
+  background-color: #7fc338;
   color: white;
 }
-.spacer{
+.spacer {
   flex-grow: 1;
 }
-.white-color{
+.white-color {
   color: white;
 }
-.clientHead{
+.clientHead {
   font-family: "Inter", sans-serif;
   padding: 7px 0 8px;
-  .nav-item{
+  .nav-item {
     font-weight: 400;
     cursor: pointer;
     font-size: 12px;
   }
 }
-.konnectHead{
+.konnectHead {
   font-family: "Inter", sans-serif;
   padding: 28px 0;
-  img{
+  img {
     cursor: pointer;
   }
-  .headnav{
-    .nav-item{
+  .headnav {
+    .nav-item {
       color: black;
       margin: 0 30px;
       font-weight: 400;
       cursor: pointer;
       font-size: 15px;
-      a{
+      a {
         text-decoration: none;
         color: black;
+      }
+    }
+  }
+}
+.invictus {
+  &-block {
+    a,
+    span {
+      text-decoration: none;
+      font-size: 12px;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      i {
+        font-size: 20px;
+      }
+    }
+  }
+  &-col {
+    display: inline-flex;
+    gap: 30px;
+  }
+}
+.main-nav {
+  &-btn,
+  .nav-col-close {
+    display: none;
+  }
+
+  .logo-col {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  &-list {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 48px;
+    li {
+      a {
+        color: black;
+        text-decoration: none;
+        font-size: 15px;
+        position: relative;
+
+        padding-bottom: 3px;
+        &:before {
+          content: "";
+          width: 0;
+          height: 2px;
+          background: #7fc338;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          transition: 0.3s all;
+        }
+        &.active,
+        &:hover {
+          &:before {
+            width: 100%;
+          }
+        }
+      }
+      .dropdown-menu {
+        padding: 18px 16px 28px 16px;
+        border-radius: 15px;
+        width: 230px;
+        border: none;
+        box-shadow: 5px 8px 9px -4px rgba(0, 0, 0, 0.2);
+        li {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 991px) {
+  .konnectHead img {
+    max-width: 100%;
+  }
+  .main-nav {
+    align-items: center;
+    padding: 10px 0;
+    &-list {
+      gap: 24px;
+      li {
+        a {
+          font-size: 14px;
+        }
+        .primaryBtn {
+          font-size: 13px;
+          padding: 5px 20px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .konnectHead {
+    padding: 0;
+  }
+  .main-nav {
+    .nav-col-close {
+      display: inline-flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+      margin-bottom: 20px;
+      img {
+        height: 30px;
+        max-width: inherit;
+      }
+      button {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 20px;
+        -webkit-text-stroke: 0.5px;
+      }
+    }
+    &-btn {
+      display: inline-flex;
+      border: none;
+      background: none;
+      outline: none;
+      font-size: 30px;
+      display: inline-flex;
+      -webkit-text-stroke: 0.5px;
+    }
+    &-cont {
+      position: fixed;
+      left: -10000px;
+      top: 0px;
+      width: 360px;
+      padding: 0;
+      text-align: left !important;
+      background: white;
+      z-index: 99;
+      height: 100%;
+      transition: 0.3s all;
+      &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: black;
+        position: fixed;
+        z-index: 1;
+        opacity: 0.2;
+      }
+      &.active {
+        left: 0;
+      }
+    }
+    &-list {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      padding: 30px;
+      height: 100%;
+      background: white;
+      position: relative;
+      z-index: 2;
+      gap: 16px;
+      li a {
+        font-size: 16px;
       }
     }
   }
