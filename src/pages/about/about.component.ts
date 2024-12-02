@@ -4,16 +4,23 @@ import { BookConsultationComponent } from '../../common/sharedComponents/book-co
 import { HerosData } from '../../config/heros';
 import { CommonModule } from '@angular/common';
 import { LetsChatComponent } from '../../common/sharedComponents/lets-chat/lets-chat.component';
+import { ExploreResourcesComponent } from '../../common/sharedComponents/explore-resources/explore-resources.component';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [ContactUsComponent, BookConsultationComponent, CommonModule, LetsChatComponent],
+  imports: [
+    ContactUsComponent,
+    BookConsultationComponent,
+    CommonModule,
+    LetsChatComponent,
+    ExploreResourcesComponent,
+  ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
 export class AboutComponent {
   isChatEnabled: boolean = false;
   title: string = 'Powering Exceptional \n Customer Journey.';
-  herosConfig= HerosData.about;
+  herosConfig = HerosData.about;
 }

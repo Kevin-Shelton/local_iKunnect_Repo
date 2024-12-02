@@ -20,7 +20,7 @@ export const routes: Routes = [
     component: SelfcheckoutComponent,
   },
   { path: 'platform', pathMatch: 'full', component: PlatformComponent },
-  { path: 'bookademo', pathMatch: 'full', component: BookademoComponent },
+  { path: 'book-demo', pathMatch: 'full', component: BookademoComponent },
   { path: 'resources', pathMatch: 'full', component: ResourcesComponent },
   { path: 'support', pathMatch: 'full', component: SupportComponent },
   { path: 'solutions', pathMatch: 'full', component: SolutionsComponent },

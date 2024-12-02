@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { LetsChatComponent } from '../../common/sharedComponents/lets-chat/lets-chat.component';
 import { CommonModule } from '@angular/common';
 import { HerosData } from '../../config/heros';
+import { ExploreResourcesComponent } from '../../common/sharedComponents/explore-resources/explore-resources.component';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -16,6 +17,7 @@ import { HerosData } from '../../config/heros';
     MatFormFieldModule,
     LetsChatComponent,
     CommonModule,
+    ExploreResourcesComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -23,8 +25,8 @@ import { HerosData } from '../../config/heros';
 export class HomeComponent {
   isChatEnabled: boolean = false;
   title: string = 'Powering Exceptional \n Customer Journey.';
-  herosConfig= HerosData.home
+  herosConfig = HerosData.home;
   constructor() {
-    console.log('hero config is :::: ',this.herosConfig)
+    console.log('hero config is :::: ', this.herosConfig);
   }
 }
