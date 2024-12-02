@@ -467,3 +467,20 @@ div.resources--card {
   display: flex;
   justify-content: center;
 }
+.plainTable{
+  // border-collapse: separate;
+    // border-spacing: 16px;
+    tr{
+      border-bottom: solid 1px black;
+      td{
+padding: 12px 0;
+      }
+      &:last-child{
+        border: 0;
+      }
+    }
+  .ellipsis-singleline {
+    padding: 0 16px;
+    max-width: 320px;
+  }
+}

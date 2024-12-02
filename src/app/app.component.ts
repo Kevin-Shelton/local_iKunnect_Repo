@@ -4,7 +4,6 @@ import { RouterOutlet } from '@angular/router';
 import { AppHeaderComponent } from '../common/app-header/app-header.component';
 import { AppFooterComponent } from '../common/app-footer/app-footer.component';
 import { isPlatformBrowser } from '@angular/common';
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -22,6 +21,11 @@ export class AppComponent implements OnInit {
         element[0].style.display = 'none';
       }
     }
+
+    // AOS.init({
+    //   duration: 1200, // Animation duration
+    //   // once: true      // Whether animation should happen only once
+    // });
   }
   ngAfterViewInit() {
     AOS.init({

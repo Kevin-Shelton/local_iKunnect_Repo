@@ -24,8 +24,8 @@ export const routes: Routes = [
   { path: 'resources', pathMatch: 'full', component: ResourcesComponent },
   { path: 'support', pathMatch: 'full', component: SupportComponent },
   { path: 'solutions', pathMatch: 'full', component: SolutionsComponent },
-  { path: 'blog', component: BlogComponent },
+  { path: 'blog', pathMatch: 'full', component: BlogComponent },
   { path: 'pricing', pathMatch: 'full', component: PricingComponent },
   { path: 'contact-us', pathMatch: 'full', component: ContactusComponent },
-  { path: '**', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
