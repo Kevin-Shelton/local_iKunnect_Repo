@@ -1,20 +1,22 @@
 @import "./colors.scss";
 
-.flatBtn{
+.flatBtn {
   background: transparent;
   border: transparent;
-  &:has(i){
+  &:has(i) {
+    text-align: left;
     display: inline-flex;
     align-items: center;
-    i{
+    i {
       margin-left: 8px;
       font-size: 18px;
     }
   }
 }
-.primaryBtn{
-  background: #7540C4;
-  border: solid 2px #7540C4;
+.primaryBtn,
+.secondaryBtn {
+  background: #7540c4;
+  border: solid 2px #7540c4;
   border-radius: 37px;
   color: white;
   font-size: 15px;
@@ -23,31 +25,64 @@
   font-family: "Inter", sans-serif;
   line-height: 18px;
   transition: all ease 0.5s;
-  &:hover{
+  &:hover {
     background-color: white;
-    color: #7540C4;
+    color: #7540c4;
   }
-  &.lessRadius{
+  &.lessRadius {
     border-radius: 5px;
   }
-  &.border{
+  &.border {
     background: white;
-    color: #7540C4;
-    border: solid 2px #7540C4 !important;
-    &:hover{
-      background: #7540C4;
+    color: #7540c4;
+    border: solid 2px #7540c4 !important;
+    &:hover {
+      background: #7540c4;
       color: white;
     }
   }
-  &.lg{
+  &.lg {
     padding: 24px 50px;
     font-size: 24px;
   }
-  &.md{
+  &.md {
     padding: 16px 40px;
     font-size: 24px;
   }
+  &.checkoutBtn{
+    background: #F3D847;
+    border: 0;
+    color: black;
+    i{
+      color: black;
+      margin-right: 8px;
+    }
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+  &.secondaryBtn{
+    background: #8FC44C;
+    border: solid 2px #8FC44C;
+    &:hover{
+      background-color: white;
+      color: #8FC44C;
+    }
+  }
 }
-.borderBtn{
+.borderBtn {
   background: none;
+}
+.secondaryBtn {
+  background: #8fc44c;
+  border-color: #8fc44c;
+  &:hover {
+    color: #8fc44c;
+    background: transparent;
+  }
+  &.text {
+    background: transparent;
+    border: none;
+    color: #8fc44c;
+  }
 }

@@ -1,1 +1,179 @@
 @import "./colors.scss";
+
+.custom-tabs {
+  .nav-tabs {
+    border: none;
+    .nav-link {
+      color: #808082;
+      font-size: 20px;
+      line-height: 26px;
+      font-weight: 500;
+      border: none;
+      border-top: 3px solid #e7f6d5;
+      border-radius: 0;
+      padding: 18px 0;
+      font-family: "Poppins", sans-serif;
+      &.active {
+        color: #000000;
+        border-color: #8fc44c;
+      }
+    }
+    .nav-item {
+      margin-right: 36px;
+      width: 155px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &.tabs-3 {
+    .nav-tabs {
+      .nav-item {
+        width: calc(33.3% - 36px);
+      }
+      .nav-link {
+        padding-right: 50px;
+      }
+    }
+  }
+  &.tabs-4 {
+    .nav-tabs {
+      .nav-item {
+        width: calc(25% - 36px);
+      }
+      .nav-link {
+        padding-right: 50px;
+      }
+    }
+  }
+  &.vertical-tabs {
+    .nav-tabs {
+      display: flex;
+      flex-direction: column;
+      .nav-item {
+        width: 100%;
+        margin: 0;
+      }
+      .nav-link {
+        border-top: none;
+        border-bottom: 3px solid #e7f6d5;
+        &.active {
+          background: transparent;
+          border-color: #8fc44c;
+        }
+      }
+    }
+  }
+}
+.dark-theme {
+  .custom-tabs {
+    .nav-link {
+      border-color: #404040;
+      &.active {
+        background: transparent;
+        color: white;
+        border-color: white;
+      }
+    }
+    .nav-item {
+      width: auto;
+    }
+  }
+}
+
+.transformCustomer--right {
+  position: relative;
+  min-height: 400px;
+}
+.image-container {
+  display: flex;
+  justify-content: center;
+  // position: relative;
+  align-items: center;
+  // gap: 10px; /* Space between images */
+}
+
+.image1,
+.image2,
+.image3 {
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  position: absolute;
+}
+
+.image1 {
+  animation-name: floatAnimation1;
+  bottom: 15px;
+  left: 4%;
+}
+
+.image2 {
+  animation-name: floatAnimation2;
+  right: 15%;
+  bottom: 30px;
+  z-index: 1;
+}
+
+.image3 {
+  animation-name: floatAnimation3;
+  top: 30px;
+  right: calc(50% - 100px);
+  > img {
+    width: 260px;
+  }
+}
+
+@keyframes floatAnimation1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-10px, -5px);
+  }
+  50% {
+    transform: translate(10px, 5px);
+  }
+  75% {
+    transform: translate(-5px, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes floatAnimation2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, 5px);
+  }
+  50% {
+    transform: translate(-10px, -5px);
+  }
+  75% {
+    transform: translate(5px, -10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes floatAnimation3 {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(8px, -8px);
+  }
+  50% {
+    transform: translate(-8px, 8px);
+  }
+  75% {
+    transform: translate(5px, -5px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
