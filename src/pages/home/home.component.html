@@ -12,13 +12,13 @@
             data-aos="fade-left"
             data-aos-duration="1000"
           >
-            {{herosConfig.title}}
+            {{ herosConfig.title }}
           </div>
           <div
             class="col f-m text-center headContent--content"
             data-aos="fade-left"
           >
-          {{herosConfig.description}}
+            {{ herosConfig.description }}
           </div>
           <div class="col text-center headContent--btn" data-aos="fade-down">
             <button class="primaryBtn">BOOK A CONSULTATION</button>
@@ -640,7 +640,9 @@
         </div>
       </div>
 
-      <button (click)="isChatEnabled = true" class="primaryBtn mt-5">LET'S CHAT</button>
+      <button (click)="isChatEnabled = true" class="primaryBtn mt-5">
+        LET'S CHAT
+      </button>
     </div>
   </div>
   <!-- <div class="col-12">
@@ -818,85 +820,7 @@
       </div>
     </div>
   </div>
-  <div class="col-12 resources">
-    <div class="container-xl">
-      <div class="row">
-        <div class="col-6 resources--head smb4">
-          Explore our<br />
-          resources
-        </div>
-        <div class="col-6 text-end align-self-center">
-          <button class="primaryBtn secondaryBtn">VIEW ALL RESOURCES</button>
-        </div>
-        <div
-          class="col-xs-12 col-sm-4"
-          data-aos="fade-right"
-          data-aos-duration="1000"
-        >
-          <div class="card resources--card">
-            <img
-              src="./../../assets/images/resource-image.png"
-              class="card-img-top"
-              alt="RESOURCES"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                Three Ways Artificial Intelligence Will Improve Call Center
-                Customer Service
-              </h5>
-              <button class="flatBtn c-p f600">
-                EXPLORE RESOURCE <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div
-          class="col-xs-12 col-sm-4"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-        >
-          <div class="card resources--card">
-            <img
-              src="./../../assets/images/resource-image.png"
-              class="card-img-top"
-              alt="RESOURCES"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                Three Ways Artificial Intelligence Will Improve Call Center
-                Customer Service
-              </h5>
-              <button class="flatBtn c-p f600">
-                EXPLORE RESOURCE <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div
-          class="col-xs-12 col-sm-4"
-          data-aos="fade-left"
-          data-aos-duration="1000"
-        >
-          <div class="card resources--card">
-            <img
-              src="./../../assets/images/resource-image.png"
-              class="card-img-top"
-              alt="RESOURCES"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                Three Ways Artificial Intelligence Will Improve Call Center
-                Customer Service
-              </h5>
-              <button class="flatBtn c-p f600">
-                EXPLORE RESOURCE <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-explore-resources class="spa0 col-12"></app-explore-resources>
   <app-book-consultation [title]="title" class="spa0 col-12" />
   <app-lets-chat *ngIf="isChatEnabled"></app-lets-chat>
 </div>
