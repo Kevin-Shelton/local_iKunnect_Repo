@@ -12,12 +12,9 @@ export class LetsChatComponent {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {
-    console.log('plat form id is ::::::::::::::::::: ',isPlatformBrowser(this.platformId))
-    if (isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId) && typeof document !== 'undefined') {
       setTimeout(() => {
         let element: any = document?.getElementsByClassName("zammad-chat");
-        console.log('element is +++++++++++++++++++++',element)
-        console.log
         if (element?.length) {
           element[0].style.display = "block";
           element[0].className = "zammad-chat chat-client"

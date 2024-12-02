@@ -36,9 +36,9 @@ export class SelfcheckoutComponent implements OnInit{
 
   ngOnInit(): void {
     this.activatedRoute?.queryParams?.subscribe(params => {
-      console.log('query params are ::::::::',params['payment_intent_client_secret'])
-      const afterPayIntent = params['payment_intent_client_secret'];
-     if(afterPayIntent) this.handlePaymentStatus(afterPayIntent);
+      console.log('query params are ::::::::',params['session_id'])
+      const afterPaySessionId = params['session_id'];
+     if(afterPaySessionId) this.handlePaymentStatus(afterPaySessionId);
     });
 
     this.paymentHelperService.currentTotalAmount.subscribe({
@@ -56,36 +56,20 @@ export class SelfcheckoutComponent implements OnInit{
   }
 
   // Fetches the payment intent status after payment submission
-async  handlePaymentStatus(clientSecret: string) {
-  const stripe = await this.paymentService.getStripe()
-   if(clientSecret && stripe) {
+async  handlePaymentStatus(sessionId: string) {
+ 
      
-       const { paymentIntent } = await stripe.retrievePaymentIntent(clientSecret);
-     
-      this.setPaymentDetails(paymentIntent);
-   } else {
-    this.statusText = "Something went wrong, please try again.";
-   }
+       const response= await this.paymentService.getStripeSessionStatus(sessionId);
+       const { status, customer_email } = await response.json();
+      this.setPaymentDetails(status);
+  
 }
 
-setPaymentDetails(intent: PaymentIntent | undefined) {
+setPaymentDetails(status: string) {
   this.statusText = "Something went wrong, please try again.";
-  if(intent)  {
+  if(status === 'complete')   this.statusText = "Payment succeeded";
 
-    switch (intent.status) {
-      case "succeeded":
-        this.statusText = "Payment succeeded";
-        break;
-      case "processing":
-        this.statusText = "Your payment is processing.";
-        break;
-      case "requires_payment_method":
-        this.statusText = "Your payment was not successful, please try again.";
-        break;
-      default:
-        break;
-    }
-  }
+
 }
 
 

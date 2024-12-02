@@ -27,26 +27,32 @@ export class PaymentComponent implements OnInit {
 
   async ngOnInit() {
     this.stripe = await this.paymentService.getStripe();
-  const response =   await  this.paymentService.getStripeIntent(Number(this.paymentInfo.amount));
-  const { clientSecret, dpmCheckerLink } = await response.json();
+  const response =   await  this.paymentService.getStripeSession(Number(this.paymentInfo.amount));
+  const { clientSecret } = await response.json();
  
-  await this.initStripe(clientSecret, dpmCheckerLink)
+  await this.initStripe(clientSecret)
   
   }
 
- async initStripe(clientSecret:string, dpmCheckerLink:any) {
- 
-    this.stripeElements = this.stripe?.elements({clientSecret, appearance:{
-      theme: 'stripe',
-    } });
+ async initStripe(clientSecret:string) {
+  const checkout = await this.stripe?.initEmbeddedCheckout({
+    clientSecret,
+  });
 
-    if (this.stripeElements) {
-      const paymentElementOptions = {
-        layout: "tabs",
-      } as StripeCardElementOptions;
-      const cardElement = this.stripeElements.create('payment', paymentElementOptions);
-      cardElement.mount('#payment-element');
-    }
+  // Mount Checkout
+  checkout?.mount('#checkout');
+ 
+    // this.stripeElements = this.stripe?.elements({clientSecret, appearance:{
+    //   theme: 'stripe',
+    // } });
+
+    // if (this.stripeElements) {
+    //   const paymentElementOptions = {
+    //     layout: "tabs",
+    //   } as StripeCardElementOptions;
+    //   const cardElement = this.stripeElements.create('payment', paymentElementOptions);
+    //   cardElement.mount('#payment-element');
+    // }
   }
 
    async pay() {
