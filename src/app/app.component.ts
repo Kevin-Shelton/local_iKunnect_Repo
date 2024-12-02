@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   title = 'konnect-invictus';
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId) && typeof document !== 'undefined') {
       let element: any = document?.getElementsByClassName('zammad-chat');
       if (element?.length) {
         element[0].style.display = 'none';
