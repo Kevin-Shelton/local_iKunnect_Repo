@@ -8,7 +8,7 @@
             </div>
             <div class="col-auto m-45">
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                <input class="form-check-input"  (change)="planDurationChange()" type="checkbox" id="flexSwitchCheckChecked" checked>
               </div>
             </div>
             <div class="col-auto">
@@ -16,8 +16,8 @@
             </div>
           </div>
         </div>
-        <div class="col-12">
-          <!-- <table>
+        <div >
+          <table>
             <tr>
               <th>
                 Item
@@ -35,52 +35,33 @@
             <tr>
               <td>
                 <div class="ellipsis-singleline ">
-                  Startup-Bundle
+                 {{bundleDetails.type}}
                 </div>
               </td>
               <td>
-                $500
+                {{bundleDetails.amount.disValue}}
               </td>
               <td>
                 <div class="row g-1">
-                  <div class="col-auto">
+                  <div class="col-auto" (click)="decrementBundleQuantity()">
                     <i class="bi bi-dash-lg"></i>
                   </div>
                   <div class="col-auto">
-                    <input type="number" [value]="noOfLicenseSeats" class="max-width-50" >
+                    <input type="number" [value]="bundleDetails.quantity" class="max-width-50" >
                   </div>
-                  <div class="col-auto">
+                  <div class="col-auto" (click)="incrementBundleQuantity()">
                     <i class="bi bi-plus-lg"></i>
                   </div>
                 </div>
               </td>
               <td>
-                $1,000
+                {{bundleDetails.totalAmount.disValue}}
               </td>
             </tr>
-          </table> -->
+          </table>
+
+
         </div>
-        <!-- <div class="col-8 f-m sfont20">
-          All Inclusive -<br /> Kunnect License Seat
-          <div class="row">
-            <div class="col-auto" (click)="decrementLicenseSeats()">
-              <i class="bi bi-dash-lg"></i>
-            </div>
-            <div class="col-auto">
-              <input type="number" [value]="noOfLicenseSeats" class="max-width-100" >
-            </div>
-            <div class="col-auto" (click)="incrementLicenseSeats()">
-              <i class="bi bi-plus-lg"></i>
-            </div>
-          </div>
-        </div>
-        <div class="col-4 f-p sf500 text-center">
-          <span class="sfont64  ">
-            $125
-          </span>
-          per seat, <br />
-          per month
-        </div> -->
       </div>
     </div>
     <div class="col-12">

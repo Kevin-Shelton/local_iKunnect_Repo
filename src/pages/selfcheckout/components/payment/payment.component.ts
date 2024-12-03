@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
   styleUrl: './payment.component.scss'
 })
 export class PaymentComponent implements OnInit {
- @Input() paymentInfo!: {amount: string};
 
   stripe: Stripe | null = null;
   message: string | null = null;
@@ -27,11 +26,10 @@ export class PaymentComponent implements OnInit {
 
   async ngOnInit() {
     this.stripe = await this.paymentService.getStripe();
-  const response =   await  this.paymentService.getStripeSession(Number(this.paymentInfo.amount));
+  const response =   await  this.paymentService.getStripeSession();
   const { clientSecret } = await response.json();
  
-  await this.initStripe(clientSecret)
-  
+  await this.initStripe(clientSecret);  
   }
 
  async initStripe(clientSecret:string) {

@@ -15,11 +15,14 @@
         <div class="col-auto m-45">
           <div class="form-check form-switch">
             <input
+              (change)="planDurationChange()"
+              [value]="planPeriod"
               class="form-check-input"
               type="checkbox"
               id="flexSwitchCheckChecked"
               checked
             />
+           
           </div>
         </div>
         <div class="col-auto">
@@ -61,17 +64,17 @@
           </td>
           <td>
             <div class="price-col">
-              <span>$500</span>
+              <span>{{priceDetByDuration['StartUp'].disValue}}</span>
             </div>
           </td>
           <td>
             <div class="price-col">
-              <span>$1,500</span>
+              <span>{{priceDetByDuration['Growth'].disValue}}</span>
             </div>
           </td>
           <td>
             <div class="price-col">
-              <span>$5,000</span>
+              <span>{{priceDetByDuration['Scale'].disValue}}</span>
             </div>
           </td>
         </tr>
@@ -98,16 +101,16 @@
           </td>
           <td>
             <div
-              *ngIf="getDataType(license.starUp, 'cross')"
+              *ngIf="getDataType(license.startUp, 'cross')"
               class="check-icon"
             >
               <i class="bi bi-x-lg"></i>
             </div>
-            <div *ngIf="getDataType(license.starUp, 'tick')" class="check-icon">
+            <div *ngIf="getDataType(license.startUp, 'tick')" class="check-icon">
               <i class="bi bi-check-lg"></i>
             </div>
-            <div *ngIf="isText(license.starUp)" class="check-icon">
-              {{ license.starUp }}
+            <div *ngIf="isText(license.startUp)" class="check-icon">
+              {{ license.startUp }}
             </div>
           </td>
           <td>
@@ -161,16 +164,16 @@
           </td>
           <td>
             <div
-              *ngIf="getDataType(feature.starUp, 'cross')"
+              *ngIf="getDataType(feature.startUp, 'cross')"
               class="check-icon"
             >
               <i class="bi bi-x-lg"></i>
             </div>
-            <div *ngIf="getDataType(feature.starUp, 'tick')" class="check-icon">
+            <div *ngIf="getDataType(feature.startUp, 'tick')" class="check-icon">
               <i class="bi bi-check-lg"></i>
             </div>
-            <div *ngIf="isText(feature.starUp)" class="check-icon">
-              {{ feature.starUp }}
+            <div *ngIf="isText(feature.startUp)" class="check-icon">
+              {{ feature.startUp }}
             </div>
           </td>
           <td>
@@ -204,7 +207,7 @@
           <td></td>
           <td>
             <div class="text-center">
-              <button (click)="buyPlan('Trial')" class="primaryBtn">
+              <button  class="primaryBtn">
                 Free Trial
               </button>
             </div>

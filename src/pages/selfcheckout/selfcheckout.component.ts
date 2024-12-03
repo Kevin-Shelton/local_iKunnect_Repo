@@ -31,34 +31,23 @@ export class SelfcheckoutComponent implements OnInit{
   title: string = 'Powering Exceptional \n Customer Journey.';
   showCardDetails: boolean = false;
   statusText!: string;
-  paymentInfo!: {amount: string};
+  planType!:  string;
   constructor(private readonly activatedRoute: ActivatedRoute, private readonly paymentService: PaymentService, private readonly paymentHelperService: PaymentHelperService) {}
 
   ngOnInit(): void {
     this.activatedRoute?.queryParams?.subscribe(params => {
-      console.log('query params are ::::::::',params['session_id'])
       const afterPaySessionId = params['session_id'];
      if(afterPaySessionId) this.handlePaymentStatus(afterPaySessionId);
-    });
-
-    this.paymentHelperService.currentTotalAmount.subscribe({
-      next: res => {
-        this.paymentInfo = {amount: (Number(res) * 100).toFixed(2)};
-       
-      }
-    })
+    });   
   }
  
 
   handleCheckout() {
     this.showCardDetails = true;
-  //  this.paymentInfo = {amount: 10000};
   }
 
   // Fetches the payment intent status after payment submission
 async  handlePaymentStatus(sessionId: string) {
- 
-     
        const response= await this.paymentService.getStripeSessionStatus(sessionId);
        const { status, customer_email } = await response.json();
       this.setPaymentDetails(status);
