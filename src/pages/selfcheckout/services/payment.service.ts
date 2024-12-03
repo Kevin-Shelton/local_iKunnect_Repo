@@ -19,13 +19,35 @@ export class PaymentService {
   getStripe() {
     return this.stripePromise;
   }
-
-  async getStripeSession() {
+ async getProducts() {
+    try {
+      // Fetch products from your backend
+      const response = await fetch(`http://localhost:4242/get-products`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+  
+      const products = await response.json();
+      console.log('Available Products:', products);
+  
+      return products;
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      return [];
+    }
+  }
+  async getStripeSession(priceId: string, quantity:number) {
    // console.log('payment amount is ::::::: ',amount)
-  return await fetch(`http://localhost:4242/create-checkout-session`, {
+  return await fetch(`http://localhost:4242/create-checkout-session?priceId=${priceId}&quantity=${quantity}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({priceId: 'price_1QPugJLmtmaPxNqrw4tsXoZT', quantity: 1}),
+        body: JSON.stringify({}),
       });
   }
 
