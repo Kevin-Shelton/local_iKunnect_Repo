@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { PaymentService } from '../../services/payment.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { PaymentHelperService } from '../../services/helper.service';
+import { BundleDetails } from '../../../../models/website-models';
 
 @Component({
   selector: 'app-payment',
@@ -18,15 +20,29 @@ export class PaymentComponent implements OnInit {
   message: string | null = null;
   clientSecret!: string;
   stripeElements!: any;
+  bundleDetails!: BundleDetails;
+
   constructor(
-    private readonly paymentService: PaymentService
+    private readonly paymentService: PaymentService,
+    private readonly helperService: PaymentHelperService
   ) {
    
   }
 
   async ngOnInit() {
+this.helperService.currentBundleDetails.subscribe({
+  next: res => {
+    this.bundleDetails = res;
+  }
+})
     this.stripe = await this.paymentService.getStripe();
-  const response =   await  this.paymentService.getStripeSession();
+   const resp = await this.paymentService.getProducts();
+   
+ const product =  resp.products.data.find((prod: any) => {
+ return prod.name=== 'GrowthTest'
+ });
+ console.log('product find :::::::::::::::::::: ',product)
+  const response =   await  this.paymentService.getStripeSession(product.default_price, this.bundleDetails.quantity);
   const { clientSecret } = await response.json();
  
   await this.initStripe(clientSecret);  
