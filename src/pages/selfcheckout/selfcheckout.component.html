@@ -59,7 +59,7 @@
                 <i class="bi bi-cart-fill"></i>
                 Checkout
               </button>
-              <app-payment *ngIf="showCardDetails" [paymentInfo]="paymentInfo"> </app-payment>
+              <app-payment *ngIf="showCardDetails" > </app-payment>
               <div *ngIf="statusText"> {{statusText}}</div>
             </div>
             <div class="col-xs-12 col-md-6 selfcheckout--right">

@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PaymentService } from '../../services/payment.service';
 import { PaymentHelperService } from '../../services/helper.service';
+import { BundleDetails, PlanDuration } from '../../../../models/website-models';
+import { PricesByDuration } from '../../../../config/license-bundle-pricing';
 
 @Component({
   selector: 'app-license-customer',
@@ -9,22 +11,52 @@ import { PaymentHelperService } from '../../services/helper.service';
   templateUrl: './license-customer.component.html',
   styleUrl: './license-customer.component.scss'
 })
-export class LicenseCustomerComponent  {
-  noOfLicenseSeats: number = 1;
-
-  constructor(private readonly paymentService: PaymentHelperService){
+export class LicenseCustomerComponent  implements OnInit{
+  bundleDetails!: BundleDetails;
+  constructor(private readonly paymentHelperService: PaymentHelperService){
 
   }
+  ngOnInit(): void {
+    this.paymentHelperService.currentBundleDetails.subscribe({
+      next: res => {        
+       this.bundleDetails = res;
+      }
+    })
+  }
 
-  decrementLicenseSeats() {
-    if(this.noOfLicenseSeats > 1) {
-      this.noOfLicenseSeats = this.noOfLicenseSeats - 1;
-      this.paymentService.changelicense(this.noOfLicenseSeats);
+  planDurationChange() {
+    if(this.bundleDetails.duration === PlanDuration.MONTHLY) {
+      this.bundleDetails.duration = PlanDuration.ANNUALLY;
+      let priceDet = PricesByDuration.Annually;
+      let bundleAmount = priceDet[this.bundleDetails.type];
+      this.bundleDetails.amount =  bundleAmount;
+
+      let total = {value: this.bundleDetails.quantity * this.bundleDetails.amount.value, disValue:`$${(this.bundleDetails.quantity * this.bundleDetails.amount.value).toFixed(2)}` };
+      this.bundleDetails.totalAmount = total;
+
+    } else {
+      this.bundleDetails.duration = PlanDuration.MONTHLY;
+      let priceDet = PricesByDuration.Monthly;
+      let bundleAmount = priceDet[this.bundleDetails.type];
+      this.bundleDetails.amount =  bundleAmount;
+      let total = {value: this.bundleDetails.quantity * this.bundleDetails.amount.value, disValue:`$${(this.bundleDetails.quantity * this.bundleDetails.amount.value).toFixed(2)}` };
+      this.bundleDetails.totalAmount = total;
     }
   }
-  incrementLicenseSeats() {
-   
-      this.noOfLicenseSeats = this.noOfLicenseSeats + 1;
-      this.paymentService.changelicense(this.noOfLicenseSeats);
+
+  decrementBundleQuantity() {
+    if(this.bundleDetails.quantity > 1) {
+      this.bundleDetails.quantity = this.bundleDetails.quantity - 1;
+      let total = {value: this.bundleDetails.quantity * this.bundleDetails.amount.value, disValue:`$${(this.bundleDetails.quantity * this.bundleDetails.amount.value).toFixed(2)}` };
+      this.bundleDetails.totalAmount = total;
+      this.paymentHelperService.changeBundleDetails(this.bundleDetails);
+    }
+  }
+  incrementBundleQuantity() {      
+      this.bundleDetails.quantity = this.bundleDetails.quantity + 1;
+      let total = {value: this.bundleDetails.quantity * this.bundleDetails.amount.value, disValue:`$${(this.bundleDetails.quantity * this.bundleDetails.amount.value).toFixed(2)}` };
+      this.bundleDetails.totalAmount = total;
+     
+      this.paymentHelperService.changeBundleDetails(this.bundleDetails);
   }
 }

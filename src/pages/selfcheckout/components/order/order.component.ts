@@ -11,20 +11,14 @@ import { PaymentHelperService } from '../../services/helper.service';
 })
 export class OrderComponent implements OnInit{
 
-  noOfLicenses!: number;
+  noOfBundleQuatity!: number;
   amountForLicense: number = 125.00;
   subTotalAmount: string = '125.00';
 constructor(private readonly paymentService: PaymentHelperService){
 
 }
   ngOnInit(): void {
-    this.paymentService.currentLicense.subscribe({
-      next: res => {
-        this.noOfLicenses = res;
-        this.subTotalAmount = (this.noOfLicenses * this.amountForLicense).toFixed(2);
-        this.paymentService.changeTotalAmount(this.subTotalAmount);
-      }
-    })
+   
   }
  
  
