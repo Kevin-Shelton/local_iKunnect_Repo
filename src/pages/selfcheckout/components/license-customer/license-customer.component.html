@@ -18,46 +18,50 @@
         </div>
         <div >
           <table>
-            <tr>
-              <th>
-                Item
-              </th>
-              <th>
-                Item Price
-              </th>
-              <th>
-                Quantity
-              </th>
-              <th>
-                Total Price
-              </th>
-            </tr>
-            <tr>
-              <td>
-                <div class="ellipsis-singleline ">
-                 {{bundleDetails.type}}
-                </div>
-              </td>
-              <td>
-                {{bundleDetails.amount.disValue}}
-              </td>
-              <td>
-                <div class="row g-1">
-                  <div class="col-auto" (click)="decrementBundleQuantity()">
-                    <i class="bi bi-dash-lg"></i>
+            <thead>
+              <tr>
+                <th>
+                  Item
+                </th>
+                <th>
+                  Item Price
+                </th>
+                <th>
+                  Quantity
+                </th>
+                <th>
+                  Total Price
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="ellipsis-singleline ">
+                   {{bundleDetails.type}}
                   </div>
-                  <div class="col-auto">
-                    <input type="number" [value]="bundleDetails.quantity" class="max-width-50" >
+                </td>
+                <td>
+                  {{bundleDetails.amount.disValue}}
+                </td>
+                <td>
+                  <div class="row g-1">
+                    <div class="col-auto" (click)="decrementBundleQuantity()">
+                      <i class="bi bi-dash-lg"></i>
+                    </div>
+                    <div class="col-auto">
+                      <input type="number" [value]="bundleDetails.quantity" class="max-width-50" >
+                    </div>
+                    <div class="col-auto" (click)="incrementBundleQuantity()">
+                      <i class="bi bi-plus-lg"></i>
+                    </div>
                   </div>
-                  <div class="col-auto" (click)="incrementBundleQuantity()">
-                    <i class="bi bi-plus-lg"></i>
-                  </div>
-                </div>
-              </td>
-              <td>
-                {{bundleDetails.totalAmount.disValue}}
-              </td>
-            </tr>
+                </td>
+                <td>
+                  {{bundleDetails.totalAmount.disValue}}
+                </td>
+              </tr>
+            </tbody>
           </table>
 
 
@@ -67,32 +71,34 @@
     <div class="col-12">
       <h5>Customer Information</h5>
       <table class="sf600 plainTable">
-        <tr>
-          <td>
-            Contact
-          </td>
-          <td>
-            <div class="ellipsis-singleline">
-              John Doe
-            </div>
-          </td>
-          <td class="cursor-p" data-bs-toggle="modal" data-bs-target="#CustomerModal">
-            Change
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Bill To
-          </td>
-          <td>
-            <div class="ellipsis-singleline">
-              Test 1231 Blvd, San Frnacisco CA 948180, United State
-            </div>
-          </td>
-          <td class="cursor-p" data-bs-toggle="modal" data-bs-target="#CustomerModal">
-            Change
-          </td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>
+              Contact
+            </td>
+            <td>
+              <div class="ellipsis-singleline">
+                John Doe
+              </div>
+            </td>
+            <td class="cursor-p" data-bs-toggle="modal" data-bs-target="#CustomerModal">
+              Change
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Bill To
+            </td>
+            <td>
+              <div class="ellipsis-singleline">
+                Test 1231 Blvd, San Frnacisco CA 948180, United State
+              </div>
+            </td>
+            <td class="cursor-p" data-bs-toggle="modal" data-bs-target="#CustomerModal">
+              Change
+            </td>
+          </tr>
+        </tbody>
       </table>
 
       <div class="modal fade" id="CustomerModal" tabindex="-1" aria-labelledby="CustomerLabel" aria-hidden="true">
