@@ -24,7 +24,7 @@ import { ExploreResourcesComponent } from '../../common/sharedComponents/explore
 })
 export class HomeComponent {
   isChatEnabled: boolean = false;
-  title: string = 'Powering Exceptional \n Customer Journey.';
+  title: string = 'Powering Exceptional Customer Journeys.';
   herosConfig = HerosData.home;
   constructor() {
     console.log('hero config is :::: ', this.herosConfig);
