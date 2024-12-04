@@ -7,7 +7,7 @@ p {
 .haveVideo {
   position: relative;
   padding-bottom: 40px;
-  min-height: 680px;
+  min-height: 700px;
   padding: 0 0 40px;
   &::before {
     background: linear-gradient(
@@ -44,29 +44,31 @@ p {
   .headContent {
     position: absolute;
     width: 100%;
-    top: 80px;
+    top: 0px;
     color: white;
     z-index: 2;
     &--head {
-      text-align: right;
       font-size: 55px;
       line-height: 66px;
       font-weight: 700;
-      margin-bottom: 80px;
-
-
+      margin: 40px 0 40px 80px;
     }
     &--content {
       font-size: 24px;
       line-height: 30px;
       font-weight: 500;
-      margin-bottom: 80px;
+      margin-bottom: 50px;
+    }
+    &--btn {
+      display: inline-flex;
+      gap: 50px;
     }
   }
 }
 .feature-section {
   background: #1a1b2b;
   padding-bottom: 86px;
+  padding-top: 20px;
   color: white;
   h4,
   h5 {
@@ -75,7 +77,7 @@ p {
   }
   h5 {
     color: #cecece;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 85px;
   }
 }
@@ -158,10 +160,10 @@ p {
       background-position: 0 0;
       background-image: url(./../../assets/images/gradiunt-bg-hover.png);
       background-size: cover;
-      &:hover{
+      &:hover {
         background-image: url(./../../assets/images/gradiunt-bg.png);
       }
-      h2{
+      h2 {
         font-family: "Poppins", sans-serif;
         font-size: 32px;
       }
@@ -228,7 +230,7 @@ p {
 }
 .integrations {
   padding: 100px 0;
-  .md-full{
+  .md-full {
     margin-top: 220px;
   }
 }
@@ -260,29 +262,27 @@ p {
   }
 }
 
-
-@media screen and (max-width:768px) {
-  .integrations .md-full{
-      margin-top: 0px;
-    }
-.bar-img{
-max-width: 88% !important;
+@media screen and (max-width: 768px) {
+  .integrations .md-full {
+    margin-top: 0px;
+  }
+  .bar-img {
+    max-width: 88% !important;
+  }
+  .sfont48 {
+    font-size: 28px !important;
+    line-height: normal !important;
+  }
+  h2 {
+    font-size: 22px !important;
+  }
+  .sfont24 {
+    font-size: 18px !important;
+    line-height: normal !important;
+  }
 }
-.sfont48{
-  font-size: 28px !important;
-  line-height: normal !important;
-}
-h2{
-  font-size: 22px !important;
-}
-.sfont24{
-  font-size: 18px !important;
-  line-height: normal !important;
-}
-
-}
-@media screen and (max-width:578px) {
-  .headContent--head{
+@media screen and (max-width: 578px) {
+  .headContent--head {
     font-size: 28px !important;
     line-height: normal !important;
   }
@@ -344,6 +344,6 @@ h2{
     }
   }
 }
-.d-none{
+.d-none {
   display: none;
 }
