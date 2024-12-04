@@ -39,11 +39,11 @@
     li{
       margin-bottom: 32px;
       font-size: 18px;
-      line-height: 18px;
+      line-height: 24px;
       img{
         float: left;
         margin-right: 16px;
-        margin-bottom: 18px;
+        margin-bottom: 48px;
       }
     }
   }
@@ -73,3 +73,20 @@
   }
 }
 
+
+.inputB2{
+  input{
+    margin-bottom: 16px;
+  }
+  label{
+    margin-bottom: 4px;
+  }
+}
+.haveLink{
+  a{
+    color: #212529;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+}
