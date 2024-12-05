@@ -9,9 +9,30 @@
     font-weight: 500;
     max-width: 750px;
     margin: 0 auto 60px;
-    @media screen and (max-width:578px) {
+  }
+  @media (max-width: 991px) {
+    padding: 40px 0;
+    h1 {
+      font-size: 40px;
+      line-height: normal;
+      margin-bottom: 30px;
+    }
+  }
+  @media (max-width: 767px) {
+    h1 {
       font-size: 28px;
       line-height: normal;
+      max-width: inherit;
+      margin-bottom: 20px;
+    }
+    .primaryBtn {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+  }
+  @media (max-width: 576px) {
+    h1 {
+      font-size: 20px;
     }
   }
 }

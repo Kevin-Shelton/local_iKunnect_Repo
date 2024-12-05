@@ -353,6 +353,15 @@ div.resources--card {
   }
 
   @media (max-width: 1199px) {
+    &-light {
+      padding-top: 80px;
+      .title {
+        h3 {
+          font-size: 40px;
+          line-height: 56px;
+        }
+      }
+    }
     .custom-table {
       th .col-title {
         padding: 16px 0;
@@ -382,6 +391,15 @@ div.resources--card {
     }
   }
   @media (max-width: 991px) {
+    &-light {
+      padding-bottom: 50px;
+      .title {
+        h3 {
+          font-size: 30px;
+          line-height: 46px;
+        }
+      }
+    }
     .custom-table {
       th .col-title {
         font-size: 16px;
@@ -414,6 +432,16 @@ div.resources--card {
     }
   }
   @media (max-width: 767px) {
+    &-light {
+      padding-top: 20px;
+      padding-bottom: 30px;
+      .title {
+        h3 {
+          font-size: 24px;
+          line-height: 36px;
+        }
+      }
+    }
     .custom-table {
       width: 767px;
     }
@@ -467,18 +495,18 @@ div.resources--card {
   display: flex;
   justify-content: center;
 }
-.plainTable{
+.plainTable {
   // border-collapse: separate;
-    // border-spacing: 16px;
-    tr{
-      border-bottom: solid 1px black;
-      td{
-padding: 12px 0;
-      }
-      &:last-child{
-        border: 0;
-      }
+  // border-spacing: 16px;
+  tr {
+    border-bottom: solid 1px black;
+    td {
+      padding: 12px 0;
     }
+    &:last-child {
+      border: 0;
+    }
+  }
   .ellipsis-singleline {
     padding: 0 16px;
     max-width: 320px;
