@@ -1,5 +1,8 @@
 @import "./colors.scss";
 
+html{
+  overflow-x: hidden;
+}
 .selfcheckoutScreen {
   background: url("./../images/selfcheckout-bg.png") repeat-x;
   &--header {
@@ -448,7 +451,7 @@ div.resources--card {
   }
 }
 .clients {
-  flex-wrap: nowrap;
+  flex-wrap: nowrap !important;
   justify-content: space-between;
   align-items: center;
 }
