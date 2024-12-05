@@ -38,11 +38,11 @@ this.helperService.currentBundleDetails.subscribe({
     this.stripe = await this.paymentService.getStripe();
    const resp = await this.paymentService.getProducts();
    
- const product =  resp.products.data.find((prod: any) => {
- return prod.name=== 'StartupTest'
+ const productDetails =  resp.productsWithPrices.find((prod: any) => {
+ return prod.product.name === 'StartupTest'
  });
- console.log('product find :::::::::::::::::::: ',product)
-  const response =   await  this.paymentService.getStripeSession(product.default_price, this.bundleDetails.quantity);
+
+  const response =   await  this.paymentService.getStripeSession(productDetails.product.default_price, this.bundleDetails.quantity);
   const { clientSecret } = await response.json();
  
   await this.initStripe(clientSecret);  

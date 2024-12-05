@@ -27,7 +27,7 @@ export class LicenseCustomerComponent  implements OnInit{
   planDurationChange() {
     if(this.bundleDetails.duration === PlanDuration.MONTHLY) {
       this.bundleDetails.duration = PlanDuration.ANNUALLY;
-      let priceDet = PricesByDuration.Annually;
+      let priceDet = PricesByDuration.year;
       let bundleAmount = priceDet[this.bundleDetails.type];
       this.bundleDetails.amount =  bundleAmount;
 
@@ -36,7 +36,7 @@ export class LicenseCustomerComponent  implements OnInit{
 
     } else {
       this.bundleDetails.duration = PlanDuration.MONTHLY;
-      let priceDet = PricesByDuration.Monthly;
+      let priceDet = PricesByDuration.month;
       let bundleAmount = priceDet[this.bundleDetails.type];
       this.bundleDetails.amount =  bundleAmount;
       let total = {value: this.bundleDetails.quantity * this.bundleDetails.amount.value, disValue:`$${(this.bundleDetails.quantity * this.bundleDetails.amount.value).toFixed(2)}` };

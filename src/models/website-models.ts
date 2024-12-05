@@ -6,8 +6,8 @@ export enum PlanType {
   }
 
   export enum PlanDuration {
-    MONTHLY= 'Monthly',
-    ANNUALLY = 'Annually',   
+    MONTHLY= 'month',
+    ANNUALLY = 'year',   
   }
   
   export interface BundleDetails {
