@@ -131,3 +131,28 @@
 .cardwithoutimg .flatBtn {
   color: #8fc44c;
 }
+
+@media (max-width: 767px) {
+  .resourcesPage--tabs {
+    .nav-item button {
+      font-size: 18px;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .resourcesPage--tabs {
+    .nav-pills {
+      display: flex;
+      gap: 10px;
+    }
+    .nav-item {
+      margin: 0;
+      min-width: calc(33% - 10px);
+      button {
+        font-size: 14px;
+        padding-right: 0;
+        width: 100%;
+      }
+    }
+  }
+}

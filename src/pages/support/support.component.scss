@@ -194,6 +194,11 @@
         }
       }
     }
+    .custom-tabs {
+      display: flex;
+      flex-direction: column-reverse;
+      margin-top: 50px;
+    }
   }
   @media (max-width: 576px) {
     .custom-tabs .nav-tabs .nav-item {

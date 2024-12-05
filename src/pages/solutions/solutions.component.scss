@@ -357,11 +357,15 @@
       .nav-tabs {
         flex-direction: row;
         gap: 15px;
-        margin-bottom: 30px;
+        margin-bottom: 0px;
         .nav-item {
           width: auto;
         }
       }
+    }
+    .lets-chat {
+      margin-top: 24px !important;
+      margin-bottom: 24px;
     }
     .stay-connected-cont {
       padding: 20px;
@@ -404,6 +408,10 @@
       .nav-tabs {
         .nav-item {
           width: calc(50% - 20px);
+        }
+        .nav-link {
+          font-size: 13px;
+          padding: 8px 0;
         }
       }
     }
