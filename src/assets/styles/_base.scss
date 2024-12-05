@@ -64,6 +64,7 @@ body:has(.homepage) {
         font-size: 24px;
         font-weight: 600;
         color: #1a1b2b;
+        padding-right: 40px;
         &::after {
           display: none;
         }

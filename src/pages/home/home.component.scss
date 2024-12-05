@@ -141,7 +141,7 @@ p {
         padding-left: 20px;
         .colouts__each {
           img {
-            width: 360px;
+            width: 300px;
             right: 20px;
             bottom: 10px;
           }
@@ -261,10 +261,21 @@ p {
     }
   }
 }
-
+@media screen and (max-width: 1199px) {
+  .headContent{
+    &--head{
+      font-size: 40px !important;
+    }
+  }
+}
 @media screen and (max-width: 768px) {
   .integrations .md-full {
     margin-top: 0px;
+  }
+  .headContent{
+    &--head{
+      font-size: 40px !important;
+    }
   }
   .bar-img {
     max-width: 88% !important;
@@ -285,6 +296,14 @@ p {
   .headContent--head {
     font-size: 28px !important;
     line-height: normal !important;
+  }
+  .headContent--btn{
+    flex-wrap: wrap;
+    gap: 20px !important;
+    button{
+      width: 100% !important;
+
+    }
   }
 }
 // .resources {
