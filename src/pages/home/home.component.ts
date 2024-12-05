@@ -24,8 +24,11 @@ import { ExploreResourcesComponent } from '../../common/sharedComponents/explore
 })
 export class HomeComponent {
   isChatEnabled: boolean = false;
-  title: string = 'Powering Exceptional \n Customer Journey.';
+  title: string = 'Powering Exceptional \n Customer Journeys.';
   herosConfig = HerosData.home;
+  ngOnInit(): void {
+    window.scrollTo({ top: 6, behavior: 'smooth' });
+  }
   constructor() {
     console.log('hero config is :::: ', this.herosConfig);
   }

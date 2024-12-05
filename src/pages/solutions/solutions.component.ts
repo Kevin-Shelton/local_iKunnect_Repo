@@ -11,6 +11,6 @@ import { HerosData } from '../../config/heros';
   styleUrl: './solutions.component.scss',
 })
 export class SolutionsComponent {
-  title: string = 'Powering Exceptional \n Customer Journey.';
+  title: string = 'Powering Exceptional \n Customer Journeys.';
   herosConfig= HerosData.solution;
 }

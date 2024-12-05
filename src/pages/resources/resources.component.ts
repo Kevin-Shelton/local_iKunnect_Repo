@@ -9,5 +9,5 @@ import {BookConsultationComponent} from '../../common/sharedComponents/book-cons
   styleUrl: './resources.component.scss'
 })
 export class ResourcesComponent {
-  title: string = 'Powering Exceptional \n Customer Journey.';
+  title: string = 'Powering Exceptional \n Customer Journeys.';
 }
