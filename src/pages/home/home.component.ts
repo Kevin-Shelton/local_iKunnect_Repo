@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { LetsChatComponent } from '../../common/sharedComponents/lets-chat/lets-chat.component';
 import { CommonModule } from '@angular/common';
 import { HerosData } from '../../config/heros';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ExploreResourcesComponent } from '../../common/sharedComponents/explore-resources/explore-resources.component';
 @Component({
   selector: 'app-home',
@@ -18,6 +19,7 @@ import { ExploreResourcesComponent } from '../../common/sharedComponents/explore
     LetsChatComponent,
     CommonModule,
     ExploreResourcesComponent,
+    RouterLink, RouterLinkActive, RouterOutlet,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
