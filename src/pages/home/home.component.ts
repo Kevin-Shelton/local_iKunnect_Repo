@@ -26,6 +26,9 @@ export class HomeComponent {
   isChatEnabled: boolean = false;
   title: string = 'Powering Exceptional Customer Journeys.';
   herosConfig = HerosData.home;
+  ngOnInit(): void {
+    window.scrollTo({ top: 6, behavior: 'smooth' });
+  }
   constructor() {
     console.log('hero config is :::: ', this.herosConfig);
   }

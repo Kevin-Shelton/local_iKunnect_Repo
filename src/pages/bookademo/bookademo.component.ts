@@ -16,4 +16,7 @@ export class BookademoComponent {
     // Convert the heading text into an array of characters
     this.headingArray = Array.from(this.headingText);
   }
+  ngOnInit(): void {
+    window.scrollTo({ top: 6, behavior: 'smooth' });
+  }
 }

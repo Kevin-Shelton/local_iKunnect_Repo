@@ -15,7 +15,7 @@ import { ExploreResourcesComponent } from '../../common/sharedComponents/explore
   styleUrl: './contactus.component.scss',
 })
 export class ContactusComponent {
-  title: string = 'Powering Exceptional \n Customer Journey.';
+  title: string = 'Powering Exceptional \n Customer Journeys.';
   constructor(private router: Router) {}
   redirectFunction(evt: any) {
     debugger;

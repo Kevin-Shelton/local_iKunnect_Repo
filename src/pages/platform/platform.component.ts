@@ -11,5 +11,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './platform.component.scss',
 })
 export class PlatformComponent {
-  title: string = 'Powering Exceptional \n Customer Journey.';
+  title: string = 'Powering Exceptional \n Customer Journeys.';
 }

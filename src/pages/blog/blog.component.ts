@@ -10,5 +10,5 @@ import { ExploreResourcesComponent } from '../../common/sharedComponents/explore
   styleUrl: './blog.component.scss',
 })
 export class BlogComponent {
-  title: string = 'Powering Exceptional \n Customer Journey.';
+  title: string = 'Powering Exceptional \n Customer Journeys.';
 }

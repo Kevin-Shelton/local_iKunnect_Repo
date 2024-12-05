@@ -10,5 +10,5 @@ import {ContactUsComponent} from '../../common/sharedComponents/contact-us/conta
   styleUrl: './demo.component.scss'
 })
 export class DemoComponent {
-  title: string = 'Powering Exceptional \n Customer Journey.';
+  title: string = 'Powering Exceptional \n Customer Journeys.';
 }

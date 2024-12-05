@@ -17,7 +17,7 @@ import { PaymentHelperService } from './services/helper.service';
   selector: 'app-selfcheckout',
   standalone: true,
   imports: [MatFormFieldModule, BookConsultationComponent, MatInputModule,
-     MatCheckboxModule, 
+     MatCheckboxModule,
      MatSelectModule,
      CommonModule,
      PaymentComponent,
@@ -28,7 +28,7 @@ import { PaymentHelperService } from './services/helper.service';
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class SelfcheckoutComponent implements OnInit{
-  title: string = 'Powering Exceptional \n Customer Journey.';
+  title: string = 'Powering Exceptional \n Customer Journeys.';
   showCardDetails: boolean = false;
   statusText!: string;
   planType!:  string;
@@ -43,9 +43,9 @@ export class SelfcheckoutComponent implements OnInit{
       this.handlePaymentStatus(afterPaySessionId);
       this.isCheckout = false;
      }
-    });   
+    });
   }
- 
+
 
   handleCheckout() {
     this.showCardDetails = true;
@@ -57,7 +57,7 @@ async  handlePaymentStatus(sessionId: string) {
        const response= await this.paymentService.getStripeSessionStatus(sessionId);
        const { status, customer_email } = await response.json();
       this.setPaymentDetails(status);
-  
+
 }
 
 setPaymentDetails(status: string) {
@@ -68,5 +68,5 @@ setPaymentDetails(status: string) {
 }
 
 
-  
+
 }
