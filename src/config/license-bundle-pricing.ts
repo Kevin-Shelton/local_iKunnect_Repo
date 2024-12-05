@@ -59,7 +59,7 @@ export const LicensePlanPricing = {
       scale: 'tick',
     },
     {
-      name: 'Predictive Dialing',
+      name: 'Predictive Dialer',
       trial: 'cross',
       startUp: '$150/m',
       growth: '$120/m',
@@ -145,8 +145,8 @@ export const LicensePlanPricing = {
   ],
 };
 
-export const PricesByDuration: {Monthly: { [key: string]: {value: number, disValue: string} }, Annually:{ [key: string]: {value: number, disValue: string} } } = {
-  Monthly:
+export const PricesByDuration: {month: { [key: string]: {value: number, disValue: string} }, year:{ [key: string]: {value: number, disValue: string} } } = {
+  month:
     {
      
       Trial: {value: 0, disValue: '$-'},
@@ -154,7 +154,7 @@ export const PricesByDuration: {Monthly: { [key: string]: {value: number, disVal
       Growth: {value: 1500, disValue: '$1,500'},
       Scale: {value: 5000, disValue: '$5,000'},
     },
-    Annually: 
+    year: 
     {
       
       Trial: {value: 0, disValue: '$-'},
