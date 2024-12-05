@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class PricingTableComponent {
   plans = LicensePlanPricing;
-  priceDetByDuration = PricesByDuration.Annually;
+  priceDetByDuration = PricesByDuration.year;
   planPeriod = PlanDuration.ANNUALLY;
 
   constructor(
@@ -46,10 +46,10 @@ export class PricingTableComponent {
    
     if(this.planPeriod === PlanDuration.MONTHLY) {
       this.planPeriod = PlanDuration.ANNUALLY;
-      this.priceDetByDuration = PricesByDuration.Annually;
+      this.priceDetByDuration = PricesByDuration.year;
     } else {
       this.planPeriod = PlanDuration.MONTHLY;
-      this.priceDetByDuration = PricesByDuration.Monthly;
+      this.priceDetByDuration = PricesByDuration.month;
     }
    
  

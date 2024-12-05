@@ -1,41 +1,51 @@
-.resourcesPage{
-  &--banner{
+.resourcesPage {
+  &--banner {
     padding: 60px 0 80px;
     background-color: #effcf3;
-    h1{
+    h1 {
       margin-bottom: 60px;
       font-family: "Poppins", sans-serif;
     }
 
-    .gradiunt{
+    .gradiunt {
       width: calc(100% - 34px);
       left: 18px;
-      position:absolute;
+      position: absolute;
       height: 300px;
       bottom: 5px;
-      border-radius:0 0 24px 24px;
-      background: linear-gradient(3.51deg, #413158 7.89%, rgba(65, 49, 88, 0.5) 59.33%, rgba(70, 59, 86, 0) 97.35%);
+      border-radius: 0 0 24px 24px;
+      background: linear-gradient(
+        3.51deg,
+        #413158 7.89%,
+        rgba(65, 49, 88, 0.5) 59.33%,
+        rgba(70, 59, 86, 0) 97.35%
+      );
     }
-    .pageBanner{
+    .pageBanner {
       overflow-x: hidden;
       position: relative;
       color: white;
       border-radius: 24px;
       overflow: hidden;
       transition: all ease 1s;
-      img{
-      border-radius: 24px;
-      border: 5px solid #fff;
-      width: 100%;
-      height: 412px;
-      object-fit: cover;
+      img {
+        border-radius: 24px;
+        border: 5px solid #fff;
+        width: 100%;
+        height: 412px;
+        object-fit: cover;
       }
-      &:hover{
-        .gradiunt{
-            background: linear-gradient(3.51deg, rgba(143, 196, 76, 0.38) 7.89%, rgba(143, 196, 76, 0.48) 59.33%, rgba(143, 196, 76, 0) 97.35%);
+      &:hover {
+        .gradiunt {
+          background: linear-gradient(
+            3.51deg,
+            rgba(143, 196, 76, 0.38) 7.89%,
+            rgba(143, 196, 76, 0.48) 59.33%,
+            rgba(143, 196, 76, 0) 97.35%
+          );
         }
       }
-      h3{
+      h3 {
         position: absolute;
         bottom: 80px;
         font-size: 36px;
@@ -44,7 +54,7 @@
         left: 45px;
         font-family: "Poppins", sans-serif;
       }
-      span{
+      span {
         position: absolute;
         bottom: 40px;
         left: 45px;
@@ -54,11 +64,11 @@
         cursor: pointer;
       }
     }
-    .bannerContent{
+    .bannerContent {
       padding: 50px 24px 40px;
       background-color: white;
       border-radius: 24px;
-      > .col{
+      > .col {
         clear: both;
         font-family: "Poppins", sans-serif;
         font-size: 15px;
@@ -69,23 +79,23 @@
         padding: 2px;
         border-radius: 4px;
         cursor: pointer;
-        img{
+        img {
           margin-right: 12px;
         }
-        &:hover{
+        &:hover {
           background: #f4f4f4;
         }
       }
     }
   }
-  &--tabs{
+  &--tabs {
     background-image: url(./../../assets/images/resource-gradiunt.png);
     background-repeat: repeat-x;
     background-color: white;
-    .nav-item{
+    .nav-item {
       margin-right: 16px;
       margin-bottom: 16px;
-      button{
+      button {
         background-color: transparent;
         border-bottom: 4px solid white;
         border-width: 0 0 4px 0;
@@ -95,25 +105,29 @@
         font-size: 24px;
         font-family: "Poppins", sans-serif;
         font-weight: 500;
-        color: #BBBBC2;
+        color: #bbbbc2;
         transition: all ease 0.7s;
-        &.active, &:hover{
+        &.active,
+        &:hover {
           color: black;
-          border-color: #8FC44C;
+          border-color: #8fc44c;
         }
       }
     }
   }
 }
-.alpha{
-  span{
+.alpha {
+  span {
     cursor: pointer;
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     display: inline-block;
     margin-right: 16px;
-    &:hover{
+    &:hover {
       opacity: 0.7;
     }
   }
+}
+.cardwithoutimg .flatBtn {
+  color: #8fc44c;
 }

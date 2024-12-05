@@ -21,6 +21,6 @@ import { ExploreResourcesComponent } from '../../common/sharedComponents/explore
 })
 export class AboutComponent {
   isChatEnabled: boolean = false;
-  title: string = 'Powering Exceptional \n Customer Journeys.';
+  title: string = 'Powering Exceptional Customer Journeys.';
   herosConfig = HerosData.about;
 }

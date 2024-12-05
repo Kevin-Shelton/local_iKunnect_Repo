@@ -32,18 +32,24 @@ export class SelfcheckoutComponent implements OnInit{
   showCardDetails: boolean = false;
   statusText!: string;
   planType!:  string;
+  isCheckout: boolean = true;
+
   constructor(private readonly activatedRoute: ActivatedRoute, private readonly paymentService: PaymentService, private readonly paymentHelperService: PaymentHelperService) {}
 
   ngOnInit(): void {
     this.activatedRoute?.queryParams?.subscribe(params => {
       const afterPaySessionId = params['session_id'];
-     if(afterPaySessionId) this.handlePaymentStatus(afterPaySessionId);
+     if(afterPaySessionId) {
+      this.handlePaymentStatus(afterPaySessionId);
+      this.isCheckout = false;
+     }
     });
   }
 
 
   handleCheckout() {
     this.showCardDetails = true;
+    this.isCheckout = false;
   }
 
   // Fetches the payment intent status after payment submission

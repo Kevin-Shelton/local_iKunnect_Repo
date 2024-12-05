@@ -55,17 +55,12 @@
             <div class="col-xs-12 col-md-6 selfcheckout--left">
               <h5 class="smb2">Licenses</h5>
               <app-license-customer ></app-license-customer>
-              <button class="checkoutBtn primaryBtn" (click)="handleCheckout()">
-                <i class="bi bi-cart-fill"></i>
-                Checkout
-              </button>
-              <app-payment *ngIf="showCardDetails" > </app-payment>
-              <div *ngIf="statusText"> {{statusText}}</div>
+              
             </div>
             <div class="col-xs-12 col-md-6 selfcheckout--right">
-              <h5 class="smb2">Your order</h5>
+              <!-- <h5 class="smb2">Your order</h5> -->
               <div class="row">
-                <app-order></app-order>
+                <!-- <app-order></app-order> -->
                 <div class="col-xs-12 gray-text smy3">
                   Have a coupon?
                 </div>
@@ -106,6 +101,14 @@
                 </div>
               </div>
 
+            </div>
+            <div class="col-xs-12">
+              <button class="checkoutBtn primaryBtn" *ngIf="isCheckout" (click)="handleCheckout()">
+                <i class="bi bi-cart-fill"></i>
+                Checkout
+              </button>
+              <app-payment *ngIf="showCardDetails" > </app-payment>
+              <div *ngIf="statusText"> {{statusText}}</div>
             </div>
           </div>
         </div>
