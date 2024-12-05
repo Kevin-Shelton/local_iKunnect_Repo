@@ -59,7 +59,7 @@ export const LicensePlanPricing = {
       scale: 'tick',
     },
     {
-      name: 'Predictive Dialing',
+      name: 'Predictive Dialer',
       trial: 'cross',
       startUp: '$150/m',
       growth: '$120/m',

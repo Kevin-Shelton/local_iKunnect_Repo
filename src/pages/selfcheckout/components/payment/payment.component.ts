@@ -39,7 +39,7 @@ this.helperService.currentBundleDetails.subscribe({
    const resp = await this.paymentService.getProducts();
    
  const product =  resp.products.data.find((prod: any) => {
- return prod.name=== 'GrowthTest'
+ return prod.name=== 'StartupTest'
  });
  console.log('product find :::::::::::::::::::: ',product)
   const response =   await  this.paymentService.getStripeSession(product.default_price, this.bundleDetails.quantity);
