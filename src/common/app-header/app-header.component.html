@@ -92,25 +92,58 @@
               </ul>
             </li> -->
             <li>
-              <a routerLink="/platform" routerLinkActive="active">PLATFORM</a>
+              <a
+                routerLink="/platform"
+                routerLinkActive="active"
+                (click)="toggleNav()"
+              >
+                PLATFORM
+              </a>
             </li>
             <li>
-              <a routerLink="/solutions" routerLinkActive="active">SOLUTIONS</a>
+              <a
+                routerLink="/solutions"
+                routerLinkActive="active"
+                (click)="toggleNav()"
+                >SOLUTIONS</a
+              >
             </li>
             <li>
-              <a routerLink="/pricing" routerLinkActive="active">PRICING</a>
+              <a
+                routerLink="/pricing"
+                routerLinkActive="active"
+                (click)="toggleNav()"
+                >PRICING</a
+              >
             </li>
             <li>
-              <a routerLink="/resources" routerLinkActive="active">RESOURCES</a>
+              <a
+                routerLink="/resources"
+                routerLinkActive="active"
+                (click)="toggleNav()"
+                >RESOURCES</a
+              >
             </li>
             <li>
-              <a routerLink="/about" routerLinkActive="active">ABOUT</a>
+              <a
+                routerLink="/about"
+                routerLinkActive="active"
+                (click)="toggleNav()"
+                >ABOUT</a
+              >
             </li>
-            <li *ngIf="navPanel">
-              <a routerLink="/contact-us" routerLinkActive="active">Contact Us</a>
+            <li *ngIf="navPanel" class="visible-md">
+              <a
+                routerLink="/contact-us"
+                routerLinkActive="active"
+                (click)="toggleNav()"
+                >Contact Us</a
+              >
             </li>
             <li>
-              <button type="button" class="primaryBtn border smb1">SIGN UP NOW</button>
+              <button type="button" class="primaryBtn border smb1">
+                SIGN UP NOW
+              </button>
               <button type="button" class="primaryBtn sml2">LET'S TALK</button>
             </li>
           </ul>
