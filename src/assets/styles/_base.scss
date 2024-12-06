@@ -108,3 +108,9 @@ body:has(.homepage) {
     flex-wrap: nowrap !important;
   }
 }
+@media (max-width: 767px) {
+  .meetYourOucomes .colouts > div{
+    padding: 0 !important;
+    margin-bottom: 20px;
+  }
+}
