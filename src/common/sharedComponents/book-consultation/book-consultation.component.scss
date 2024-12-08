@@ -36,3 +36,9 @@
     }
   }
 }
+.haveHoverBorder{
+  transition: all ease .5s;
+  &:hover{
+    border: solid 2px white !important;
+  }
+}

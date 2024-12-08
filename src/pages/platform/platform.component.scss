@@ -136,6 +136,10 @@
         max-height: 230px;
       }
     }
+    &:hover{
+      background-image: url(./../../assets/images/gradiunt-bg.png);
+      opacity: 0.8;
+    }
   }
 }
 .pricing-table-block {

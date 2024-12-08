@@ -5,9 +5,9 @@ export const HerosData = {
       'Empower your team with omnichannel tools for seamless customer experiences.',
   },
   solution: {
-    title: 'Optimize Your Inbound Contact Management for Unmatched Results',
+    title: 'Streamline Inbound Calls for Exceptional Customer Satisfaction',
     description:
-      'From targeted campaigns to post-call actions, Kunnect ensures every call is strategic, measurable, and maximizes agent performance for your business success.',
+      'Address customer needs efficiently with iKunnect’s tailored tools — minimizing wait times, boosting resolution rates, and enhancing agent productivity for lasting impressions.',
   },
   about: {
     title: ' We empower strategic advantage',
