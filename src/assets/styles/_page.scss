@@ -302,7 +302,7 @@ div.resources--card {
       }
       .check-icon {
         text-align: center;
-        color: #8fc44c;
+        color: #bbbbc2;
         font-size: 22px;
         i {
           font-size: 26px;
@@ -331,6 +331,9 @@ div.resources--card {
       color: black;
     }
     .custom-table {
+      .check-icon {
+        color: #414141 !important;
+      }
       th {
         border-color: #1a1d1e;
         .col-title {
