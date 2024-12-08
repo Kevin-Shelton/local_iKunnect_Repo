@@ -51,11 +51,12 @@
           </div>
         </div>
         <div class="col-xs-12 haveForm selfcheckout">
-          <div class="row gx-5">
+
+          <div class="row gx-5" *ngIf="!statusText">
             <div class="col-xs-12 col-md-6 selfcheckout--left">
               <h5 class="smb2">Licenses</h5>
               <app-license-customer ></app-license-customer>
-              
+
             </div>
             <div class="col-xs-12 col-md-6 selfcheckout--right">
               <!-- <h5 class="smb2">Your order</h5> -->
@@ -108,9 +109,21 @@
                 Checkout
               </button>
               <app-payment *ngIf="showCardDetails" > </app-payment>
-              <div *ngIf="statusText"> {{statusText}}</div>
+
             </div>
           </div>
+
+          <div class="row gx-5" *ngIf="statusText">
+            <div class="column text-center">
+              <div class="col-12 sfont80">
+                <i class="bi bi-check-circle" style="color: #8fc44c;"></i>
+              </div>
+              <div class="col-12 sfont24">
+                {{statusText}}
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
