@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { PaymentHelperService } from '../../services/helper.service';
 import { BundleDetails } from '../../../../models/website-models';
+import { API_URL } from '../../../../config/env-config';
 
 @Component({
   selector: 'app-payment',
@@ -78,7 +79,7 @@ this.helperService.currentBundleDetails.subscribe({
       confirmParams: {
         
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:4200/self-checkout",
+        return_url: `${API_URL.SELF_CHECKOUT}`,
       },
     });
   

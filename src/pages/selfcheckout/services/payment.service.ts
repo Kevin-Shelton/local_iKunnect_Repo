@@ -22,7 +22,7 @@ export class PaymentService {
  async getProducts() {
     try {
       // Fetch products from your backend
-      const response = await fetch(`http://localhost:4242/get-products`, {
+      const response = await fetch(`${API_URL.GET_PRODUCTS}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export class PaymentService {
   }
   async getStripeSession(priceId: string, quantity:number) {
    // console.log('payment amount is ::::::: ',amount)
-  return await fetch(`http://localhost:4242/create-checkout-session?priceId=${priceId}&quantity=${quantity}`, {
+  return await fetch(`${API_URL.CREATE_CHECKOUT_SESSION}?priceId=${priceId}&quantity=${quantity}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -53,7 +53,7 @@ export class PaymentService {
 
   async getStripeSessionStatus(sessionId: string) {
     console.log('payment sessionId is ::::::: ',sessionId)
-  return await fetch(`http://localhost:4242/session-status?session_id=${sessionId}`);
+  return await fetch(`${API_URL.SESSION_STATUS}?session_id=${sessionId}`);
   }
 
  
