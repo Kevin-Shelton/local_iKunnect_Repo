@@ -144,6 +144,9 @@ p {
             width: 300px;
             right: 20px;
             bottom: 10px;
+            @media (max-width: 991px) {
+              width: 260px;
+            }
           }
         }
       }
@@ -414,6 +417,20 @@ p {
     .nav-tabs .nav-item {
       width: 100%;
       margin-right: 0;
+    }
+  }
+  .headContent {
+    &--content{
+      margin-bottom: 10px !important;
+    }
+    &-col {
+      padding: 0px !important;
+    }
+    &--btn{
+      button{
+        padding: 11px 8px;
+        font-weight: 500;
+      }
     }
   }
 }
