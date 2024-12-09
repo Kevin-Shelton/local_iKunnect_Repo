@@ -95,6 +95,17 @@
                 }
               ]
             },
+            "qa": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qa.ts"
+                }
+              ]
+            },
             "local": {
               "optimization": false,
               "extractLicenses": false,
@@ -115,8 +126,11 @@
             "production": {
               "buildTarget": "konnect-invictus:build:production"
             },
-            "development": {
-              "buildTarget": "konnect-invictus:build:development"
+            "dev": {
+              "buildTarget": "konnect-invictus:build:dev"
+            },
+            "qa": {
+              "buildTarget": "konnect-invictus:build:qa"
             },
             "uat": {
               "buildTarget": "konnect-invictus:build:uat"
@@ -165,5 +179,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "a5cc153e-cfd3-4ed5-b4a3-82656981f589"
   }
 }
