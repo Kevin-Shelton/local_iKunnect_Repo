@@ -50,6 +50,38 @@
                       class="form-control"
                       placeholder="First name*"
                       formControlName="firstName" />
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['firstName'].dirty &&
+                        f['firstName'].hasError('required')
+                      ">
+                      First name is required.
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['firstName'].dirty &&
+                        f['firstName'].hasError('pattern')
+                      ">
+                      First Name is only allow alpha characters.
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['firstName'].dirty &&
+                        f['firstName'].hasError('maxlength')
+                      ">
+                      Maximum length of 40 characters exceeded.
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['firstName'].dirty &&
+                        f['firstName'].hasError('minlength')
+                      ">
+                      Minimum 3 characters is required.
+                    </div>
                   </div>
                   <div class="col-xs-12 col-sm-6">
                     <label>Last name*</label>
@@ -57,13 +89,52 @@
                       class="form-control"
                       placeholder="Last name*"
                       formControlName="lastName" />
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['lastName'].dirty &&
+                        f['lastName'].hasError('required')
+                      ">
+                      Last name is required.
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['lastName'].dirty && f['lastName'].hasError('pattern')
+                      ">
+                      Last Name is only allow alpha characters.
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['lastName'].dirty &&
+                        f['lastName'].hasError('maxlength')
+                      ">
+                      Maximum length of 40 characters exceeded.
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['lastName'].dirty &&
+                        f['lastName'].hasError('minlength')
+                      ">
+                      Minimum 3 characters is required.
+                    </div>
                   </div>
                   <div class="col-xs-12 col-sm-6">
-                    <label>Phone Number*</label>
+                    <label>Phone Number</label>
                     <input
                       class="form-control"
-                      placeholder="Phone Number*"
+                      placeholder="Phone Number"
                       formControlName="phoneNumber" />
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['phoneNumber'].dirty &&
+                        f['phoneNumber'].hasError('invalidPhoneNumber')
+                      ">
+                      Phone Number should be 10 digits long.
+                    </div>
                   </div>
                   <div class="col-xs-12 col-sm-6">
                     <label>Business Email*</label>
@@ -71,13 +142,53 @@
                       class="form-control"
                       placeholder="Business Email*"
                       formControlName="businessEmail" />
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['businessEmail'].dirty &&
+                        f['businessEmail'].hasError('required')
+                      ">
+                      Business Email is required
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['businessEmail'].dirty &&
+                        f['businessEmail'].hasError('pattern')
+                      ">
+                      Business Email is invalid
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['businessEmail'].dirty &&
+                        f['businessEmail'].hasError('isVerify')
+                      ">
+                      Business Email address is not verified.
+                    </div>
                   </div>
                   <div class="col-xs-12">
-                    <label>Company Name*</label>
+                    <label>Company Name</label>
                     <input
                       class="form-control"
-                      placeholder="Company Name*"
+                      placeholder="Company Name"
                       formControlName="companyName" />
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['companyName'].dirty &&
+                        f['firstName'].hasError('maxlength')
+                      ">
+                      Maximum length of 40 characters exceeded.
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['companyName'].dirty &&
+                        f['companyName'].hasError('minlength')
+                      ">
+                      Minimum 3 characters is required.
+                    </div>
                   </div>
                   <div class="col-xs-12">
                     <label
@@ -88,8 +199,22 @@
                     <textarea
                       rows="7"
                       class="form-control"
-                      placeholder="Country / Region*"
+                      placeholder="Country / Region"
                       formControlName="message"></textarea>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['message'].dirty && f['message'].hasError('maxlength')
+                      ">
+                      Maximum length of 200 characters exceeded.
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['message'].dirty && f['message'].hasError('minlength')
+                      ">
+                      Minimum 3 characters is required.
+                    </div>
                   </div>
                   <div class="col-xs-12 smt2">
                     <input
@@ -110,9 +235,13 @@
                     <button
                       type="button"
                       class="primaryBtn w-100"
+                      [class]="!form.valid ? 'disabled' : ''"
                       [disabled]="!form.valid"
                       (click)="createADemo()">
                       Request a consultation
+                      <div *ngIf="isLoading" class="spinner ml-1">
+                        <mat-spinner [diameter]="20"></mat-spinner>
+                      </div>
                     </button>
                   </div>
                 </div>
