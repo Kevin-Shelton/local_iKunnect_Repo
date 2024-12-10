@@ -110,6 +110,7 @@
                     <button
                       type="button"
                       class="primaryBtn w-100"
+                      [disabled]="!form.valid"
                       (click)="createADemo()">
                       Request a consultation
                     </button>
