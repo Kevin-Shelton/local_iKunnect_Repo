@@ -2,6 +2,7 @@ import { environment } from '../environments/environment';
 
 export const REGEX_PATTERNS = {
   ALLOW_STRING_PATTERN: "^[a-zA-Z -']+",
+  PHONE_NUMBER_PATTERN: /^\d{10}$/,
   EMAIL: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
 };
 
