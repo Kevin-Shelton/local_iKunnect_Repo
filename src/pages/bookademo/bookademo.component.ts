@@ -75,12 +75,6 @@ export class BookademoComponent implements OnInit {
       ]),
       subscription: new FormControl('', [Validators.required]),
     });
-
-    this.form.valueChanges.subscribe(data => {
-      console.log('fdsfs', data);
-    });
-
-    if (typeof window === 'undefined') return;
     window.scrollTo({ top: 6, behavior: 'smooth' });
   }
 
@@ -91,6 +85,7 @@ export class BookademoComponent implements OnInit {
   createADemo() {
     this.isLoading = true;
     const payLoad = this.form.getRawValue();
+    console.log('fdsfs', payLoad);
     this.demoService.bookADemo(payLoad).subscribe({
       next: res => {
         if (res) {
