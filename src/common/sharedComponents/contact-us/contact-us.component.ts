@@ -7,7 +7,7 @@ import { LetsChatComponent } from '../lets-chat/lets-chat.component';
   standalone: true,
   imports: [CommonModule, LetsChatComponent],
   templateUrl: './contact-us.component.html',
-  styleUrl: './contact-us.component.scss'
+  styleUrl: './contact-us.component.scss',
 })
 export class ContactUsComponent {
   isChatEnabled: boolean = false;

@@ -1,23 +1,27 @@
 // src/app/services/stripe.service.ts
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { loadStripe, Stripe } from '@stripe/stripe-js';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { BundleDetails, PlanDuration, PlanType } from '../../../models/website-models';
+import { BehaviorSubject } from 'rxjs';
+import {
+  BundleDetails,
+  PlanDuration,
+  PlanType,
+} from '../../../models/website-models';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class PaymentHelperService {
-
-  private readonly bundleDetails = new BehaviorSubject<BundleDetails>({duration: PlanDuration.MONTHLY, type: PlanType.START_UP, totalAmount: {value: 0, disValue: '$0'}, amount: {value: 0, disValue: '$0'}, quantity: 1});
+  private readonly bundleDetails = new BehaviorSubject<BundleDetails>({
+    duration: PlanDuration.MONTHLY,
+    type: PlanType.START_UP,
+    totalAmount: { value: 0, disValue: '$0' },
+    amount: { value: 0, disValue: '$0' },
+    quantity: 1,
+  });
 
   currentBundleDetails = this.bundleDetails.asObservable();
- 
-  
 
   changeBundleDetails(plantDetails: BundleDetails) {
-    
     this.bundleDetails.next(plantDetails);
   }
 }

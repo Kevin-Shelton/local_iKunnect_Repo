@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TransformCustomerServiceComponent } from '../../common/sharedComponents/transform-customer-service/transform-customer-service.component';
 import { BookConsultationComponent } from '../../common/sharedComponents/book-consultation/book-consultation.component';
+import { TransformCustomerServiceComponent } from '../../common/sharedComponents/transform-customer-service/transform-customer-service.component';
 import { HerosData } from '../../config/heros';
 
 @Component({
@@ -12,5 +12,5 @@ import { HerosData } from '../../config/heros';
 })
 export class SolutionsComponent {
   title: string = 'Powering Exceptional \n Customer Journeys.';
-  herosConfig= HerosData.solution;
+  herosConfig = HerosData.solution;
 }
