@@ -8,9 +8,8 @@ describe('LetsTalkComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LetsChatComponent]
-    })
-    .compileComponents();
+      imports: [LetsChatComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LetsChatComponent);
     component = fixture.componentInstance;

@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './feature-tabs.component.html',
-  styleUrl: './feature-tabs.component.scss'
+  styleUrl: './feature-tabs.component.scss',
 })
-export class FeatureTabsComponent {
-
-}
+export class FeatureTabsComponent {}

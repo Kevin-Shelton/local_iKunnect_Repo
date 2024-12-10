@@ -8,9 +8,8 @@ describe('SelfcheckoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SelfcheckoutComponent]
-    })
-    .compileComponents();
+      imports: [SelfcheckoutComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SelfcheckoutComponent);
     component = fixture.componentInstance;

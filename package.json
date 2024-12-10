@@ -7,7 +7,14 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
     "serve:ssr:konnect-invictus": "node dist/konnect-invictus/server/server.mjs"
+  },
+  "lint-staged": {
+    "*.{ts,scss,html}": [
+      "eslint --fix"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -46,6 +53,19 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.5.2"
+    "typescript": "~5.5.2",
+    "lint-staged": "15.2.5",
+    "@angular-eslint/builder": "18.3.0",
+    "@angular-eslint/schematics": "18.3.0",
+    "@angular-eslint/eslint-plugin": "18.3.0",
+    "@angular-eslint/eslint-plugin-template": "18.3.0",
+    "@angular-eslint/template-parser": "18.3.0",
+    "@typescript-eslint/eslint-plugin": "8.0.0",
+    "@typescript-eslint/parser": "8.0.0",
+    "eslint": "8.57.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.1.3",
+    "prettier": "3.2.5",
+    "prettier-plugin-organize-imports": "3.2.4"
   }
 }

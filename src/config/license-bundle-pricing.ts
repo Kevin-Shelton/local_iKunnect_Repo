@@ -1,4 +1,4 @@
-export const LicensePlanPricing = {  
+export const LicensePlanPricing = {
   licenses: [
     {
       name: 'Agent Seats Licenses',
@@ -145,21 +145,20 @@ export const LicensePlanPricing = {
   ],
 };
 
-export const PricesByDuration: {month: { [key: string]: {value: number, disValue: string} }, year:{ [key: string]: {value: number, disValue: string} } } = {
-  month:
-    {
-     
-      Trial: {value: 0, disValue: '$-'},
-      StartUp: {value: 500, disValue: '$500'},
-      Growth: {value: 1500, disValue: '$1,500'},
-      Scale: {value: 5000, disValue: '$5,000'},
-    },
-    year: 
-    {
-      
-      Trial: {value: 0, disValue: '$-'},
-      StartUp: {value: 4500, disValue: '$4,500'},
-      Growth: {value: 13500, disValue: '$13,500'},
-      Scale: {value: 45000, disValue: '$45,000'},
-    },
-}
+export const PricesByDuration: {
+  month: { [key: string]: { value: number; disValue: string } };
+  year: { [key: string]: { value: number; disValue: string } };
+} = {
+  month: {
+    Trial: { value: 0, disValue: '$-' },
+    StartUp: { value: 500, disValue: '$500' },
+    Growth: { value: 1500, disValue: '$1,500' },
+    Scale: { value: 5000, disValue: '$5,000' },
+  },
+  year: {
+    Trial: { value: 0, disValue: '$-' },
+    StartUp: { value: 4500, disValue: '$4,500' },
+    Growth: { value: 13500, disValue: '$13,500' },
+    Scale: { value: 45000, disValue: '$45,000' },
+  },
+};
