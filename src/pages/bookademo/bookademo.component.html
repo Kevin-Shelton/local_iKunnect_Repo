@@ -39,60 +39,85 @@
           class="col-xs-12 col-sm-8 col-md-6 haveForm selfcheckout"
           data-aos="fade-left"
           data-aos-duration="1000">
-          <div class="row">
-            <div class="col-12 inputB2">
-              <h5 class="smb3">Schedule a consultation today!</h5>
-              <div class="row">
-                <div class="col-xs-12 col-sm-6">
-                  <label>First name*</label>
-                  <input class="form-control" placeholder="First name*" />
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                  <label>Last name*</label>
-                  <input class="form-control" placeholder="Last name*" />
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                  <label>Phone Number*</label>
-                  <input class="form-control" placeholder="Phone Number*" />
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                  <label>Business Email*</label>
-                  <input class="form-control" placeholder="Business Email*" />
-                </div>
-                <div class="col-xs-12">
-                  <label>Company Name*</label>
-                  <input class="form-control" placeholder="Company Name*" />
-                </div>
-                <div class="col-xs-12">
-                  <label
-                    >Is there anything in particular you want to discuss? Please
-                    tell us how we can ensure the best use of your time.</label
-                  >
-                  <textarea
-                    rows="7"
-                    class="form-control"
-                    placeholder="Country / Region*"></textarea>
-                </div>
-                <div class="col-xs-12 smt2">
-                  <input type="checkbox" class="smb2 smr1" /> I would like to
-                  subscribe to the monthly newsletter.
-                  <p class="sfont12 haveLink">
-                    By submitting this form, you agree to our <a href=""
-                      >Terms and Conditions</a
-                    > and processing your personal data for this purpose. By
-                    subscribing to our newsletter, you consent to receive
-                    marketing communication from us. For more details, see
-                    our <a href="">Privacy Notice.</a>
-                  </p>
-                </div>
-                <div class="col-xs-12">
-                  <button type="button" class="primaryBtn w-100">
-                    Request a consultation
-                  </button>
+          <form [formGroup]="form">
+            <div class="row">
+              <div class="col-12 inputB2">
+                <h5 class="smb3">Schedule a consultation today!</h5>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6">
+                    <label>First name*</label>
+                    <input
+                      class="form-control"
+                      placeholder="First name*"
+                      formControlName="firstName" />
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <label>Last name*</label>
+                    <input
+                      class="form-control"
+                      placeholder="Last name*"
+                      formControlName="lastName" />
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <label>Phone Number*</label>
+                    <input
+                      class="form-control"
+                      placeholder="Phone Number*"
+                      formControlName="phoneNumber" />
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <label>Business Email*</label>
+                    <input
+                      class="form-control"
+                      placeholder="Business Email*"
+                      formControlName="businessEmail" />
+                  </div>
+                  <div class="col-xs-12">
+                    <label>Company Name*</label>
+                    <input
+                      class="form-control"
+                      placeholder="Company Name*"
+                      formControlName="companyName" />
+                  </div>
+                  <div class="col-xs-12">
+                    <label
+                      >Is there anything in particular you want to discuss?
+                      Please tell us how we can ensure the best use of your
+                      time.</label
+                    >
+                    <textarea
+                      rows="7"
+                      class="form-control"
+                      placeholder="Country / Region*"
+                      formControlName="message"></textarea>
+                  </div>
+                  <div class="col-xs-12 smt2">
+                    <input
+                      type="checkbox"
+                      class="smb2 smr1"
+                      formControlName="subscription" />
+                    I would like to subscribe to the monthly newsletter.
+                    <p class="sfont12 haveLink">
+                      By submitting this form, you agree to our <a href=""
+                        >Terms and Conditions</a
+                      > and processing your personal data for this purpose. By
+                      subscribing to our newsletter, you consent to receive
+                      marketing communication from us. For more details, see
+                      our <a href="">Privacy Notice.</a>
+                    </p>
+                  </div>
+                  <div class="col-xs-12">
+                    <button
+                      type="button"
+                      class="primaryBtn w-100"
+                      (click)="createADemo()">
+                      Request a consultation
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
         <div class="col-xs-12 smt3 smb6 haveClients">
           <div class="row clients align-items-center justify-content-between">

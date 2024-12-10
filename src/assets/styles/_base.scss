@@ -71,11 +71,16 @@ body:has(.homepage) {
         &:focus {
           box-shadow: none;
         }
-        background: url(./../images/minus.png) no-repeat;
-        background-position: 95%;
+        
+        & {
+          background: url(./../images/minus.png) no-repeat;
+          background-position: 95%;
+        }
         &.collapsed {
           background: url(./../images/plus.png) no-repeat;
-          background-position: 95%;
+          & {
+            background-position: 95%;
+          }
         }
       }
     }
