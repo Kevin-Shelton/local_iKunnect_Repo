@@ -312,6 +312,11 @@ p {
   }
 }
 @media screen and (max-width: 991px) {
+  .colouts__each{
+    h2{
+      font-size: 28px !important;
+    }
+  }
   .haveVideo {
     min-height: 450px;
     &--video {
