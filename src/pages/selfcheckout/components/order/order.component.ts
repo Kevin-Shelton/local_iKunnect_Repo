@@ -1,25 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { PaymentService } from '../../services/payment.service';
-import { PaymentHelperService } from '../../services/helper.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-order',
   standalone: true,
   imports: [],
   templateUrl: './order.component.html',
-  styleUrl: './order.component.scss'
+  styleUrl: './order.component.scss',
 })
-export class OrderComponent implements OnInit{
-
+export class OrderComponent {
   noOfBundleQuatity!: number;
-  amountForLicense: number = 125.00;
+  amountForLicense: number = 125.0;
   subTotalAmount: string = '125.00';
-constructor(private readonly paymentService: PaymentHelperService){
-
-}
-  ngOnInit(): void {
-   
-  }
- 
- 
 }

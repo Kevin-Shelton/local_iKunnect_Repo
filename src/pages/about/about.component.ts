@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { ContactUsComponent } from '../../common/sharedComponents/contact-us/contact-us.component';
-import { BookConsultationComponent } from '../../common/sharedComponents/book-consultation/book-consultation.component';
-import { HerosData } from '../../config/heros';
 import { CommonModule } from '@angular/common';
-import { LetsChatComponent } from '../../common/sharedComponents/lets-chat/lets-chat.component';
+import { Component } from '@angular/core';
+import { BookConsultationComponent } from '../../common/sharedComponents/book-consultation/book-consultation.component';
+import { ContactUsComponent } from '../../common/sharedComponents/contact-us/contact-us.component';
 import { ExploreResourcesComponent } from '../../common/sharedComponents/explore-resources/explore-resources.component';
+import { LetsChatComponent } from '../../common/sharedComponents/lets-chat/lets-chat.component';
+import { HerosData } from '../../config/heros';
 
 @Component({
   selector: 'app-about',

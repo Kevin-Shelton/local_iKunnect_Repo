@@ -1,7 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { BookConsultationComponent } from '../../common/sharedComponents/book-consultation/book-consultation.component';
 import { PricingTableComponent } from '../pricing/components/pricing-table/pricing-table.component';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-platform',
@@ -12,4 +13,9 @@ import { CommonModule } from '@angular/common';
 })
 export class PlatformComponent {
   title: string = 'Powering Exceptional \n Customer Journeys.';
+  constructor(private readonly router: Router) {}
+  bookConsult() {
+    this.router.navigate(['/book-demo']);
+    window.scrollTo(0, 0);
+  }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TransformCustomerServiceComponent } from '../../common/sharedComponents/transform-customer-service/transform-customer-service.component';
 import { BookConsultationComponent } from '../../common/sharedComponents/book-consultation/book-consultation.component';
+import { TransformCustomerServiceComponent } from '../../common/sharedComponents/transform-customer-service/transform-customer-service.component';
 import { HerosData } from '../../config/heros';
 import { LetsChatComponent } from '../../common/sharedComponents/lets-chat/lets-chat.component';
 import { CommonModule } from '@angular/common';
@@ -15,5 +15,5 @@ import { CommonModule } from '@angular/common';
 export class SolutionsComponent {
   isChatEnabled: boolean = false;
   title: string = 'Powering Exceptional \n Customer Journeys.';
-  herosConfig= HerosData.solution;
+  herosConfig = HerosData.solution;
 }
