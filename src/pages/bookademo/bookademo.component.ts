@@ -93,6 +93,7 @@ export class BookademoComponent implements OnInit {
             duration: 8000,
             panelClass: ['blue-snackbar'],
           });
+          this.form.reset();
         }
       },
       error: error => {
