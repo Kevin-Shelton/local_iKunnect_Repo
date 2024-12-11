@@ -24,8 +24,8 @@ export const LicensePlanPricing = {
     {
       name: 'Endpoint Licenses',
       trial: '1',
-      startUp: '+20/per',
-      growth: '+18/per',
+      startUp: '+$20/per',
+      growth: '+$18/per',
       scale: '50 EP Included',
     },
   ],

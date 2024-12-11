@@ -13,6 +13,32 @@ import { PricingTableComponent } from '../pricing/components/pricing-table/prici
 })
 export class PlatformComponent {
   title: string = 'Powering Exceptional \n Customer Journeys.';
+  items = [
+    { src: '../../assets/images/newObj-1.png', width: '190px' },
+    { src: '../../assets/images/newObj-2.png', width: '240px' },
+    { src: '../../assets/images/newObj-1.png', width: '190px' },
+    { src: '../../assets/images/newObj-2.png', width: '240px' },
+    { src: '../../assets/images/newObj-1.png', width: '190px' },
+    { src: '../../assets/images/newObj-2.png', width: '240px' },
+    { src: '../../assets/images/newObj-1.png', width: '190px' },
+    { src: '../../assets/images/newObj-2.png', width: '240px' },
+    { src: '../../assets/images/newObj-1.png', width: '190px' },
+    { src: '../../assets/images/newObj-2.png', width: '240px' },
+    { src: '../../assets/images/newObj-1.png', width: '190px' },
+    { src: '../../assets/images/newObj-2.png', width: '240px' },
+    { src: '../../assets/images/newObj-1.png', width: '190px' },
+    { src: '../../assets/images/newObj-2.png', width: '240px' },
+    { src: '../../assets/images/newObj-1.png', width: '190px' },
+    { src: '../../assets/images/newObj-2.png', width: '240px' },
+    { src: '../../assets/images/newObj-1.png', width: '190px' },
+    { src: '../../assets/images/newObj-2.png', width: '240px' },
+    { src: '../../assets/images/newObj-1.png', width: '190px' },
+    { src: '../../assets/images/newObj-2.png', width: '240px' },
+    { src: '../../assets/images/newObj-1.png', width: '190px' },
+    { src: '../../assets/images/newObj-2.png', width: '240px' },
+    { src: '../../assets/images/newObj-1.png', width: '190px' },
+    { src: '../../assets/images/newObj-2.png', width: '240px' },
+  ];
   constructor(private readonly router: Router) {}
   bookConsult() {
     this.router.navigate(['/book-demo']);
