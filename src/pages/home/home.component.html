@@ -12,16 +12,15 @@
               <div
                 class="col f-p headContent--head"
                 data-aos="fade-left"
-                data-aos-duration="1000"
-              >
+                data-aos-duration="1000">
                 {{ herosConfig.title }}
               </div>
               <div class="col f-m headContent--content" data-aos="fade-left">
                 {{ herosConfig.description }}
               </div>
               <div class="col headContent--btn" data-aos="fade-down">
-                <button class="primaryBtn">Get Started for Free</button>
-                <button class="primaryBtn">Talk to an Expert</button>
+                <button class="primaryBtn" routerLink="/pricing">Get Started for Free</button>
+                <button class="primaryBtn" routerLink="/book-demo">Talk to an Expert</button>
               </div>
             </div>
           </div>
@@ -35,22 +34,21 @@
             <img src="assets/images/client-logo/jpmorgan.png" alt="JP Morgan" />
           </div>
           <div class="col-auto">
-            <img src="assets/images/client-logo/lenovo.png" alt="Lenovo" />
-          </div>
-          <div class="col-auto">
-            <img
-              src="assets/images/client-logo/microsoft.png"
-              alt="Microsoft"
-            />
+            <img src="assets/images/client-logo/wallmart.png" alt="wallmart" />
           </div>
           <div class="col-auto">
             <img src="assets/images/client-logo/samsung.png" alt="samsung" />
           </div>
           <div class="col-auto">
-            <img src="assets/images/client-logo/wallmart.png" alt="wallmart" />
+            <img src="assets/images/client-logo/amazon.png" alt="amazon" />
           </div>
           <div class="col-auto">
-            <img src="assets/images/client-logo/amazon.png" alt="amazon" />
+            <img src="assets/images/client-logo/lenovo.png" alt="Lenovo" />
+          </div>
+          <div class="col-auto">
+            <img
+              src="assets/images/client-logo/microsoft.png"
+              alt="Microsoft" />
           </div>
         </div>
       </div>
@@ -83,8 +81,7 @@
                     </button>
                     <button
                       class="secondaryBtn text see-all-btn"
-                      routerLink="/platform"
-                    >
+                      routerLink="/platform">
                       SEE ALL FEATURES
                       <i class="bi bi-arrow-right"></i>
                     </button>
@@ -123,8 +120,7 @@
                     </button>
                     <button
                       class="secondaryBtn text see-all-btn"
-                      routerLink="/platform"
-                    >
+                      routerLink="/platform">
                       SEE ALL FEATURES
                       <i class="bi bi-arrow-right"></i>
                     </button>
@@ -162,8 +158,7 @@
                     </button>
                     <button
                       class="secondaryBtn text see-all-btn"
-                      routerLink="/platform"
-                    >
+                      routerLink="/platform">
                       SEE ALL FEATURES
                       <i class="bi bi-arrow-right"></i>
                     </button>
@@ -202,8 +197,7 @@
                     </button>
                     <button
                       class="secondaryBtn text see-all-btn"
-                      routerLink="/platform"
-                    >
+                      routerLink="/platform">
                       SEE ALL FEATURES
                       <i class="bi bi-arrow-right"></i>
                     </button>
@@ -270,7 +264,7 @@
               <input type="text" class="plainField" />
             </div>
             <div class="col-12 col-md-5 col-lg-4">
-              <button class="primaryBtn sfont13 lessRadius">
+              <button class="primaryBtn sfont13 lessRadius" routerLink="/pricing" >
                 START YOUR FREE TRIAL
               </button>
             </div>
@@ -312,16 +306,14 @@
         <h1
           class="sfont48 f500 smb6 f-p"
           data-aos="fade-down"
-          data-aos-duration="1000"
-        >
+          data-aos-duration="1000">
           Tailored to meet your outcomes
         </h1>
         <div class="row lightBlue">
           <div
             class="col-xs-12 col-sm-5 lightBlue__text"
             data-aos="fade-up"
-            data-aos-duration="1000"
-          >
+            data-aos-duration="1000">
             <h4 class="mb-3 f-p">
               Small to Medium-Sized <br />
               Enterprises (SMEs)
@@ -340,8 +332,7 @@
           <div
             class="col-xs-12 col-sm-7 lightBlue__right"
             data-aos="fade-left"
-            data-aos-duration="1000"
-          >
+            data-aos-duration="1000">
             <img src="assets/images/image-person.png" alt="" class="md-full" />
             <img src="assets/images/objects-4.png" alt="" class="floating" />
           </div>
@@ -350,8 +341,7 @@
           <div
             class="col-xs-12 col-sm-12 col-md-6"
             data-aos="fade-right"
-            data-aos-duration="1000"
-          >
+            data-aos-duration="1000">
             <div class="colouts__each">
               <h2>Call Centers</h2>
               <p>
@@ -369,10 +359,9 @@
           <div
             class="col-xs-12 col-sm-12 col-md-6"
             data-aos="fade-left"
-            data-aos-duration="1000"
-          >
+            data-aos-duration="1000">
             <div class="colouts__each">
-              <h2>At-Home Agents</h2>
+              <h2 class="" title="At-Home Agents">At-Home Agents</h2> <!--ellipsis-singleline-->
               <p>
                 Ensure seamless communication with customers and teams,
                 addressing the unique needs and challenges of remote customer
@@ -395,16 +384,14 @@
         src="assets/images/invictus-logo-big.png"
         class="mb-2"
         alt=""
-        data-aos="fade-down"
-      />
+        data-aos="fade-down" />
       <h1 class="mb-4" data-aos="fade-up">
         More than just software, <br />
         we’re call center practitioners
       </h1>
       <div
         class="accordion basic-accordion accordion-flush"
-        id="accordionFlushExample"
-      >
+        id="accordionFlushExample">
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button
@@ -413,16 +400,14 @@
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseOne"
               aria-expanded="false"
-              aria-controls="flush-collapseOne"
-            >
+              aria-controls="flush-collapseOne">
               Inbound Contact Center Services
             </button>
           </h2>
           <div
             id="flush-collapseOne"
             class="accordion-collapse collapse"
-            data-bs-parent="#accordionFlushExample"
-          >
+            data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
               <p>
                 Transform your inbound call handling with tools that optimize
@@ -442,21 +427,19 @@
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseTwo"
               aria-expanded="false"
-              aria-controls="flush-collapseTwo"
-            >
+              aria-controls="flush-collapseTwo">
               Outbound Contact Center Services
             </button>
           </h2>
           <div
             id="flush-collapseTwo"
             class="accordion-collapse collapse"
-            data-bs-parent="#accordionFlushExample"
-          >
+            data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
               <p>
                 Enhance outbound call efficiency with a platform designed for
                 sales, lead generation, and customer outreach. Leverage
-                predictive dialer, multi-channel integration, and actionable
+                predictive dialing, multi-channel integration, and actionable
                 insights to drive meaningful connections and maximize impact.
               </p>
             </div>
@@ -470,16 +453,14 @@
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseThree"
               aria-expanded="false"
-              aria-controls="flush-collapseThree"
-            >
+              aria-controls="flush-collapseThree">
               Consolidated Service Desk
             </button>
           </h2>
           <div
             id="flush-collapseThree"
             class="accordion-collapse collapse"
-            data-bs-parent="#accordionFlushExample"
-          >
+            data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
               <p>
                 Centralize your customer and IT support operations with our
@@ -498,16 +479,14 @@
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseFour"
               aria-expanded="false"
-              aria-controls="flush-collapseFour"
-            >
+              aria-controls="flush-collapseFour">
               Enterprise GBS Customer Services
             </button>
           </h2>
           <div
             id="flush-collapseFour"
             class="accordion-collapse collapse"
-            data-bs-parent="#accordionFlushExample"
-          >
+            data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
               <p>
                 Empower your enterprise with scalable solutions for global
@@ -526,16 +505,14 @@
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseFive"
               aria-expanded="false"
-              aria-controls="flush-collapseFive"
-            >
+              aria-controls="flush-collapseFive">
               Back Office Operations
             </button>
           </h2>
           <div
             id="flush-collapseFive"
             class="accordion-collapse collapse"
-            data-bs-parent="#accordionFlushExample"
-          >
+            data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
               <p>
                 Streamline back-office processes with automation and workflow
@@ -554,16 +531,14 @@
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseSix"
               aria-expanded="false"
-              aria-controls="flush-collapseSix"
-            >
+              aria-controls="flush-collapseSix">
               Hybrid Services & Disaster Recovery
             </button>
           </h2>
           <div
             id="flush-collapseSix"
             class="accordion-collapse collapse"
-            data-bs-parent="#accordionFlushExample"
-          >
+            data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
               <p>
                 Ensure business continuity with hybrid support solutions that
@@ -593,8 +568,7 @@
           <div
             class="col-12 col-lg-6"
             data-aos="fade-right"
-            data-aos-duration="1000"
-          >
+            data-aos-duration="1000">
             <div class="row">
               <div class="col-12 sfont48 f500 f-p l-h-58">
                 Seamlessly Integrate and Optimize Your Tools
@@ -605,7 +579,7 @@
                 reality.
               </div>
               <div class="col-12">
-                <button class="primaryBtn" routerLink="/book-demo">
+                <button class="primaryBtn" (click)="bookConsult()">
                   GET A PERSONALIZED DEMO
                 </button>
               </div>
@@ -615,16 +589,14 @@
                 <img
                   src="assets/images/security-badges.png"
                   alt=""
-                  class="md-full"
-                />
+                  class="md-full" />
               </div>
             </div>
           </div>
           <div
             class="col-12 col-lg-6"
             data-aos="fade-left"
-            data-aos-duration="1000"
-          >
+            data-aos-duration="1000">
             <div class="accordion customAccrodion" id="accordionExample">
               <div class="accordion-item">
                 <h2 class="accordion-header">
@@ -634,8 +606,7 @@
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseOne"
                     aria-expanded="true"
-                    aria-controls="collapseOne"
-                  >
+                    aria-controls="collapseOne">
                     <img src="./../../assets/images/crm-icon.png" alt="" />
                     CRM Screen Popup
                   </button>
@@ -643,8 +614,7 @@
                 <div
                   id="collapseOne"
                   class="accordion-collapse collapse show"
-                  data-bs-parent="#accordionExample"
-                >
+                  data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                     <p>
                       Kunnect provides powerful CRM screen pop integration to
@@ -667,20 +637,17 @@
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseTwo"
                     aria-expanded="false"
-                    aria-controls="collapseTwo"
-                  >
+                    aria-controls="collapseTwo">
                     <img
                       src="./../../assets/images/back-office-icon.png"
-                      alt=""
-                    />
+                      alt="" />
                     Back office integration
                   </button>
                 </h2>
                 <div
                   id="collapseTwo"
                   class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                >
+                  data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                     <p>
                       Unify your back-office operations with Kunnect's
@@ -702,8 +669,7 @@
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseThree"
                     aria-expanded="false"
-                    aria-controls="collapseThree"
-                  >
+                    aria-controls="collapseThree">
                     <img src="./../../assets/images/eod-icon.png" alt="" />
                     End-of-day processing
                     <!-- <img src="../../assets/images/plus.png" class="plus" />
@@ -713,8 +679,7 @@
                 <div
                   id="collapseThree"
                   class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                >
+                  data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                     <p>
                       Kunnect simplifies end-of-day processes by automating key

@@ -14,29 +14,13 @@
             type="button"
             class="primaryBtn ms-4"
             data-aos="fade-down"
-            data-aos-duration="1000"
-          >
+            data-aos-duration="1000">
             LET'S TALK
           </button>
         </div>
         <div class="image-slider">
-          <div class="item">
-            <img alt="" width="190px" src="../../assets/images/newObj-1.png" />
-          </div>
-          <div class="item">
-            <img alt="" width="240px" src="../../assets/images/newObj-2.png" />
-          </div>
-          <div class="item">
-            <img alt=""  width="190px" src="../../assets/images/newObj-1.png" />
-          </div>
-          <div class="item">
-            <img alt="" width="240px" src="../../assets/images/newObj-2.png" />
-          </div>
-          <div class="item">
-            <img alt="" width="190px" src="../../assets/images/newObj-1.png" />
-          </div>
-          <div class="item">
-            <img alt="" width="240px" src="../../assets/images/newObj-2.png" />
+          <div *ngFor="let item of items" class="item">
+            <img [src]="item.src" [style.width]="item.width" alt="Image" />
           </div>
         </div>
         <!-- <div class="image-slider">
@@ -59,8 +43,13 @@
             Enhance Customer Service with Powerful Call Center
             <span>Features</span>
           </h2>
-          <p class="f-m w-900 smx5" data-aos="fade-down" data-aos-duration="600">
-            Revolutionize the way you manage customer interactions with Kunnect’s cutting-edge solutions, designed to deliver efficiency, flexibility, and exceptional customer experiences.
+          <p
+            class="f-m w-900 smx5"
+            data-aos="fade-down"
+            data-aos-duration="600">
+            Revolutionize the way you manage customer interactions with
+            Kunnect’s cutting-edge solutions, designed to deliver efficiency,
+            flexibility, and exceptional customer experiences.
           </p>
         </div>
         <div class="custom-tabs">
@@ -348,16 +337,14 @@
                 <img
                   src="../../assets/images/bar0chart.png"
                   alt=""
-                  class="pb-4 pe-4"
-                />
+                  class="pb-4 pe-4" />
               </figure>
             </div>
             <div class="img-card" data-aos="fade-right" data-aos-duration="500">
               <div class="cont">
-                <h6>Back Office Optimization</h6>
+                <h6>Agent Productivity</h6>
                 <p>
-                  Streamline back-office operations to boost overall efficiency
-                  and cut costs.
+                  Maximize agent efficiency by equipping them with the right tools and workflows to handle calls seamlessly and deliver better outcomes.
                 </p>
                 <!-- <button class="flatBtn c-p f600">
                   EXPLORE SOLUTION <i class="bi bi-arrow-right"></i>
@@ -384,7 +371,9 @@
             </div>
           </div>
           <div class="text-center">
-            <button class="primaryBtn">GET A PERSONALIZED DEMO</button>
+            <button class="primaryBtn" (click)="bookConsult()">
+              GET A PERSONALIZED DEMO
+            </button>
           </div>
         </div>
       </div>
@@ -411,8 +400,7 @@
               <div
                 class="col-5 text-end"
                 data-aos="fade-right"
-                data-aos-duration="500"
-              >
+                data-aos-duration="500">
                 <img src="../../assets/images/kunnect-logo.png" alt="" />
               </div>
               <div class="col-2 text-center">

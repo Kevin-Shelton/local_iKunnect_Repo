@@ -1,9 +1,16 @@
-import { Component } from '@angular/core';
-import { LicensePlanPricing, PricesByDuration } from '../../../../config/license-bundle-pricing';
-import { PaymentHelperService } from '../../../selfcheckout/services/helper.service';
-import { BundleDetails, PlanDuration, PlanType } from '../../../../models/website-models';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import {
+  LicensePlanPricing,
+  PricesByDuration,
+} from '../../../../config/license-bundle-pricing';
+import {
+  BundleDetails,
+  PlanDuration,
+  PlanType,
+} from '../../../../models/website-models';
+import { PaymentHelperService } from '../../../selfcheckout/services/helper.service';
 
 @Component({
   selector: 'app-pricing-table',
@@ -28,30 +35,27 @@ export class PricingTableComponent {
     return val === type;
   }
   buyPlan(planType: string) {
-   let bundleAmount = this.priceDetByDuration[planType];
-  
-   let budleDetails: BundleDetails = {
-    type: planType as PlanType,
-    amount: bundleAmount,
-    totalAmount: bundleAmount,
-    duration: this.planPeriod,
-    quantity: 1
-   }
+    const bundleAmount = this.priceDetByDuration[planType];
+
+    const budleDetails: BundleDetails = {
+      type: planType as PlanType,
+      amount: bundleAmount,
+      totalAmount: bundleAmount,
+      duration: this.planPeriod,
+      quantity: 1,
+    };
     this.paymentHelper.changeBundleDetails(budleDetails);
     this.router.navigate(['/self-checkout']);
     window.scrollTo(0, 0);
   }
 
   planDurationChange() {
-   
-    if(this.planPeriod === PlanDuration.MONTHLY) {
+    if (this.planPeriod === PlanDuration.MONTHLY) {
       this.planPeriod = PlanDuration.ANNUALLY;
       this.priceDetByDuration = PricesByDuration.year;
     } else {
       this.planPeriod = PlanDuration.MONTHLY;
       this.priceDetByDuration = PricesByDuration.month;
     }
-   
- 
   }
 }

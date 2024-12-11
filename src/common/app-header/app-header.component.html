@@ -44,7 +44,7 @@
             </a>
             <a routerLink="/support" routerLinkActive="active">
               <!-- <i class="bi bi-headset"></i> -->
-               <img src="./../../assets/images/support-icon-png.png" alt="" />
+              <img src="./../../assets/images/support-icon-png.png" alt="" />
               Support
             </a>
           </div>
@@ -60,13 +60,15 @@
             <button class="main-nav-btn" (click)="toggleNav()">
               <i class="bi bi-list"></i>
             </button>
-            <img src="assets/images/kunnect-logo.png" routerLink="/home" alt="Logo" />
+            <img
+              src="assets/images/kunnect-logo.png"
+              routerLink="/home"
+              alt="Logo" />
           </a>
         </div>
         <div
           class="col-md-10 text-end main-nav-cont"
-          [class]="navPanel ? 'active' : ''"
-        >
+          [class]="navPanel ? 'active' : ''">
           <ul class="main-nav-list">
             <li class="nav-col-close">
               <img src="assets/images/kunnect-logo.png" alt="Logo" />
@@ -96,8 +98,7 @@
               <a
                 routerLink="/platform"
                 routerLinkActive="active"
-                (click)="toggleNav()"
-              >
+                (click)="toggleNav()">
                 PLATFORM
               </a>
             </li>
