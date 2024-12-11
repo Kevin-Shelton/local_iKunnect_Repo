@@ -34,19 +34,19 @@ export class PaymentComponent implements OnInit {
       },
     });
     this.stripe = await this.paymentService.getStripe();
-    const resp = await this.paymentService.getProducts();
-    // eslint-disable-next-line
-    const productDetails = resp.productsWithPrices.find((prod: any) => {
-      return prod.product.name === 'StartupTest';
-    });
-
-    const response = await this.paymentService.getStripeSession(
-      productDetails.product.default_price,
+    
+   
+    this.paymentService.getStripeSession(
+      'price_1QSYHFLmtmaPxNqr79z7rthB',
       this.bundleDetails.quantity
-    );
-    const { clientSecret } = await response.json();
+    ).subscribe({
+      next: async (res) => {
 
-    await this.initStripe(clientSecret);
+        await this.initStripe(res.clientSecret);
+      }
+    })
+   
+
   }
 
   async initStripe(clientSecret: string) {

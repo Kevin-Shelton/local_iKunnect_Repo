@@ -1,5 +1,5 @@
 export const environment = {
-  API_URL: 'https://qa-auth-api.ikunnect.com/api/',
+  
   CORE_URL: 'https://qa-hero.ikunnect.com/api/',
   STRIPE_CLIENT_TOKEN:
     'pk_test_51QH3UxLmtmaPxNqrWwTvjcQV6EBcTsGygwjM9TWj894k7FOQmwgaaYZj1DhwWjPfbeDZvwLSSrsm6jn7LPPz60ft00A0V4a7v7',

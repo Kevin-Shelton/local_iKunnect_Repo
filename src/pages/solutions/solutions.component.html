@@ -125,7 +125,7 @@
                   </a>
                 </li>
               </ul>
-              <button type="button" class="primaryBtn smt3 lets-chat">
+              <button (click)="isChatEnabled = true" type="button" class="primaryBtn smt3 lets-chat">
                 LET'S CHAT
               </button>
             </div>
@@ -318,5 +318,6 @@
     </div>
     <app-transform-customer-service class="spa0 col-12" />
     <app-book-consultation [title]="title" class="spa0 col-12" />
+    <app-lets-chat *ngIf="isChatEnabled"></app-lets-chat>
   </div>
 </div>
