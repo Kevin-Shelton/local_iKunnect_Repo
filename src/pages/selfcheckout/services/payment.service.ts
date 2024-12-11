@@ -2,6 +2,9 @@
 import { Injectable } from '@angular/core';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
 import { API_URL } from '../../../config/env-config';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { StripeProduct } from '../../../models/website-models';
 
 @Injectable({
   providedIn: 'root',
@@ -9,50 +12,28 @@ import { API_URL } from '../../../config/env-config';
 export class PaymentService {
   private stripePromise: Promise<Stripe | null>;
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
     this.stripePromise = loadStripe(API_URL.STRIPE_API_KEY);
+
   }
 
   getStripe() {
     return this.stripePromise;
   }
-  async getProducts() {
-    try {
-      // Fetch products from your backend
-      const response = await fetch(`${API_URL.GET_PRODUCTS}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch products');
-      }
 
-      const products = await response.json();
-      console.log('Available Products:', products);
-
-      return products;
-    } catch (error) {
-      console.error('Error fetching products:', error);
-      return [];
-    }
+  getProducts(): Observable<StripeProduct[]> {   
+    console.log('calling get products are ',API_URL.GET_PRODUCTS)
+      return this.httpClient.get<StripeProduct[]>(API_URL.GET_PRODUCTS);
+    
   }
-  async getStripeSession(priceId: string, quantity: number) {
-    // console.log('payment amount is ::::::: ',amount)
-    return await fetch(
-      `${API_URL.CREATE_CHECKOUT_SESSION}?priceId=${priceId}&quantity=${quantity}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({}),
-      }
-    );
+   getStripeSession(priceId: string, quantity: number): Observable<{clientSecret: string}> {
+   
+    return this.httpClient.post<{clientSecret: string}>(`${API_URL.CREATE_CHECKOUT_SESSION}?priceId=${priceId}&quantity=${quantity}`, {});
+   
   }
 
-  async getStripeSessionStatus(sessionId: string) {
-    console.log('payment sessionId is ::::::: ', sessionId);
-    return await fetch(`${API_URL.SESSION_STATUS}?session_id=${sessionId}`);
+   getStripeSessionStatus(sessionId: string): Observable<{status: string}> {
+    return this.httpClient.get<{status: string}>(`${API_URL.SESSION_STATUS}?session_id=${sessionId}`);
   }
 }
