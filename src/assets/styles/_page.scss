@@ -315,7 +315,7 @@ div.resources--card {
     }
   }
   &-light {
-    padding: 100px 0 80px 0;
+    padding: 40px 0 80px 0;
     background: linear-gradient(
       180deg,
       rgba(244, 253, 244, 1) 0%,
@@ -453,6 +453,12 @@ div.resources--card {
     }
   }
 }
+@media (max-width: 500px) {
+  .zammad-chat.chat-client{
+    max-width: 100% !important;
+    right: 0 !important;
+  }
+}
 .clients {
   flex-wrap: nowrap !important;
   justify-content: space-between;
@@ -517,4 +523,10 @@ div.resources--card {
     padding: 0 16px;
     max-width: 320px;
   }
+}
+
+.removePadding{
+ h1{
+  max-width: 100% !important;
+ }
 }
