@@ -81,7 +81,7 @@
             <span class="price-label">License Types</span>
           </td>
         </tr>
-        @for (license of plans.licenses; track license.name) {
+        @for (license of licenseTypes; track license.name) {
           <tr class="sub-tr">
             <td>
               <span class="price-label"> {{ license.name }} </span>
@@ -154,7 +154,7 @@
             <span class="price-label">Features</span>
           </td>
         </tr>
-        @for (feature of plans.features; track feature.name) {
+        @for (feature of featureTypes; track feature.name) {
           <tr class="sub-tr">
             <td>
               <span class="price-label"> {{ feature.name }} </span>
