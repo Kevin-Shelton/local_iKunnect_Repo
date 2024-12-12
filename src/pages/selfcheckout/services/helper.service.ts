@@ -2,26 +2,27 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import {
-  BundleDetails,
   PlanDuration,
   PlanType,
+  StripeCartProductDisplay,
+  IBundleDetails,
 } from '../../../models/website-models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PaymentHelperService {
-  private readonly bundleDetails = new BehaviorSubject<BundleDetails>({
-    duration: PlanDuration.MONTHLY,
-    type: PlanType.START_UP,
-    totalAmount: { value: 0, disValue: '$0' },
-    amount: { value: 0, disValue: '$0' },
-    quantity: 1,
-  });
+  private readonly cartItemsWithDuration = new BehaviorSubject<StripeCartProductDisplay>({} as StripeCartProductDisplay);
+  currentCartItemsWithProducts = this.cartItemsWithDuration.asObservable();
 
-  currentBundleDetails = this.bundleDetails.asObservable();
+  private readonly bundlePlanDetails = new BehaviorSubject<IBundleDetails>({bundleType: PlanType.START_UP, duration: PlanDuration.ANNUALLY});
+  currentBundlePlanDetails = this.bundlePlanDetails.asObservable();
 
-  changeBundleDetails(plantDetails: BundleDetails) {
-    this.bundleDetails.next(plantDetails);
+  changeProductDetails(cartItems: StripeCartProductDisplay) {
+    this.cartItemsWithDuration.next(cartItems);
+  }
+
+  changeBundlePlanDetails(bundleDetails: IBundleDetails) {
+    this.bundlePlanDetails.next(bundleDetails);
   }
 }

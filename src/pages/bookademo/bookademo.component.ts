@@ -85,6 +85,7 @@ export class BookademoComponent implements OnInit {
   createADemo() {
     this.isLoading = true;
     const payLoad = this.form.getRawValue();
+    payLoad.subscription = payLoad.subscription ? 1 : 0;
     this.demoService.bookADemo(payLoad).subscribe({
       next: res => {
         if (res) {

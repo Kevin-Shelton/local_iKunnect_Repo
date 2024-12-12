@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PricesByDuration } from '../../../../config/license-bundle-pricing';
-import { BundleDetails, PlanDuration } from '../../../../models/website-models';
+import { IBundleDetails, PlanDuration, PlanType, ProductDetails, StripeCartProductDisplay } from '../../../../models/website-models';
 import { PaymentHelperService } from '../../services/helper.service';
 
 @Component({
@@ -11,60 +11,55 @@ import { PaymentHelperService } from '../../services/helper.service';
   styleUrl: './license-customer.component.scss',
 })
 export class LicenseCustomerComponent implements OnInit {
-  bundleDetails!: BundleDetails;
+  cartItemDetails!: StripeCartProductDisplay;
+  bundlePlan!: IBundleDetails;
+  planCartItems!: ProductDetails[]
+ 
   constructor(private readonly paymentHelperService: PaymentHelperService) {}
   ngOnInit(): void {
-    this.paymentHelperService.currentBundleDetails.subscribe({
+    this.paymentHelperService.currentBundlePlanDetails.subscribe({
       next: res => {
-        this.bundleDetails = res;
+        this.bundlePlan = res;
+        
+      },
+    });
+    this.paymentHelperService.currentCartItemsWithProducts.subscribe({
+      next: res => {
+        this.cartItemDetails = res;
+        this.planCartItems = this.cartItemDetails[this.bundlePlan.duration][this.bundlePlan.bundleType];
       },
     });
   }
 
   planDurationChange() {
-    if (this.bundleDetails.duration === PlanDuration.MONTHLY) {
-      this.bundleDetails.duration = PlanDuration.ANNUALLY;
-      const priceDet = PricesByDuration.year;
-      const bundleAmount = priceDet[this.bundleDetails.type];
-      this.bundleDetails.amount = bundleAmount;
-
-      const total = {
-        value: this.bundleDetails.quantity * this.bundleDetails.amount.value,
-        disValue: `$${(this.bundleDetails.quantity * this.bundleDetails.amount.value).toFixed(2)}`,
-      };
-      this.bundleDetails.totalAmount = total;
+    if (this.bundlePlan.duration === PlanDuration.MONTHLY) {
+      this.bundlePlan.duration = PlanDuration.ANNUALLY;
+      this.planCartItems = this.cartItemDetails[this.bundlePlan.duration][this.bundlePlan.bundleType];
     } else {
-      this.bundleDetails.duration = PlanDuration.MONTHLY;
-      const priceDet = PricesByDuration.month;
-      const bundleAmount = priceDet[this.bundleDetails.type];
-      this.bundleDetails.amount = bundleAmount;
-      const total = {
-        value: this.bundleDetails.quantity * this.bundleDetails.amount.value,
-        disValue: `$${(this.bundleDetails.quantity * this.bundleDetails.amount.value).toFixed(2)}`,
-      };
-      this.bundleDetails.totalAmount = total;
+      this.bundlePlan.duration = PlanDuration.MONTHLY;
+      this.planCartItems = this.cartItemDetails[this.bundlePlan.duration][this.bundlePlan.bundleType];
     }
   }
 
-  decrementBundleQuantity() {
-    if (this.bundleDetails.quantity > 1) {
-      this.bundleDetails.quantity = this.bundleDetails.quantity - 1;
+  decrementBundleQuantity(product: ProductDetails) {
+    if ( [PlanType.START_UP, PlanType.GROWTH, PlanType.SCALE].includes(product.type) ? product.quantity > 1 : product.quantity > 0) {
+      product.quantity = product.quantity - 1;
       const total = {
-        value: this.bundleDetails.quantity * this.bundleDetails.amount.value,
-        disValue: `$${(this.bundleDetails.quantity * this.bundleDetails.amount.value).toFixed(2)}`,
+        value: product.quantity * product.amount.value,
+        disValue: `$${(product.quantity * product.amount.value).toFixed(2)}`,
       };
-      this.bundleDetails.totalAmount = total;
-      this.paymentHelperService.changeBundleDetails(this.bundleDetails);
+      product.totalAmount = total;
+     // this.paymentHelperService.changeBundleDetails(this.bundleDetails);
     }
   }
-  incrementBundleQuantity() {
-    this.bundleDetails.quantity = this.bundleDetails.quantity + 1;
+  incrementBundleQuantity(product: ProductDetails) {
+    product.quantity = product.quantity + 1;
     const total = {
-      value: this.bundleDetails.quantity * this.bundleDetails.amount.value,
-      disValue: `$${(this.bundleDetails.quantity * this.bundleDetails.amount.value).toFixed(2)}`,
+      value: product.quantity * product.amount.value,
+      disValue: `$${(product.quantity * product.amount.value).toFixed(2)}`,
     };
-    this.bundleDetails.totalAmount = total;
+    product.totalAmount = total;
 
-    this.paymentHelperService.changeBundleDetails(this.bundleDetails);
+   // this.paymentHelperService.changeBundleDetails(this.bundleDetails);
   }
 }

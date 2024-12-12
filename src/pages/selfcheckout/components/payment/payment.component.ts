@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Stripe } from '@stripe/stripe-js';
 import { API_URL } from '../../../../config/env-config';
-import { BundleDetails } from '../../../../models/website-models';
+import {  ProductDetails, StripeCartProductDisplay } from '../../../../models/website-models';
 import { PaymentHelperService } from '../../services/helper.service';
 import { PaymentService } from '../../services/payment.service';
 
@@ -20,7 +20,7 @@ export class PaymentComponent implements OnInit {
   clientSecret!: string;
   // eslint-disable-next-line
   stripeElements!: any;
-  bundleDetails!: BundleDetails;
+  cartItemsWithPlan!: StripeCartProductDisplay;
 
   constructor(
     private readonly paymentService: PaymentService,
@@ -28,9 +28,9 @@ export class PaymentComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    this.helperService.currentBundleDetails.subscribe({
+    this.helperService.currentCartItemsWithProducts.subscribe({
       next: res => {
-        this.bundleDetails = res;
+        this.cartItemsWithPlan = res;
       },
     });
     this.stripe = await this.paymentService.getStripe();
@@ -38,7 +38,7 @@ export class PaymentComponent implements OnInit {
    
     this.paymentService.getStripeSession(
       'price_1QSYHFLmtmaPxNqr79z7rthB',
-      this.bundleDetails.quantity
+     1// this.bundleDetails.quantity
     ).subscribe({
       next: async (res) => {
 
