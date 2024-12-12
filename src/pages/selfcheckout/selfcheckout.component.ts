@@ -56,11 +56,14 @@ export class SelfcheckoutComponent implements OnInit {
   }
 
   // Fetches the payment intent status after payment submission
-  async handlePaymentStatus(sessionId: string) {
-    const response =
-      await this.paymentService.getStripeSessionStatus(sessionId);
-    const { status } = await response.json();
-    this.setPaymentDetails(status);
+   handlePaymentStatus(sessionId: string) {
+  
+       this.paymentService.getStripeSessionStatus(sessionId).subscribe({
+        next: res => {
+          this.setPaymentDetails(res.status);
+        }
+       })
+   
   }
 
   setPaymentDetails(status: string) {
