@@ -48,7 +48,7 @@
               </td>
               <td>
                 <div class="row g-1">
-                  <div class="col-auto" (click)="decrementBundleQuantity()">
+                  <div class="col-auto" (click)="decrementBundleQuantity(product)">
                     <i class="bi bi-dash-lg"></i>
                   </div>
                   <div class="col-auto">
@@ -57,7 +57,7 @@
                       [value]="product.quantity"
                       class="max-width-50" />
                   </div>
-                  <div class="col-auto" (click)="incrementBundleQuantity()">
+                  <div class="col-auto" (click)="incrementBundleQuantity(product)">
                     <i class="bi bi-plus-lg"></i>
                   </div>
                 </div>

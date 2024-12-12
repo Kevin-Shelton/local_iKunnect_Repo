@@ -10,6 +10,7 @@ import {
   ProductDetails,
   ProductNames,
   StripeCartProductDisplay,
+  StripePrice,
   StripePricingDisplay,
   StripeProduct,
 } from '../../../../models/website-models';
@@ -54,8 +55,8 @@ export class PricingTableComponent implements OnInit{
     return val === type;
   }
   buyPlan(planType: string) {
-    const bundleAmount = this.priceDetByDuration[planType];
    
+   this.paymentHelper.changeBundlePlanDetails({bundleType: planType as PlanType, duration: this.planPeriod})
     this.paymentHelper.changeProductDetails(this.cartProductPricing);
     this.router.navigate(['/self-checkout']);
     window.scrollTo(0, 0);
@@ -87,16 +88,13 @@ export class PricingTableComponent implements OnInit{
       prd.prices.forEach(price => {
       
           if(prd.name === ProductNames.Startup_Bundle) {
-            this.stripeBundlePricing[price.interval]['StartUp'] = { value: price.amount, disValue:  `$${price.amount}` }
-            this.cartProductPricing[price.interval]['StartUp'].push({type:PlanType.START_UP, duration: price.interval,amount: {value: price.amount, disValue: price.amount.toFixed(2)}, quantity: 1, totalAmount: {value: price.amount , disValue: price.amount.toFixed(2)}});
+            this.addBundlePrice(price, PlanType.START_UP);    
           }
           if(prd.name === ProductNames.Growth_Bundle) {
-            this.stripeBundlePricing[price.interval]['Growth'] = { value: price.amount, disValue:  `$${price.amount}` }
-            this.cartProductPricing[price.interval]['Growth'].push({type:PlanType.GROWTH, duration: price.interval,amount: {value: price.amount, disValue: price.amount.toFixed(2)}, quantity: 1, totalAmount: {value: price.amount , disValue: price.amount.toFixed(2)}});
+            this.addBundlePrice(price, PlanType.GROWTH);   
           }
           if(prd.name === ProductNames.SCALE_BUNDLE) {
-            this.stripeBundlePricing[price.interval]['Scale'] = { value: price.amount, disValue:  `$${price.amount}` }
-            this.cartProductPricing[price.interval]['Scale'].push({type:PlanType.SCALE, duration: price.interval,amount: {value: price.amount, disValue: price.amount.toFixed(2)}, quantity: 1, totalAmount: {value: price.amount , disValue: price.amount.toFixed(2)}});
+            this.addBundlePrice(price, PlanType.SCALE);           
           }
         
       })
@@ -104,8 +102,13 @@ export class PricingTableComponent implements OnInit{
     this.priceDetByDuration = this.stripeBundlePricing.year;
   }
 
-  mergeStartUpAdditionalPrices(products: StripeProduct[]) {
-    
+  addBundlePrice(price: StripePrice, bundleTyep: string) {
+    this.stripeBundlePricing[price.interval][bundleTyep] = { value: price.amount, disValue:  `$${price.amount}` }
+    this.cartProductPricing[price.interval][bundleTyep].push({type:PlanType.SCALE, duration: price.interval,amount: {value: price.amount, disValue: `$${price.amount.toFixed(2)}`}, quantity: 1, totalAmount: {value: price.amount , disValue: price.amount.toFixed(2)}});
+ 
+  }
+
+  mergeStartUpAdditionalPrices(products: StripeProduct[]) {    
 
      products.forEach(prod => {      
       if(prod.name === ProductNames.Endpoint_Lic_Startup) {

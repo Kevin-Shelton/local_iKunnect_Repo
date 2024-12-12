@@ -38,6 +38,11 @@ export interface ProductDetails {
   totalAmount: { value: number; disValue: string };
 }
 
+export interface IBundleDetails {
+  bundleType: PlanType
+  duration: PlanDuration
+}
+
 export interface StripePricingDisplay {
   month: { [key: string]: { value: number; disValue: string } };
   year: { [key: string]: { value: number; disValue: string } };
