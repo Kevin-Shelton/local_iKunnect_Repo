@@ -14,7 +14,7 @@ export class LicenseCustomerComponent implements OnInit {
   cartItemDetails!: StripeCartProductDisplay;
   bundlePlan!: IBundleDetails;
   planCartItems!: ProductDetails[]
-  isAnnually: boolean = false;
+ 
   constructor(private readonly paymentHelperService: PaymentHelperService) {}
   ngOnInit(): void {
     this.paymentHelperService.currentBundlePlanDetails.subscribe({
