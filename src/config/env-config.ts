@@ -14,5 +14,5 @@ export const API_URL = {
   CREATE_CHECKOUT_SESSION: environment.CORE_URL + `create-checkout-session`,
   SESSION_STATUS: environment.CORE_URL + `session-status`,
   SELF_CHECKOUT: environment.CORE_URL + `self-checkout`,
-  BOOK_DEMO: environment.CORE_URL + `api/BookADemo/BookADemo`,
+  BOOK_DEMO: environment.CORE_URL + `BookADemo/BookADemo`,
 };
