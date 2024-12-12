@@ -36,14 +36,15 @@
             </tr>
           </thead>
           <tbody>
+            @for (product of planCartItems; track product.type) {
             <tr>
               <td>
                 <div class="ellipsis-singleline">
-                  {{ bundleDetails.type }}
+                  {{ product.type }}
                 </div>
               </td>
               <td>
-                {{ bundleDetails.amount.disValue }}
+                {{ product.amount.disValue }}
               </td>
               <td>
                 <div class="row g-1">
@@ -53,7 +54,7 @@
                   <div class="col-auto">
                     <input
                       type="number"
-                      [value]="bundleDetails.quantity"
+                      [value]="product.quantity"
                       class="max-width-50" />
                   </div>
                   <div class="col-auto" (click)="incrementBundleQuantity()">
@@ -62,9 +63,10 @@
                 </div>
               </td>
               <td>
-                {{ bundleDetails.totalAmount.disValue }}
+                {{ product.totalAmount.disValue }}
               </td>
             </tr>
+          }
           </tbody>
         </table>
       </div>

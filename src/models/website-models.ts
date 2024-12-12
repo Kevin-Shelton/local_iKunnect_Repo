@@ -3,6 +3,10 @@ export enum PlanType {
   START_UP = 'StartUp',
   GROWTH = 'Growth',
   SCALE = 'Scale',
+  ENDPOINT_LICENSES = 'Endpoint Licenses',
+  PREDICTIVE_DIALER = 'Predictive Dialer',
+  ADVANCED_OMNICHANNEL = 'Advanced Omnichannel',
+  IKUNNECT_INTELLIGENCE = 'iKunnect Intelligence'
 }
 
 export enum PlanDuration {
@@ -26,13 +30,22 @@ export enum ProductNames {
 
 }
 
-export interface BundleDetails {
+export interface ProductDetails {
   type: PlanType;
   quantity: number;
   duration: PlanDuration;
   amount: { value: number; disValue: string };
   totalAmount: { value: number; disValue: string };
 }
+
+export interface StripePricingDisplay {
+  month: { [key: string]: { value: number; disValue: string } };
+  year: { [key: string]: { value: number; disValue: string } };
+}
+
+export interface StripeCartProductDisplay {
+  month:  {[key: string]: ProductDetails[]}, 
+  year:{[key: string]: ProductDetails[]}};
 
 
 export interface StripeProduct {
