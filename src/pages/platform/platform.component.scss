@@ -139,6 +139,7 @@
     &:hover{
       background-image: url(./../../assets/images/gradiunt-bg.png);
       opacity: 0.8;
+      background-size: 100%;
     }
   }
 }
@@ -149,7 +150,7 @@
 }
 
 .kunnect-compare {
-  padding: 100px 20px;
+  padding: 100px 20px 60px;
   .title {
     text-align: center;
     h3 {
@@ -497,4 +498,26 @@
       }
     }
   }
+}
+@media (min-width: 1000px) {
+.relative-card{
+  position: relative;
+  min-height: 530px;
+  img{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    right: 0;
+    &.addon{
+      max-height: none !important;
+      max-width: 80% !important;
+    }
+  }
+}
+}
+.mh-112{
+  min-height: 112px !important;
+}
+.mh-160{
+  min-height: 160px !important;
 }
