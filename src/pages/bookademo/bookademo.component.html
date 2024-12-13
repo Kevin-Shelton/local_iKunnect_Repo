@@ -36,219 +36,219 @@
           </ul>
         </div>
         <div
-        class="col-xs-12 col-sm-8 col-md-6 haveForm selfcheckout"
-        data-aos="fade-left"
-        data-aos-duration="1000">
-            <div class="row">
-              <form [formGroup]="form">
-                <div class="col-12 inputB2">
-                  <h5 class="smb3">Schedule a consultation today!</h5>
-                  <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                      <label>First name*</label>
-                      <input
-                        class="form-control"
-                        placeholder="First name*"
-                        formControlName="firstName" />
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['firstName'].dirty &&
-                          f['firstName'].hasError('required')
-                        ">
-                        First name is required.
-                      </div>
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['firstName'].dirty &&
-                          f['firstName'].hasError('pattern')
-                        ">
-                        First Name is only allow alpha characters.
-                      </div>
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['firstName'].dirty &&
-                          f['firstName'].hasError('maxlength')
-                        ">
-                        Maximum length of 40 characters exceeded.
-                      </div>
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['firstName'].dirty &&
-                          f['firstName'].hasError('minlength')
-                        ">
-                        Minimum 3 characters is required.
-                      </div>
+          class="col-xs-12 col-sm-8 col-md-6 haveForm selfcheckout"
+          data-aos="fade-left"
+          data-aos-duration="1000">
+          <div class="row">
+            <form [formGroup]="form">
+              <div class="col-12 inputB2">
+                <h5 class="smb3">Schedule a consultation today!</h5>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6">
+                    <label>First name*</label>
+                    <input
+                      class="form-control"
+                      placeholder="First name*"
+                      formControlName="firstName" />
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['firstName'].dirty &&
+                        f['firstName'].hasError('required')
+                      ">
+                      First name is required.
                     </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <label>Last name*</label>
-                      <input
-                        class="form-control"
-                        placeholder="Last name*"
-                        formControlName="lastName" />
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['lastName'].dirty &&
-                          f['lastName'].hasError('required')
-                        ">
-                        Last name is required.
-                      </div>
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['lastName'].dirty && f['lastName'].hasError('pattern')
-                        ">
-                        Last Name is only allow alpha characters.
-                      </div>
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['lastName'].dirty &&
-                          f['lastName'].hasError('maxlength')
-                        ">
-                        Maximum length of 40 characters exceeded.
-                      </div>
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['lastName'].dirty &&
-                          f['lastName'].hasError('minlength')
-                        ">
-                        Minimum 3 characters is required.
-                      </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['firstName'].dirty &&
+                        f['firstName'].hasError('pattern')
+                      ">
+                      First Name is only allow alpha characters.
                     </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <label>Phone Number</label>
-                      <input
-                        class="form-control"
-                        placeholder="Phone Number"
-                        formControlName="phoneNumber" />
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['phoneNumber'].dirty &&
-                          f['phoneNumber'].hasError('invalidPhoneNumber')
-                        ">
-                        Phone Number should be 10 digits long.
-                      </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['firstName'].dirty &&
+                        f['firstName'].hasError('maxlength')
+                      ">
+                      Maximum length of 40 characters exceeded.
                     </div>
-                    <div class="col-xs-12 col-sm-6">
-                      <label>Business Email*</label>
-                      <input
-                        class="form-control"
-                        placeholder="Business Email*"
-                        formControlName="businessEmail" />
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['businessEmail'].dirty &&
-                          f['businessEmail'].hasError('required')
-                        ">
-                        Business Email is required
-                      </div>
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['businessEmail'].dirty &&
-                          f['businessEmail'].hasError('pattern')
-                        ">
-                        Business Email is invalid
-                      </div>
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['businessEmail'].dirty &&
-                          f['businessEmail'].hasError('isVerify')
-                        ">
-                        Business Email address is not verified.
-                      </div>
-                    </div>
-                    <div class="col-xs-12">
-                      <label>Company Name</label>
-                      <input
-                        class="form-control"
-                        placeholder="Company Name"
-                        formControlName="companyName" />
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['companyName'].dirty &&
-                          f['firstName'].hasError('maxlength')
-                        ">
-                        Maximum length of 40 characters exceeded.
-                      </div>
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['companyName'].dirty &&
-                          f['companyName'].hasError('minlength')
-                        ">
-                        Minimum 3 characters is required.
-                      </div>
-                    </div>
-                    <div class="col-xs-12">
-                      <label
-                        >Is there anything in particular you want to discuss?
-                        Please tell us how we can ensure the best use of your
-                        time.</label
-                      >
-                      <textarea
-                        rows="7"
-                        class="form-control"
-                        placeholder="Country / Region"
-                        formControlName="message"></textarea>
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['message'].dirty && f['message'].hasError('maxlength')
-                        ">
-                        Maximum length of 200 characters exceeded.
-                      </div>
-                      <div
-                        class="error-msg mt-1"
-                        *ngIf="
-                          f['message'].dirty && f['message'].hasError('minlength')
-                        ">
-                        Minimum 3 characters is required.
-                      </div>
-                    </div>
-                    <div class="col-xs-12 smt2">
-                      <input
-                        type="checkbox"
-                        class="smb2 smr1"
-                        formControlName="subscription" />
-                      I would like to subscribe to the monthly newsletter.
-                      <p class="sfont12 haveLink">
-                        By submitting this form, you agree to our <a href=""
-                          >Terms and Conditions</a
-                        > and processing your personal data for this purpose. By
-                        subscribing to our newsletter, you consent to receive
-                        marketing communication from us. For more details, see
-                        our <a href="">Privacy Notice.</a>
-                      </p>
-                    </div>
-                    <div class="col-xs-12">
-                      <button
-                        type="button"
-                        class="primaryBtn w-100"
-                        [class]="!form.valid ? 'disabled' : ''"
-                        [disabled]="!form.valid"
-                        (click)="createADemo()">
-                        Request a consultation
-                        <div *ngIf="isLoading" class="spinner ml-1">
-                          <mat-spinner [diameter]="20"></mat-spinner>
-                        </div>
-                      </button>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['firstName'].dirty &&
+                        f['firstName'].hasError('minlength')
+                      ">
+                      Minimum 3 characters is required.
                     </div>
                   </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <label>Last name*</label>
+                    <input
+                      class="form-control"
+                      placeholder="Last name*"
+                      formControlName="lastName" />
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['lastName'].dirty &&
+                        f['lastName'].hasError('required')
+                      ">
+                      Last name is required.
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['lastName'].dirty && f['lastName'].hasError('pattern')
+                      ">
+                      Last Name is only allow alpha characters.
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['lastName'].dirty &&
+                        f['lastName'].hasError('maxlength')
+                      ">
+                      Maximum length of 40 characters exceeded.
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['lastName'].dirty &&
+                        f['lastName'].hasError('minlength')
+                      ">
+                      Minimum 3 characters is required.
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <label>Phone Number</label>
+                    <input
+                      class="form-control"
+                      placeholder="Phone Number"
+                      formControlName="phoneNumber" />
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['phoneNumber'].dirty &&
+                        f['phoneNumber'].hasError('invalidPhoneNumber')
+                      ">
+                      Phone Number should be 10 digits long.
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <label>Business Email*</label>
+                    <input
+                      class="form-control"
+                      placeholder="Business Email*"
+                      formControlName="businessEmail" />
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['businessEmail'].dirty &&
+                        f['businessEmail'].hasError('required')
+                      ">
+                      Business Email is required
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['businessEmail'].dirty &&
+                        f['businessEmail'].hasError('pattern')
+                      ">
+                      Business Email is invalid
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['businessEmail'].dirty &&
+                        f['businessEmail'].hasError('isVerify')
+                      ">
+                      Business Email address is not verified.
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <label>Company Name</label>
+                    <input
+                      class="form-control"
+                      placeholder="Company Name"
+                      formControlName="companyName" />
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['companyName'].dirty &&
+                        f['firstName'].hasError('maxlength')
+                      ">
+                      Maximum length of 40 characters exceeded.
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['companyName'].dirty &&
+                        f['companyName'].hasError('minlength')
+                      ">
+                      Minimum 3 characters is required.
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <label
+                      >Is there anything in particular you want to discuss?
+                      Please tell us how we can ensure the best use of your
+                      time.</label
+                    >
+                    <textarea
+                      rows="7"
+                      class="form-control"
+                      placeholder="Country / Region"
+                      formControlName="message"></textarea>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['message'].dirty && f['message'].hasError('maxlength')
+                      ">
+                      Maximum length of 200 characters exceeded.
+                    </div>
+                    <div
+                      class="error-msg mt-1"
+                      *ngIf="
+                        f['message'].dirty && f['message'].hasError('minlength')
+                      ">
+                      Minimum 3 characters is required.
+                    </div>
+                  </div>
+                  <div class="col-xs-12 smt2">
+                    <input
+                      type="checkbox"
+                      class="smb2 smr1"
+                      formControlName="subscription" />
+                    I would like to subscribe to the monthly newsletter.
+                    <p class="sfont12 haveLink">
+                      By submitting this form, you agree to our <a href=""
+                        >Terms and Conditions</a
+                      > and processing your personal data for this purpose. By
+                      subscribing to our newsletter, you consent to receive
+                      marketing communication from us. For more details, see
+                      our <a href="">Privacy Notice.</a>
+                    </p>
+                  </div>
+                  <div class="col-xs-12">
+                    <button
+                      type="button"
+                      class="primaryBtn w-100"
+                      [class]="!form.valid ? 'disabled' : ''"
+                      [disabled]="!form.valid"
+                      (click)="createADemo()">
+                      Request a consultation
+                      <div *ngIf="isLoading" class="spinner ml-1">
+                        <mat-spinner [diameter]="20"></mat-spinner>
+                      </div>
+                    </button>
+                  </div>
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
+        </div>
         <div class="col-xs-12 smt3 smb6 haveClients">
           <div class="row clients align-items-center justify-content-between">
             <div class="col-auto">
