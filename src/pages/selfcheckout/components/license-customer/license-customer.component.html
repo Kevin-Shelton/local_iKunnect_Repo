@@ -37,42 +37,46 @@
           </thead>
           <tbody>
             @for (product of planCartItems; track product.type) {
-            <tr>
-              <td>
-                <div class="ellipsis-singleline">
-                  {{ product.type }}
-                </div>
-              </td>
-              <td>
-                {{ product.amount.disValue }}
-              </td>
-              <td>
-                <div class="row g-1">
-                  <div class="col-auto" (click)="decrementBundleQuantity(product)">
-                    <i class="bi bi-dash-lg"></i>
+              <tr>
+                <td>
+                  <div class="ellipsis-singleline">
+                    {{ product.type }}
                   </div>
-                  <div class="col-auto">
-                    <input
-                      type="number"
-                      [value]="product.quantity"
-                      class="max-width-50" />
+                </td>
+                <td>
+                  {{ product.amount.disValue }}
+                </td>
+                <td>
+                  <div class="row g-1">
+                    <div
+                      class="col-auto"
+                      (click)="decrementBundleQuantity(product)">
+                      <i class="bi bi-dash-lg"></i>
+                    </div>
+                    <div class="col-auto">
+                      <input
+                        type="number"
+                        [value]="product.quantity"
+                        class="max-width-50" />
+                    </div>
+                    <div
+                      class="col-auto"
+                      (click)="incrementBundleQuantity(product)">
+                      <i class="bi bi-plus-lg"></i>
+                    </div>
                   </div>
-                  <div class="col-auto" (click)="incrementBundleQuantity(product)">
-                    <i class="bi bi-plus-lg"></i>
-                  </div>
-                </div>
-              </td>
-              <td>
-                {{ product.totalAmount.disValue }}
-              </td>
-            </tr>
-          }
+                </td>
+                <td>
+                  {{ product.totalAmount.disValue }}
+                </td>
+              </tr>
+            }
           </tbody>
         </table>
       </div>
     </div>
   </div>
-  <div class="col-12 ">
+  <div class="col-12">
     <h5>Customer Information</h5>
     <div class="haveScroll">
       <table class="sf600 plainTable">

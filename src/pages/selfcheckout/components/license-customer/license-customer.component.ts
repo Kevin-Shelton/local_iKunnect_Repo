@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { PricesByDuration } from '../../../../config/license-bundle-pricing';
-import { IBundleDetails, PlanDuration, PlanType, ProductDetails, StripeCartProductDisplay } from '../../../../models/website-models';
+import {
+  IBundleDetails,
+  PlanDuration,
+  PlanType,
+  ProductDetails,
+  StripeCartProductDisplay,
+} from '../../../../models/website-models';
 import { PaymentHelperService } from '../../services/helper.service';
 
 @Component({
@@ -13,20 +18,22 @@ import { PaymentHelperService } from '../../services/helper.service';
 export class LicenseCustomerComponent implements OnInit {
   cartItemDetails!: StripeCartProductDisplay;
   bundlePlan!: IBundleDetails;
-  planCartItems!: ProductDetails[]
- 
+  planCartItems!: ProductDetails[];
+
   constructor(private readonly paymentHelperService: PaymentHelperService) {}
   ngOnInit(): void {
     this.paymentHelperService.currentBundlePlanDetails.subscribe({
       next: res => {
         this.bundlePlan = res;
-        
       },
     });
     this.paymentHelperService.currentCartItemsWithProducts.subscribe({
       next: res => {
         this.cartItemDetails = res;
-        this.planCartItems = this.cartItemDetails[this.bundlePlan.duration][this.bundlePlan.bundleType];
+        this.planCartItems =
+          this.cartItemDetails[this.bundlePlan.duration][
+            this.bundlePlan.bundleType
+          ];
       },
     });
   }
@@ -34,22 +41,34 @@ export class LicenseCustomerComponent implements OnInit {
   planDurationChange() {
     if (this.bundlePlan.duration === PlanDuration.MONTHLY) {
       this.bundlePlan.duration = PlanDuration.ANNUALLY;
-      this.planCartItems = this.cartItemDetails[this.bundlePlan.duration][this.bundlePlan.bundleType];
+      this.planCartItems =
+        this.cartItemDetails[this.bundlePlan.duration][
+          this.bundlePlan.bundleType
+        ];
     } else {
       this.bundlePlan.duration = PlanDuration.MONTHLY;
-      this.planCartItems = this.cartItemDetails[this.bundlePlan.duration][this.bundlePlan.bundleType];
+      this.planCartItems =
+        this.cartItemDetails[this.bundlePlan.duration][
+          this.bundlePlan.bundleType
+        ];
     }
   }
 
   decrementBundleQuantity(product: ProductDetails) {
-    if ( [PlanType.START_UP, PlanType.GROWTH, PlanType.SCALE].includes(product.type) ? product.quantity > 1 : product.quantity > 0) {
+    if (
+      [PlanType.START_UP, PlanType.GROWTH, PlanType.SCALE].includes(
+        product.type
+      )
+        ? product.quantity > 1
+        : product.quantity > 0
+    ) {
       product.quantity = product.quantity - 1;
       const total = {
         value: product.quantity * product.amount.value,
         disValue: `$${(product.quantity * product.amount.value).toFixed(2)}`,
       };
       product.totalAmount = total;
-     // this.paymentHelperService.changeBundleDetails(this.bundleDetails);
+      // this.paymentHelperService.changeBundleDetails(this.bundleDetails);
     }
   }
   incrementBundleQuantity(product: ProductDetails) {
@@ -60,6 +79,6 @@ export class LicenseCustomerComponent implements OnInit {
     };
     product.totalAmount = total;
 
-   // this.paymentHelperService.changeBundleDetails(this.bundleDetails);
+    // this.paymentHelperService.changeBundleDetails(this.bundleDetails);
   }
 }

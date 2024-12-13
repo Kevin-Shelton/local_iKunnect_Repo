@@ -59,7 +59,7 @@ export const LicensePlanPricing = {
         growth: '+$18/per',
         scale: '50 EP Included',
       },
-    ]
+    ],
   },
   features: {
     month: [
@@ -290,7 +290,7 @@ export const LicensePlanPricing = {
         scale: 'tick',
       },
     ],
-  }
+  },
 };
 
 export const PricesByDuration: {

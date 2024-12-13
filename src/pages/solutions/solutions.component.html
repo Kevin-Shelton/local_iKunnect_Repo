@@ -22,7 +22,8 @@
             type="button"
             class="primaryBtn text-uppercase"
             data-aos="fade-down"
-            data-aos-duration="600">
+            data-aos-duration="600"
+            (click)="bookConsult()">
             GET A PERSONALIZED DEMO
           </button>
         </div>
@@ -83,9 +84,9 @@
           </div>
 
           <div class="logo-slider">
-              <div class="item" *ngFor="let logo of logos">
-                <img alt="" [src]="logo"  />
-              </div>
+            <div class="item" *ngFor="let logo of logos">
+              <img alt="" [src]="logo" />
+            </div>
           </div>
         </div>
       </div>
@@ -125,7 +126,10 @@
                   </a>
                 </li>
               </ul>
-              <button (click)="isChatEnabled = true" type="button" class="primaryBtn smt3 lets-chat">
+              <button
+                (click)="isChatEnabled = true"
+                type="button"
+                class="primaryBtn smt3 lets-chat">
                 LET'S CHAT
               </button>
             </div>

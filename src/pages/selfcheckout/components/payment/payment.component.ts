@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Stripe } from '@stripe/stripe-js';
 import { API_URL } from '../../../../config/env-config';
-import {  ProductDetails, StripeCartProductDisplay } from '../../../../models/website-models';
+import { StripeCartProductDisplay } from '../../../../models/website-models';
 import { PaymentHelperService } from '../../services/helper.service';
 import { PaymentService } from '../../services/payment.service';
 
@@ -34,19 +34,17 @@ export class PaymentComponent implements OnInit {
       },
     });
     this.stripe = await this.paymentService.getStripe();
-    
-   
-    this.paymentService.getStripeSession(
-      'price_1QSYHFLmtmaPxNqr79z7rthB',
-     1// this.bundleDetails.quantity
-    ).subscribe({
-      next: async (res) => {
 
-        await this.initStripe(res.clientSecret);
-      }
-    })
-   
-
+    this.paymentService
+      .getStripeSession(
+        'price_1QSYHFLmtmaPxNqr79z7rthB',
+        1 // this.bundleDetails.quantity
+      )
+      .subscribe({
+        next: async res => {
+          await this.initStripe(res.clientSecret);
+        },
+      });
   }
 
   async initStripe(clientSecret: string) {
