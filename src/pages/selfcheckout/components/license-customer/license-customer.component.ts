@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  BasicPriceDetails,
+  DBColumnNames,
   IBundleDetails,
+  IProductInfo,
   PlanDuration,
   PlanType,
   ProductDetails,
@@ -12,6 +15,7 @@ import { REGEX_PATTERNS } from '../../../../config/env-config';
 import { phoneValidator } from '../../../../core/validations/phone-number.validators';
 import { noWhitespaceValidator } from '../../../../core/validations/no-space.validators';
 import { CommonModule } from '@angular/common';
+import { PaymentService } from '../../services/payment.service';
 
 @Component({
   selector: 'app-license-customer',
@@ -26,8 +30,11 @@ export class LicenseCustomerComponent implements OnInit {
   planCartItems!: ProductDetails[];
   customerForm!: FormGroup;
   isCustomerPopUpOpen: boolean = false;
+  wholeBundleInfo: any;
+  wholeBundleFeatures: any;
+  wholeBundleLicenses: any;
 
-  constructor(private readonly paymentHelperService: PaymentHelperService,  private readonly formBuilder: FormBuilder) {}
+  constructor(private readonly paymentHelperService: PaymentHelperService,  private readonly formBuilder: FormBuilder, private readonly paymentService:PaymentService) {}
   ngOnInit(): void {
     this.paymentHelperService.currentBundlePlanDetails.subscribe({
       next: res => {
@@ -36,13 +43,22 @@ export class LicenseCustomerComponent implements OnInit {
     });
     this.paymentHelperService.currentCartItemsWithProducts.subscribe({
       next: res => {
-        if(this.cartItemDetails) {
-
+        if(Object.keys(res).length) {        
           this.cartItemDetails = res;
           this.planCartItems =
             this.cartItemDetails[this.bundlePlan.duration][
               this.bundlePlan.bundleType
             ];
+        }
+      },
+    });
+    this.paymentHelperService.currentWholeBundleDetails.subscribe({
+      next: res => {
+        if(Object.keys(res).length) {        
+         this.wholeBundleInfo = res;
+         this.wholeBundleFeatures = this.wholeBundleInfo.features[this.bundlePlan.duration];
+         this.wholeBundleLicenses = this.wholeBundleInfo.licenses[this.bundlePlan.duration];
+
         }
       },
     });
@@ -68,7 +84,7 @@ export class LicenseCustomerComponent implements OnInit {
             Validators.required,
             Validators.pattern(REGEX_PATTERNS.EMAIL),
           ]),
-          region: new FormControl('', [
+          country: new FormControl('', [
             Validators.minLength(3),
             Validators.maxLength(40),
             noWhitespaceValidator,
@@ -103,12 +119,17 @@ export class LicenseCustomerComponent implements OnInit {
         this.cartItemDetails[this.bundlePlan.duration][
           this.bundlePlan.bundleType
         ];
+        this.wholeBundleFeatures = this.wholeBundleInfo.features[this.bundlePlan.duration][this.bundlePlan.bundleType];
+         this.wholeBundleLicenses = this.wholeBundleInfo.licenses[this.bundlePlan.duration][this.bundlePlan.bundleType];
     } else {
       this.bundlePlan.duration = PlanDuration.MONTHLY;
       this.planCartItems =
         this.cartItemDetails[this.bundlePlan.duration][
           this.bundlePlan.bundleType
+
         ];
+        this.wholeBundleFeatures = this.wholeBundleInfo.features[this.bundlePlan.duration][this.bundlePlan.bundleType];
+        this.wholeBundleLicenses = this.wholeBundleInfo.licenses[this.bundlePlan.duration][this.bundlePlan.bundleType];
     }
   }
 
@@ -156,12 +177,61 @@ export class LicenseCustomerComponent implements OnInit {
   }
 
   saveCustomerInfo() {
-    const customerInfo = this.customerForm.value;
+    let payload: {[key:string]: string} = {};
+   
     this.toggleCustomerPopUp();
-    console.log('customer info is :::::: ',customerInfo);
+    
+    console.log('planCartItems ::::: ',this.planCartItems)
+   this.getDBCOlumnMapValuesLicense(payload);
+   this.getDBCOlumnMapValuesFeatures(payload);
+  payload = {...payload, ...this.formateCustomerInfo()};
+   console.log('final payload is  ::::: ',payload);
+   this.paymentService.saveCustomerAndPlanDetails(payload as unknown as IProductInfo).subscribe({
+    next: res => {
+      console.log('save res ::::::: ',res);
+    },
+    error: error => {
+      console.log('erro is :::::::: ',error)
+    }
+   })
   }
 
   toggleCustomerPopUp() {
     this.isCustomerPopUpOpen = !this.isCustomerPopUpOpen;
+  }
+  getDBCOlumnMapValuesLicense(payload: {[key:string]: string}) {
+   this.wholeBundleLicenses.map((row:BasicPriceDetails) => {
+    payload[row.dbColumnName]= this.getPlanType(row)
+   });
+    
+  }
+  getDBCOlumnMapValuesFeatures(payload: {[key:string]: string}) {
+    this.wholeBundleFeatures.map((row:BasicPriceDetails) => {
+     payload[row.dbColumnName]= this.getPlanType(row)
+    });
+     
+   }
+
+   formateCustomerInfo() {
+    const customerInfo = this.customerForm.value;
+   
+    customerInfo[DBColumnNames.EMAIL_ID] = customerInfo.billingEmail;
+    customerInfo[DBColumnNames.SUBSCRIBE_RECEIVE_EMAILS] = customerInfo.isSubscribed;
+    return customerInfo;
+   
+   }
+
+  getPlanType(row:BasicPriceDetails ) {
+    let planTyepValue = '';
+    if(this.bundlePlan.bundleType === PlanType.TRIAL) {
+      planTyepValue = row.trial;
+    } else if(this.bundlePlan.bundleType === PlanType.START_UP) {
+      planTyepValue = row.startUp;
+    } else if(this.bundlePlan.bundleType === PlanType.GROWTH) {
+      planTyepValue = row.growth;
+    }else if(this.bundlePlan.bundleType === PlanType.SCALE) {
+      planTyepValue = row.scale;
+    }
+    return planTyepValue;
   }
 }

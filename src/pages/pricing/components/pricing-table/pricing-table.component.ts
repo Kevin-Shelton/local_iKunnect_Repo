@@ -47,7 +47,7 @@ export class PricingTableComponent implements OnInit {
     });
   }
   isText(type: string) {
-    return type !== 'cross' && type !== 'tick';
+    return type !== 'no' && type !== 'yes';
   }
   getDataType(val: string, type: string) {
     return val === type;
@@ -58,7 +58,9 @@ export class PricingTableComponent implements OnInit {
       duration: this.planPeriod,
     });
     this.paymentHelper.changeProductDetails(this.cartProductPricing);
+    this.paymentHelper.changeWholeBundleDetails(this.plans);
     this.router.navigate(['/self-checkout']);
+
     window.scrollTo(0, 0);
   }
 

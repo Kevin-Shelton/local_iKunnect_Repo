@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
 import { Observable } from 'rxjs';
 import { API_URL } from '../../../config/env-config';
-import { StripeProduct } from '../../../models/website-models';
+import { IProductInfo, StripeProduct } from '../../../models/website-models';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +36,11 @@ export class PaymentService {
   getStripeSessionStatus(sessionId: string): Observable<{ status: string }> {
     return this.httpClient.get<{ status: string }>(
       `${API_URL.SESSION_STATUS}?session_id=${sessionId}`
+    );
+  }
+  saveCustomerAndPlanDetails(payload: IProductInfo): Observable<string> {
+    return this.httpClient.post<string>(
+      `${API_URL.SAVE_CUSTOMER_PLAN}`, payload
     );
   }
 }

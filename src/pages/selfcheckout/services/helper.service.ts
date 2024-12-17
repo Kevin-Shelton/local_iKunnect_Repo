@@ -24,11 +24,18 @@ export class PaymentHelperService {
   });
   currentBundlePlanDetails = this.bundlePlanDetails.asObservable();
 
+  private readonly wholeBundleDetails = new BehaviorSubject<any>({});
+  currentWholeBundleDetails = this.wholeBundleDetails.asObservable();
+
   changeProductDetails(cartItems: StripeCartProductDisplay) {
     this.cartItemsWithDuration.next(cartItems);
   }
 
   changeBundlePlanDetails(bundleDetails: IBundleDetails) {
     this.bundlePlanDetails.next(bundleDetails);
+  }
+
+  changeWholeBundleDetails(wholeBundle: any) {
+    this.wholeBundleDetails.next(wholeBundle);
   }
 }

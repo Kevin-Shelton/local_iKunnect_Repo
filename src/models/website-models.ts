@@ -14,6 +14,15 @@ export enum PlanDuration {
   ANNUALLY = 'year',
 }
 
+export interface BasicPriceDetails {
+  name: string,
+  dbColumnName: DBColumnNames,
+  trial: string,
+  startUp: string,
+  growth: string,
+  scale: string,
+}
+
 export enum ProductNames {
   SCALE_BUNDLE = 'Scale Bundle',
   Growth_Bundle = 'Growth Bundle',
@@ -69,11 +78,92 @@ export interface StripePrice {
 export interface CustomerInfo {
   firstName:string;
   lastName: string;
-  billingEmail: string;
-  region: string;
+  email_Id: string;
+  country: string;
   street: string;
   city: string;
   state: string;
   zipCode: string;
-  isSubscribed: boolean;
+  subscribeReceiveEmails: number;
+}
+
+
+export interface IProductInfo {
+  productId: number;
+  productType: string;
+  agent_SeatsLicenses: string;
+  admin_Licenses: string;
+  supervisor_Licenses: string;
+  endpoint_Licenses: string;
+  product_FeatureId: number;
+  basic_CallHandling: string;
+  advanced_CallRouting: string;
+  ivr: string;
+  local_PresenceDialing: string;
+  predictive_Dialer: string;
+  advanced_Omnichannel: string;
+  ticketing_Integration: string;
+  voice_to_Case: string;
+  case_Mangement: string;
+  call_DispositionNotes: string;
+  business_HoursConfig: string;
+  voicemail_Management: string;
+  iKunnect_Intelligence: string;
+  number_Management: string;
+  advanced_AI_Automation: string;
+  client_Branding: string;
+  customerId: number;
+  fistName: string;
+  lastName: string;
+  email_Id: string;
+  country: string;
+  street: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  subscribeReceiveEmails: number;
+  customer_LicenseId: number;
+  price: number;
+  quantity: number;
+  total_Price: number;
+}
+
+export enum DBColumnNames  {
+  PRODUCT_ID= 'productId',
+  PRODUCT_TYPE= 'productType',
+  AGENT_SEATS_LICENSES= 'agent_SeatsLicenses',
+  ADMIN_LICENSES= 'admin_Licenses',
+  SUPERVISOR_LICENSES= 'supervisor_Licenses',
+  END_POINT_LICENSES= 'endpoint_Licenses',
+  PRODUCT_FEATURE_ID= 'product_FeatureId',
+  BASIC_CALL_HANDLING= 'basic_CallHandling',
+  ADVANCED_CALL_ROUTING= 'advanced_CallRouting',
+  IVR= 'ivr',
+  LOCAL_PRESENCE_DIALING= 'local_PresenceDialing',
+  PREDICTIVE_DIALER= 'predictive_Dialer',
+  ADVANCED_OMNI_CHANNEL= 'advanced_Omnichannel',
+  TICKETING_SYSTEM= 'ticketing_Integration',
+  VOICE_TO_CASE= 'voice_to_Case',
+  CASE_MANAGEMETN= 'case_Mangement',
+  CALL_DISPOSITION_NOTES= 'call_DispositionNotes',
+  BUSINESS_HOURS_CONFIG= 'business_HoursConfig',
+  VOICEMAIL_MANAGEMENT= 'voicemail_Management',
+  IKUNNECT_INTELLIGENCE= 'iKunnect_Intelligence',
+  NUMBER_MANAGEMENT= 'number_Management',
+  ADVANCED_AI_AUTOMATION= 'advanced_AI_Automation',
+  CLIENT_BRANDING= 'client_Branding',
+  CUSTOMER_ID= 'customerId',
+  FIRST_NAME= 'firstName',
+  LAST_NAME= 'lastName',
+  EMAIL_ID= 'email_Id',
+  COUNTRY= 'country',
+  STREET= 'street',
+  CITY= 'city',
+  STATE= 'state',
+  ZIP_CODE= 'zipCode',
+  SUBSCRIBE_RECEIVE_EMAILS= 'subscribeReceiveEmails',
+  CUSTOMER_LICENSEID= 'customer_LicenseId',
+  PRICE= 'price',
+  QUANTITY= 'quantity',
+  TOTAL_PRICE= 'total_Price'
 }
