@@ -65,3 +65,15 @@ export interface StripePrice {
   id: string;
   interval: PlanDuration;
 }
+
+export interface CustomerInfo {
+  firstName:string;
+  lastName: string;
+  billingEmail: string;
+  region: string;
+  street: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  isSubscribed: boolean;
+}

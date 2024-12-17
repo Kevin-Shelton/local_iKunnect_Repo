@@ -84,7 +84,7 @@
           <tr>
             <td>Contact</td>
             <td>
-              <div class="ellipsis-singleline">John Doe</div>
+              <div class="ellipsis-singleline">{{getCustomerFullName()}} </div>
             </td>
             <td
               class="cursor-p"
@@ -97,7 +97,7 @@
             <td>Bill To</td>
             <td>
               <div class="ellipsis-singleline">
-                Test 1231 Blvd, San Frnacisco CA 948180, United State
+               {{getBillinAddress()}}
               </div>
             </td>
             <td
@@ -129,41 +129,127 @@
               data-bs-dismiss="modal"
               aria-label="Close"></button>
           </div>
+          <form [formGroup]="customerForm">
           <div class="modal-body">
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                 <label>First name*</label>
-                <input class="form-control" placeholder="First name*" />
+                <input class="form-control" placeholder="First name*"  formControlName="firstName"/>
+                <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['firstName'].hasError('required')
+                ">
+                First name is required.
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['firstName'].hasError('pattern')
+                ">
+                First Name is only allow alpha characters.
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                 
+                  f['firstName'].hasError('maxlength')
+                ">
+                Maximum length of 40 characters exceeded.
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                
+                  f['firstName'].hasError('minlength')
+                ">
+                Minimum 3 characters is required.
+              </div>
               </div>
               <div class="col-xs-12 col-sm-6">
                 <label>Last name*</label>
-                <input class="form-control" placeholder="Last name*" />
+                <input class="form-control" placeholder="Last name*" formControlName="lastName"/>
+                <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['lastName'].dirty &&
+                  f['lastName'].hasError('required')
+                ">
+                Last name is required.
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['lastName'].dirty && f['lastName'].hasError('pattern')
+                ">
+                Last Name is only allow alpha characters.
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['lastName'].dirty &&
+                  f['lastName'].hasError('maxlength')
+                ">
+                Maximum length of 40 characters exceeded.
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['lastName'].dirty &&
+                  f['lastName'].hasError('minlength')
+                ">
+                Minimum 3 characters is required.
+              </div>
               </div>
               <div class="col-xs-12">
                 <label
                   >Email*<br />
                   Please enter a valid company email address</label
                 >
-                <input class="form-control" placeholder="Email*" />
+                <input class="form-control" placeholder="Email*" formControlName="billingEmail"/>
+                <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['billingEmail'].dirty &&
+                  f['billingEmail'].hasError('required')
+                ">
+                Business Email is required
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['billingEmail'].dirty &&
+                  f['billingEmail'].hasError('pattern')
+                ">
+                Business Email is invalid
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['billingEmail'].dirty &&
+                  f['billingEmail'].hasError('isVerify')
+                ">
+                Business Email address is not verified.
+              </div>
               </div>
               <div class="col-xs-12">
                 <h6>Billing</h6>
               </div>
               <div class="col-xs-12">
                 <label>Country / Region*</label>
-                <input class="form-control" placeholder="Country / Region*" />
+                <input class="form-control" placeholder="Country / Region*" formControlName="region"/>
               </div>
               <div class="col-xs-12">
                 <label>Street address*</label>
-                <input class="form-control" placeholder="Street address*" />
+                <input class="form-control" placeholder="Street address*" formControlName="street"/>
               </div>
               <div class="col-xs-12 col-sm-4">
                 <label>City*</label>
-                <input class="form-control" placeholder="City*" />
+                <input class="form-control" placeholder="City*" formControlName="city"/>
               </div>
               <div class="col-xs-12 col-sm-4">
                 <label>State*</label>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" formControlName="state">
                   <option selected>Open this select menu</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
@@ -172,7 +258,7 @@
               </div>
               <div class="col-xs-12 col-sm-4">
                 <label>ZIP Code*</label>
-                <input class="form-control" placeholder="ZIP Code*" />
+                <input class="form-control" placeholder="ZIP Code*" formControlName="zipCode" />
               </div>
               <div class="col-xs-12">
                 <div class="form-check">
@@ -180,7 +266,8 @@
                     class="form-check-input"
                     type="checkbox"
                     value=""
-                    id="flexCheckDefault" />
+                    id="flexCheckDefault" 
+                    formControlName="isSubscribed"/>
                   <label class="form-check-label" for="flexCheckDefault">
                     Sign me up to receive email updates and news
                   </label>
@@ -188,6 +275,7 @@
               </div>
             </div>
           </div>
+          </form>
           <div class="modal-footer">
             <button
               type="button"
@@ -195,7 +283,7 @@
               data-bs-dismiss="modal">
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button data-bs-dismiss="modal" type="button" (click)="saveCustomerInfo()" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
