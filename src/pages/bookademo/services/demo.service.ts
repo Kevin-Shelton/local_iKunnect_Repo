@@ -11,6 +11,8 @@ export class DemoService {
   constructor(private readonly http: HttpClient) {}
 
   bookADemo(payload: CreateDemo): Observable<string> {
-    return this.http.post<string>(`${API_URL.BOOK_DEMO}`, payload);
+    return this.http.post(`${API_URL.BOOK_DEMO}`, payload, {
+      responseType: 'text',
+    });
   }
 }
