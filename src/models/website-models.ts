@@ -39,6 +39,7 @@ export enum ProductNames {
 }
 
 export interface ProductDetails {
+  priceId: string,
   type: PlanType;
   quantity: number;
   duration: PlanDuration;
@@ -75,57 +76,16 @@ export interface StripePrice {
   interval: PlanDuration;
 }
 
-export interface CustomerInfo {
+export interface CustomerInfoReq {
   firstName:string;
   lastName: string;
-  email_Id: string;
+  emailId: string;
   country: string;
   street: string;
   city: string;
   state: string;
   zipCode: string;
   subscribeReceiveEmails: number;
-}
-
-
-export interface IProductInfo {
-  productId: number;
-  productType: string;
-  agent_SeatsLicenses: string;
-  admin_Licenses: string;
-  supervisor_Licenses: string;
-  endpoint_Licenses: string;
-  product_FeatureId: number;
-  basic_CallHandling: string;
-  advanced_CallRouting: string;
-  ivr: string;
-  local_PresenceDialing: string;
-  predictive_Dialer: string;
-  advanced_Omnichannel: string;
-  ticketing_Integration: string;
-  voice_to_Case: string;
-  case_Mangement: string;
-  call_DispositionNotes: string;
-  business_HoursConfig: string;
-  voicemail_Management: string;
-  iKunnect_Intelligence: string;
-  number_Management: string;
-  advanced_AI_Automation: string;
-  client_Branding: string;
-  customerId: number;
-  fistName: string;
-  lastName: string;
-  email_Id: string;
-  country: string;
-  street: string;
-  city: string;
-  state: string;
-  zipCode: string;
-  subscribeReceiveEmails: number;
-  customer_LicenseId: number;
-  price: number;
-  quantity: number;
-  total_Price: number;
 }
 
 export enum DBColumnNames  {
@@ -166,4 +126,49 @@ export enum DBColumnNames  {
   PRICE= 'price',
   QUANTITY= 'quantity',
   TOTAL_PRICE= 'total_Price'
+}
+
+export interface ProductLicnesesDetailsReq {
+  productType: "string",
+  agent_SeatsLicenses: "string",
+  admin_Licenses: "string",
+  supervisor_Licenses: "string",
+  endpoint_Licenses: "string"
+}
+
+export interface ProductFeatureDetailsReq {
+  basic_CallHandling: "string",
+  advanced_CallRouting: "string",
+  ivr: "string",
+  local_PresenceDialing: "string",
+  predictive_Dialer: "string",
+  advanced_Omnichannel: "string",
+  ticketing_Integration: "string",
+  voice_to_Case: "string",
+  case_Mangement: "string",
+  call_DispositionNotes: "string",
+  business_HoursConfig: "string",
+  voicemail_Management: "string",
+  iKunnect_Intelligence: "string",
+  number_Management: "string",
+  advanced_AI_Automation: "string",
+  client_Branding: "string"
+}
+
+export interface CustomerLicenseInfoReq {
+  price: number,
+  quantity: number,
+  total_Price: number
+}
+
+export interface IWholeBundleReq {
+  productDetails: ProductLicnesesDetailsReq;
+  productFeatureDetails: ProductFeatureDetailsReq;
+  customerInfo:CustomerInfoReq,  
+  customerLicenseInfo: CustomerLicenseInfoReq
+}
+
+export interface CartItemsReq {
+  priceId: string,
+  quantity: number
 }

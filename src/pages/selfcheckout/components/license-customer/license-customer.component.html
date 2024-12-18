@@ -206,28 +206,28 @@
                   >Email*<br />
                   Please enter a valid company email address</label
                 >
-                <input class="form-control" placeholder="Email*" formControlName="billingEmail"/>
+                <input class="form-control" placeholder="Email*" formControlName="emailId"/>
                 <div
                 class="error-msg mt-1"
                 *ngIf="
-                  f['billingEmail'].dirty &&
-                  f['billingEmail'].hasError('required')
+                  f['emailId'].dirty &&
+                  f['emailId'].hasError('required')
                 ">
                 Business Email is required
               </div>
               <div
                 class="error-msg mt-1"
                 *ngIf="
-                  f['billingEmail'].dirty &&
-                  f['billingEmail'].hasError('pattern')
+                  f['emailId'].dirty &&
+                  f['emailId'].hasError('pattern')
                 ">
                 Business Email is invalid
               </div>
               <div
                 class="error-msg mt-1"
                 *ngIf="
-                  f['billingEmail'].dirty &&
-                  f['billingEmail'].hasError('isVerify')
+                  f['emailId'].dirty &&
+                  f['emailId'].hasError('isVerify')
                 ">
                 Business Email address is not verified.
               </div>
@@ -267,7 +267,7 @@
                     type="checkbox"
                     value=""
                     id="flexCheckDefault" 
-                    formControlName="isSubscribed"/>
+                    formControlName="subscribeReceiveEmails"/>
                   <label class="form-check-label" for="flexCheckDefault">
                     Sign me up to receive email updates and news
                   </label>

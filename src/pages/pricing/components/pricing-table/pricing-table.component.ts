@@ -57,7 +57,7 @@ export class PricingTableComponent implements OnInit {
       bundleType: planType as PlanType,
       duration: this.planPeriod,
     });
-    this.paymentHelper.changeProductDetails(this.cartProductPricing);
+    this.paymentHelper.changeCartItemsWithDurationDetails(this.cartProductPricing);
     this.paymentHelper.changeWholeBundleDetails(this.plans);
     this.router.navigate(['/self-checkout']);
 
@@ -123,6 +123,7 @@ export class PricingTableComponent implements OnInit {
       amount: { value: price.amount, disValue: `$${price.amount.toFixed(2)}` },
       quantity: 1,
       totalAmount: { value: price.amount, disValue: price.amount.toFixed(2) },
+      priceId: price.id
     });
   }
 
@@ -147,6 +148,7 @@ export class PricingTableComponent implements OnInit {
                 value: price.amount,
                 disValue: price.amount.toFixed(2),
               },
+              priceId: price.id
             });
           }
         });
@@ -172,6 +174,7 @@ export class PricingTableComponent implements OnInit {
                 value: price.amount,
                 disValue: price.amount.toFixed(2),
               },
+              priceId: price.id
             });
           }
         });
@@ -197,6 +200,7 @@ export class PricingTableComponent implements OnInit {
                 value: price.amount,
                 disValue: price.amount.toFixed(2),
               },
+              priceId: price.id
             });
           }
         });
@@ -222,6 +226,7 @@ export class PricingTableComponent implements OnInit {
                 value: price.amount,
                 disValue: price.amount.toFixed(2),
               },
+              priceId: price.id
             });
           }
         });
@@ -249,6 +254,7 @@ export class PricingTableComponent implements OnInit {
                 value: price.amount,
                 disValue: price.amount.toFixed(2),
               },
+              priceId: price.id
             });
           }
         });
@@ -274,6 +280,7 @@ export class PricingTableComponent implements OnInit {
                 value: price.amount,
                 disValue: price.amount.toFixed(2),
               },
+              priceId: price.id
             });
           }
         });
@@ -299,6 +306,7 @@ export class PricingTableComponent implements OnInit {
                 value: price.amount,
                 disValue: price.amount.toFixed(2),
               },
+              priceId: price.id
             });
           }
         });

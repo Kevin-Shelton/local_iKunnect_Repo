@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   BasicPriceDetails,
+  CustomerLicenseInfoReq,
   DBColumnNames,
   IBundleDetails,
-  IProductInfo,
+  IWholeBundleReq,
   PlanDuration,
   PlanType,
   ProductDetails,
+  ProductFeatureDetailsReq,
+  ProductLicnesesDetailsReq,
   StripeCartProductDisplay,
 } from '../../../../models/website-models';
 import { PaymentHelperService } from '../../services/helper.service';
@@ -16,6 +19,7 @@ import { phoneValidator } from '../../../../core/validations/phone-number.valida
 import { noWhitespaceValidator } from '../../../../core/validations/no-space.validators';
 import { CommonModule } from '@angular/common';
 import { PaymentService } from '../../services/payment.service';
+
 
 @Component({
   selector: 'app-license-customer',
@@ -33,6 +37,8 @@ export class LicenseCustomerComponent implements OnInit {
   wholeBundleInfo: any;
   wholeBundleFeatures: any;
   wholeBundleLicenses: any;
+
+  @Output() triggerBundleChange: EventEmitter<IWholeBundleReq> = new EventEmitter();
 
   constructor(private readonly paymentHelperService: PaymentHelperService,  private readonly formBuilder: FormBuilder, private readonly paymentService:PaymentService) {}
   ngOnInit(): void {
@@ -80,7 +86,7 @@ export class LicenseCustomerComponent implements OnInit {
             Validators.pattern(REGEX_PATTERNS.ALLOW_STRING_PATTERN),
           ]),
           
-          billingEmail: new FormControl('', [
+          emailId: new FormControl('', [
             Validators.required,
             Validators.pattern(REGEX_PATTERNS.EMAIL),
           ]),
@@ -108,7 +114,7 @@ export class LicenseCustomerComponent implements OnInit {
             Validators.maxLength(200),
             noWhitespaceValidator,
           ]),
-          isSubscribed: new FormControl(false, []),
+          subscribeReceiveEmails: new FormControl(false, []),
         });
   }
 
@@ -121,7 +127,8 @@ export class LicenseCustomerComponent implements OnInit {
         ];
         this.wholeBundleFeatures = this.wholeBundleInfo.features[this.bundlePlan.duration][this.bundlePlan.bundleType];
          this.wholeBundleLicenses = this.wholeBundleInfo.licenses[this.bundlePlan.duration][this.bundlePlan.bundleType];
-    } else {
+        
+        } else {
       this.bundlePlan.duration = PlanDuration.MONTHLY;
       this.planCartItems =
         this.cartItemDetails[this.bundlePlan.duration][
@@ -131,6 +138,7 @@ export class LicenseCustomerComponent implements OnInit {
         this.wholeBundleFeatures = this.wholeBundleInfo.features[this.bundlePlan.duration][this.bundlePlan.bundleType];
         this.wholeBundleLicenses = this.wholeBundleInfo.licenses[this.bundlePlan.duration][this.bundlePlan.bundleType];
     }
+    this.paymentHelperService.changeBundlePlanDetails(this.bundlePlan);
   }
 
    get f(): { [key: string]: AbstractControl } {
@@ -151,7 +159,7 @@ export class LicenseCustomerComponent implements OnInit {
         disValue: `$${(product.quantity * product.amount.value).toFixed(2)}`,
       };
       product.totalAmount = total;
-      // this.paymentHelperService.changeBundleDetails(this.bundleDetails);
+      this.paymentHelperService.changeCartItemsWithDurationDetails(this.cartItemDetails);
     }
   }
   incrementBundleQuantity(product: ProductDetails) {
@@ -162,7 +170,7 @@ export class LicenseCustomerComponent implements OnInit {
     };
     product.totalAmount = total;
 
-    // this.paymentHelperService.changeBundleDetails(this.bundleDetails);
+    this.paymentHelperService.changeCartItemsWithDurationDetails(this.cartItemDetails);
   }
 
   getCustomerFullName() {
@@ -177,48 +185,55 @@ export class LicenseCustomerComponent implements OnInit {
   }
 
   saveCustomerInfo() {
-    let payload: {[key:string]: string} = {};
    
     this.toggleCustomerPopUp();
-    
-    console.log('planCartItems ::::: ',this.planCartItems)
-   this.getDBCOlumnMapValuesLicense(payload);
-   this.getDBCOlumnMapValuesFeatures(payload);
-  payload = {...payload, ...this.formateCustomerInfo()};
-   console.log('final payload is  ::::: ',payload);
-   this.paymentService.saveCustomerAndPlanDetails(payload as unknown as IProductInfo).subscribe({
-    next: res => {
-      console.log('save res ::::::: ',res);
-    },
-    error: error => {
-      console.log('erro is :::::::: ',error)
-    }
-   })
+
+    let payload: IWholeBundleReq = {} as IWholeBundleReq;
+    payload.productDetails = this.getDBCOlumnMapValuesLicense();   
+    payload.productFeatureDetails = this.getDBCOlumnMapValuesFeatures();
+    payload.customerInfo = this.getCustomerInfo();
+    payload.customerLicenseInfo = this.getBundlePlanDetails();
+    this.triggerBundleChange.emit(payload);
+ 
   }
 
   toggleCustomerPopUp() {
     this.isCustomerPopUpOpen = !this.isCustomerPopUpOpen;
   }
-  getDBCOlumnMapValuesLicense(payload: {[key:string]: string}) {
-   this.wholeBundleLicenses.map((row:BasicPriceDetails) => {
-    payload[row.dbColumnName]= this.getPlanType(row)
+
+  getCustomerInfo() {
+   const data = this.customerForm.value;
+
+   return {...data, subscribeReceiveEmails: data.subscribeReceiveEmails === true ? 1: 0}
+  }
+  getDBCOlumnMapValuesLicense(): ProductLicnesesDetailsReq {
+    let licenseReq: {[key: string]: string} = {};
+   this.wholeBundleLicenses.forEach((row:BasicPriceDetails) => {
+    licenseReq[row.dbColumnName] = this.getPlanType(row)
    });
+   licenseReq['productType'] = this.bundlePlan.bundleType;
+   return licenseReq as unknown as ProductLicnesesDetailsReq;
     
   }
-  getDBCOlumnMapValuesFeatures(payload: {[key:string]: string}) {
-    this.wholeBundleFeatures.map((row:BasicPriceDetails) => {
-     payload[row.dbColumnName]= this.getPlanType(row)
+  getDBCOlumnMapValuesFeatures() {
+    let featureReq: {[key: string]: string} = {};
+    this.wholeBundleFeatures.forEach((row:BasicPriceDetails) => {
+      featureReq[row.dbColumnName]= this.getPlanType(row)
     });
-     
+
+     return featureReq as unknown as ProductFeatureDetailsReq;
    }
 
-   formateCustomerInfo() {
-    const customerInfo = this.customerForm.value;
-   
-    customerInfo[DBColumnNames.EMAIL_ID] = customerInfo.billingEmail;
-    customerInfo[DBColumnNames.SUBSCRIBE_RECEIVE_EMAILS] = customerInfo.isSubscribed;
-    return customerInfo;
-   
+   getBundlePlanDetails() {
+     let bundlePlan :  CustomerLicenseInfoReq = {price: 0, quantity: 0,total_Price: 0};
+     const bundlePlanType = this.planCartItems.find(item => item.type === this.bundlePlan.bundleType);
+     console.log('bundlePlanType selected  ::::: ',bundlePlanType);
+    if(bundlePlanType) {
+      bundlePlan.price = Number(bundlePlanType.amount);
+      bundlePlan.quantity = bundlePlanType.quantity;
+      bundlePlan.total_Price = bundlePlanType.totalAmount.value
+    }
+    return bundlePlan;
    }
 
   getPlanType(row:BasicPriceDetails ) {
