@@ -53,6 +53,7 @@ export class PricingTableComponent implements OnInit {
     return val === type;
   }
   buyPlan(planType: string) {
+    console.log('cartProductPricing :::::::::::: ',this.cartProductPricing, " plna type ",planType)
     this.paymentHelper.changeBundlePlanDetails({
       bundleType: planType as PlanType,
       duration: this.planPeriod,
@@ -118,7 +119,7 @@ export class PricingTableComponent implements OnInit {
       disValue: `$${price.amount}`,
     };
     this.cartProductPricing[price.interval][bundleTyep].push({
-      type: PlanType.SCALE,
+      type: bundleTyep as PlanType,
       duration: price.interval,
       amount: { value: price.amount, disValue: `$${price.amount.toFixed(2)}` },
       quantity: 1,

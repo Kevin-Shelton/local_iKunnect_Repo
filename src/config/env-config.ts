@@ -4,6 +4,7 @@ export const REGEX_PATTERNS = {
   ALLOW_STRING_PATTERN: "^[a-zA-Z -']+",
   PHONE_NUMBER_PATTERN: /^\d{10}$/,
   EMAIL: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+  ZIP_PATTERN: '^[0-9-]{5}(?:-[0-9]{4})?$',
 };
 
 export const API_URL = {

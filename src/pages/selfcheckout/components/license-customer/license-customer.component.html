@@ -137,14 +137,14 @@
                 <input class="form-control" placeholder="First name*"  formControlName="firstName"/>
                 <div
                 class="error-msg mt-1"
-                *ngIf="
+                *ngIf="f['firstName'].dirty &&
                   f['firstName'].hasError('required')
                 ">
                 First name is required.
               </div>
               <div
                 class="error-msg mt-1"
-                *ngIf="
+                *ngIf="f['firstName'].dirty &&
                   f['firstName'].hasError('pattern')
                 ">
                 First Name is only allow alpha characters.
@@ -152,7 +152,7 @@
               <div
                 class="error-msg mt-1"
                 *ngIf="
-                 
+                f['firstName'].dirty &&
                   f['firstName'].hasError('maxlength')
                 ">
                 Maximum length of 40 characters exceeded.
@@ -160,7 +160,7 @@
               <div
                 class="error-msg mt-1"
                 *ngIf="
-                
+                f['firstName'].dirty &&
                   f['firstName'].hasError('minlength')
                 ">
                 Minimum 3 characters is required.
@@ -238,27 +238,125 @@
               <div class="col-xs-12">
                 <label>Country / Region*</label>
                 <input class="form-control" placeholder="Country / Region*" formControlName="country"/>
+                <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['country'].dirty &&
+                  f['country'].hasError('required')
+                ">
+                Country is required.
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['country'].dirty &&
+                  f['country'].hasError('maxlength')
+                ">
+                Maximum length of 40 characters exceeded.
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['country'].dirty &&
+                  f['country'].hasError('minlength')
+                ">
+                Minimum 3 characters is required.
+              </div>
               </div>
               <div class="col-xs-12">
                 <label>Street address*</label>
                 <input class="form-control" placeholder="Street address*" formControlName="street"/>
+                <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['street'].dirty &&
+                  f['street'].hasError('required')
+                ">
+                Street is required.
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['street'].dirty &&
+                  f['street'].hasError('maxlength')
+                ">
+                Maximum length of 40 characters exceeded.
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['street'].dirty &&
+                  f['street'].hasError('minlength')
+                ">
+                Minimum 3 characters is required.
+              </div>
+             
               </div>
               <div class="col-xs-12 col-sm-4">
                 <label>City*</label>
                 <input class="form-control" placeholder="City*" formControlName="city"/>
+                <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['city'].dirty &&
+                  f['city'].hasError('required')
+                ">
+                City name is required.
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['city'].dirty &&
+                  f['city'].hasError('maxlength')
+                ">
+                Maximum length of 40 characters exceeded.
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['city'].dirty &&
+                  f['city'].hasError('minlength')
+                ">
+                Minimum 3 characters is required.
+              </div>
+             
               </div>
               <div class="col-xs-12 col-sm-4">
                 <label>State*</label>
                 <select class="form-select" aria-label="Default select example" formControlName="state">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option
+                        *ngFor="let state of stateList; let i = index"
+                        [value]="state.state_code"
+                        >{{ state.name }}</option>
                 </select>
+                <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['state'].dirty &&
+                  f['state'].hasError('required')
+                ">
+                State is required.
+              </div>
               </div>
               <div class="col-xs-12 col-sm-4">
                 <label>ZIP Code*</label>
                 <input class="form-control" placeholder="ZIP Code*" formControlName="zipCode" />
+                <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['zipCode'].dirty &&
+                  f['zipCode'].hasError('required')
+                ">
+                Zip code is required.
+              </div>
+              <div
+                class="error-msg mt-1"
+                *ngIf="
+                  f['zipCode'].dirty &&
+                  f['zipCode'].hasError('pattern')
+                ">
+                Zip code pattern not matching
+              </div>
               </div>
               <div class="col-xs-12">
                 <div class="form-check">
@@ -283,7 +381,7 @@
               data-bs-dismiss="modal">
               Close
             </button>
-            <button data-bs-dismiss="modal" type="button" (click)="saveCustomerInfo()" class="btn btn-primary">Save changes</button>
+            <button [disabled]="customerForm.invalid" data-bs-dismiss="modal" type="button" (click)="saveCustomerInfo()" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>

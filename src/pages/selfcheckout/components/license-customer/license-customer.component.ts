@@ -4,6 +4,8 @@ import {
   CustomerLicenseInfoReq,
   DBColumnNames,
   IBundleDetails,
+  ICountry,
+  IState,
   IWholeBundleReq,
   PlanDuration,
   PlanType,
@@ -19,6 +21,7 @@ import { phoneValidator } from '../../../../core/validations/phone-number.valida
 import { noWhitespaceValidator } from '../../../../core/validations/no-space.validators';
 import { CommonModule } from '@angular/common';
 import { PaymentService } from '../../services/payment.service';
+import { Countries, States } from '../../../../config/countries-state';
 
 
 @Component({
@@ -37,10 +40,15 @@ export class LicenseCustomerComponent implements OnInit {
   wholeBundleInfo: any;
   wholeBundleFeatures: any;
   wholeBundleLicenses: any;
+  countryList: ICountry[] = [];
+  stateList: IState[] = [];
 
   @Output() triggerBundleChange: EventEmitter<IWholeBundleReq> = new EventEmitter();
 
-  constructor(private readonly paymentHelperService: PaymentHelperService,  private readonly formBuilder: FormBuilder, private readonly paymentService:PaymentService) {}
+  constructor(private readonly paymentHelperService: PaymentHelperService,  private readonly formBuilder: FormBuilder, private readonly paymentService:PaymentService) {
+    this.countryList = Countries;
+    this.stateList = States;
+  }
   ngOnInit(): void {
     this.paymentHelperService.currentBundlePlanDetails.subscribe({
       next: res => {
@@ -55,6 +63,7 @@ export class LicenseCustomerComponent implements OnInit {
             this.cartItemDetails[this.bundlePlan.duration][
               this.bundlePlan.bundleType
             ];
+            console.log('planCartItems ::::::::::::::: ',this.planCartItems)
         }
       },
     });
@@ -64,7 +73,6 @@ export class LicenseCustomerComponent implements OnInit {
          this.wholeBundleInfo = res;
          this.wholeBundleFeatures = this.wholeBundleInfo.features[this.bundlePlan.duration];
          this.wholeBundleLicenses = this.wholeBundleInfo.licenses[this.bundlePlan.duration];
-
         }
       },
     });
@@ -110,9 +118,8 @@ export class LicenseCustomerComponent implements OnInit {
             Validators.required,
           ]),
           zipCode: new FormControl('', [
-            Validators.minLength(3),
-            Validators.maxLength(200),
-            noWhitespaceValidator,
+            Validators.required,
+            Validators.pattern(REGEX_PATTERNS.ZIP_PATTERN),
           ]),
           subscribeReceiveEmails: new FormControl(false, []),
         });
@@ -225,15 +232,16 @@ export class LicenseCustomerComponent implements OnInit {
    }
 
    getBundlePlanDetails() {
-     let bundlePlan :  CustomerLicenseInfoReq = {price: 0, quantity: 0,total_Price: 0};
+     let bundlePlanData :  CustomerLicenseInfoReq = {price: 0, quantity: 0,total_Price: 0};
+     console.log('plan cart items are :::::::::: ',this.planCartItems)
      const bundlePlanType = this.planCartItems.find(item => item.type === this.bundlePlan.bundleType);
-     console.log('bundlePlanType selected  ::::: ',bundlePlanType);
+    console.log('bundle plan type seiiiiiiiiiiii ',bundlePlanType, " bundlePlanType",this.bundlePlan)
     if(bundlePlanType) {
-      bundlePlan.price = Number(bundlePlanType.amount);
-      bundlePlan.quantity = bundlePlanType.quantity;
-      bundlePlan.total_Price = bundlePlanType.totalAmount.value
+      bundlePlanData.price = Number(bundlePlanType.amount.value);
+      bundlePlanData.quantity = bundlePlanType.quantity;
+      bundlePlanData.total_Price = bundlePlanType.totalAmount.value
     }
-    return bundlePlan;
+    return bundlePlanData;
    }
 
   getPlanType(row:BasicPriceDetails ) {
@@ -241,11 +249,11 @@ export class LicenseCustomerComponent implements OnInit {
     if(this.bundlePlan.bundleType === PlanType.TRIAL) {
       planTyepValue = row.trial;
     } else if(this.bundlePlan.bundleType === PlanType.START_UP) {
-      planTyepValue = row.startUp;
+      planTyepValue = this.planCartItems?.length && this.planCartItems.find(cart => cart.type === row.name) ? JSON.stringify(this.planCartItems.find(cart => cart.type === row.name)?.quantity) : row.startUp;
     } else if(this.bundlePlan.bundleType === PlanType.GROWTH) {
-      planTyepValue = row.growth;
+      planTyepValue = this.planCartItems?.length && this.planCartItems.find(cart => cart.type === row.name) ? JSON.stringify(this.planCartItems.find(cart => cart.type === row.name)?.quantity) :  row.growth;
     }else if(this.bundlePlan.bundleType === PlanType.SCALE) {
-      planTyepValue = row.scale;
+      planTyepValue = this.planCartItems?.length && this.planCartItems.find(cart => cart.type === row.name) ? JSON.stringify(this.planCartItems.find(cart => cart.type === row.name)?.quantity) :  row.scale;
     }
     return planTyepValue;
   }

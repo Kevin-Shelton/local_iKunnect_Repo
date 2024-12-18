@@ -41,7 +41,7 @@ export class PaymentComponent implements OnInit {
     });
     this.stripe = await this.paymentService.getStripe();
     const cartProducts = this.getCartProductReq();
-   console.log('cartProducts :::::::: ',cartProducts)
+  
     this.paymentService
       .getStripeSession(
         cartProducts
