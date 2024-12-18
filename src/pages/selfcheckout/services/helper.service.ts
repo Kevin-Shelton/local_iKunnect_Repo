@@ -5,6 +5,7 @@ import {
   IBundleDetails,
   PlanDuration,
   PlanType,
+  ProductDetails,
   StripeCartProductDisplay,
 } from '../../../models/website-models';
 
@@ -24,11 +25,20 @@ export class PaymentHelperService {
   });
   currentBundlePlanDetails = this.bundlePlanDetails.asObservable();
 
-  changeProductDetails(cartItems: StripeCartProductDisplay) {
+  private readonly wholeBundleDetails = new BehaviorSubject<any>({});
+  currentWholeBundleDetails = this.wholeBundleDetails.asObservable();
+
+  changeCartItemsWithDurationDetails(cartItems: StripeCartProductDisplay) {
     this.cartItemsWithDuration.next(cartItems);
   }
+  
+  
 
   changeBundlePlanDetails(bundleDetails: IBundleDetails) {
     this.bundlePlanDetails.next(bundleDetails);
+  }
+
+  changeWholeBundleDetails(wholeBundle: any) {
+    this.wholeBundleDetails.next(wholeBundle);
   }
 }

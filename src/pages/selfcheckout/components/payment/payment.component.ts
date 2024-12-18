@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Stripe } from '@stripe/stripe-js';
 import { API_URL } from '../../../../config/env-config';
-import { StripeCartProductDisplay } from '../../../../models/website-models';
+import { IBundleDetails, StripeCartProductDisplay } from '../../../../models/website-models';
 import { PaymentHelperService } from '../../services/helper.service';
 import { PaymentService } from '../../services/payment.service';
 
@@ -21,6 +21,7 @@ export class PaymentComponent implements OnInit {
   // eslint-disable-next-line
   stripeElements!: any;
   cartItemsWithPlan!: StripeCartProductDisplay;
+  bundlePlanDetails!: IBundleDetails;
 
   constructor(
     private readonly paymentService: PaymentService,
@@ -28,17 +29,22 @@ export class PaymentComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    this.helperService.currentBundlePlanDetails.subscribe({
+      next: res => {
+        this.bundlePlanDetails = res;
+      },
+    });
     this.helperService.currentCartItemsWithProducts.subscribe({
       next: res => {
         this.cartItemsWithPlan = res;
       },
     });
     this.stripe = await this.paymentService.getStripe();
-
+    const cartProducts = this.getCartProductReq();
+  
     this.paymentService
       .getStripeSession(
-        'price_1QSYHFLmtmaPxNqr79z7rthB',
-        1 // this.bundleDetails.quantity
+        cartProducts
       )
       .subscribe({
         next: async res => {
@@ -76,5 +82,14 @@ export class PaymentComponent implements OnInit {
         return_url: `${API_URL.SELF_CHECKOUT}`,
       },
     });
+  }
+
+  getCartProductReq() {
+   const products =this.cartItemsWithPlan[this.bundlePlanDetails.duration][
+    this.bundlePlanDetails.bundleType
+  ];
+  return products?.map(prod => {
+    return {priceId: prod.priceId, quantity: prod.quantity}
+  })
   }
 }

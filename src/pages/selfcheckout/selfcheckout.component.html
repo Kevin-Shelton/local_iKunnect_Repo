@@ -76,7 +76,7 @@
           <div class="row gx-5" *ngIf="!statusText">
             <div class="col-xs-12 col-md-6 selfcheckout--left">
               <h5 class="smb2">Licenses</h5>
-              <app-license-customer></app-license-customer>
+              <app-license-customer (triggerBundleChange)="handleWholeBundleChange($event)"></app-license-customer>
             </div>
             <div class="col-xs-12 col-md-6 selfcheckout--right">
               <!-- <h5 class="smb2">Your order</h5> -->

@@ -47,18 +47,21 @@ export class PricingTableComponent implements OnInit {
     });
   }
   isText(type: string) {
-    return type !== 'cross' && type !== 'tick';
+    return type !== 'no' && type !== 'yes';
   }
   getDataType(val: string, type: string) {
     return val === type;
   }
   buyPlan(planType: string) {
+    console.log('cartProductPricing :::::::::::: ',this.cartProductPricing, " plna type ",planType)
     this.paymentHelper.changeBundlePlanDetails({
       bundleType: planType as PlanType,
       duration: this.planPeriod,
     });
-    this.paymentHelper.changeProductDetails(this.cartProductPricing);
+    this.paymentHelper.changeCartItemsWithDurationDetails(this.cartProductPricing);
+    this.paymentHelper.changeWholeBundleDetails(this.plans);
     this.router.navigate(['/self-checkout']);
+
     window.scrollTo(0, 0);
   }
 
@@ -116,11 +119,12 @@ export class PricingTableComponent implements OnInit {
       disValue: `$${price.amount}`,
     };
     this.cartProductPricing[price.interval][bundleTyep].push({
-      type: PlanType.SCALE,
+      type: bundleTyep as PlanType,
       duration: price.interval,
       amount: { value: price.amount, disValue: `$${price.amount.toFixed(2)}` },
       quantity: 1,
       totalAmount: { value: price.amount, disValue: price.amount.toFixed(2) },
+      priceId: price.id
     });
   }
 
@@ -145,6 +149,7 @@ export class PricingTableComponent implements OnInit {
                 value: price.amount,
                 disValue: price.amount.toFixed(2),
               },
+              priceId: price.id
             });
           }
         });
@@ -170,6 +175,7 @@ export class PricingTableComponent implements OnInit {
                 value: price.amount,
                 disValue: price.amount.toFixed(2),
               },
+              priceId: price.id
             });
           }
         });
@@ -195,6 +201,7 @@ export class PricingTableComponent implements OnInit {
                 value: price.amount,
                 disValue: price.amount.toFixed(2),
               },
+              priceId: price.id
             });
           }
         });
@@ -220,6 +227,7 @@ export class PricingTableComponent implements OnInit {
                 value: price.amount,
                 disValue: price.amount.toFixed(2),
               },
+              priceId: price.id
             });
           }
         });
@@ -247,6 +255,7 @@ export class PricingTableComponent implements OnInit {
                 value: price.amount,
                 disValue: price.amount.toFixed(2),
               },
+              priceId: price.id
             });
           }
         });
@@ -272,6 +281,7 @@ export class PricingTableComponent implements OnInit {
                 value: price.amount,
                 disValue: price.amount.toFixed(2),
               },
+              priceId: price.id
             });
           }
         });
@@ -297,6 +307,7 @@ export class PricingTableComponent implements OnInit {
                 value: price.amount,
                 disValue: price.amount.toFixed(2),
               },
+              priceId: price.id
             });
           }
         });

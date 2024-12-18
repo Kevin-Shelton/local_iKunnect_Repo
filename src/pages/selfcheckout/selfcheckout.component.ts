@@ -10,6 +10,7 @@ import { LicenseCustomerComponent } from './components/license-customer/license-
 import { OrderComponent } from './components/order/order.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PaymentService } from './services/payment.service';
+import { IWholeBundleReq } from '../../models/website-models';
 @Component({
   selector: 'app-selfcheckout',
   standalone: true,
@@ -33,7 +34,7 @@ export class SelfcheckoutComponent implements OnInit {
   showCardDetails: boolean = false;
   statusText!: string;
   planType!: string;
-  isCheckout: boolean = true;
+  isCheckout: boolean = false;
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
@@ -67,5 +68,17 @@ export class SelfcheckoutComponent implements OnInit {
   setPaymentDetails(status: string) {
     this.statusText = 'Something went wrong, please try again.';
     if (status === 'complete') this.statusText = 'Payment succeeded';
+  }
+
+  handleWholeBundleChange(wholeBundle: IWholeBundleReq) {
+    this.isCheckout = true;
+  this.paymentService.saveCustomerAndPlanDetails(wholeBundle).subscribe({
+    next: res => {
+      console.log('save res ::::::: ',res);
+    },
+    error: error => {
+      console.log('erro is :::::::: ',error)
+    }
+   })
   }
 }
