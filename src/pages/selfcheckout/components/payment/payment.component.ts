@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Stripe } from '@stripe/stripe-js';
 import { API_URL } from '../../../../config/env-config';
-import { IBundleDetails, StripeCartProductDisplay } from '../../../../models/website-models';
+import { IBundleDetails, IWholeBundleReq, StripeCartProductDisplay } from '../../../../models/website-models';
 import { PaymentHelperService } from '../../services/helper.service';
 import { PaymentService } from '../../services/payment.service';
 
@@ -14,19 +14,22 @@ import { PaymentService } from '../../services/payment.service';
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.scss',
 })
-export class PaymentComponent implements OnInit {
+export class PaymentComponent implements OnInit, OnDestroy {
   stripe: Stripe | null = null;
   message: string | null = null;
   clientSecret!: string;
-  // eslint-disable-next-line
-  stripeElements!: any;
+  
   cartItemsWithPlan!: StripeCartProductDisplay;
   bundlePlanDetails!: IBundleDetails;
+  checkoutRef!: any;
+  
+  @Output() clientSecreteEvt: EventEmitter<string> = new EventEmitter();
 
   constructor(
     private readonly paymentService: PaymentService,
     private readonly helperService: PaymentHelperService
   ) {}
+ 
 
   async ngOnInit() {
     this.helperService.currentBundlePlanDetails.subscribe({
@@ -47,42 +50,24 @@ export class PaymentComponent implements OnInit {
         cartProducts
       )
       .subscribe({
-        next: async res => {
+        next: async res => {         
           await this.initStripe(res.clientSecret);
         },
       });
   }
 
   async initStripe(clientSecret: string) {
-    const checkout = await this.stripe?.initEmbeddedCheckout({
+    this.clientSecreteEvt.emit(clientSecret);
+    this.checkoutRef = await this.stripe?.initEmbeddedCheckout({
       clientSecret,
     });
 
     // Mount Checkout
-    checkout?.mount('#checkout');
-
-    // this.stripeElements = this.stripe?.elements({clientSecret, appearance:{
-    //   theme: 'stripe',
-    // } });
-
-    // if (this.stripeElements) {
-    //   const paymentElementOptions = {
-    //     layout: "tabs",
-    //   } as StripeCardElementOptions;
-    //   const cardElement = this.stripeElements.create('payment', paymentElementOptions);
-    //   cardElement.mount('#payment-element');
-    // }
+    this.checkoutRef?.mount('#checkout');
+   
   }
 
-  async pay() {
-    await this.stripe?.confirmPayment({
-      elements: this.stripeElements,
-      confirmParams: {
-        // Make sure to change this to your payment completion page
-        return_url: `${API_URL.SELF_CHECKOUT}`,
-      },
-    });
-  }
+
 
   getCartProductReq() {
    const products =this.cartItemsWithPlan[this.bundlePlanDetails.duration][
@@ -92,4 +77,12 @@ export class PaymentComponent implements OnInit {
     return {priceId: prod.priceId, quantity: prod.quantity}
   })
   }
+
+
+
+  ngOnDestroy(): void {
+  
+    this.checkoutRef?.destroy();
+  }
+
 }

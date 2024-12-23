@@ -28,6 +28,10 @@ export class PaymentHelperService {
   private readonly wholeBundleDetails = new BehaviorSubject<any>({});
   currentWholeBundleDetails = this.wholeBundleDetails.asObservable();
 
+  private readonly subscription = new BehaviorSubject<number>(0);
+  currentSubscription = this.subscription.asObservable();
+
+
   changeCartItemsWithDurationDetails(cartItems: StripeCartProductDisplay) {
     this.cartItemsWithDuration.next(cartItems);
   }
@@ -40,5 +44,9 @@ export class PaymentHelperService {
 
   changeWholeBundleDetails(wholeBundle: any) {
     this.wholeBundleDetails.next(wholeBundle);
+  }
+
+  changeSubcription(subNumer: number) {
+    this.subscription.next(subNumer);
   }
 }
