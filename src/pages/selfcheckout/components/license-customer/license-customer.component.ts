@@ -62,7 +62,7 @@ export class LicenseCustomerComponent implements OnInit {
             this.cartItemDetails[this.bundlePlan.duration][
               this.bundlePlan.bundleType
             ];
-            console.log('planCartItems ::::::::::::::: ',this.planCartItems)
+           
         }
       },
     });
@@ -77,7 +77,7 @@ export class LicenseCustomerComponent implements OnInit {
     });
     this.initForm();
     this.customerSubForm.valueChanges.subscribe((values: any) => {
-     console.log('value change :::::::::::: ',values)
+  
        this.paymentHelperService.changeSubcription(values.subscribeReceiveEmails === true ? 1: 0);
      })
   }

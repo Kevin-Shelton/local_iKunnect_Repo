@@ -41,7 +41,7 @@ export class PricingTableComponent implements OnInit {
   ngOnInit(): void {
     this.paymentService.getProducts().subscribe({
       next: res => {
-        console.log('all products :::::: ', res);
+      
         this.mergeProductsWithStripePrices(res);
       },
     });
@@ -53,7 +53,7 @@ export class PricingTableComponent implements OnInit {
     return val === type;
   }
   buyPlan(planType: string) {
-    console.log('cartProductPricing :::::::::::: ',this.cartProductPricing, " plna type ",planType)
+   
     this.paymentHelper.changeBundlePlanDetails({
       bundleType: planType as PlanType,
       duration: this.planPeriod,

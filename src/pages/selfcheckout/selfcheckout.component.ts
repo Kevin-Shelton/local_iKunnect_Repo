@@ -76,7 +76,7 @@ export class SelfcheckoutComponent implements OnInit {
             this.cartItemDetails[this.bundlePlan.duration][
               this.bundlePlan.bundleType
             ];
-            console.log('planCartItems ::::::::::::::: ',this.planCartItems)
+           
         }
       },
     });
