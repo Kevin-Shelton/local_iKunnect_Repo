@@ -77,6 +77,22 @@
     </div>
   </div>
   <div class="col-12">
+    <form [formGroup]="customerSubForm">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckDefault" 
+          formControlName="subscribeReceiveEmails"/>
+        <label class="form-check-label" for="flexCheckDefault">
+          Sign me up to receive email updates and news
+        </label>
+      </div>
+    </form>
+
+  </div>
+  <!-- <div class="col-12">
     <h5>Customer Information</h5>
     <div class="haveScroll">
       <table class="sf600 plainTable">
@@ -386,5 +402,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>

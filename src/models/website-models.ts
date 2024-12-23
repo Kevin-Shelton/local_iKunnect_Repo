@@ -158,13 +158,15 @@ export interface ProductFeatureDetailsReq {
 export interface CustomerLicenseInfoReq {
   price: number,
   quantity: number,
-  total_Price: number
+  total_Price: number,
+  sessionId: string,
+  status: string,
+  subscribeReceiveEmails: number
 }
 
 export interface IWholeBundleReq {
   productDetails: ProductLicnesesDetailsReq;
-  productFeatureDetails: ProductFeatureDetailsReq;
-  customerInfo:CustomerInfoReq,  
+  productFeatureDetails: ProductFeatureDetailsReq; 
   customerLicenseInfo: CustomerLicenseInfoReq
 }
 

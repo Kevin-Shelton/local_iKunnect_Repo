@@ -35,15 +35,14 @@ export class LicenseCustomerComponent implements OnInit {
   cartItemDetails!: StripeCartProductDisplay;
   bundlePlan!: IBundleDetails;
   planCartItems!: ProductDetails[];
-  customerForm!: FormGroup;
+ 
+  customerSubForm!: FormGroup;
   isCustomerPopUpOpen: boolean = false;
   wholeBundleInfo: any;
   wholeBundleFeatures: any;
   wholeBundleLicenses: any;
   countryList: ICountry[] = [];
   stateList: IState[] = [];
-
-  @Output() triggerBundleChange: EventEmitter<IWholeBundleReq> = new EventEmitter();
 
   constructor(private readonly paymentHelperService: PaymentHelperService,  private readonly formBuilder: FormBuilder, private readonly paymentService:PaymentService) {
     this.countryList = Countries;
@@ -77,53 +76,17 @@ export class LicenseCustomerComponent implements OnInit {
       },
     });
     this.initForm();
+    this.customerSubForm.valueChanges.subscribe((values: any) => {
+     console.log('value change :::::::::::: ',values)
+       this.paymentHelperService.changeSubcription(values.subscribeReceiveEmails === true ? 1: 0);
+     })
   }
 
   initForm() {
-      this.customerForm = this.formBuilder.group({
-          firstName: new FormControl('', [
-            Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(40),
-            Validators.pattern(REGEX_PATTERNS.ALLOW_STRING_PATTERN),
-          ]),
-          lastName: new FormControl('', [
-            Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(40),
-            Validators.pattern(REGEX_PATTERNS.ALLOW_STRING_PATTERN),
-          ]),
-          
-          emailId: new FormControl('', [
-            Validators.required,
-            Validators.pattern(REGEX_PATTERNS.EMAIL),
-          ]),
-          country: new FormControl('', [
-            Validators.minLength(3),
-            Validators.maxLength(40),
-            noWhitespaceValidator,
-          ]),
-        
-          street: new FormControl('', [
-            Validators.minLength(3),
-            Validators.maxLength(40),
-            noWhitespaceValidator,
-          ]),
-          city: new FormControl('', [
-            Validators.minLength(3),
-            Validators.maxLength(40),
-            noWhitespaceValidator,
-          ]),
-          state: new FormControl('', [
-            Validators.required,
-          ]),
-          zipCode: new FormControl('', [
-            Validators.required,
-            Validators.pattern(REGEX_PATTERNS.ZIP_PATTERN),
-          ]),
-          subscribeReceiveEmails: new FormControl(false, []),
-        });
-  }
+    this.customerSubForm = this.formBuilder.group({
+      subscribeReceiveEmails: new FormControl(false, []),
+    });
+    }
 
   planDurationChange() {
     if (this.bundlePlan.duration === PlanDuration.MONTHLY) {
@@ -147,10 +110,6 @@ export class LicenseCustomerComponent implements OnInit {
     }
     this.paymentHelperService.changeBundlePlanDetails(this.bundlePlan);
   }
-
-   get f(): { [key: string]: AbstractControl } {
-      return this.customerForm.controls;
-    }
 
   decrementBundleQuantity(product: ProductDetails) {
     if (
@@ -178,83 +137,5 @@ export class LicenseCustomerComponent implements OnInit {
     product.totalAmount = total;
 
     this.paymentHelperService.changeCartItemsWithDurationDetails(this.cartItemDetails);
-  }
-
-  getCustomerFullName() {
-    return `${this.f['firstName'].value} ${this.f['lastName'].value}`;
-  }
-
-  getBillinAddress() {
-    let billAdree = this.f['street'].value;
-    if(this.f['city'].value)  billAdree = billAdree ? `${billAdree}, ${this.f['city'].value}`: this.f['city'].value;
-    if(this.f['state'].value)  billAdree = billAdree ? `${billAdree}, ${this.f['state'].value}`: this.f['state'].value;
-    return billAdree;
-  }
-
-  saveCustomerInfo() {
-   
-    this.toggleCustomerPopUp();
-
-    let payload: IWholeBundleReq = {} as IWholeBundleReq;
-    payload.productDetails = this.getDBCOlumnMapValuesLicense();   
-    payload.productFeatureDetails = this.getDBCOlumnMapValuesFeatures();
-    payload.customerInfo = this.getCustomerInfo();
-    payload.customerLicenseInfo = this.getBundlePlanDetails();
-    this.triggerBundleChange.emit(payload);
- 
-  }
-
-  toggleCustomerPopUp() {
-    this.isCustomerPopUpOpen = !this.isCustomerPopUpOpen;
-  }
-
-  getCustomerInfo() {
-   const data = this.customerForm.value;
-
-   return {...data, subscribeReceiveEmails: data.subscribeReceiveEmails === true ? 1: 0}
-  }
-  getDBCOlumnMapValuesLicense(): ProductLicnesesDetailsReq {
-    let licenseReq: {[key: string]: string} = {};
-   this.wholeBundleLicenses.forEach((row:BasicPriceDetails) => {
-    licenseReq[row.dbColumnName] = this.getPlanType(row)
-   });
-   licenseReq['productType'] = this.bundlePlan.bundleType;
-   return licenseReq as unknown as ProductLicnesesDetailsReq;
-    
-  }
-  getDBCOlumnMapValuesFeatures() {
-    let featureReq: {[key: string]: string} = {};
-    this.wholeBundleFeatures.forEach((row:BasicPriceDetails) => {
-      featureReq[row.dbColumnName]= this.getPlanType(row)
-    });
-
-     return featureReq as unknown as ProductFeatureDetailsReq;
-   }
-
-   getBundlePlanDetails() {
-     let bundlePlanData :  CustomerLicenseInfoReq = {price: 0, quantity: 0,total_Price: 0};
-     console.log('plan cart items are :::::::::: ',this.planCartItems)
-     const bundlePlanType = this.planCartItems.find(item => item.type === this.bundlePlan.bundleType);
-    console.log('bundle plan type seiiiiiiiiiiii ',bundlePlanType, " bundlePlanType",this.bundlePlan)
-    if(bundlePlanType) {
-      bundlePlanData.price = Number(bundlePlanType.amount.value);
-      bundlePlanData.quantity = bundlePlanType.quantity;
-      bundlePlanData.total_Price = bundlePlanType.totalAmount.value
-    }
-    return bundlePlanData;
-   }
-
-  getPlanType(row:BasicPriceDetails ) {
-    let planTyepValue = '';
-    if(this.bundlePlan.bundleType === PlanType.TRIAL) {
-      planTyepValue = row.trial;
-    } else if(this.bundlePlan.bundleType === PlanType.START_UP) {
-      planTyepValue = this.planCartItems?.length && this.planCartItems.find(cart => cart.type === row.name) ? JSON.stringify(this.planCartItems.find(cart => cart.type === row.name)?.quantity) : row.startUp;
-    } else if(this.bundlePlan.bundleType === PlanType.GROWTH) {
-      planTyepValue = this.planCartItems?.length && this.planCartItems.find(cart => cart.type === row.name) ? JSON.stringify(this.planCartItems.find(cart => cart.type === row.name)?.quantity) :  row.growth;
-    }else if(this.bundlePlan.bundleType === PlanType.SCALE) {
-      planTyepValue = this.planCartItems?.length && this.planCartItems.find(cart => cart.type === row.name) ? JSON.stringify(this.planCartItems.find(cart => cart.type === row.name)?.quantity) :  row.scale;
-    }
-    return planTyepValue;
-  }
+  } 
 }
