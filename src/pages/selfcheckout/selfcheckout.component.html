@@ -126,28 +126,27 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-12">
+            <div class="col-md-12 text-end">
               <button
                 class="checkoutBtn primaryBtn"
                 (click)="handleCheckout()">
                 <i class="bi bi-cart-fill"></i>
                 Checkout
               </button>
-             
+
             </div>
           </div>
           <div class="row gx-5" *ngIf="showCardDetails && !statusText">
-
-            <app-payment  (clientSecreteEvt)="saveWholeBudleInfo($event)" > </app-payment>
             <div class="col-xs-12">
               <button
                 class="checkoutBtn primaryBtn"
                 (click)="handleCheckoutBack()">
-                <i class="bi bi-cart-fill"></i>
+                <i class="bi bi-arrow-left"></i>
                 Back
               </button>
-             
+
             </div>
+            <app-payment  (clientSecreteEvt)="saveWholeBudleInfo($event)" > </app-payment>
           </div>
           <div class="row gx-5" *ngIf="statusText && !showCardDetails">
             <div class="column text-center">
