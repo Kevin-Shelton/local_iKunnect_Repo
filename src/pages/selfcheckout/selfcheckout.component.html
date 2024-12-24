@@ -136,8 +136,9 @@
 
             </div>
           </div>
-          <div class="row gx-5" *ngIf="showCardDetails && !statusText">
-            <div class="col-xs-12">
+          <div class="row " *ngIf="showCardDetails && !statusText">
+            <app-payment  (clientSecreteEvt)="saveWholeBudleInfo($event)" > </app-payment>
+            <div class="col-xs-12 sml3 smt2">
               <button
                 class="checkoutBtn primaryBtn"
                 (click)="handleCheckoutBack()">
@@ -146,7 +147,6 @@
               </button>
 
             </div>
-            <app-payment  (clientSecreteEvt)="saveWholeBudleInfo($event)" > </app-payment>
           </div>
           <div class="row gx-5" *ngIf="statusText && !showCardDetails">
             <div class="column text-center">
