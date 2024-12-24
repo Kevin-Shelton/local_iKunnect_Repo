@@ -303,8 +303,8 @@ export const LicensePlanPricing = {
         name: 'iKunnect Intelligence',
         dbColumnName: DBColumnNames.IKUNNECT_INTELLIGENCE,
         trial: 'no',
-        startUp: '$50/m',
-        growth: '$100/m',
+        startUp: '$50/y',
+        growth: '$100/y',
         scale: 'yes',
       },
       {
@@ -321,7 +321,7 @@ export const LicensePlanPricing = {
         trial: 'no',
         startUp: 'no',
         growth: 'no',
-        scale: '$200/m',
+        scale: '$200/y',
       },
       {
         name: 'Client Branding',

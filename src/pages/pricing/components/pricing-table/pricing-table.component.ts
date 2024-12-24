@@ -82,6 +82,7 @@ export class PricingTableComponent implements OnInit {
     this.mergeBundlePrices(products);
     this.mergeStartUpAdditionalPrices(products);
     this.mergeGrowthAdditionalPrices(products);
+    this.mergeScaleAdditionalPrices(products);
   }
 
   mergeBundlePrices(products: StripeProduct[]) {
@@ -123,7 +124,7 @@ export class PricingTableComponent implements OnInit {
       duration: price.interval,
       amount: { value: price.amount, disValue: `$${price.amount.toFixed(2)}` },
       quantity: 1,
-      totalAmount: { value: price.amount, disValue: price.amount.toFixed(2) },
+      totalAmount: { value: price.amount, disValue: `$${price.amount.toFixed(2)}` },
       priceId: price.id
     });
   }
@@ -142,12 +143,12 @@ export class PricingTableComponent implements OnInit {
               duration: price.interval,
               amount: {
                 value: price.amount,
-                disValue: price.amount.toFixed(2),
+                disValue: `$${price.amount.toFixed(2)}`,
               },
               quantity: 1,
               totalAmount: {
                 value: price.amount,
-                disValue: price.amount.toFixed(2),
+                disValue: `$${price.amount.toFixed(2)}`,
               },
               priceId: price.id
             });
@@ -161,19 +162,19 @@ export class PricingTableComponent implements OnInit {
           if (predictive.length > 0) {
             predictive[0].startUp =
               price.interval === PlanDuration.ANNUALLY
-                ? `+$${price.amount}/y`
-                : `+$${price.amount}/m`;
+                ? `$${price.amount}/y`
+                : `$${price.amount}/m`;
             this.cartProductPricing[price.interval]['StartUp'].push({
               type: predictive[0].name as PlanType,
               duration: price.interval,
               amount: {
                 value: price.amount,
-                disValue: price.amount.toFixed(2),
+                disValue: `$${price.amount.toFixed(2)}`,
               },
               quantity: 1,
               totalAmount: {
                 value: price.amount,
-                disValue: price.amount.toFixed(2),
+                disValue: `$${price.amount.toFixed(2)}`,
               },
               priceId: price.id
             });
@@ -187,19 +188,19 @@ export class PricingTableComponent implements OnInit {
           if (predictive.length > 0) {
             predictive[0].startUp =
               price.interval === PlanDuration.ANNUALLY
-                ? `+$${price.amount}/channel/y`
-                : `+$${price.amount}/channel/m`;
+                ? `$${price.amount}/channel/y`
+                : `$${price.amount}/channel/m`;
             this.cartProductPricing[price.interval]['StartUp'].push({
               type: predictive[0].name as PlanType,
               duration: price.interval,
               amount: {
                 value: price.amount,
-                disValue: price.amount.toFixed(2),
+                disValue: `$${price.amount.toFixed(2)}`,
               },
               quantity: 1,
               totalAmount: {
                 value: price.amount,
-                disValue: price.amount.toFixed(2),
+                disValue: `$${price.amount.toFixed(2)}`,
               },
               priceId: price.id
             });
@@ -213,19 +214,19 @@ export class PricingTableComponent implements OnInit {
           if (predictive.length > 0) {
             predictive[0].startUp =
               price.interval === PlanDuration.ANNUALLY
-                ? `+$${price.amount}/y`
-                : `+$${price.amount}/m`;
+                ? `$${price.amount}/y`
+                : `$${price.amount}/m`;
             this.cartProductPricing[price.interval]['StartUp'].push({
               type: predictive[0].name as PlanType,
               duration: price.interval,
               amount: {
                 value: price.amount,
-                disValue: price.amount.toFixed(2),
+                disValue: `$${price.amount.toFixed(2)}`,
               },
               quantity: 1,
               totalAmount: {
                 value: price.amount,
-                disValue: price.amount.toFixed(2),
+                disValue: `$${price.amount.toFixed(2)}`,
               },
               priceId: price.id
             });
@@ -248,12 +249,12 @@ export class PricingTableComponent implements OnInit {
               duration: price.interval,
               amount: {
                 value: price.amount,
-                disValue: price.amount.toFixed(2),
+                disValue: `$${price.amount.toFixed(2)}`,
               },
               quantity: 1,
               totalAmount: {
                 value: price.amount,
-                disValue: price.amount.toFixed(2),
+                disValue: `$${price.amount.toFixed(2)}`,
               },
               priceId: price.id
             });
@@ -267,25 +268,25 @@ export class PricingTableComponent implements OnInit {
           if (predictive.length > 0) {
             predictive[0].growth =
               price.interval === PlanDuration.ANNUALLY
-                ? `+$${price.amount}/y`
-                : `+$${price.amount}/m`;
+                ? `$${price.amount}/y`
+                : `$${price.amount}/m`;
             this.cartProductPricing[price.interval]['Growth'].push({
               type: predictive[0].name as PlanType,
               duration: price.interval,
               amount: {
                 value: price.amount,
-                disValue: price.amount.toFixed(2),
+                disValue: `$${price.amount.toFixed(2)}`,
               },
               quantity: 1,
               totalAmount: {
                 value: price.amount,
-                disValue: price.amount.toFixed(2),
+                disValue: `$${price.amount.toFixed(2)}`,
               },
               priceId: price.id
             });
           }
         });
-      } else if (prod.name === ProductNames.Adv_iKunnect_Intelligence_Startup) {
+      } else if (prod.name === ProductNames.Adv_iKunnect_Intelligence_Growth) {
         prod.prices.forEach(price => {
           const predictive = this.plans.features[price.interval].filter(
             license => license.name === 'iKunnect Intelligence'
@@ -293,19 +294,51 @@ export class PricingTableComponent implements OnInit {
           if (predictive.length > 0) {
             predictive[0].growth =
               price.interval === PlanDuration.ANNUALLY
-                ? `+$${price.amount}/y`
-                : `+$${price.amount}/m`;
+                ? `$${price.amount}/y`
+                : `$${price.amount}/m`;
             this.cartProductPricing[price.interval]['Growth'].push({
               type: predictive[0].name as PlanType,
               duration: price.interval,
               amount: {
                 value: price.amount,
-                disValue: price.amount.toFixed(2),
+                disValue: `$${price.amount.toFixed(2)}`,
               },
               quantity: 1,
               totalAmount: {
                 value: price.amount,
-                disValue: price.amount.toFixed(2),
+                disValue: `$${price.amount.toFixed(2)}`,
+              },
+              priceId: price.id
+            });
+          }
+        });
+      }
+    });
+  }
+
+  mergeScaleAdditionalPrices(products: StripeProduct[]) {
+    products.forEach(prod => {
+     if (prod.name === ProductNames.Advanced_AI_Automation_Scale) {
+        prod.prices.forEach(price => {
+          const predictive = this.plans.features[price.interval].filter(
+            license => license.name === 'Advanced AI Automation'
+          );
+          if (predictive.length > 0) {
+            predictive[0].scale =
+              price.interval === PlanDuration.ANNUALLY
+                ? `$${price.amount}/y`
+                : `$${price.amount}/m`;
+            this.cartProductPricing[price.interval]['Scale'].push({
+              type: predictive[0].name as PlanType,
+              duration: price.interval,
+              amount: {
+                value: price.amount,
+                disValue: `$${price.amount.toFixed(2)}`,
+              },
+              quantity: 1,
+              totalAmount: {
+                value: price.amount,
+                disValue: `$${price.amount.toFixed(2)}`,
               },
               priceId: price.id
             });
