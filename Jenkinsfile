@@ -12,7 +12,10 @@ pipeline {
                 }
             }
         }
-		stage('deploy') {
+		stage('dev-deploy') {
+			when {
+              expression { env.BRANCH_NAME == 'dev' }
+            }
 		   steps {
                 script {
                         sh """ 
@@ -22,7 +25,19 @@ pipeline {
             }
 		
 		}
+		stage('uat-deploy') {
+		    when {
+              expression { env.BRANCH_NAME == 'uat' }
+            }
+		   steps {
+                script {
+                        sh """ 
+                        scp -o StrictHostKeyChecking=no -r /opt/jenkins-slave/workspace/kunnect-website_dev/dist/konnect-invictus/browser/* root@52.52.164.82:/var/www/html/
+                        """
+                }
+            }
+		
+		}
    }
 }
-
 
