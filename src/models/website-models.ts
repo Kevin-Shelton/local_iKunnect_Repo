@@ -7,6 +7,8 @@ export enum PlanType {
   PREDICTIVE_DIALER = 'Predictive Dialer',
   ADVANCED_OMNICHANNEL = 'Advanced Omnichannel',
   IKUNNECT_INTELLIGENCE = 'iKunnect Intelligence',
+  ADVANCED_AI_AUTOMATION = 'Advanced AI Automation'
+
 }
 
 export enum PlanDuration {
@@ -29,11 +31,13 @@ export enum ProductNames {
   Startup_Bundle = 'Startup Bundle',
   Freemium_Bundle_with_Trial = 'Freemium Bundle with Trial',
   Endpoint_Lic_Startup = 'Endpoint Lic. (Startup)',
-  Endpoint_Lic_Growth = 'Endpoint Lic. (Growth)',
-  Predictive_Dialer_Growth = 'Predictive Dialer (Growth)',
   Predictive_Dialer_Startup = 'Predictive Dialer (Startup)',
   Advanced_Omnichannel_Startup = 'Advanced Omnichannel (Startup)',
   Adv_iKunnect_Intelligence_Startup = 'Adv iKunnect Intelligence (Startup)',
+  Endpoint_Lic_Growth = 'Endpoint Lic. (Growth)',
+  Predictive_Dialer_Growth = 'Predictive Dialer (Growth)',
+  Adv_iKunnect_Intelligence_Growth = 'Adv Kunnect Intelligence (Growth)',
+  Advanced_AI_Automation_Scale = 'Advanced AI Automation (Scale)',
   Custom_Branding = 'Custom Branding',
   Ticketing_System = 'Ticketing System',
 }
