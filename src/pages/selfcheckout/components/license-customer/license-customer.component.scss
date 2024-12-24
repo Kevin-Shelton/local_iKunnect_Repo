@@ -7,7 +7,28 @@
   }
 
 }
-
+.haveScroll{
+  overflow-x: auto;
+  table{
+    tr{
+      th{
+        &:first-child{
+          width: 100px;
+        }
+      }
+      td{
+        &:first-child{
+          div{
+            max-width: 120px !important;
+          }
+        }
+        .row{
+          flex-wrap: nowrap;
+        }
+      }
+    }
+  }
+}
 
 .error-msg,
 .warning-msg,
