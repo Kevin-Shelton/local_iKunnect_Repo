@@ -18,18 +18,18 @@ export class PaymentComponent implements OnInit, OnDestroy {
   stripe: Stripe | null = null;
   message: string | null = null;
   clientSecret!: string;
-  
+
   cartItemsWithPlan!: StripeCartProductDisplay;
   bundlePlanDetails!: IBundleDetails;
   checkoutRef!: any;
-  
+
   @Output() clientSecreteEvt: EventEmitter<string> = new EventEmitter();
 
   constructor(
     private readonly paymentService: PaymentService,
     private readonly helperService: PaymentHelperService
-  ) {}
- 
+  ) { }
+
 
   async ngOnInit() {
     this.helperService.currentBundlePlanDetails.subscribe({
@@ -44,13 +44,13 @@ export class PaymentComponent implements OnInit, OnDestroy {
     });
     this.stripe = await this.paymentService.getStripe();
     const cartProducts = this.getCartProductReq();
-  
+
     this.paymentService
       .getStripeSession(
         cartProducts
       )
       .subscribe({
-        next: async res => {         
+        next: async res => {
           await this.initStripe(res.clientSecret);
         },
       });
@@ -64,24 +64,24 @@ export class PaymentComponent implements OnInit, OnDestroy {
 
     // Mount Checkout
     this.checkoutRef?.mount('#checkout');
-   
+
   }
 
 
 
   getCartProductReq() {
-   const products =this.cartItemsWithPlan[this.bundlePlanDetails.duration][
-    this.bundlePlanDetails.bundleType
-  ];
-  return products?.map(prod => {
-    return {priceId: prod.priceId, quantity: prod.quantity}
-  })
+    const products = this.cartItemsWithPlan[this.bundlePlanDetails.duration][
+      this.bundlePlanDetails.bundleType
+    ];
+    return products?.map(prod => {
+      return { priceId: prod.priceId, quantity: prod.quantity }
+    }).filter(prod => prod.quantity !== 0);
   }
 
 
 
   ngOnDestroy(): void {
-  
+
     this.checkoutRef?.destroy();
   }
 
