@@ -57,8 +57,9 @@ export class SelfcheckoutComponent implements OnInit {
       const afterPaySessionId = params['session_id'];
       if (afterPaySessionId) {
         this.handlePaymentStatus(afterPaySessionId);
-       
+        
       }
+
     });
   }
 

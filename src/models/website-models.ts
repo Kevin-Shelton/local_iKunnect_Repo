@@ -40,10 +40,8 @@ export enum ProductNames {
   Adv_iKunnect_Intelligence_Startup = 'Adv Kunnect Intelligence (Startup)',
   Endpoint_Lic_Growth = 'Endpoint Lic. (Growth)',
   Predictive_Dialer_Growth = 'Predictive Dialer (Growth)',
-  Adv_iKunnect_Intelligence_Growth = 'Adv Kunnect Intelligence (Growth)',
   Advanced_AI_Automation_Scale = 'Advanced AI Automation (Scale)',
-  Custom_Branding = 'Custom Branding',
-  Ticketing_System = 'Ticketing System',
+  
 }
 
 export interface ProductDetails {

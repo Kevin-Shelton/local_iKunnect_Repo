@@ -29,8 +29,8 @@ export class PricingTableComponent implements OnInit {
   featureTypes = this.plans['features'].year;
   stripeBundlePricing!: StripePricingDisplay;
   cartProductPricing: StripeCartProductDisplay = {
-    year: { StartUp: [], Growth: [], Scale: [] },
-    month: { StartUp: [], Growth: [], Scale: [] },
+    year: {Trial: [], StartUp: [], Growth: [], Scale: [] },
+    month: {Trial: [], StartUp: [], Growth: [], Scale: [] },
   };
   priceDetByDuration = this.stripeBundlePricing?.year;
   planPeriod = PlanDuration.ANNUALLY;
@@ -87,8 +87,8 @@ export class PricingTableComponent implements OnInit {
 
   mergeBundlePrices(products: StripeProduct[]) {
     this.stripeBundlePricing = {
-      month: { Trial: { value: 0, disValue: `$-` } },
-      year: { Trial: { value: 0, disValue: `$-` } },
+      month: { },
+      year: {  },
     };
     products
       .filter(prd =>
@@ -96,6 +96,7 @@ export class PricingTableComponent implements OnInit {
           ProductNames.Startup_Bundle,
           ProductNames.SCALE_BUNDLE,
           ProductNames.Growth_Bundle,
+          ProductNames.Advanced_AI_Automation_Scale
         ].includes(prd.name)
       )
       .forEach(prd => {
@@ -108,10 +109,14 @@ export class PricingTableComponent implements OnInit {
           }
           if (prd.name === ProductNames.SCALE_BUNDLE) {
             this.addBundlePrice(price, PlanType.SCALE);
+          } 
+          if (prd.name === ProductNames.Advanced_AI_Automation_Scale) {
+            this.addBundlePrice(price, PlanType.TRIAL);
           }
         });
       });
     this.priceDetByDuration = this.stripeBundlePricing.year;
+    console.log('this.cartProductPricing ::::::; ',this.cartProductPricing)
   }
 
   addBundlePrice(price: StripePrice, bundleTyep: string) {
@@ -127,6 +132,7 @@ export class PricingTableComponent implements OnInit {
       totalAmount: { value: price.amount, disValue: `$${price.amount.toFixed(2)}` },
       priceId: price.id
     });
+  
   }
 
   mergeStripeProdIntoJsonData(products: StripeProduct[]) {
