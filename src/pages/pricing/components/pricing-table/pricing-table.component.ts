@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LicensePlanPricing } from '../../../../config/license-bundle-pricing';
 import {
+  BasicPricePlanNames,
+  BasicPricePlanNamesMap,
   PlanDuration,
   PlanType,
   ProductNames,
@@ -23,8 +25,8 @@ import { PaymentService } from '../../../selfcheckout/services/payment.service';
 })
 export class PricingTableComponent implements OnInit {
   plans = LicensePlanPricing;
-  licenseTypes = this.plans.licenses.year;
-  featureTypes = this.plans.features.year;
+  licenseTypes = this.plans['licenses'].year;
+  featureTypes = this.plans['features'].year;
   stripeBundlePricing!: StripePricingDisplay;
   cartProductPricing: StripeCartProductDisplay = {
     year: { StartUp: [], Growth: [], Scale: [] },
@@ -46,11 +48,11 @@ export class PricingTableComponent implements OnInit {
       },
     });
   }
-  isText(type: string) {
-    return type !== 'no' && type !== 'yes';
+  isText(type: {value: string, stripeProdName: ProductNames}) {
+    return type.value !== 'no' && type.value !== 'yes';
   }
-  getDataType(val: string, type: string) {
-    return val === type;
+  getDataType(val: {value: string, stripeProdName: ProductNames}, type: string) {
+    return val.value === type;
   }
   buyPlan(planType: string) {
    
@@ -69,20 +71,18 @@ export class PricingTableComponent implements OnInit {
     if (this.planPeriod === PlanDuration.MONTHLY) {
       this.planPeriod = PlanDuration.ANNUALLY;
       this.priceDetByDuration = this.stripeBundlePricing.year;
-      this.licenseTypes = this.plans.licenses.year;
-      this.featureTypes = this.plans.features.year;
+      this.licenseTypes = this.plans['licenses'].year;
+      this.featureTypes = this.plans['features'].year;
     } else {
       this.planPeriod = PlanDuration.MONTHLY;
       this.priceDetByDuration = this.stripeBundlePricing.month;
-      this.licenseTypes = this.plans.licenses.month;
-      this.featureTypes = this.plans.features.month;
+      this.licenseTypes = this.plans['licenses'].month;
+      this.featureTypes = this.plans['features'].month;
     }
   }
   mergeProductsWithStripePrices(products: StripeProduct[]) {
     this.mergeBundlePrices(products);
-    this.mergeStartUpAdditionalPrices(products);
-    this.mergeGrowthAdditionalPrices(products);
-    this.mergeScaleAdditionalPrices(products);
+    this.mergeStripeProdIntoJsonData(products);
   }
 
   mergeBundlePrices(products: StripeProduct[]) {
@@ -129,222 +129,36 @@ export class PricingTableComponent implements OnInit {
     });
   }
 
-  mergeStartUpAdditionalPrices(products: StripeProduct[]) {
+  mergeStripeProdIntoJsonData(products: StripeProduct[]) {
     products.forEach(prod => {
-      if (prod.name === ProductNames.Endpoint_Lic_Startup) {
-        prod.prices.forEach(price => {
-          const endpointLice = this.plans.licenses[price.interval].filter(
-            license => license.name === 'Endpoint Licenses'
-          );
-          if (endpointLice.length > 0) {
-            endpointLice[0].startUp = `+$${price.amount}/per`;
-            this.cartProductPricing[price.interval]['StartUp'].push({
-              type: endpointLice[0].name as PlanType,
-              duration: price.interval,
-              amount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              quantity: 1,
-              totalAmount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              priceId: price.id
-            });
-          }
-        });
-      } else if (prod.name === ProductNames.Predictive_Dialer_Startup) {
-        prod.prices.forEach(price => {
-          const predictive = this.plans.features[price.interval].filter(
-            license => license.name === 'Predictive Dialer'
-          );
-          if (predictive.length > 0) {
-            predictive[0].startUp =
-              price.interval === PlanDuration.ANNUALLY
-                ? `$${price.amount}/y`
-                : `$${price.amount}/m`;
-            this.cartProductPricing[price.interval]['StartUp'].push({
-              type: predictive[0].name as PlanType,
-              duration: price.interval,
-              amount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              quantity: 1,
-              totalAmount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              priceId: price.id
-            });
-          }
-        });
-      } else if (prod.name === ProductNames.Advanced_Omnichannel_Startup) {
-        prod.prices.forEach(price => {
-          const predictive = this.plans.features[price.interval].filter(
-            license => license.name === 'Advanced Omnichannel'
-          );
-          if (predictive.length > 0) {
-            predictive[0].startUp =
-              price.interval === PlanDuration.ANNUALLY
-                ? `$${price.amount}/channel/y`
-                : `$${price.amount}/channel/m`;
-            this.cartProductPricing[price.interval]['StartUp'].push({
-              type: predictive[0].name as PlanType,
-              duration: price.interval,
-              amount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              quantity: 1,
-              totalAmount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              priceId: price.id
-            });
-          }
-        });
-      } else if (prod.name === ProductNames.Adv_iKunnect_Intelligence_Startup) {
-        prod.prices.forEach(price => {
-          const predictive = this.plans.features[price.interval].filter(
-            license => license.name === 'iKunnect Intelligence'
-          );
-          if (predictive.length > 0) {
-            predictive[0].startUp =
-              price.interval === PlanDuration.ANNUALLY
-                ? `$${price.amount}/y`
-                : `$${price.amount}/m`;
-            this.cartProductPricing[price.interval]['StartUp'].push({
-              type: predictive[0].name as PlanType,
-              duration: price.interval,
-              amount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              quantity: 1,
-              totalAmount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              priceId: price.id
-            });
-          }
-        });
-      }
-    });
-  }
-  mergeGrowthAdditionalPrices(products: StripeProduct[]) {
-    products.forEach(prod => {
-      if (prod.name === ProductNames.Endpoint_Lic_Growth) {
-        prod.prices.forEach(price => {
-          const endpointLice = this.plans.licenses[price.interval].filter(
-            license => license.name === 'Endpoint Licenses'
-          );
-          if (endpointLice.length > 0) {
-            endpointLice[0].growth = `+$${price.amount}/per`;
-            this.cartProductPricing[price.interval]['Growth'].push({
-              type: endpointLice[0].name as PlanType,
-              duration: price.interval,
-              amount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              quantity: 1,
-              totalAmount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              priceId: price.id
-            });
-          }
-        });
-      } else if (prod.name === ProductNames.Predictive_Dialer_Growth) {
-        prod.prices.forEach(price => {
-          const predictive = this.plans.features[price.interval].filter(
-            license => license.name === 'Predictive Dialer'
-          );
-          if (predictive.length > 0) {
-            predictive[0].growth =
-              price.interval === PlanDuration.ANNUALLY
-                ? `$${price.amount}/y`
-                : `$${price.amount}/m`;
-            this.cartProductPricing[price.interval]['Growth'].push({
-              type: predictive[0].name as PlanType,
-              duration: price.interval,
-              amount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              quantity: 1,
-              totalAmount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              priceId: price.id
-            });
-          }
-        });
-      } else if (prod.name === ProductNames.Adv_iKunnect_Intelligence_Growth) {
-        prod.prices.forEach(price => {
-          const predictive = this.plans.features[price.interval].filter(
-            license => license.name === 'iKunnect Intelligence'
-          );
-          if (predictive.length > 0) {
-            predictive[0].growth =
-              price.interval === PlanDuration.ANNUALLY
-                ? `$${price.amount}/y`
-                : `$${price.amount}/m`;
-            this.cartProductPricing[price.interval]['Growth'].push({
-              type: predictive[0].name as PlanType,
-              duration: price.interval,
-              amount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              quantity: 1,
-              totalAmount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              priceId: price.id
-            });
-          }
-        });
-      }
+      prod.prices.filter(price => price.amount && price.interval).forEach(price => {
+        this.getPricingCellFromJson(prod.name, price.interval, price)
+      });
     });
   }
 
-  mergeScaleAdditionalPrices(products: StripeProduct[]) {
-    products.forEach(prod => {
-     if (prod.name === ProductNames.Advanced_AI_Automation_Scale) {
-        prod.prices.forEach(price => {
-          const predictive = this.plans.features[price.interval].filter(
-            license => license.name === 'Advanced AI Automation'
-          );
-          if (predictive.length > 0) {
-            predictive[0].scale =
-              price.interval === PlanDuration.ANNUALLY
-                ? `$${price.amount}/y`
-                : `$${price.amount}/m`;
-            this.cartProductPricing[price.interval]['Scale'].push({
-              type: predictive[0].name as PlanType,
-              duration: price.interval,
-              amount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              quantity: 1,
-              totalAmount: {
-                value: price.amount,
-                disValue: `$${price.amount.toFixed(2)}`,
-              },
-              priceId: price.id
-            });
+  getPricingCellFromJson(sProdName: string, duration: PlanDuration, proceObj: StripePrice) {
+    Object.keys(this.plans).forEach(planKey => {
+      this.plans[planKey][duration]?.forEach(prodInfo => {
+        Object.keys(prodInfo).filter(key => BasicPricePlanNames.includes(key) && prodInfo[key].stripeProdName === sProdName).forEach(key =>{
+          prodInfo[key].value = prodInfo[key].value.replace('price', proceObj.amount);
+          const cartItem = {
+            type: prodInfo['name'] as PlanType,
+            duration: duration,
+            amount: {
+              value: proceObj.amount,
+              disValue: `$${proceObj.amount.toFixed(2)}`,
+            },
+            quantity: 1,
+            totalAmount: {
+              value: proceObj.amount,
+              disValue: `$${proceObj.amount.toFixed(2)}`,
+            },
+            priceId: proceObj.id
           }
-        });
-      }
+          this.cartProductPricing[duration][BasicPricePlanNamesMap[key]].push(cartItem);
+        });       
+      });
     });
   }
 }
