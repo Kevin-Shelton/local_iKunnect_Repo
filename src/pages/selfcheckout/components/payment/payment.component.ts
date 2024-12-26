@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Stripe } from '@stripe/stripe-js';
-import { API_URL } from '../../../../config/env-config';
-import { IBundleDetails, IWholeBundleReq, StripeCartProductDisplay } from '../../../../models/website-models';
+import { CartItemsReq, IBundleDetails,  PlanType, StripeCartProductDisplay } from '../../../../models/website-models';
 import { PaymentHelperService } from '../../services/helper.service';
 import { PaymentService } from '../../services/payment.service';
 
@@ -43,11 +42,12 @@ export class PaymentComponent implements OnInit, OnDestroy {
       },
     });
     this.stripe = await this.paymentService.getStripe();
-    const cartProducts = this.getCartProductReq();
+    const {cartProducts, isTrial} = this.getCartProductReq();
+
 
     this.paymentService
       .getStripeSession(
-        cartProducts
+        cartProducts, isTrial
       )
       .subscribe({
         next: async res => {
@@ -70,18 +70,29 @@ export class PaymentComponent implements OnInit, OnDestroy {
 
 
   getCartProductReq() {
-    const products = this.cartItemsWithPlan[this.bundlePlanDetails.duration][
-      this.bundlePlanDetails.bundleType
-    ];
-    return products?.map(prod => {
-      return { priceId: prod.priceId, quantity: prod.quantity }
-    }).filter(prod => prod.quantity !== 0);
+    const isTrial = this.bundlePlanDetails.bundleType === PlanType.TRIAL;
+    let cartProducts: CartItemsReq[] = [];
+    if(isTrial) {
+      const products = this.cartItemsWithPlan[this.bundlePlanDetails.duration][PlanType.START_UP
+      ];
+      cartProducts = products?.filter(prod => prod.type === PlanType.START_UP && prod.quantity !== 0).map(prod => {
+        return { priceId: prod.priceId, quantity: prod.quantity }
+      });
+    } else {
+      const products = this.cartItemsWithPlan[this.bundlePlanDetails.duration][
+        this.bundlePlanDetails.bundleType
+      ];
+       cartProducts = products?.map(prod => {
+        return { priceId: prod.priceId, quantity: prod.quantity }
+      }).filter(prod => prod.quantity !== 0);
+    }
+
+    return {cartProducts, isTrial}
   }
 
 
 
   ngOnDestroy(): void {
-
     this.checkoutRef?.destroy();
   }
 

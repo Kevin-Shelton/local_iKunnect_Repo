@@ -86,69 +86,69 @@
             <span class="price-label">License Types</span>
           </td>
         </tr>
-        @for (license of licenseTypes; track license.name) {
+        @for (license of licenseTypes; track license['name']) {
           <tr class="sub-tr">
             <td>
-              <span class="price-label"> {{ license.name }} </span>
+              <span class="price-label"> {{ license['name'] }} </span>
             </td>
             <td>
               <div
-                *ngIf="getDataType(license.trial, 'no')"
+                *ngIf="getDataType(license['trial'], 'no')"
                 class="check-icon">
                 <i class="bi bi-x-lg"></i>
               </div>
               <div
-                *ngIf="getDataType(license.trial, 'yes')"
+                *ngIf="getDataType(license['trial'], 'yes')"
                 class="check-icon">
                 <i class="bi bi-check-lg"></i>
               </div>
-              <div *ngIf="isText(license.trial)" class="check-icon">
-                {{ license.trial }}
+              <div *ngIf="isText(license['trial'])" class="check-icon">
+                {{ license['trial'].value }}
               </div>
             </td>
             <td>
               <div
-                *ngIf="getDataType(license.startUp, 'no')"
+                *ngIf="getDataType(license['startUp'], 'no')"
                 class="check-icon">
                 <i class="bi bi-x-lg"></i>
               </div>
               <div
-                *ngIf="getDataType(license.startUp, 'yes')"
+                *ngIf="getDataType(license['startUp'], 'yes')"
                 class="check-icon">
                 <i class="bi bi-check-lg"></i>
               </div>
-              <div *ngIf="isText(license.startUp)" class="check-icon">
-                {{ license.startUp }}
+              <div *ngIf="isText(license['startUp'])" class="check-icon">
+                {{ license['startUp'].value }}
               </div>
             </td>
             <td>
               <div
-                *ngIf="getDataType(license.growth, 'no')"
+                *ngIf="getDataType(license['growth'], 'no')"
                 class="check-icon">
                 <i class="bi bi-x-lg"></i>
               </div>
               <div
-                *ngIf="getDataType(license.growth, 'yes')"
+                *ngIf="getDataType(license['growth'], 'yes')"
                 class="check-icon">
                 <i class="bi bi-check-lg"></i>
               </div>
-              <div *ngIf="isText(license.growth)" class="check-icon">
-                {{ license.growth }}
+              <div *ngIf="isText(license['growth'])" class="check-icon">
+                {{ license['growth'].value }}
               </div>
             </td>
             <td>
               <div
-                *ngIf="getDataType(license.scale, 'no')"
+                *ngIf="getDataType(license['scale'], 'no')"
                 class="check-icon">
                 <i class="bi bi-x-lg"></i>
               </div>
               <div
-                *ngIf="getDataType(license.scale, 'yes')"
+                *ngIf="getDataType(license['scale'], 'yes')"
                 class="check-icon">
                 <i class="bi bi-check-lg"></i>
               </div>
-              <div *ngIf="isText(license.scale)" class="check-icon">
-                {{ license.scale }}
+              <div *ngIf="isText(license['scale'])" class="check-icon">
+                {{ license['scale'].value }}
               </div>
             </td>
           </tr>
@@ -159,69 +159,69 @@
             <span class="price-label">Features</span>
           </td>
         </tr>
-        @for (feature of featureTypes; track feature.name) {
+        @for (feature of featureTypes; track feature['name']) {
           <tr class="sub-tr">
             <td>
-              <span class="price-label"> {{ feature.name }} </span>
+              <span class="price-label"> {{ feature['name'] }} </span>
             </td>
             <td>
               <div
-                *ngIf="getDataType(feature.trial, 'no')"
+                *ngIf="getDataType(feature['trial'], 'no')"
                 class="check-icon">
                 <i class="bi bi-x-lg"></i>
               </div>
               <div
-                *ngIf="getDataType(feature.trial, 'yes')"
+                *ngIf="getDataType(feature['trial'], 'yes')"
                 class="check-icon">
                 <i class="bi bi-check-lg"></i>
               </div>
-              <div *ngIf="isText(feature.trial)" class="check-icon">
-                {{ feature.trial }}
+              <div *ngIf="isText(feature['trial'])" class="check-icon">
+                {{ feature['trial'].value }}
               </div>
             </td>
             <td>
               <div
-                *ngIf="getDataType(feature.startUp, 'no')"
+                *ngIf="getDataType(feature['startUp'], 'no')"
                 class="check-icon">
                 <i class="bi bi-x-lg"></i>
               </div>
               <div
-                *ngIf="getDataType(feature.startUp, 'yes')"
+                *ngIf="getDataType(feature['startUp'], 'yes')"
                 class="check-icon">
                 <i class="bi bi-check-lg"></i>
               </div>
-              <div *ngIf="isText(feature.startUp)" class="check-icon">
-                {{ feature.startUp }}
+              <div *ngIf="isText(feature['startUp'])" class="check-icon">
+                {{ feature['startUp'].value }}
               </div>
             </td>
             <td>
               <div
-                *ngIf="getDataType(feature.growth, 'no')"
+                *ngIf="getDataType(feature['growth'], 'no')"
                 class="check-icon">
                 <i class="bi bi-x-lg"></i>
               </div>
               <div
-                *ngIf="getDataType(feature.growth, 'yes')"
+                *ngIf="getDataType(feature['growth'], 'yes')"
                 class="check-icon">
                 <i class="bi bi-check-lg"></i>
               </div>
-              <div *ngIf="isText(feature.growth)" class="check-icon">
-                {{ feature.growth }}
+              <div *ngIf="isText(feature['growth'])" class="check-icon">
+                {{ feature['growth'].value }}
               </div>
             </td>
             <td>
               <div
-                *ngIf="getDataType(feature.scale, 'no')"
+                *ngIf="getDataType(feature['scale'], 'no')"
                 class="check-icon">
                 <i class="bi bi-x-lg"></i>
               </div>
               <div
-                *ngIf="getDataType(feature.scale, 'yes')"
+                *ngIf="getDataType(feature['scale'], 'yes')"
                 class="check-icon">
                 <i class="bi bi-check-lg"></i>
               </div>
-              <div *ngIf="isText(feature.scale)" class="check-icon">
-                {{ feature.scale }}
+              <div *ngIf="isText(feature['scale'])" class="check-icon">
+                {{ feature['scale'].value }}
               </div>
             </td>
           </tr>
@@ -230,7 +230,7 @@
           <td></td>
           <td>
             <div class="text-center">
-              <button class="primaryBtn">Start Trial</button>
+              <button (click)="buyPlan('Trial')" class="primaryBtn">Start Trial</button>
             </div>
           </td>
           <td>

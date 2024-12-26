@@ -24,10 +24,10 @@ export class PaymentService {
     return this.httpClient.get<StripeProduct[]>(API_URL.GET_PRODUCTS);
   }
   getStripeSession(
-    payload: CartItemsReq[]
+    payload: CartItemsReq[], isTrial: boolean
   ): Observable<{ clientSecret: string }> {
     return this.httpClient.post<{ clientSecret: string }>(
-      `${API_URL.CREATE_CHECKOUT_SESSION}`,
+      `${API_URL.CREATE_CHECKOUT_SESSION}?isTrial=${isTrial}`,
       payload
     );
   }

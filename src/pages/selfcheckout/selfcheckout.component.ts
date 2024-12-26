@@ -57,8 +57,9 @@ export class SelfcheckoutComponent implements OnInit {
       const afterPaySessionId = params['session_id'];
       if (afterPaySessionId) {
         this.handlePaymentStatus(afterPaySessionId);
-       
+        
       }
+
     });
   }
 
@@ -180,13 +181,13 @@ export class SelfcheckoutComponent implements OnInit {
    getPlanType(row:BasicPriceDetails ) {
     let planTyepValue = '';
     if(this.bundlePlan.bundleType === PlanType.TRIAL) {
-      planTyepValue = row.trial;
+      planTyepValue = row.trial.value;
     } else if(this.bundlePlan.bundleType === PlanType.START_UP) {
-      planTyepValue = this.planCartItems?.length && this.planCartItems.find(cart => cart.type === row.name) ? JSON.stringify(this.planCartItems.find(cart => cart.type === row.name)?.quantity) : row.startUp;
+      planTyepValue = this.planCartItems?.length && this.planCartItems.find(cart => cart.type === row.name) ? JSON.stringify(this.planCartItems.find(cart => cart.type === row.name)?.quantity) : row.startUp.value;
     } else if(this.bundlePlan.bundleType === PlanType.GROWTH) {
-      planTyepValue = this.planCartItems?.length && this.planCartItems.find(cart => cart.type === row.name) ? JSON.stringify(this.planCartItems.find(cart => cart.type === row.name)?.quantity) :  row.growth;
+      planTyepValue = this.planCartItems?.length && this.planCartItems.find(cart => cart.type === row.name) ? JSON.stringify(this.planCartItems.find(cart => cart.type === row.name)?.quantity) :  row.growth.value;
     }else if(this.bundlePlan.bundleType === PlanType.SCALE) {
-      planTyepValue = this.planCartItems?.length && this.planCartItems.find(cart => cart.type === row.name) ? JSON.stringify(this.planCartItems.find(cart => cart.type === row.name)?.quantity) :  row.scale;
+      planTyepValue = this.planCartItems?.length && this.planCartItems.find(cart => cart.type === row.name) ? JSON.stringify(this.planCartItems.find(cart => cart.type === row.name)?.quantity) :  row.scale.value;
     }
     return planTyepValue;
   }

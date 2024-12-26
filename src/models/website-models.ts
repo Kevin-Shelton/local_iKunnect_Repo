@@ -19,13 +19,17 @@ export enum PlanDuration {
 export interface BasicPriceDetails {
   name: string,
   dbColumnName: DBColumnNames,
-  trial: string,
-  startUp: string,
-  growth: string,
-  scale: string,
+  trial: {value: string, stripeProdName: ProductNames },
+  startUp: {value: string, stripeProdName: ProductNames },
+  growth: {value: string, stripeProdName: ProductNames },
+  scale: {value: string, stripeProdName: ProductNames },
 }
 
+export const BasicPricePlanNames = ['trial', 'startUp', 'growth', 'scale'];
+export const BasicPricePlanNamesMap: { [key: string]: string } = {trial: 'Trial', startUp: 'StartUp', growth: 'Growth', scale: 'Scale'}
+
 export enum ProductNames {
+  EMPTY= '',
   SCALE_BUNDLE = 'Scale Bundle',
   Growth_Bundle = 'Growth Bundle',
   Startup_Bundle = 'Startup Bundle',
@@ -33,13 +37,11 @@ export enum ProductNames {
   Endpoint_Lic_Startup = 'Endpoint Lic. (Startup)',
   Predictive_Dialer_Startup = 'Predictive Dialer (Startup)',
   Advanced_Omnichannel_Startup = 'Advanced Omnichannel (Startup)',
-  Adv_iKunnect_Intelligence_Startup = 'Adv iKunnect Intelligence (Startup)',
+  Adv_iKunnect_Intelligence_Startup = 'Adv Kunnect Intelligence (Startup)',
   Endpoint_Lic_Growth = 'Endpoint Lic. (Growth)',
   Predictive_Dialer_Growth = 'Predictive Dialer (Growth)',
-  Adv_iKunnect_Intelligence_Growth = 'Adv Kunnect Intelligence (Growth)',
   Advanced_AI_Automation_Scale = 'Advanced AI Automation (Scale)',
-  Custom_Branding = 'Custom Branding',
-  Ticketing_System = 'Ticketing System',
+  
 }
 
 export interface ProductDetails {
