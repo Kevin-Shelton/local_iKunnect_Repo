@@ -17,5 +17,7 @@ export const API_URL = {
   SELF_CHECKOUT: environment.CORE_URL + `self-checkout`,
   BOOK_DEMO: environment.CORE_URL + `BookADemo/BookADemo`,
   SAVE_CUSTOMER_PLAN: environment.CORE_URL + `CustomerLicense/SaveCustomerLicenseDetails`,
- GET_WORD_PRESS_INFO: environment.WORD_PRESS + `posts`
+ GET_WP_POSTS_BY_CATEGORY: (id: number) => environment.WORD_PRESS + `posts?categories=${id}`,
+ GET_WP_CATEGORIES: environment.WORD_PRESS+ `categories`
 };
+
