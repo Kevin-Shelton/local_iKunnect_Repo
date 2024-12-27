@@ -17,5 +17,5 @@ export const API_URL = {
   SELF_CHECKOUT: environment.CORE_URL + `self-checkout`,
   BOOK_DEMO: environment.CORE_URL + `BookADemo/BookADemo`,
   SAVE_CUSTOMER_PLAN: environment.CORE_URL + `CustomerLicense/SaveCustomerLicenseDetails`,
-
+ GET_WORD_PRESS_INFO: environment.WORD_PRESS + `posts`
 };
