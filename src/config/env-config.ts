@@ -18,6 +18,8 @@ export const API_URL = {
   BOOK_DEMO: environment.CORE_URL + `BookADemo/BookADemo`,
   SAVE_CUSTOMER_PLAN: environment.CORE_URL + `CustomerLicense/SaveCustomerLicenseDetails`,
  GET_WP_POSTS_BY_CATEGORY: (id: number) => environment.WORD_PRESS + `posts?categories=${id}`,
- GET_WP_CATEGORIES: environment.WORD_PRESS+ `categories`
+ GET_WP_CATEGORIES: environment.WORD_PRESS+ `categories`,
+ GET_WP_POST_AUTHOR: (id: number) => environment.WORD_PRESS+ `users/${id}`
+ 
 };
 

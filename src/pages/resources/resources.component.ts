@@ -23,8 +23,10 @@ export class ResourcesComponent implements OnInit{
   ngOnInit(): void {
    this.resourcesService.getAllCategies().subscribe({
     next: res => {
+      
       this.wPCategories = res;
       this.activeCategory = this.wPCategories[0];
+     
       this.getCategoryPosts();
     }
    })
@@ -33,8 +35,8 @@ export class ResourcesComponent implements OnInit{
   getCategoryPosts(){
     this.resourcesService.getPostsByCategory(this.activeCategory.id).subscribe({
       next: res => {
-        console.log('all posts are ::::::: ', res);
         this.wPPosts = res
+        this.resourcesService.changePostsByCategory(this.wPPosts);
       }
     })
   }
@@ -45,8 +47,12 @@ export class ResourcesComponent implements OnInit{
     this.activeCategory = category;
     this.getCategoryPosts();
   }
+  getImageURL(post:PostInfo){
+    return post.jetpack_featured_media_url;
+  }
 
   goToPost(post: PostInfo) {
-    this.router.navigate(['/resources']);
+    this.resourcesService.changeSelectedPostInfo(post);
+    this.router.navigate(['/post']);
   }
 }

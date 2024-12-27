@@ -9,6 +9,10 @@ slug: string,
 taxonomy: string
 }
 
+export interface AuthorInfo {
+    id: number,
+    name: string
+}
 export interface PostInfo {
     id: number,   
     guid: RenderWP,    
@@ -29,6 +33,8 @@ export interface PostInfo {
     class_list: string[],
     acf: any[],
     jetpack_featured_media_url: string,
+    modified: string,
+    author: number,
 }
 
 export interface RenderWP {

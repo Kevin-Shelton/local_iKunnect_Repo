@@ -71,19 +71,21 @@
         role="tabpanel"
         aria-labelledby="getCategoryTabName(activeCategory)">
         <div class="row">
+        
           <div
             class="col-xs-12 col-sm-6 col-md-4"
             data-aos="fade-up"
             *ngFor="let post of wPPosts"
             data-aos-duration="1000">
+          
             <div class="card resources--card hasBorder">
-              <img
-                src="post.jetpack_featured_media_url"
+              <img *ngIf="post.jetpack_featured_media_url"
+                [src]="post.jetpack_featured_media_url"
                 class="card-img-top"
                 alt="RESOURCES" />
               <div class="card-body">              
                 <div [innerHTML]="post.title.rendered"></div>                
-                <button class="flatBtn c-p f600" click="goToPost(post)" >
+                <button class="flatBtn c-p f600" (click)="goToPost(post)" >
                   READ MORE <i class="bi bi-arrow-right"></i>
                 </button>
               </div>
