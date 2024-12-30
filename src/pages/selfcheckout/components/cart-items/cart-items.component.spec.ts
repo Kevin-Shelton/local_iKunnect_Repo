@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CartItemsComponent } from './cart-items..component';
+import { CartItemsComponent } from './cart-items.component';
 
 describe('LicenseCustomerComponent', () => {
   let component: CartItemsComponent;

@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ActivatedRoute } from '@angular/router';
 import { BookConsultationComponent } from '../../common/sharedComponents/book-consultation/book-consultation.component';
-import { CartItemsComponent } from './components/cart-items/cart-items..component';
+import { CartItemsComponent } from './components/cart-items/cart-items.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PaymentService } from './services/payment.service';
 import { BasicPriceDetails, CustomerLicenseInfoReq, IBundleDetails, IWholeBundleReq, PlanType, ProductDetails, ProductFeatureDetailsReq, ProductLicnesesDetailsReq, StripeCartProductDisplay } from '../../models/website-models';

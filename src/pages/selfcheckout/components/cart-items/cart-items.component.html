@@ -12,10 +12,11 @@
             <div class="form-check form-switch">
               <input
                 class="form-check-input"
-                (change)="planDurationChange()"
+                (change)="planDurationChange($event)"
+                [(ngModel)]="isChecked"
                 type="checkbox"
                 id="flexSwitchCheckChecked"
-                checked />
+                 />
             </div>
           </div>
           <div class="col-auto">
