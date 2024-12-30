@@ -43,7 +43,5 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/book-demo']);
     window.scrollTo(0, 0);
   }
-  constructor(private readonly router: Router) {
-    console.log('hero config is :::: ', this.herosConfig);
-  }
+  constructor(private readonly router: Router) { }
 }

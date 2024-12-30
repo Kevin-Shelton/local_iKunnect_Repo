@@ -1,57 +1,41 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import {
-  BasicPriceDetails,
-  CustomerLicenseInfoReq,
-  DBColumnNames,
   IBundleDetails,
-  ICountry,
-  IState,
-  IWholeBundleReq,
   PlanDuration,
   PlanType,
   ProductDetails,
-  ProductFeatureDetailsReq,
-  ProductLicnesesDetailsReq,
   StripeCartProductDisplay,
 } from '../../../../models/website-models';
 import { PaymentHelperService } from '../../services/helper.service';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { REGEX_PATTERNS } from '../../../../config/env-config';
-import { phoneValidator } from '../../../../core/validations/phone-number.validators';
-import { noWhitespaceValidator } from '../../../../core/validations/no-space.validators';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PaymentService } from '../../services/payment.service';
-import { Countries, States } from '../../../../config/countries-state';
-
 
 @Component({
-  selector: 'app-license-customer',
+  selector: 'app-cart-items',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './license-customer.component.html',
-  styleUrl: './license-customer.component.scss',
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  templateUrl: './cart-items.component.html',
+  styleUrl: './cart-items.component.scss',
 })
-export class LicenseCustomerComponent implements OnInit {
+export class CartItemsComponent implements OnInit {
   cartItemDetails!: StripeCartProductDisplay;
   bundlePlan!: IBundleDetails;
   planCartItems!: ProductDetails[];
- 
+  isChecked: boolean = true;
   customerSubForm!: FormGroup;
   isCustomerPopUpOpen: boolean = false;
   wholeBundleInfo: any;
   wholeBundleFeatures: any;
   wholeBundleLicenses: any;
-  countryList: ICountry[] = [];
-  stateList: IState[] = [];
 
-  constructor(private readonly paymentHelperService: PaymentHelperService,  private readonly formBuilder: FormBuilder, private readonly paymentService:PaymentService) {
-    this.countryList = Countries;
-    this.stateList = States;
-  }
+
+  constructor(private readonly paymentHelperService: PaymentHelperService,  private readonly formBuilder: FormBuilder, private readonly paymentService:PaymentService) {}
   ngOnInit(): void {
     this.paymentHelperService.currentBundlePlanDetails.subscribe({
       next: res => {
         this.bundlePlan = res;
+        this.isChecked = this.bundlePlan.duration === PlanDuration.ANNUALLY;
       },
     });
     this.paymentHelperService.currentCartItemsWithProducts.subscribe({
@@ -88,8 +72,8 @@ export class LicenseCustomerComponent implements OnInit {
     });
     }
 
-  planDurationChange() {
-    if (this.bundlePlan.duration === PlanDuration.MONTHLY) {
+  planDurationChange(event: any) {
+    if (event.currentTarget.checked) {
       this.bundlePlan.duration = PlanDuration.ANNUALLY;
       this.planCartItems =
         this.cartItemDetails[this.bundlePlan.duration][
@@ -98,7 +82,7 @@ export class LicenseCustomerComponent implements OnInit {
         this.wholeBundleFeatures = this.wholeBundleInfo.features[this.bundlePlan.duration][this.bundlePlan.bundleType];
          this.wholeBundleLicenses = this.wholeBundleInfo.licenses[this.bundlePlan.duration][this.bundlePlan.bundleType];
         
-        } else {
+    } else {
       this.bundlePlan.duration = PlanDuration.MONTHLY;
       this.planCartItems =
         this.cartItemDetails[this.bundlePlan.duration][

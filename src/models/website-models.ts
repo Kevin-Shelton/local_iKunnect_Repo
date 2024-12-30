@@ -180,14 +180,3 @@ export interface CartItemsReq {
   priceId: string,
   quantity: number
 }
-
-export interface ICountry {
-  name: string;
-  dialCode: string;
-  code: string;
-}
-
-export interface IState {
-  name: string;
-  state_code: string;
-}
