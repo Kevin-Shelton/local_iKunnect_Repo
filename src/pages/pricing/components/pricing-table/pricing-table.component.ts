@@ -67,8 +67,8 @@ export class PricingTableComponent implements OnInit {
     window.scrollTo(0, 0);
   }
 
-  planDurationChange() {
-    if (this.planPeriod === PlanDuration.MONTHLY) {
+  planDurationChange(values: any) {
+    if (values.currentTarget.checked) {
       this.planPeriod = PlanDuration.ANNUALLY;
       this.priceDetByDuration = this.stripeBundlePricing.year;
       this.licenseTypes = this.plans['licenses'].year;
@@ -116,7 +116,6 @@ export class PricingTableComponent implements OnInit {
         });
       });
     this.priceDetByDuration = this.stripeBundlePricing.year;
-    console.log('this.cartProductPricing ::::::; ',this.cartProductPricing)
   }
 
   addBundlePrice(price: StripePrice, bundleTyep: string) {

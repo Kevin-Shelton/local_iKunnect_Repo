@@ -27,6 +27,7 @@ export class ResourcesService {
   getPostAuthor(authorId: number): Observable<AuthorInfo> {
     return this.httpClient.get<AuthorInfo>(API_URL.GET_WP_POST_AUTHOR(authorId));
   }
+  
   changePostsByCategory(postInfo: PostInfo[]) {
     this.postsByCategory.next(postInfo);
   }

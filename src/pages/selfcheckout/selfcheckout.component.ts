@@ -6,8 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ActivatedRoute } from '@angular/router';
 import { BookConsultationComponent } from '../../common/sharedComponents/book-consultation/book-consultation.component';
-import { LicenseCustomerComponent } from './components/license-customer/license-customer.component';
-import { OrderComponent } from './components/order/order.component';
+import { CartItemsComponent } from './components/cart-items/cart-items..component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PaymentService } from './services/payment.service';
 import { BasicPriceDetails, CustomerLicenseInfoReq, IBundleDetails, IWholeBundleReq, PlanType, ProductDetails, ProductFeatureDetailsReq, ProductLicnesesDetailsReq, StripeCartProductDisplay } from '../../models/website-models';
@@ -23,8 +22,8 @@ import { PaymentHelperService } from './services/helper.service';
     MatSelectModule,
     CommonModule,
     PaymentComponent,
-    LicenseCustomerComponent,
-    OrderComponent,
+    CartItemsComponent,
+    
   ],
   templateUrl: './selfcheckout.component.html',
   styleUrl: './selfcheckout.component.scss',
@@ -139,10 +138,10 @@ export class SelfcheckoutComponent implements OnInit {
     }
       this.paymentService.saveCustomerAndPlanDetails(wholeBundle).subscribe({
     next: res => {
-      console.log('save res ::::::: ',res);
+      console.log('save res ::::::: ');
     },
     error: error => {
-      console.log('erro is :::::::: ',error)
+      console.log('erro is :::::::: ')
     }
    });
   }
