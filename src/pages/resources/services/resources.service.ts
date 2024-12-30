@@ -14,7 +14,7 @@ export class ResourcesService {
   private readonly postsByCategory = new BehaviorSubject<PostInfo[]>([]);
   currentPostsByCategory = this.postsByCategory.asObservable();
 
-  private readonly selectedPostInfo = new BehaviorSubject<PostInfo>({} as PostInfo);
+  private readonly selectedPostInfo = new BehaviorSubject<PostInfo>(undefined as unknown as PostInfo);
   currentSelectedPostInfo = this.selectedPostInfo.asObservable();
 
   getAllCategies(): Observable<Category[]> {

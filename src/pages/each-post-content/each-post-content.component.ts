@@ -20,11 +20,13 @@ export class EachPostContentComponent implements OnInit{
    this.resourcesService.currentSelectedPostInfo.subscribe({
     next:res => {
       this.currentPost = res;
-     this.resourcesService.getPostAuthor(this.currentPost.author).subscribe({
-      next: res => {
-        this.authorInfo = res;
+      if(this.currentPost?.author) {
+        this.resourcesService.getPostAuthor(this.currentPost.author).subscribe({
+         next: res => {
+           this.authorInfo = res;
+         }
+        });
       }
-     })
     }
    });
    this.resourcesService.currentPostsByCategory.subscribe({
@@ -35,7 +37,7 @@ export class EachPostContentComponent implements OnInit{
   }
 
   getLastModifiedData(post: PostInfo) {
-    return new Date(post.modified).toDateString()
+    return post.modified ? `${new Date(post.modified).toDateString()} -- By ${this.authorInfo?.name}`  : '';
   }
 
   changePostInfo(post: PostInfo) {
