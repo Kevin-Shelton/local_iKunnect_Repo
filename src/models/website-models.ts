@@ -39,9 +39,7 @@ export enum ProductNames {
   Advanced_Omnichannel_Startup = 'Advanced Omnichannel (Startup)',
   Adv_iKunnect_Intelligence_Startup = 'Adv Kunnect Intelligence (Startup)',
   Endpoint_Lic_Growth = 'Endpoint Lic. (Growth)',
-  Predictive_Dialer_Growth = 'Predictive Dialer (Growth)',
-  Advanced_AI_Automation_Scale = 'Advanced AI Automation (Scale)',
-  
+  Predictive_Dialer_Growth = 'Predictive Dialer (Growth)',  
 }
 
 export interface ProductDetails {

@@ -96,7 +96,7 @@ export class PricingTableComponent implements OnInit {
           ProductNames.Startup_Bundle,
           ProductNames.SCALE_BUNDLE,
           ProductNames.Growth_Bundle,
-          ProductNames.Advanced_AI_Automation_Scale
+          ProductNames.Freemium_Bundle_with_Trial
         ].includes(prd.name)
       )
       .forEach(prd => {
@@ -110,7 +110,7 @@ export class PricingTableComponent implements OnInit {
           if (prd.name === ProductNames.SCALE_BUNDLE) {
             this.addBundlePrice(price, PlanType.SCALE);
           } 
-          if (prd.name === ProductNames.Advanced_AI_Automation_Scale) {
+          if (prd.name === ProductNames.Freemium_Bundle_with_Trial) {
             this.addBundlePrice(price, PlanType.TRIAL);
           }
         });
