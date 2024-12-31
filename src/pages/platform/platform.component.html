@@ -1,0 +1,508 @@
+<div class="platform-page">
+  <div class="row">
+    <div class="col-12 platform-page-banner">
+      <div class="container-xl">
+        <div class="inner-banner">
+          <h2 class="f-p" data-aos="fade-down" data-aos-duration="1000">
+            Struggling to Stay Responsive and <span>Competitive?</span>
+          </h2>
+          <p class="f-m" data-aos="fade-down" data-aos-duration="1200">
+            Our Advanced Call Center Solutions Provide the Agility and
+            Efficiency You Need.
+          </p>
+          <button
+            type="button"
+            class="primaryBtn ms-4"
+            data-aos="fade-down"
+            data-aos-duration="1000">
+            LET'S TALK
+          </button>
+        </div>
+        <div class="image-slider">
+          <div *ngFor="let item of items" class="item">
+            <img [src]="item.src" [style.width]="item.width" alt="Image" />
+          </div>
+        </div>
+        <!-- <div class="image-slider">
+          <div class="img-block">
+            <img src="../../assets/images/objects-1.png" alt="" />
+          </div>
+          <div class="img-block">
+            <img src="../../assets/images/objects-4.png" alt="" />
+          </div>
+          <div class="img-block">
+            <img src="../../assets/images/objects-3.png" alt="" />
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="container-xl">
+        <div class="del-support">
+          <h2 class="f-p" data-aos="fade-down" data-aos-duration="500">
+            Enhance Customer Service with Powerful Call Center
+            <span>Features</span>
+          </h2>
+          <p
+            class="f-m w-900 smx5"
+            data-aos="fade-down"
+            data-aos-duration="600">
+            Revolutionize the way you manage customer interactions with
+            Kunnect’s cutting-edge solutions, designed to deliver efficiency,
+            flexibility, and exceptional customer experiences.
+          </p>
+        </div>
+        <div class="custom-tabs">
+          <!-- Tab panes -->
+          <div class="tab-content py-4">
+            <div id="tab1" class="tab-pane active">
+              <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                  <div class="del-tab-cont">
+                    <h6 class="f-p">
+                      Predictive, Preview, Progressive, and Manual Dialing
+                      Options
+                    </h6>
+                    <div class="d-flex call-actions">
+                      <button class="secondaryBtn" (click)="bookConsult()">
+                        BOOK A CONSULTATION
+                      </button>
+                      <!-- <button class="secondaryBtn text see-all-btn">
+                        SEE ALL SOLUTIONS
+                        <i class="bi bi-arrow-right"></i>
+                      </button> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                  <div class="transformCustomer--right">
+                    <div class="image-container">
+                      <div class="image1">
+                        <img src="assets/images/objects-1.png" alt="" />
+                      </div>
+                      <div class="image2">
+                        <img src="assets/images/objects-2.png" alt="" />
+                      </div>
+                      <div class="image3">
+                        <img src="assets/images/objects-4.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="tab2" class="tab-pane fade">
+              <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                  <div class="del-tab-cont">
+                    <h6 class="f-p">
+                      Enhance Team Performance with Call Recording, Monitoring,
+                      and Whisper Coaching
+                    </h6>
+                    <div class="d-flex call-actions">
+                      <button class="secondaryBtn">BOOK A CONSULTATION</button>
+                      <button class="secondaryBtn text see-all-btn">
+                        SEE ALL SOLUTIONS
+                        <i class="bi bi-arrow-right"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                  <div class="transformCustomer--right">
+                    <div class="image-container">
+                      <div class="image1">
+                        <img src="assets/images/objects-1.png" alt="" />
+                      </div>
+                      <div class="image2">
+                        <img src="assets/images/objects-2.png" alt="" />
+                      </div>
+                      <div class="image3">
+                        <img src="assets/images/objects-4.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="tab3" class="tab-pane fade">
+              <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                  <div class="del-tab-cont">
+                    <h6 class="f-p">
+                      Improve Customer Experience with Efficient Interactive
+                      Voice Response (IVR)
+                    </h6>
+                    <div class="d-flex call-actions">
+                      <button class="secondaryBtn">BOOK A CONSULTATION</button>
+                      <button class="secondaryBtn text see-all-btn">
+                        SEE ALL SOLUTIONS
+                        <i class="bi bi-arrow-right"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                  <div class="transformCustomer--right">
+                    <div class="image-container">
+                      <div class="image1">
+                        <img src="assets/images/objects-1.png" alt="" />
+                      </div>
+                      <div class="image2">
+                        <img src="assets/images/objects-2.png" alt="" />
+                      </div>
+                      <div class="image3">
+                        <img src="assets/images/objects-4.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="tab4" class="tab-pane fade">
+              <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                  <div class="del-tab-cont">
+                    <h6 class="f-p">
+                      Ensure Quick Connections with Intelligent Call Queuing and
+                      Routing
+                    </h6>
+                    <div class="d-flex call-actions">
+                      <button class="secondaryBtn">BOOK A CONSULTATION</button>
+                      <button class="secondaryBtn text see-all-btn">
+                        SEE ALL SOLUTIONS
+                        <i class="bi bi-arrow-right"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                  <div class="transformCustomer--right">
+                    <div class="image-container">
+                      <div class="image1">
+                        <img src="assets/images/objects-1.png" alt="" />
+                      </div>
+                      <div class="image2">
+                        <img src="assets/images/objects-2.png" alt="" />
+                      </div>
+                      <div class="image3">
+                        <img src="assets/images/objects-4.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="tab5" class="tab-pane fade">
+              <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                  <div class="del-tab-cont">
+                    <h6 class="f-p">
+                      Deliver Tailored Experiences with Seamless CRM Integration
+                    </h6>
+                    <div class="d-flex call-actions">
+                      <button class="secondaryBtn">BOOK A CONSULTATION</button>
+                      <button class="secondaryBtn text see-all-btn">
+                        SEE ALL SOLUTIONS
+                        <i class="bi bi-arrow-right"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                  <div class="transformCustomer--right">
+                    <div class="image-container">
+                      <div class="image1">
+                        <img src="assets/images/objects-1.png" alt="" />
+                      </div>
+                      <div class="image2">
+                        <img src="assets/images/objects-2.png" alt="" />
+                      </div>
+                      <div class="image3">
+                        <img src="assets/images/objects-4.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="tab6" class="tab-pane fade">
+              <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                  <div class="del-tab-cont">
+                    <h6 class="f-p">
+                      Make Informed Decisions with Real-Time Reporting and
+                      Analytics
+                    </h6>
+                    <div class="d-flex call-actions">
+                      <button class="secondaryBtn">BOOK A CONSULTATION</button>
+                      <button class="secondaryBtn text see-all-btn">
+                        SEE ALL SOLUTIONS
+                        <i class="bi bi-arrow-right"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                  <div class="transformCustomer--right">
+                    <div class="image-container">
+                      <div class="image1">
+                        <img src="assets/images/objects-1.png" alt="" />
+                      </div>
+                      <div class="image2">
+                        <img src="assets/images/objects-2.png" alt="" />
+                      </div>
+                      <div class="image3">
+                        <img src="assets/images/objects-4.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-bs-toggle="tab" href="#tab1">
+                Robust Dialing Options
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#tab2">
+                Call Coaching
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#tab3">
+                Interactive Voice Response (IVR)
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#tab4">
+                Call Queuing/ Routing
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#tab5">
+                CRM Integration
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#tab6">
+                Real-Time Reporting and Analytics
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="container-xl">
+        <div class="kunnect-works">
+          <div class="title">
+            <span class="f-m" data-aos="fade-down" data-aos-duration="500"
+              >Intuitively streamline your communications</span
+            >
+            <h3 class="f-p" data-aos="fade-down" data-aos-duration="600">
+              How Kunnect Works
+            </h3>
+          </div>
+          <div class="kunnect-works-cards">
+            <div
+              class="img-card relative-card"
+              data-aos="fade-right"
+              data-aos-duration="500">
+              <div class="cont">
+                <h6>Outbound Call Center</h6>
+                <p>
+                  Enhance your outreach with our reliable and efficient
+                  predictive dialer system, seamlessly integrated with inbound
+                  call management and CRM solutions.
+                </p>
+                <!-- <button class="flatBtn c-p f600">
+                  EXPLORE SOLUTION <i class="bi bi-arrow-right"></i>
+                </button> -->
+              </div>
+              <figure>
+                <img class="w-100" src="assets/images/wavey-chart.png" alt="" />
+              </figure>
+            </div>
+            <div
+              class="img-card relative-card"
+              data-aos="fade-left"
+              data-aos-duration="500">
+              <div class="cont">
+                <h6>Inbound Call Center</h6>
+                <p>
+                  Enhance customer support with seamless call handling and
+                  integrated CRM solutions.
+                </p>
+                <!-- <button class="flatBtn c-p f600">
+                  EXPLORE SOLUTION <i class="bi bi-arrow-right"></i>
+                </button> -->
+              </div>
+              <figure class="text-end">
+                <img
+                  src="../../assets/images/bar0chart.png"
+                  alt=""
+                  class="pb-4 pe-4 addon" />
+              </figure>
+            </div>
+            <div class="img-card" data-aos="fade-right" data-aos-duration="500">
+              <div class="cont">
+                <h6>Agent Productivity</h6>
+                <p>
+                  Maximize agent efficiency by equipping them with the right
+                  tools and workflows to handle calls seamlessly and deliver
+                  better outcomes.
+                </p>
+                <!-- <button class="flatBtn c-p f600">
+                  EXPLORE SOLUTION <i class="bi bi-arrow-right"></i>
+                </button> -->
+              </div>
+              <figure>
+                <img src="../../assets/images/bop.svg" alt="" />
+              </figure>
+            </div>
+            <div class="img-card" data-aos="fade-left" data-aos-duration="500">
+              <div class="cont">
+                <h6>Managing Performance</h6>
+                <p>
+                  Monitor and manage performance with comprehensive analytics
+                  and reporting tools.
+                </p>
+                <!-- <button class="flatBtn c-p f600">
+                  EXPLORE SOLUTION <i class="bi bi-arrow-right"></i>
+                </button> -->
+              </div>
+              <figure class="text-end">
+                <img src="../../assets/images/manage-performance.svg" alt="" />
+              </figure>
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="primaryBtn" (click)="bookConsult()">
+              GET A PERSONALIZED DEMO
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 pricing-table-block">
+      <div class="container-xl">
+        <app-pricing-table></app-pricing-table>
+      </div>
+    </div>
+    <div class="col-12 lightBlue">
+      <div class="container-xl">
+        <div class="kunnect-compare f-m">
+          <div class="title">
+            <h3 class="f-p" data-aos="fade-down" data-aos-duration="500">
+              <span>Kunnect</span> compared to other call center solutions
+            </h3>
+            <p class="f-m">
+              Compare our comprehensive features to other leading call center
+              tools
+            </p>
+          </div>
+          <div class="compare-block">
+            <div class="row heading">
+              <div
+                class="col-5 text-end"
+                data-aos="fade-right"
+                data-aos-duration="500">
+                <img src="../../assets/images/kunnect-logo.png" alt="" />
+              </div>
+              <div class="col-2 text-center">
+                <span class="vs-text">vs</span>
+              </div>
+              <div class="col-5" data-aos="fade-left" data-aos-duration="500">
+                <span class="comp-text">Competition</span>
+              </div>
+            </div>
+            <div class="row compare-row">
+              <div class="col-5">
+                <div class="compare-box">
+                  A human-centric solution developed by Invictus and proven in
+                  our contact center outsourcing programs. Kunnect prioritizes
+                  people management, ensuring seamless integration of technology
+                  with the human touch.
+                </div>
+              </div>
+              <div class="col-2 compare-label">
+                <span>Expertise</span>
+              </div>
+              <div class="col-5">
+                <div class="compare-box light mh-160">
+                  Software only without call center management expertise.
+                </div>
+              </div>
+            </div>
+            <div class="row compare-row">
+              <div class="col-5">
+                <div class="compare-box">
+                  Simple setup process gets you up and running in less than a
+                  day with flexible customization options.
+                </div>
+              </div>
+              <div class="col-2 compare-label">
+                <span>Set-up</span>
+              </div>
+              <div class="col-5">
+                <div class="compare-box light mh-112">
+                  Complex setup and lacks customization for smaller businesses.
+                </div>
+              </div>
+            </div>
+            <div class="row compare-row">
+              <div class="col-5">
+                <div class="compare-box">
+                  Human-Focused Design: Built with the understanding of the
+                  needs of real agents and managers.
+                </div>
+              </div>
+              <div class="col-2 compare-label">
+                <span>Ease of use</span>
+              </div>
+              <div class="col-5">
+                <div class="compare-box light mh-112">
+                  Steep learning curve for new users.
+                </div>
+              </div>
+            </div>
+            <div class="row compare-row">
+              <div class="col-5">
+                <div class="compare-box">24/7/365 human support.</div>
+              </div>
+              <div class="col-2 compare-label">
+                <span>Support</span>
+              </div>
+              <div class="col-5">
+                <div class="compare-box light">
+                  Occasional issues with customer support responsiveness.
+                </div>
+              </div>
+            </div>
+            <div class="row compare-row">
+              <div class="col-5">
+                <div class="compare-box">
+                  Affordable pricing making it accessible for SMEs and at-home
+                  agents.
+                </div>
+              </div>
+              <div class="col-2 compare-label">
+                <span>Pricing</span>
+              </div>
+              <div class="col-5">
+                <div class="compare-box light">
+                  Can be expensive for smaller businesses.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-book-consultation [title]="title" class="spa0 col-12" />
+  </div>
+</div>

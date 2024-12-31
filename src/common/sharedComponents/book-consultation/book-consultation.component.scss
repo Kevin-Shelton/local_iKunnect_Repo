@@ -1,0 +1,44 @@
+.bookConsultation {
+  background: #7540c4;
+  color: white;
+  text-align: center;
+  padding: 80px 0;
+  h1 {
+    font-size: 48px;
+    line-height: 60px;
+    font-weight: 500;
+    max-width: 750px;
+    margin: 0 auto 60px;
+  }
+  @media (max-width: 991px) {
+    padding: 40px 0;
+    h1 {
+      font-size: 40px;
+      line-height: normal;
+      margin-bottom: 30px;
+    }
+  }
+  @media (max-width: 767px) {
+    h1 {
+      font-size: 28px;
+      line-height: normal;
+      max-width: inherit;
+      margin-bottom: 20px;
+    }
+    .primaryBtn {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+  }
+  @media (max-width: 576px) {
+    h1 {
+      font-size: 20px;
+    }
+  }
+}
+.haveHoverBorder{
+  transition: all ease .5s;
+  &:hover{
+    border: solid 2px white !important;
+  }
+}

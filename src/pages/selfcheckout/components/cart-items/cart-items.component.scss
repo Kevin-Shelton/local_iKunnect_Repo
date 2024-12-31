@@ -1,0 +1,58 @@
+@media (max-width: 600px) {
+  .haveScroll{
+    overflow-x: auto;
+    table{
+      width: 400px;
+    }
+  }
+
+}
+.haveScroll{
+  overflow-x: auto;
+  table{
+    tr{
+      th{
+        &:first-child{
+          width: 100px;
+        }
+      }
+      td{
+        &:first-child{
+          div{
+            max-width: 120px !important;
+          }
+        }
+        .row{
+          flex-wrap: nowrap;
+        }
+      }
+    }
+  }
+}
+
+.error-msg,
+.warning-msg,
+.info-msg {
+  color:rgba(255, 0, 0, 1);
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 400;
+  position: relative;
+  display: flex;
+  padding-left: 0px;
+  top: -10px;
+  margin-bottom: 10px;
+
+  &:before {
+   // content: 'warning';
+    font-family: 'Material Icons';
+    font-size: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &+.error-msg {
+    margin-top: 16px;
+  }
+}

@@ -1,0 +1,37 @@
+@import "./colors.scss";
+
+.haveForm{
+  label{
+    display: block;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 8px;
+    font-family: "Montserrat", sans-serif;
+  }
+  input{
+    margin-bottom: 24px;
+  }
+}
+.plainField{
+  width: 100%;
+  height: 44px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  line-height: normal;
+  padding-left: 16px;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+  height: 40px;
+  align-items: center; // Center align the input text vertically if needed
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  top: 0;
+  bottom: 0;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0 8px; // Adjust padding to fit the smaller height
+}
+

@@ -1,0 +1,121 @@
+@import "./colors.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body:has(.homepage) {
+  overflow-x: hidden;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
+.text-nowrap {
+  white-space: nowrap;
+}
+.ellipsis-singleline {
+  max-width: 90%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.ellipsis-twoline {
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+.gray-text {
+  color: #808082;
+}
+.cursor-p {
+  cursor: pointer;
+}
+.max-width-100 {
+  max-width: 100px;
+}
+.max-width-50 {
+  max-width: 50px;
+}
+.customAccrodion {
+  .accordion-item {
+    margin-bottom: 20px;
+    border: 1px solid #cfcfd0 !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    .accordion-header {
+      font-family: "Montserrat", sans-serif;
+      img {
+        margin-right: 16px;
+      }
+      .accordion-button {
+        font-size: 24px;
+        font-weight: 600;
+        color: #1a1b2b;
+        padding-right: 40px;
+        &::after {
+          display: none;
+        }
+        &:focus {
+          box-shadow: none;
+        }
+        
+        & {
+          background: url(./../images/minus.png) no-repeat;
+          background-position: 95%;
+        }
+        &.collapsed {
+          background: url(./../images/plus.png) no-repeat;
+          & {
+            background-position: 95%;
+          }
+        }
+      }
+    }
+    .accordion-body {
+      padding-left: 90px;
+      p {
+        font-size: 16px;
+        line-height: 22px;
+        color: black;
+        font-weight: 400;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    }
+  }
+}
+.md-full {
+  @media screen and (max-width: 768px) {
+    width: 100% !important;
+  }
+}
+
+.support-page {
+  .bookConsultation h1 {
+    font-size: 40px !important;
+  }
+}
+.haveClients{
+  overflow-x: hidden;
+  .row{
+    flex-wrap: nowrap !important;
+  }
+}
+@media (max-width: 767px) {
+  .meetYourOucomes .colouts > div{
+    padding: 0 !important;
+    margin-bottom: 20px;
+  }
+}

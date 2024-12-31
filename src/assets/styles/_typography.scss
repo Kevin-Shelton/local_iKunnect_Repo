@@ -1,0 +1,55 @@
+@import "./colors.scss";
+
+.f-m{
+  font-family: "Montserrat", sans-serif;
+}
+.f-p{
+  font-family: "Poppins", sans-serif;
+}
+.f-i{
+  font-family: "Inter", sans-serif;
+}
+.f-a{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.f600{
+  font-weight: 600;
+}
+.f500{
+  font-weight: 500;
+}
+h1,h2,h3,h4,h5,h6{
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+}
+h1{
+  font-size: 32px;
+  line-height: 44px;
+}
+h2{
+  font-size: 28px;
+  line-height: 40px;
+}
+h3{
+  font-size: 24px;
+  line-height: 32px;
+}
+h4{
+  font-size: 20px;
+  line-height: 28px;
+}
+h5{
+  font-size: 18px;
+  line-height: 25px;
+}
+h6{
+  font-size: 16px;
+  line-height: 22px;
+}
+.lightBlue{
+  background: #f4fdf4;
+}
+.c-p{
+  color: #7540C4;
+}

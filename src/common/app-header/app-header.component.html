@@ -1,0 +1,193 @@
+<div class="row">
+  <div class="col-12 featureGuide">
+    <div class="container-xl">
+      <div class="row align-items-center">
+        <div class="col-11">
+          <strong>FEATURED GUIDE:</strong> How to modernize your call center
+          <button class="flatBtn f600 white-color">
+            Read it now <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+        <div class="col-1 text-end">
+          <i class="bi bi-x-square-fill"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 clientHead">
+    <div class="container-xl">
+      <div class="row align-items-center invictus-block">
+        <!-- Left: Logo and Label -->
+        <div class="col-lg-6 col-md-7 col-xs-12 d-flex align-items-center">
+          <img src="assets/images/invictus-logo.png" alt="Logo" />
+          <ul class="nav justify-content-center">
+            <li class="nav-item mx-4">
+              <a routerLink="/home" routerLinkActive="active"> WHY INVICTUS </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/contact-us" routerLinkActive="active">
+                CONTACT CENTER SERVICES
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- Right: Search, Log In, Support -->
+        <div class="col-lg-6 col-md-5 col-xs-12 text-end">
+          <div class="invictus-col">
+            <!-- <span class="search-block">
+              <i class="bi bi-search"></i> Search
+            </span> -->
+
+            <a routerLink="/home">
+              <i class="bi bi-person"></i>
+              Log in
+            </a>
+            <a routerLink="/support" routerLinkActive="active">
+              <!-- <i class="bi bi-headset"></i> -->
+              <img src="./../../assets/images/support-icon-png.png" alt="" />
+              Support
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 konnectHead py-sm-0 py-lg-3">
+    <div class="container-xl">
+      <div class="row main-nav">
+        <div class="col-md-2 align-self-center">
+          <a class="logo-col">
+            <button class="main-nav-btn" (click)="toggleNav()">
+              <i class="bi bi-list"></i>
+            </button>
+            <img
+              src="assets/images/kunnect-logo.png"
+              routerLink="/home"
+              alt="Logo" />
+          </a>
+        </div>
+        <div
+          class="col-md-10 text-end main-nav-cont"
+          [class]="navPanel ? 'active' : ''">
+          <ul class="main-nav-list">
+            <li class="nav-col-close">
+              <img src="assets/images/kunnect-logo.png" alt="Logo" />
+              <button (click)="toggleNav()">
+                <i class="bi bi-x-lg"></i>
+              </button>
+            </li>
+            <!-- <li class="dropdown">
+              <a
+                class="dropdown-toggle"
+                href="#"
+                id="solutionsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                SOLUTIONS
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="solutionsDropdown">
+                <li>Outbound Call Center</li>
+                <li>Inbound Call Center</li>
+                <li>Back Office Optimization</li>
+                <li>Managing Performance</li>
+              </ul>
+            </li> -->
+            <li>
+              <a
+                routerLink="/platform"
+                routerLinkActive="active"
+                (click)="toggleNav()">
+                PLATFORM
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/solutions"
+                routerLinkActive="active"
+                (click)="toggleNav()"
+                >SOLUTIONS</a
+              >
+            </li>
+            <li>
+              <a
+                routerLink="/pricing"
+                routerLinkActive="active"
+                (click)="toggleNav()"
+                >PRICING</a
+              >
+            </li>
+            <li>
+              <a
+                routerLink="/resources"
+                routerLinkActive="active"
+                (click)="toggleNav()"
+                >RESOURCES</a
+              >
+            </li>
+            <li>
+              <a
+                routerLink="/about"
+                routerLinkActive="active"
+                (click)="toggleNav()"
+                >ABOUT</a
+              >
+            </li>
+            <li *ngIf="navPanel" class="visible-md">
+              <a
+                routerLink="/contact-us"
+                routerLinkActive="active"
+                (click)="toggleNav()"
+                >Contact Us</a
+              >
+            </li>
+            <li>
+              <button type="button" class="primaryBtn border my-1">
+                SIGN UP NOW
+              </button>
+              <button type="button" class="primaryBtn sml2">LET'S TALK</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-0">
+          <a class="navbar-brand" href="#"><img src="assets/images/kunnect-logo.png" alt="Explore Column"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav headnav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                PLATFORM
+              </li>
+              <li class="nav-item dropdown">
+                <a class=" dropdown-toggle" href="#" id="solutionsDropdown" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  SOLUTIONS
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="solutionsDropdown">
+                  <li>Outbound Call Center</li>
+                  <li>Inbound Call Center</li>
+                  <li>Back Office Optimization</li>
+                  <li>Managing Performance</li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                PRICING
+              </li>
+              <li class="nav-item">
+                ABOUT
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <button type="button" class="primaryBtn border">SIGN UP NOW</button>
+          <button type="button" class="primaryBtn ms-4">LET’S TALK</button>
+            </form>
+          </div>
+        </div>
+      </nav> -->
+    </div>
+  </div>
+</div>

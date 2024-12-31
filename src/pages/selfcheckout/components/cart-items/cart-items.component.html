@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-12">
+    <div class="row units align-items-top">
+      <div class="col-12 align-just-center">
+        <div class="row switch smb4">
+          <div class="col-auto">
+            <label class="form-check-label" for="flexSwitchCheckChecked"
+              >Monthly</label
+            >
+          </div>
+          <div class="col-auto m-45">
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                (change)="planDurationChange($event)"
+                [(ngModel)]="isChecked"
+                type="checkbox"
+                id="flexSwitchCheckChecked"
+                 />
+            </div>
+          </div>
+          <div class="col-auto">
+            <label class="form-check-label" for="flexSwitchCheckChecked"
+              >Annual (save up to 25%)</label
+            >
+          </div>
+        </div>
+      </div>
+      <div class="haveScroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Item Price</th>
+              <th>Quantity</th>
+              <th>Total Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (product of planCartItems; track product.type) {
+              <tr>
+                <td>
+                  <div class="ellipsis-singleline" [title]="product.type">
+                    {{ product.type }}
+                  </div>
+                </td>
+                <td>
+                  {{ product.amount.disValue }}
+                </td>
+                <td>
+                  <div class="row g-1">
+                    <div
+                      class="col-auto"
+                      (click)="decrementBundleQuantity(product)">
+                      <i class="bi bi-dash-lg"></i>
+                    </div>
+                    <div class="col-auto">
+                      <input
+                        type="number"
+                        [value]="product.quantity"
+                        class="max-width-50" />
+                    </div>
+                    <div
+                      class="col-auto"
+                      (click)="incrementBundleQuantity(product)">
+                      <i class="bi bi-plus-lg"></i>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  {{ product.totalAmount.disValue }}
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <form [formGroup]="customerSubForm">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckDefault"
+          formControlName="subscribeReceiveEmails"/>
+        <label class="form-check-label" for="flexCheckDefault">
+          Sign me up to receive email updates and news
+        </label>
+      </div>
+    </form>
+
+  </div>
+ </div>

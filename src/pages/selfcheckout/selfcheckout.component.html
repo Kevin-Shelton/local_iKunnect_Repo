@@ -1,0 +1,163 @@
+<div class="row selfcheckoutScreen">
+  <div class="col-12">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="row align-items-center selfcheckoutScreen--header f-m">
+            <div class="col-xs-12 col-sm-8 selfcheckoutScreen--tabs">
+              <h1 class="sfont40" data-aos="fade-down" data-aos-delay="700">
+                Get started with Kunnect
+              </h1>
+              <h3 data-aos="fade-down" data-aos-delay="700">
+                Just a few more steps
+              </h3>
+              <div
+                class="row row-cols-auto align-items-center d-none"
+                data-aos="fade-zoom-in"
+                data-aos-easing="ease-in-back"
+                data-aos-delay="300"
+                data-aos-offset="0">
+                <div class="col">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="exampleRadios"
+                      id="exampleRadios2"
+                      value="option1" />
+                    <label class="form-check-label" for="exampleRadios2">
+                      Information
+                    </label>
+                  </div>
+                </div>
+                <div class="col line">
+                  <hr />
+                </div>
+                <div class="col">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="exampleRadios"
+                      id="exampleRadios1"
+                      value="option1" />
+                    <label class="form-check-label" for="exampleRadios1">
+                      Finish
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 selfcheckoutScreen--headlist">
+              <ul data-aos="fade-left">
+                <li>
+                  <img
+                    src="assets/images/list-bg-1.png"
+                    alt="SSL secured checkout" />
+                  SSL secured checkout
+                </li>
+                <li>
+                  <img
+                    src="assets/images/list-bg-2.png"
+                    alt="24/7 support available" />
+                  24/7 support available
+                </li>
+                <li>
+                  <img
+                    src="assets/images/list-bg-3.png"
+                    alt="Multiple secure payment options" />
+                  Multiple secure payment options
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 haveForm selfcheckout">
+          <div class="row gx-5" *ngIf="!statusText && !showCardDetails">
+            <div class="col-xs-12 col-md-6 selfcheckout--left">
+              <h5 class="smb2">Licenses</h5>
+              <app-cart-items></app-cart-items>
+            </div>
+            <div class="col-xs-12 col-md-6 selfcheckout--right">             
+              <div class="row">               
+                <div class="col-xs-12 questions">
+                  <div class="row justify-content-center">
+                    <div class="p-4 question-box">
+                      <h5 class="smb2">Questions?</h5>
+                      <p>
+                        Want to get in touch with us the old fashioned way? Give
+                        us a call.
+                      </p>
+
+                      <div class="row align-items-center smb4">
+                        <div class="col-auto">
+                          <div class="icon-circle">
+                            <i class="bi bi-telephone-fill"></i>
+                          </div>
+                        </div>
+                        <div class="col spl0">
+                          <p class="mb-0">877-KUNNECT</p>
+                          <p class="mb-0">1 (877) 586 - 6328</p>
+                        </div>
+                      </div>
+
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <div class="icon-circle">
+                            <i class="bi bi-telephone-fill"></i>
+                          </div>
+                        </div>
+                        <div class="col spl0">
+                          <p class="mb-0">LOCAL NUMBER</p>
+                          <p class="mb-0">+1 (954) 271 - 1329</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 text-center">
+                  <img
+                    src="./../../assets/images/secure-payment.png"
+                    class="width-sm-full"
+                    alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 text-end">
+              <button
+                class="checkoutBtn primaryBtn"
+                (click)="handleCheckout()">
+                <i class="bi bi-cart-fill"></i>
+                Checkout
+              </button>
+
+            </div>
+          </div>
+          <div class="row " *ngIf="showCardDetails && !statusText">
+            <app-payment  (clientSecreteEvt)="saveWholeBudleInfo($event)" > </app-payment>
+            <div class="col-xs-12 sml3 smt2">
+              <button
+                class="checkoutBtn primaryBtn"
+                (click)="handleCheckoutBack()">
+                <i class="bi bi-arrow-left"></i>
+                Back
+              </button>
+
+            </div>
+          </div>
+          <div class="row gx-5" *ngIf="statusText && !showCardDetails">
+            <div class="column text-center">
+              <div class="col-12 sfont80">
+                <i class="bi bi-check-circle" style="color: #8fc44c"></i>
+              </div>
+              <div class="col-12 sfont24">
+                {{ statusText }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-book-consultation [title]="title" class="spa0 col-12" />
+</div>
