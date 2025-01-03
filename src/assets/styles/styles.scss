@@ -50,6 +50,9 @@
     width: calc(25% - 20px);
     top: 68px;
     height: auto !important;
+    .zammad-chat-modal {
+      top: 48px;
+    }
     .zammad-chat-header {
       box-shadow: none;
       background: white;
@@ -84,6 +87,14 @@
       .zammad-chat-header-icon {
         line-height: 46px;
         right: 10px;
+        color: black;
+        font-size: 10px;
+      }
+      .zammad-chat-agent-status.zammad-chat-is-hidden {
+        & + .zammad-chat-header-icon {
+          color: white;
+          font-size: 12px;
+        }
       }
     }
     .zammad-chat-body {
