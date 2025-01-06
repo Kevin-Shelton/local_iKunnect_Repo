@@ -78,8 +78,8 @@
               <h5 class="smb2">Licenses</h5>
               <app-cart-items></app-cart-items>
             </div>
-            <div class="col-xs-12 col-md-6 selfcheckout--right">             
-              <div class="row">               
+            <div class="col-xs-12 col-md-6 selfcheckout--right">
+              <div class="row">
                 <div class="col-xs-12 questions">
                   <div class="row justify-content-center">
                     <div class="p-4 question-box">
@@ -124,17 +124,15 @@
               </div>
             </div>
             <div class="col-md-12 text-end">
-              <button
-                class="checkoutBtn primaryBtn"
-                (click)="handleCheckout()">
+              <button class="checkoutBtn primaryBtn" (click)="handleCheckout()">
                 <i class="bi bi-cart-fill"></i>
                 Checkout
               </button>
-
             </div>
           </div>
-          <div class="row " *ngIf="showCardDetails && !statusText">
-            <app-payment  (clientSecreteEvt)="saveWholeBudleInfo($event)" > </app-payment>
+          <div class="row" *ngIf="showCardDetails && !statusText">
+            <app-payment (clientSecreteEvt)="saveWholeBudleInfo($event)">
+            </app-payment>
             <div class="col-xs-12 sml3 smt2">
               <button
                 class="checkoutBtn primaryBtn"
@@ -142,7 +140,6 @@
                 <i class="bi bi-arrow-left"></i>
                 Back
               </button>
-
             </div>
           </div>
           <div class="row gx-5" *ngIf="statusText && !showCardDetails">

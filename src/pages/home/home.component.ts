@@ -43,5 +43,5 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/book-demo']);
     window.scrollTo(0, 0);
   }
-  constructor(private readonly router: Router) { }
+  constructor(private readonly router: Router) {}
 }

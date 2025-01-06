@@ -10,8 +10,8 @@ import { ResourcesComponent } from '../pages/resources/resources.component';
 import { SelfcheckoutComponent } from '../pages/selfcheckout/selfcheckout.component';
 import { SolutionsComponent } from '../pages/solutions/solutions.component';
 import { SupportComponent } from '../pages/support/support.component';
+import { EachPostContentComponent } from './../pages/each-post-content/each-post-content.component';
 import { HomeComponent } from './../pages/home/home.component';
-import {EachPostContentComponent} from './../pages/each-post-content/each-post-content.component';
 export const routes: Routes = [
   { path: 'home', pathMatch: 'full', component: HomeComponent },
   { path: 'about', pathMatch: 'full', component: AboutComponent },

@@ -29,8 +29,8 @@ export class PricingTableComponent implements OnInit {
   featureTypes = this.plans['features'].year;
   stripeBundlePricing!: StripePricingDisplay;
   cartProductPricing: StripeCartProductDisplay = {
-    year: {Trial: [], StartUp: [], Growth: [], Scale: [] },
-    month: {Trial: [], StartUp: [], Growth: [], Scale: [] },
+    year: { Trial: [], StartUp: [], Growth: [], Scale: [] },
+    month: { Trial: [], StartUp: [], Growth: [], Scale: [] },
   };
   priceDetByDuration = this.stripeBundlePricing?.year;
   planPeriod = PlanDuration.ANNUALLY;
@@ -43,24 +43,27 @@ export class PricingTableComponent implements OnInit {
   ngOnInit(): void {
     this.paymentService.getProducts().subscribe({
       next: res => {
-      
         this.mergeProductsWithStripePrices(res);
       },
     });
   }
-  isText(type: {value: string, stripeProdName: ProductNames}) {
+  isText(type: { value: string; stripeProdName: ProductNames }) {
     return type.value !== 'no' && type.value !== 'yes';
   }
-  getDataType(val: {value: string, stripeProdName: ProductNames}, type: string) {
+  getDataType(
+    val: { value: string; stripeProdName: ProductNames },
+    type: string
+  ) {
     return val.value === type;
   }
   buyPlan(planType: string) {
-   
     this.paymentHelper.changeBundlePlanDetails({
       bundleType: planType as PlanType,
       duration: this.planPeriod,
     });
-    this.paymentHelper.changeCartItemsWithDurationDetails(this.cartProductPricing);
+    this.paymentHelper.changeCartItemsWithDurationDetails(
+      this.cartProductPricing
+    );
     this.paymentHelper.changeWholeBundleDetails(this.plans);
     this.router.navigate(['/self-checkout']);
 
@@ -87,8 +90,8 @@ export class PricingTableComponent implements OnInit {
 
   mergeBundlePrices(products: StripeProduct[]) {
     this.stripeBundlePricing = {
-      month: { },
-      year: {  },
+      month: {},
+      year: {},
     };
     products
       .filter(prd =>
@@ -96,7 +99,7 @@ export class PricingTableComponent implements OnInit {
           ProductNames.Startup_Bundle,
           ProductNames.SCALE_BUNDLE,
           ProductNames.Growth_Bundle,
-          ProductNames.Freemium_Bundle_with_Trial
+          ProductNames.Freemium_Bundle_with_Trial,
         ].includes(prd.name)
       )
       .forEach(prd => {
@@ -109,7 +112,7 @@ export class PricingTableComponent implements OnInit {
           }
           if (prd.name === ProductNames.SCALE_BUNDLE) {
             this.addBundlePrice(price, PlanType.SCALE);
-          } 
+          }
           if (prd.name === ProductNames.Freemium_Bundle_with_Trial) {
             this.addBundlePrice(price, PlanType.TRIAL);
           }
@@ -128,41 +131,60 @@ export class PricingTableComponent implements OnInit {
       duration: price.interval,
       amount: { value: price.amount, disValue: `$${price.amount.toFixed(2)}` },
       quantity: 1,
-      totalAmount: { value: price.amount, disValue: `$${price.amount.toFixed(2)}` },
-      priceId: price.id
+      totalAmount: {
+        value: price.amount,
+        disValue: `$${price.amount.toFixed(2)}`,
+      },
+      priceId: price.id,
     });
-  
   }
 
   mergeStripeProdIntoJsonData(products: StripeProduct[]) {
     products.forEach(prod => {
-      prod.prices.filter(price => price.amount && price.interval).forEach(price => {
-        this.getPricingCellFromJson(prod.name, price.interval, price)
-      });
+      prod.prices
+        .filter(price => price.amount && price.interval)
+        .forEach(price => {
+          this.getPricingCellFromJson(prod.name, price.interval, price);
+        });
     });
   }
 
-  getPricingCellFromJson(sProdName: string, duration: PlanDuration, proceObj: StripePrice) {
+  getPricingCellFromJson(
+    sProdName: string,
+    duration: PlanDuration,
+    proceObj: StripePrice
+  ) {
     Object.keys(this.plans).forEach(planKey => {
       this.plans[planKey][duration]?.forEach(prodInfo => {
-        Object.keys(prodInfo).filter(key => BasicPricePlanNames.includes(key) && prodInfo[key].stripeProdName === sProdName).forEach(key =>{
-          prodInfo[key].value = prodInfo[key].value.replace('price', proceObj.amount);
-          const cartItem = {
-            type: prodInfo['name'] as PlanType,
-            duration: duration,
-            amount: {
-              value: proceObj.amount,
-              disValue: `$${proceObj.amount.toFixed(2)}`,
-            },
-            quantity: 1,
-            totalAmount: {
-              value: proceObj.amount,
-              disValue: `$${proceObj.amount.toFixed(2)}`,
-            },
-            priceId: proceObj.id
-          }
-          this.cartProductPricing[duration][BasicPricePlanNamesMap[key]].push(cartItem);
-        });       
+        Object.keys(prodInfo)
+          .filter(
+            key =>
+              BasicPricePlanNames.includes(key) &&
+              prodInfo[key].stripeProdName === sProdName
+          )
+          .forEach(key => {
+            prodInfo[key].value = prodInfo[key].value.replace(
+              'price',
+              proceObj.amount
+            );
+            const cartItem = {
+              type: prodInfo['name'] as PlanType,
+              duration: duration,
+              amount: {
+                value: proceObj.amount,
+                disValue: `$${proceObj.amount.toFixed(2)}`,
+              },
+              quantity: 1,
+              totalAmount: {
+                value: proceObj.amount,
+                disValue: `$${proceObj.amount.toFixed(2)}`,
+              },
+              priceId: proceObj.id,
+            };
+            this.cartProductPricing[duration][BasicPricePlanNamesMap[key]].push(
+              cartItem
+            );
+          });
       });
     });
   }

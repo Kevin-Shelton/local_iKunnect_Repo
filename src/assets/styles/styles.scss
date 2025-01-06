@@ -34,6 +34,24 @@
     }
   }
 }
+::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+  &-thumb {
+    background: #d9d9d9;
+    border-radius: 6px;
+  }
+}
+.appLayout__content {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    &-thumb {
+      background: #d9d9d9;
+      border-radius: 6px;
+    }
+  }
+} 
 
 .zammad-chat {
   height: 68px !important;

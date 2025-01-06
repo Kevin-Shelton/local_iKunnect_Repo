@@ -4,7 +4,11 @@ import { Injectable } from '@angular/core';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
 import { Observable } from 'rxjs';
 import { API_URL } from '../../../config/env-config';
-import { CartItemsReq, IWholeBundleReq, StripeProduct } from '../../../models/website-models';
+import {
+  CartItemsReq,
+  IWholeBundleReq,
+  StripeProduct,
+} from '../../../models/website-models';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +28,8 @@ export class PaymentService {
     return this.httpClient.get<StripeProduct[]>(API_URL.GET_PRODUCTS);
   }
   getStripeSession(
-    payload: CartItemsReq[], isTrial: boolean
+    payload: CartItemsReq[],
+    isTrial: boolean
   ): Observable<{ clientSecret: string }> {
     return this.httpClient.post<{ clientSecret: string }>(
       `${API_URL.CREATE_CHECKOUT_SESSION}?isTrial=${isTrial}`,
@@ -38,10 +43,8 @@ export class PaymentService {
     );
   }
   saveCustomerAndPlanDetails(payload: IWholeBundleReq): Observable<string> {
-    return this.httpClient.post(
-      `${API_URL.SAVE_CUSTOMER_PLAN}`, payload, {
-        responseType: 'text',
-      }
-    );
+    return this.httpClient.post(`${API_URL.SAVE_CUSTOMER_PLAN}`, payload, {
+      responseType: 'text',
+    });
   }
 }
