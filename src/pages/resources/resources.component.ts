@@ -68,14 +68,14 @@ export class ResourcesComponent implements OnInit {
 
   public scrollRight(): void {
     this.widgetsContent?.nativeElement.scrollTo({
-      left: this.widgetsContent?.nativeElement.scrollLeft + 150,
+      left: this.widgetsContent?.nativeElement.scrollLeft + 320,
       behavior: 'smooth',
     });
   }
 
   public scrollLeft(): void {
     this.widgetsContent?.nativeElement.scrollTo({
-      left: this.widgetsContent?.nativeElement.scrollLeft - 150,
+      left: this.widgetsContent?.nativeElement.scrollLeft - 320,
       behavior: 'smooth',
     });
   }

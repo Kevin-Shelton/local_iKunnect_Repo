@@ -27,68 +27,74 @@
             <div class="col">
               <h4>Trending Posts</h4>
             </div>
-            <div class="col">
-              <img src="./../../assets/images/posts/post-1.png" alt="" />
-              Ask Yourself These Five Questions Before Moving to the Cloud
-            </div>
-            <div class="col">
-              <img src="./../../assets/images/posts/post-2.png" alt="" />
-              How To Sell Your Colleagues on the Cloud
-            </div>
-            <div class="col">
-              <img src="./../../assets/images/posts/post-3.png" alt="" />
-              Why Saying Yes Is So Important In Customer Service 
+            <div class="bannerContent-scroll">
+              <div class="col">
+                <img src="./../../assets/images/posts/post-1.png" alt="" />
+                Ask Yourself These Five Questions Before Moving to the Cloud
+              </div>
+              <div class="col">
+                <img src="./../../assets/images/posts/post-2.png" alt="" />
+                How To Sell Your Colleagues on the Cloud
+              </div>
+              <div class="col">
+                <img src="./../../assets/images/posts/post-3.png" alt="" />
+                Why Saying Yes Is So Important In Customer Service 
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div>
-    <div class="container">
-      <div>
-        <div style="float: left">
-          <button (click)="scrollLeft()">left</button>
-        </div>
-        <div #widgetsContent class="middle">
-          <div class="info-widget" *ngFor="let category of wPCategories">
-            <button (click)="tabChange(category)">
+  <div class="resourcesPage--tabs">
+    <div class="container-xl">
+      <div class="nav-pills-cont">
+        <button (click)="scrollLeft()" class="arrown-btns">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <div #widgetsContent class="nav nav-pills">
+          <div class="nav-item" *ngFor="let category of wPCategories">
+            <button (click)="tabChange(category)" class="">
               {{ getCategoryName(category) }}
             </button>
           </div>
         </div>
-        <div style="float: right">
-          <button (click)="scrollRight()">right</button>
-        </div>
+        <button (click)="scrollRight()" class="arrown-btns right">
+          <i class="bi bi-chevron-right"></i>
+        </button>
       </div>
-    </div>
-  </div>
-  <div *ngIf="activeCategory" id="activeCategory.id">
-    <div class="row">
       <div
-        class="col-xs-12 col-sm-6 col-md-4"
-        data-aos="fade-up"
-        *ngFor="let post of wPPosts"
-        data-aos-duration="1000">
-        <div class="card resources--card hasBorder">
-          <img
-            *ngIf="post.jetpack_featured_media_url"
-            [src]="post.jetpack_featured_media_url"
-            class="card-img-top"
-            alt="RESOURCES" />
-          <div class="card-body">
-            <div [innerHTML]="post.title.rendered"></div>
-            <button class="flatBtn c-p f600" (click)="goToPost(post)">
-              READ MORE <i class="bi bi-arrow-right"></i>
-            </button>
+        *ngIf="activeCategory"
+        id="activeCategory.id"
+        class="resources--card-block">
+        <div class="row">
+          <div
+            class="col-xs-12 col-sm-6 col-md-4"
+            data-aos="fade-up"
+            *ngFor="let post of wPPosts"
+            data-aos-duration="1000">
+            <div class="card resources--card hasBorder">
+              <img
+                *ngIf="post.jetpack_featured_media_url"
+                [src]="post.jetpack_featured_media_url"
+                class="card-img-top"
+                alt="RESOURCES" />
+              <div class="card-body">
+                <div [innerHTML]="post.title.rendered"></div>
+                <button class="flatBtn c-p f600" (click)="goToPost(post)">
+                  READ MORE <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 text-center smy3">
+            <button type="button" class="primaryBtn">LOAD MORE</button>
           </div>
         </div>
       </div>
-
-      <div class="col-xs-12 text-center smy3">
-        <button type="button" class="primaryBtn">LOAD MORE</button>
-      </div>
     </div>
   </div>
+
   <app-book-consultation [title]="title" class="spa0 col-12" />
 </div>
