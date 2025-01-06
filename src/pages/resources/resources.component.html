@@ -44,296 +44,49 @@
       </div>
     </div>
   </div>
-  <div class="col-12 resourcesPage--tabs">
-    <div class="container-xl">
-      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item" *ngFor="let category of wPCategories" role="presentation">
-          <button
-            class="active"
-            id="pills-home-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-home"
-            type="button"
-            role="tab"
-            (click)="tabChange(category)"
-            aria-controls="category.id"
-            aria-selected="true">
-            {{category.name}}
-          </button>
-        </li>
-      
-      </ul>
-      <div class="tab-content" id="pills-tabContent">
-        <div
-        *ngIf="activeCategory"
-        class="tab-pane fade show active"
-        id="activeCategory.id"
-        role="tabpanel"
-        aria-labelledby="getCategoryTabName(activeCategory)">
-        <div class="row">
-        
-          <div
-            class="col-xs-12 col-sm-6 col-md-4"
-            data-aos="fade-up"
-            *ngFor="let post of wPPosts"
-            data-aos-duration="1000">
-          
-            <div class="card resources--card hasBorder">
-              <img *ngIf="post.jetpack_featured_media_url"
-                [src]="post.jetpack_featured_media_url"
-                class="card-img-top"
-                alt="RESOURCES" />
-              <div class="card-body">              
-                <div [innerHTML]="post.title.rendered"></div>                
-                <button class="flatBtn c-p f600" (click)="goToPost(post)" >
-                  READ MORE <i class="bi bi-arrow-right"></i>
-                </button>
-              </div>
-            </div>
+  <div>
+    <div class="container">
+      <div>
+        <div style="float: left">
+          <button (click)="scrollLeft()">left</button>
+        </div>
+        <div #widgetsContent class="middle">
+          <div class="info-widget" *ngFor="let category of wPCategories">
+            <button (click)="tabChange(category)">
+              {{ getCategoryName(category) }}
+            </button>
           </div>
-          
-          <div class="col-xs-12 text-center smy3">
-            <button type="button" class="primaryBtn">LOAD MORE</button>
+        </div>
+        <div style="float: right">
+          <button (click)="scrollRight()">right</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="activeCategory" id="activeCategory.id">
+    <div class="row">
+      <div
+        class="col-xs-12 col-sm-6 col-md-4"
+        data-aos="fade-up"
+        *ngFor="let post of wPPosts"
+        data-aos-duration="1000">
+        <div class="card resources--card hasBorder">
+          <img
+            *ngIf="post.jetpack_featured_media_url"
+            [src]="post.jetpack_featured_media_url"
+            class="card-img-top"
+            alt="RESOURCES" />
+          <div class="card-body">
+            <div [innerHTML]="post.title.rendered"></div>
+            <button class="flatBtn c-p f600" (click)="goToPost(post)">
+              READ MORE <i class="bi bi-arrow-right"></i>
+            </button>
           </div>
         </div>
       </div>
-        <!-- <div
-          class="tab-pane fade show active"
-          id="pills-home"
-          role="tabpanel"
-          aria-labelledby="pills-home-tab">
-          <div class="row">
-            <div
-              class="col-xs-12 col-sm-6 col-md-4"
-              data-aos="fade-up"
-              data-aos-duration="1000">
-              <div class="card resources--card hasBorder">
-                <img
-                  src="./../../assets/images/resource-image.png"
-                  class="card-img-top"
-                  alt="RESOURCES" />
-                <div class="card-body">
-                  <h5 class="card-title">
-                    Three Ways Artificial Intelligence Will Improve Call Center
-                    Customer Service
-                  </h5>
-                  <button class="flatBtn c-p f600">
-                    READ MORE <i class="bi bi-arrow-right"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div
-              class="col-xs-12 col-sm-6 col-md-4"
-              data-aos="fade-up"
-              data-aos-duration="1000">
-              <div class="card resources--card hasBorder">
-                <img
-                  src="./../../assets/images/resource-image.png"
-                  class="card-img-top"
-                  alt="RESOURCES" />
-                <div class="card-body">
-                  <h5 class="card-title">
-                    Three Ways Artificial Intelligence Will Improve Call Center
-                    Customer Service
-                  </h5>
-                  <button class="flatBtn c-p f600">
-                    READ MORE <i class="bi bi-arrow-right"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div
-              class="col-xs-12 col-sm-6 col-md-4"
-              data-aos="fade-up"
-              data-aos-duration="1000">
-              <div class="card resources--card hasBorder">
-                <img
-                  src="./../../assets/images/resource-image.png"
-                  class="card-img-top"
-                  alt="RESOURCES" />
-                <div class="card-body">
-                  <h5 class="card-title">
-                    Three Ways Artificial Intelligence Will Improve Call Center
-                    Customer Service
-                  </h5>
-                  <button class="flatBtn c-p f600">
-                    READ MORE <i class="bi bi-arrow-right"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-12 text-center smy3">
-              <button type="button" class="primaryBtn">LOAD MORE</button>
-            </div>
-          </div>
-        </div>
-        <div
-          class="tab-pane fade"
-          id="pills-profile"
-          role="tabpanel"
-          aria-labelledby="pills-profile-tab">
-          <div class="column">
-            <div class="col smb3 sfont24 alpha">
-              <span>A</span>
-              <span>B</span>
-              <span>C</span>
-              <span>D</span>
-              <span>E</span>
-              <span>F</span>
-              <span>G</span>
-              <span>H</span>
-              <span>I</span>
-              <span>J</span>
-              <span>K</span>
-              <span>L</span>
-              <span>M</span>
-              <span>N</span>
-              <span>O</span>
-              <span>P</span>
-              <span>Q</span>
-              <span>R</span>
-              <span>S</span>
-              <span>T</span>
-              <span>U</span>
-              <span>V</span>
-              <span>W</span>
-              <span>X</span>
-              <span>Y</span>
-              <span>Z</span>
-            </div>
-            <div class="col">
-              <div class="row">
-                <div
-                  class="col-xs-12 col-sm-6 col-md-4"
-                  data-aos="fade-right"
-                  data-aos-duration="1000">
-                  <div class="cardwithoutimg">
-                    <h2>Call Center</h2>
-                    <p>
-                      A call center is a centralized office or facility that
-                      handles large volumes of customer communications,
-                      primarily via phone.
-                    </p>
-                    <button class="flatBtn c-g f600">
-                      READ MORE <i class="bi bi-arrow-right"></i>
-                    </button>
-                  </div>
-                </div>
-                <div
-                  class="col-xs-12 col-sm-6 col-md-4"
-                  data-aos="fade-up"
-                  data-aos-duration="1000">
-                  <div class="cardwithoutimg">
-                    <h2>Call Center</h2>
-                    <p>
-                      A call center is a centralized office or facility that
-                      handles large volumes of customer communications,
-                      primarily via phone.
-                    </p>
-                    <button class="flatBtn c-g f600">
-                      READ MORE <i class="bi bi-arrow-right"></i>
-                    </button>
-                  </div>
-                </div>
-                <div
-                  class="col-xs-12 col-sm-6 col-md-4"
-                  data-aos="fade-left"
-                  data-aos-duration="1000">
-                  <div class="cardwithoutimg">
-                    <h2>Call Center</h2>
-                    <p>
-                      A call center is a centralized office or facility that
-                      handles large volumes of customer communications,
-                      primarily via phone.
-                    </p>
-                    <button class="flatBtn c-g f600">
-                      READ MORE <i class="bi bi-arrow-right"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col text-center smy3">
-              <button type="button" class="primaryBtn">LOAD MORE</button>
-            </div>
-          </div>
-        </div>
-        <div
-          class="tab-pane fade"
-          id="pills-contact"
-          role="tabpanel"
-          aria-labelledby="pills-contact-tab">
-          <div class="column">
-            <div class="col">
-              <div class="row">
-                <div
-                  class="col-xs-12 col-sm-6 col-md-4"
-                  data-aos="fade-right"
-                  data-aos-duration="1000">
-                  <div class="card resources--card hasBorder">
-                    <img
-                      src="./../../assets/images/resource-image.png"
-                      class="card-img-top"
-                      alt="RESOURCES" />
-                    <div class="card-body">
-                      <h5 class="card-title">
-                        Three Ways Artificial Intelligence Will Improve Call
-                        Center Customer Service
-                      </h5>
-                      <button class="flatBtn c-p f600">
-                        Read More <i class="bi bi-arrow-right"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-xs-12 col-sm-6 col-md-4"
-                  data-aos="fade-up"
-                  data-aos-duration="1000">
-                  <div class="card resources--card hasBorder">
-                    <img
-                      src="./../../assets/images/resource-image.png"
-                      class="card-img-top"
-                      alt="RESOURCES" />
-                    <div class="card-body">
-                      <h5 class="card-title">
-                        Three Ways Artificial Intelligence Will Improve Call
-                        Center Customer Service
-                      </h5>
-                      <button class="flatBtn c-p f600">
-                        Read More <i class="bi bi-arrow-right"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-xs-12 col-sm-6 col-md-4"
-                  data-aos="fade-left"
-                  data-aos-duration="1000">
-                  <div class="card resources--card hasBorder">
-                    <img
-                      src="./../../assets/images/resource-image.png"
-                      class="card-img-top"
-                      alt="RESOURCES" />
-                    <div class="card-body">
-                      <h5 class="card-title">
-                        Three Ways Artificial Intelligence Will Improve Call
-                        Center Customer Service
-                      </h5>
-                      <button class="flatBtn c-p f600">
-                        Read More <i class="bi bi-arrow-right"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col text-center smy3">
-              <button type="button" class="primaryBtn">LOAD MORE</button>
-            </div>
-          </div>
-        </div> -->
+
+      <div class="col-xs-12 text-center smy3">
+        <button type="button" class="primaryBtn">LOAD MORE</button>
       </div>
     </div>
   </div>
