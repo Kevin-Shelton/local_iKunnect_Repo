@@ -1,4 +1,5 @@
 export interface Category {
+  isActive: boolean,
   id: number;
   description: string;
   link: string;

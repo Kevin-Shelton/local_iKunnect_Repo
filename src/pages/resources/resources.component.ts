@@ -79,4 +79,6 @@ export class ResourcesComponent implements OnInit {
       behavior: 'smooth',
     });
   }
+
+
 }

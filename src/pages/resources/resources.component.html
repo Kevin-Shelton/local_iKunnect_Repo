@@ -54,7 +54,7 @@
         </button>
         <div #widgetsContent class="nav nav-pills">
           <div class="nav-item" *ngFor="let category of wPCategories">
-            <button (click)="tabChange(category)" class="">
+            <button (click)="tabChange(category)" [ngClass]="{ 'active': category.id === activeCategory.id }">
               {{ getCategoryName(category) }}
             </button>
           </div>
