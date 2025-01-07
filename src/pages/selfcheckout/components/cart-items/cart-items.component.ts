@@ -34,6 +34,7 @@ export class CartItemsComponent implements OnInit {
   wholeBundleInfo: any;
   wholeBundleFeatures: any;
   wholeBundleLicenses: any;
+  isTrialProduct: boolean = false;
 
   constructor(
     private readonly paymentHelperService: PaymentHelperService,
@@ -45,6 +46,7 @@ export class CartItemsComponent implements OnInit {
       next: res => {
         this.bundlePlan = res;
         this.isChecked = this.bundlePlan.duration === PlanDuration.ANNUALLY;
+        this.isTrialProduct = this.bundlePlan.bundleType === PlanType.TRIAL;
       },
     });
     this.paymentHelperService.currentCartItemsWithProducts.subscribe({
@@ -118,7 +120,7 @@ export class CartItemsComponent implements OnInit {
 
   decrementBundleQuantity(product: ProductDetails) {
     if (
-      [PlanType.START_UP, PlanType.GROWTH, PlanType.SCALE].includes(
+      [PlanType.START_UP, PlanType.GROWTH, PlanType.SCALE, PlanType.TRIAL].includes(
         product.type
       )
         ? product.quantity > 1
@@ -136,15 +138,17 @@ export class CartItemsComponent implements OnInit {
     }
   }
   incrementBundleQuantity(product: ProductDetails) {
-    product.quantity = product.quantity + 1;
-    const total = {
-      value: product.quantity * product.amount.value,
-      disValue: `$${(product.quantity * product.amount.value).toFixed(2)}`,
-    };
-    product.totalAmount = total;
-
-    this.paymentHelperService.changeCartItemsWithDurationDetails(
-      this.cartItemDetails
-    );
+    if(PlanType.TRIAL !== product.type)  {
+      product.quantity = product.quantity + 1;
+      const total = {
+        value: product.quantity * product.amount.value,
+        disValue: `$${(product.quantity * product.amount.value).toFixed(2)}`,
+      };
+      product.totalAmount = total;
+  
+      this.paymentHelperService.changeCartItemsWithDurationDetails(
+        this.cartItemDetails
+      );
+    }
   }
 }

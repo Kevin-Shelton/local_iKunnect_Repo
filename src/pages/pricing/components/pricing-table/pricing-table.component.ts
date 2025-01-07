@@ -59,7 +59,7 @@ export class PricingTableComponent implements OnInit {
   buyPlan(planType: string) {
     this.paymentHelper.changeBundlePlanDetails({
       bundleType: planType as PlanType,
-      duration: this.planPeriod,
+      duration: planType === PlanType.TRIAL ? PlanDuration.MONTHLY : this.planPeriod,
     });
     this.paymentHelper.changeCartItemsWithDurationDetails(
       this.cartProductPricing
