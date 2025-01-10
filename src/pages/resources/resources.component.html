@@ -28,17 +28,12 @@
               <h4>Trending Posts</h4>
             </div>
             <div class="bannerContent-scroll">
-              <div class="col">
-                <img src="./../../assets/images/posts/post-1.png" alt="" />
-                Ask Yourself These Five Questions Before Moving to the Cloud
-              </div>
-              <div class="col">
-                <img src="./../../assets/images/posts/post-2.png" alt="" />
-                How To Sell Your Colleagues on the Cloud
-              </div>
-              <div class="col">
-                <img src="./../../assets/images/posts/post-3.png" alt="" />
-                Why Saying Yes Is So Important In Customer Service 
+              <div class="col" *ngFor="let tPost of trendingPosts">
+                <img [src]="tPost.jetpack_featured_media_url" alt="" />
+                <div
+                  [innerHTML]="tPost.title.rendered"
+                  [title]="tPost.title.rendered"
+                  class="ellipsis-twoline"></div>
               </div>
             </div>
           </div>
@@ -54,7 +49,9 @@
         </button>
         <div #widgetsContent class="nav nav-pills">
           <div class="nav-item" *ngFor="let category of wPCategories">
-            <button (click)="tabChange(category)" [ngClass]="{ 'active': category.id === activeCategory.id }">
+            <button
+              (click)="tabChange(category)"
+              [ngClass]="{ active: category.id === activeCategory.id }">
               {{ getCategoryName(category) }}
             </button>
           </div>
@@ -88,8 +85,12 @@
             </div>
           </div>
 
-          <div class="col-xs-12 text-center smy3">
-            <button type="button" class="primaryBtn">LOAD MORE</button>
+          <div
+            class="col-xs-12 text-center smy3"
+            *ngIf="currentPage < totalPages">
+            <button (click)="nextPage()" type="button" class="primaryBtn">
+              LOAD MORE
+            </button>
           </div>
         </div>
       </div>

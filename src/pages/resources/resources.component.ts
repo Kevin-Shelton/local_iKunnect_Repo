@@ -24,12 +24,16 @@ export class ResourcesComponent implements OnInit {
   trendingPosts: PostInfo[] = [];
   wPPosts: PostInfo[] = [];
 
+  currentPage: number = 1;
+  totalPages: number = 1;
+
   constructor(
     private readonly resourcesService: ResourcesService,
     private readonly router: Router
   ) {}
 
   ngOnInit(): void {
+    this.getTrendingPosts();
     this.resourcesService.getAllCategies().subscribe({
       next: res => {
         this.wPCategories = res;
@@ -41,16 +45,39 @@ export class ResourcesComponent implements OnInit {
   }
 
   getCategoryPosts() {
-    this.resourcesService.getPostsByCategory(this.activeCategory.id).subscribe({
+    this.resourcesService
+      .getPostsByCategory(this.activeCategory.id, this.currentPage)
+      .subscribe({
+        next: res => {
+          console.log('res word posts ', res);
+
+          this.wPPosts = [...this.wPPosts, ...res.posts];
+
+          this.totalPages = res.totalPages;
+          this.resourcesService.changePostsByCategory(this.wPPosts);
+        },
+      });
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.getCategoryPosts();
+    }
+  }
+
+  getTrendingPosts() {
+    this.resourcesService.getTrendingPosts().subscribe({
       next: res => {
-        this.wPPosts = res;
-        this.resourcesService.changePostsByCategory(this.wPPosts);
+        this.trendingPosts = res;
       },
     });
   }
-
   tabChange(category: Category) {
     this.activeCategory = category;
+    this.currentPage = 1;
+    this.totalPages = 1;
+    this.wPPosts = [];
     this.getCategoryPosts();
   }
 
@@ -79,6 +106,4 @@ export class ResourcesComponent implements OnInit {
       behavior: 'smooth',
     });
   }
-
-
 }
