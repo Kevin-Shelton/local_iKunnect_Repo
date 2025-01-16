@@ -141,52 +141,63 @@ export class PricingTableComponent implements OnInit {
   }
 
   mergeStripeProdIntoJsonData(products: StripeProduct[]) {
-    products.forEach(prod => {
-      prod.prices
-        .filter(price => price.amount && price.interval)
-        .forEach(price => {
-          this.getPricingCellFromJson(prod.name, price.interval, price);
+    Object.keys(this.plans).forEach(planKey => {
+      Object.keys(this.plans[planKey]).forEach(value => {
+        const duration: PlanDuration = value as PlanDuration;
+        this.plans[planKey][duration]?.forEach(prodInfo => {
+          this.getPricingCellFromJson(products, prodInfo, duration);
         });
+      });
     });
   }
 
-  getPricingCellFromJson(
-    sProdName: string,
-    duration: PlanDuration,
-    proceObj: StripePrice
-  ) {
-    Object.keys(this.plans).forEach(planKey => {
-      this.plans[planKey][duration]?.forEach(prodInfo => {
-        Object.keys(prodInfo)
-          .filter(
-            key =>
-              BasicPricePlanNames.includes(key) &&
-              prodInfo[key].stripeProdName === sProdName
-          )
-          .forEach(key => {
-            prodInfo[key].value = prodInfo[key].value.replace(
-              'price',
-              proceObj.amount
-            );
-            const cartItem = {
-              type: prodInfo['name'] as PlanType,
-              duration: duration,
-              amount: {
-                value: proceObj.amount,
-                disValue: `$${proceObj.amount.toFixed(2)}`,
-              },
-              quantity: 1,
-              totalAmount: {
-                value: proceObj.amount,
-                disValue: `$${proceObj.amount.toFixed(2)}`,
-              },
-              priceId: proceObj.id,
-            };
-            this.cartProductPricing[duration][BasicPricePlanNamesMap[key]].push(
-              cartItem
-            );
-          });
-      });
+  getStripeProductInfo(products: StripeProduct[], prodName: string) {
+    return products.find(prod => {
+      return prod.name === prodName;
     });
+  }
+  getPricingCellFromJson(
+    products: StripeProduct[],
+    prodInfo: any,
+    duration: PlanDuration
+  ) {
+    Object.keys(prodInfo)
+      .filter(
+        key =>
+          BasicPricePlanNames.includes(key) &&
+          this.getStripeProductInfo(products, prodInfo[key].stripeProdName)
+      )
+      .forEach(key => {
+        const stipeMatchingProd = this.getStripeProductInfo(
+          products,
+          prodInfo[key].stripeProdName
+        );
+        const priceObj = stipeMatchingProd?.prices.find(
+          priceObj => priceObj.interval === duration
+        );
+        if (priceObj) {
+          prodInfo[key].value = prodInfo[key].value.replace(
+            'price',
+            priceObj.amount
+          );
+          const cartItem = {
+            type: prodInfo['name'] as PlanType,
+            duration: duration,
+            amount: {
+              value: priceObj.amount,
+              disValue: `$${priceObj.amount.toFixed(2)}`,
+            },
+            quantity: 1,
+            totalAmount: {
+              value: priceObj.amount,
+              disValue: `$${priceObj.amount.toFixed(2)}`,
+            },
+            priceId: priceObj.id,
+          };
+          this.cartProductPricing[duration][BasicPricePlanNamesMap[key]].push(
+            cartItem
+          );
+        }
+      });
   }
 }
