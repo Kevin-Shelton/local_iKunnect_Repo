@@ -63,11 +63,12 @@
     }
   }
   &.zammad-chat-is-open {
-    right: inherit;
-    left: 68px;
-    width: calc(25% - 20px);
+    // left: inherit;
+    // right: 40px;
+    // width: 33em;
     top: 68px;
     height: auto !important;
+    background: white;
     .zammad-chat-modal {
       top: 48px;
     }
@@ -172,10 +173,13 @@
     }
   }
   &.chat-client {
-    left: inherit;
-    right: 40px;
-    width: 33em;
+    // left: inherit;
+    // right: 40px;
+    // width: 33em;
     background: white;
+  }
+  @media (max-width: 768px) {
+    max-width: 350px !important;
   }
 }
 
