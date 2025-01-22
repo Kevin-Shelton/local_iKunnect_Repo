@@ -28,8 +28,9 @@ export class AppComponent implements OnInit, AfterViewInit {
       setTimeout(() => {
         
         const element: any = document?.getElementsByClassName('zammad-chat');
-        console.log('element display none')
+        console.log('element display none',element)
         if (element?.length) {
+          console.log('element display in if',element)
           element[0].style.display = 'none';
         }
       }, 500);
