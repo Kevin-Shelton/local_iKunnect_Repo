@@ -25,10 +25,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (isPlatformBrowser(this.platformId) && typeof document !== 'undefined') {
       this.loadScript();
       // eslint-disable-next-line
-      const element: any = document?.getElementsByClassName('zammad-chat');
-      if (element?.length) {
-        element[0].style.display = 'none';
-      }
+      setTimeout(() => {
+        
+        const element: any = document?.getElementsByClassName('zammad-chat');
+        console.log('element display none')
+        if (element?.length) {
+          element[0].style.display = 'none';
+        }
+      }, 500);
     }
   }
 
@@ -39,6 +43,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     script.async = true;
     // Append the script to the body
     script.onload = () => {
+      console.log('script on load')
       // Initialize ZammadChat after script loads
       // eslint-disable-next-line
       new (window as any).ZammadChat({
