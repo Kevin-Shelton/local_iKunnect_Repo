@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           console.log('element display in if',element)
           element[0].style.display = 'none';
         }
-      }, 500);
+      }, 3000);
     }
   }
 
