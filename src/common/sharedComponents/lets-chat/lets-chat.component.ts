@@ -16,6 +16,7 @@ export class LetsChatComponent implements OnInit {
       setTimeout(() => {
         // eslint-disable-next-line
         const element: any = document?.getElementsByClassName('zammad-chat');
+        console.log('on init zammad element :::::::::::::::: ',element)
         if (element?.length) {
           element[0].style.display = 'block';
           element[0].className = 'zammad-chat chat-client';
