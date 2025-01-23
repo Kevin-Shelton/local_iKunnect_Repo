@@ -24,16 +24,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId) && typeof document !== 'undefined') {
       this.loadScript();
-      // eslint-disable-next-line
-      setTimeout(() => {
-        
-        const element: any = document?.getElementsByClassName('zammad-chat');
-        console.log('element display none',element)
-        if (element?.length) {
-          console.log('element display in if',element)
-          element[0].style.display = 'none';
-        }
-      }, 1100);
+     
+      
     }
   }
 
@@ -52,6 +44,13 @@ export class AppComponent implements OnInit, AfterViewInit {
         chatId: 1,
         host: API_URL.ZAMMAD_WS,
       });
+       // eslint-disable-next-line     
+       const element: any = document?.getElementsByClassName('zammad-chat');
+       console.log('element display none',element)
+       if (element?.length) {
+         console.log('element display in if',element)
+         element[0].style.display = 'none';
+       }
     };
     document.body.appendChild(script);
   }
