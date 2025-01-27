@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo({ top: 6, behavior: 'smooth' });
-    console.log('is chat enabled ::::',this.isChatEnabled)
+    console.log('is chat enabled ::::', this.isChatEnabled);
   }
   bookConsult() {
     this.router.navigate(['/book-demo']);
