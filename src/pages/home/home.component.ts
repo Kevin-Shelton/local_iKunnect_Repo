@@ -38,10 +38,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo({ top: 6, behavior: 'smooth' });
+    console.log('is chat enabled ::::', this.isChatEnabled);
   }
   bookConsult() {
     this.router.navigate(['/book-demo']);
     window.scrollTo(0, 0);
   }
-  constructor(private readonly router: Router) { }
+  constructor(private readonly router: Router) {}
 }

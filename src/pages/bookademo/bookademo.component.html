@@ -202,14 +202,14 @@
                       placeholder="Country / Region"
                       formControlName="message"></textarea>
                     <div
-                      class="error-msg mt-1"
+                      class="error-msg mt-3 mb-0"
                       *ngIf="
                         f['message'].dirty && f['message'].hasError('maxlength')
                       ">
                       Maximum length of 200 characters exceeded.
                     </div>
                     <div
-                      class="error-msg mt-1"
+                      class="error-msg mt-3 mb-0"
                       *ngIf="
                         f['message'].dirty && f['message'].hasError('minlength')
                       ">

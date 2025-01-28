@@ -1,4 +1,12 @@
-import { Component,  OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import {
   IBundleDetails,
   PlanDuration,
@@ -7,8 +15,6 @@ import {
   StripeCartProductDisplay,
 } from '../../../../models/website-models';
 import { PaymentHelperService } from '../../services/helper.service';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { PaymentService } from '../../services/payment.service';
 
 @Component({
@@ -28,49 +34,56 @@ export class CartItemsComponent implements OnInit {
   wholeBundleInfo: any;
   wholeBundleFeatures: any;
   wholeBundleLicenses: any;
+  isTrialProduct: boolean = false;
 
-
-  constructor(private readonly paymentHelperService: PaymentHelperService,  private readonly formBuilder: FormBuilder, private readonly paymentService:PaymentService) {}
+  constructor(
+    private readonly paymentHelperService: PaymentHelperService,
+    private readonly formBuilder: FormBuilder,
+    private readonly paymentService: PaymentService
+  ) {}
   ngOnInit(): void {
     this.paymentHelperService.currentBundlePlanDetails.subscribe({
       next: res => {
         this.bundlePlan = res;
         this.isChecked = this.bundlePlan.duration === PlanDuration.ANNUALLY;
+        this.isTrialProduct = this.bundlePlan.bundleType === PlanType.TRIAL;
       },
     });
     this.paymentHelperService.currentCartItemsWithProducts.subscribe({
       next: res => {
-        if(Object.keys(res).length) {        
+        if (Object.keys(res).length) {
           this.cartItemDetails = res;
           this.planCartItems =
             this.cartItemDetails[this.bundlePlan.duration][
               this.bundlePlan.bundleType
             ];
-           
         }
       },
     });
     this.paymentHelperService.currentWholeBundleDetails.subscribe({
       next: res => {
-        if(Object.keys(res).length) {        
-         this.wholeBundleInfo = res;
-         this.wholeBundleFeatures = this.wholeBundleInfo.features[this.bundlePlan.duration];
-         this.wholeBundleLicenses = this.wholeBundleInfo.licenses[this.bundlePlan.duration];
+        if (Object.keys(res).length) {
+          this.wholeBundleInfo = res;
+          this.wholeBundleFeatures =
+            this.wholeBundleInfo.features[this.bundlePlan.duration];
+          this.wholeBundleLicenses =
+            this.wholeBundleInfo.licenses[this.bundlePlan.duration];
         }
       },
     });
     this.initForm();
     this.customerSubForm.valueChanges.subscribe((values: any) => {
-  
-       this.paymentHelperService.changeSubcription(values.subscribeReceiveEmails === true ? 1: 0);
-     })
+      this.paymentHelperService.changeSubcription(
+        values.subscribeReceiveEmails === true ? 1 : 0
+      );
+    });
   }
 
   initForm() {
     this.customerSubForm = this.formBuilder.group({
       subscribeReceiveEmails: new FormControl(false, []),
     });
-    }
+  }
 
   planDurationChange(event: any) {
     if (event.currentTarget.checked) {
@@ -79,27 +92,40 @@ export class CartItemsComponent implements OnInit {
         this.cartItemDetails[this.bundlePlan.duration][
           this.bundlePlan.bundleType
         ];
-        this.wholeBundleFeatures = this.wholeBundleInfo.features[this.bundlePlan.duration][this.bundlePlan.bundleType];
-         this.wholeBundleLicenses = this.wholeBundleInfo.licenses[this.bundlePlan.duration][this.bundlePlan.bundleType];
-        
+      this.wholeBundleFeatures =
+        this.wholeBundleInfo.features[this.bundlePlan.duration][
+          this.bundlePlan.bundleType
+        ];
+      this.wholeBundleLicenses =
+        this.wholeBundleInfo.licenses[this.bundlePlan.duration][
+          this.bundlePlan.bundleType
+        ];
     } else {
       this.bundlePlan.duration = PlanDuration.MONTHLY;
       this.planCartItems =
         this.cartItemDetails[this.bundlePlan.duration][
           this.bundlePlan.bundleType
-
         ];
-        this.wholeBundleFeatures = this.wholeBundleInfo.features[this.bundlePlan.duration][this.bundlePlan.bundleType];
-        this.wholeBundleLicenses = this.wholeBundleInfo.licenses[this.bundlePlan.duration][this.bundlePlan.bundleType];
+      this.wholeBundleFeatures =
+        this.wholeBundleInfo.features[this.bundlePlan.duration][
+          this.bundlePlan.bundleType
+        ];
+      this.wholeBundleLicenses =
+        this.wholeBundleInfo.licenses[this.bundlePlan.duration][
+          this.bundlePlan.bundleType
+        ];
     }
     this.paymentHelperService.changeBundlePlanDetails(this.bundlePlan);
   }
 
   decrementBundleQuantity(product: ProductDetails) {
     if (
-      [PlanType.START_UP, PlanType.GROWTH, PlanType.SCALE].includes(
-        product.type
-      )
+      [
+        PlanType.START_UP,
+        PlanType.GROWTH,
+        PlanType.SCALE,
+        PlanType.TRIAL,
+      ].includes(product.type)
         ? product.quantity > 1
         : product.quantity > 0
     ) {
@@ -109,17 +135,23 @@ export class CartItemsComponent implements OnInit {
         disValue: `$${(product.quantity * product.amount.value).toFixed(2)}`,
       };
       product.totalAmount = total;
-      this.paymentHelperService.changeCartItemsWithDurationDetails(this.cartItemDetails);
+      this.paymentHelperService.changeCartItemsWithDurationDetails(
+        this.cartItemDetails
+      );
     }
   }
   incrementBundleQuantity(product: ProductDetails) {
-    product.quantity = product.quantity + 1;
-    const total = {
-      value: product.quantity * product.amount.value,
-      disValue: `$${(product.quantity * product.amount.value).toFixed(2)}`,
-    };
-    product.totalAmount = total;
+    if (PlanType.TRIAL !== product.type) {
+      product.quantity = product.quantity + 1;
+      const total = {
+        value: product.quantity * product.amount.value,
+        disValue: `$${(product.quantity * product.amount.value).toFixed(2)}`,
+      };
+      product.totalAmount = total;
 
-    this.paymentHelperService.changeCartItemsWithDurationDetails(this.cartItemDetails);
-  } 
+      this.paymentHelperService.changeCartItemsWithDurationDetails(
+        this.cartItemDetails
+      );
+    }
+  }
 }

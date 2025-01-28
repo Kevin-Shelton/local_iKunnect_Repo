@@ -34,6 +34,24 @@
     }
   }
 }
+::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+  &-thumb {
+    background: #d9d9d9;
+    border-radius: 6px;
+  }
+}
+.appLayout__content {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    &-thumb {
+      background: #d9d9d9;
+      border-radius: 6px;
+    }
+  }
+} 
 
 .zammad-chat {
   height: 68px !important;
@@ -45,11 +63,15 @@
     }
   }
   &.zammad-chat-is-open {
-    right: inherit;
-    left: 68px;
-    width: calc(25% - 20px);
+    // left: inherit;
+    // right: 40px;
+    // width: 33em;
     top: 68px;
     height: auto !important;
+    background: white;
+    .zammad-chat-modal {
+      top: 48px;
+    }
     .zammad-chat-header {
       box-shadow: none;
       background: white;
@@ -84,6 +106,14 @@
       .zammad-chat-header-icon {
         line-height: 46px;
         right: 10px;
+        color: black;
+        font-size: 10px;
+      }
+      .zammad-chat-agent-status.zammad-chat-is-hidden {
+        & + .zammad-chat-header-icon {
+          color: white;
+          font-size: 12px;
+        }
       }
     }
     .zammad-chat-body {
@@ -143,10 +173,13 @@
     }
   }
   &.chat-client {
-    left: inherit;
-    right: 40px;
-    width: 33em;
+    // left: inherit;
+    // right: 40px;
+    // width: 33em;
     background: white;
+  }
+  @media (max-width: 768px) {
+    max-width: 350px !important;
   }
 }
 

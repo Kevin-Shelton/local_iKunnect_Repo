@@ -1,8 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Stripe } from '@stripe/stripe-js';
-import { CartItemsReq, IBundleDetails,  PlanType, StripeCartProductDisplay } from '../../../../models/website-models';
+import {
+  CartItemsReq,
+  IBundleDetails,
+  PlanType,
+  StripeCartProductDisplay,
+} from '../../../../models/website-models';
 import { PaymentHelperService } from '../../services/helper.service';
 import { PaymentService } from '../../services/payment.service';
 
@@ -27,8 +38,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
   constructor(
     private readonly paymentService: PaymentService,
     private readonly helperService: PaymentHelperService
-  ) { }
-
+  ) {}
 
   async ngOnInit() {
     this.helperService.currentBundlePlanDetails.subscribe({
@@ -42,18 +52,13 @@ export class PaymentComponent implements OnInit, OnDestroy {
       },
     });
     this.stripe = await this.paymentService.getStripe();
-    const {cartProducts, isTrial} = this.getCartProductReq();
+    const { cartProducts, isTrial } = this.getCartProductReq();
 
-
-    this.paymentService
-      .getStripeSession(
-        cartProducts, isTrial
-      )
-      .subscribe({
-        next: async res => {
-          await this.initStripe(res.clientSecret);
-        },
-      });
+    this.paymentService.getStripeSession(cartProducts, isTrial).subscribe({
+      next: async res => {
+        await this.initStripe(res.clientSecret);
+      },
+    });
   }
 
   async initStripe(clientSecret: string) {
@@ -64,37 +69,38 @@ export class PaymentComponent implements OnInit, OnDestroy {
 
     // Mount Checkout
     this.checkoutRef?.mount('#checkout');
-
   }
-
-
 
   getCartProductReq() {
     const isTrial = this.bundlePlanDetails.bundleType === PlanType.TRIAL;
     let cartProducts: CartItemsReq[] = [];
-    if(isTrial) {
-      const products = this.cartItemsWithPlan[this.bundlePlanDetails.duration][PlanType.START_UP
-      ];
-      cartProducts = products?.filter(prod => prod.type === PlanType.START_UP && prod.quantity !== 0).map(prod => {
-        return { priceId: prod.priceId, quantity: prod.quantity }
-      });
+    if (isTrial) {
+      const products =
+        this.cartItemsWithPlan[this.bundlePlanDetails.duration][
+          PlanType.START_UP
+        ];
+      cartProducts = products
+        ?.filter(prod => prod.type === PlanType.START_UP && prod.quantity !== 0)
+        .map(prod => {
+          return { priceId: prod.priceId, quantity: prod.quantity };
+        });
     } else {
-      const products = this.cartItemsWithPlan[this.bundlePlanDetails.duration][
-        this.bundlePlanDetails.bundleType
-      ];
-       cartProducts = products?.map(prod => {
-        return { priceId: prod.priceId, quantity: prod.quantity }
-      }).filter(prod => prod.quantity !== 0);
+      const products =
+        this.cartItemsWithPlan[this.bundlePlanDetails.duration][
+          this.bundlePlanDetails.bundleType
+        ];
+      cartProducts = products
+        ?.map(prod => {
+          return { priceId: prod.priceId, quantity: prod.quantity };
+        })
+        .filter(prod => prod.quantity !== 0);
     }
 
-    return {cartProducts, isTrial}
+    return { cartProducts, isTrial };
   }
-
-
 
   ngOnDestroy(): void {
     console.log('calling checkout session destroy');
     this.checkoutRef?.destroy();
   }
-
 }

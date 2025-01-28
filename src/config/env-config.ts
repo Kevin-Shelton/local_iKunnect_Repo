@@ -16,10 +16,11 @@ export const API_URL = {
   SESSION_STATUS: environment.CORE_URL + `session-status`,
   SELF_CHECKOUT: environment.CORE_URL + `self-checkout`,
   BOOK_DEMO: environment.CORE_URL + `BookADemo/BookADemo`,
-  SAVE_CUSTOMER_PLAN: environment.CORE_URL + `CustomerLicense/SaveCustomerLicenseDetails`,
- GET_WP_POSTS_BY_CATEGORY: (id: number) => environment.WORD_PRESS + `posts?categories=${id}`,
- GET_WP_CATEGORIES: environment.WORD_PRESS+ `categories`,
- GET_WP_POST_AUTHOR: (id: number) => environment.WORD_PRESS+ `users/${id}`
- 
+  SAVE_CUSTOMER_PLAN:
+    environment.CORE_URL + `CustomerLicense/SaveCustomerLicenseDetails`,
+  TRENDING_POSTS: environment.WORD_PRESS + `posts`,
+  GET_WP_POSTS_BY_CATEGORY: (id: number) =>
+    environment.WORD_PRESS + `posts?categories=${id}`,
+  GET_WP_CATEGORIES: environment.WORD_PRESS + `categories?per_page=70&page=1`,
+  GET_WP_POST_AUTHOR: (id: number) => environment.WORD_PRESS + `users/${id}`,
 };
-

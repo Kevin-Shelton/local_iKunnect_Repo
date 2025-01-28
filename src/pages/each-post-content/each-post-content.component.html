@@ -4,23 +4,30 @@
       <div class="container-xl">
         <div class="row" *ngIf="currentPost">
           <div class="col-xs-12 col-sm-9 each-blog--content">
-             
             <h2 [innerHTML]="currentPost.title.rendered" class="smt6 smb2"></h2>
-            <p class="each-blog--date"><strong>Date:</strong>  <span> {{getLastModifiedData(currentPost)}}</span></p>
-            <img class="each-blog--image" *ngIf="currentPost.jetpack_featured_media_url" [src]="currentPost.jetpack_featured_media_url" alt="blog image" />
-            <div [innerHTML]="currentPost.content.rendered"></div> 
+            <p class="each-blog--date">
+              <strong>Date:</strong>
+              <span> {{ getLastModifiedData(currentPost) }}</span>
+            </p>
+            <img
+              class="each-blog--image"
+              *ngIf="currentPost.jetpack_featured_media_url"
+              [src]="currentPost.jetpack_featured_media_url"
+              alt="blog image" />
+            <div [innerHTML]="currentPost.content.rendered"></div>
           </div>
           <div class="col-xs-12 col-sm-3">
             <div class="row each-blog--links">
               <div class="col-12">
-                <h4 >
-                  Other Posts
-                </h4>
+                <h4>Other Posts</h4>
               </div>
               <div class="col-12">
                 <ul>
-                  <li   *ngFor="let postByc of postsByCategory" (click)="changePostInfo(postByc)">{{postByc.title.rendered}}</li>
-                
+                  <li
+                    *ngFor="let postByc of postsByCategory"
+                    (click)="changePostInfo(postByc)">
+                    {{ postByc.title.rendered }}
+                  </li>
                 </ul>
               </div>
             </div>
