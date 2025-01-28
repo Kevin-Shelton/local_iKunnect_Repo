@@ -4,7 +4,7 @@ export const environment = {
     'pk_test_51QH3UxLmtmaPxNqrWwTvjcQV6EBcTsGygwjM9TWj894k7FOQmwgaaYZj1DhwWjPfbeDZvwLSSrsm6jn7LPPz60ft00A0V4a7v7',
   LOG_LEVEL: 2,
   ENV: 'prod',
-  ZAMMAD_CHAT_URL: 'https://uat-zammad.ikunnect.com/',
-  ZAMMAD_WEBSOCKET: `wss://uat-zammad.ikunnect.com/ws`,
+  ZAMMAD_CHAT_URL: 'https://uat-helpdesk.ikunnect.com/',
+  ZAMMAD_WEBSOCKET: `wss://uat-helpdesk.ikunnect.com/ws`,
   WORD_PRESS: 'https://ikunnect.com/wp-json/wp/v2/',
 };
