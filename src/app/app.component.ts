@@ -1,4 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -11,21 +11,24 @@ import * as AOS from 'aos';
 import { AppFooterComponent } from '../common/app-footer/app-footer.component';
 import { AppHeaderComponent } from '../common/app-header/app-header.component';
 import { API_URL } from '../config/env-config';
+// import { PdfViewerModule } from 'ng2-pdf-viewer';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AppHeaderComponent, AppFooterComponent],
+  imports: [RouterOutlet, AppHeaderComponent, AppFooterComponent,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'konnect-invictus';
-  constructor(@Inject(PLATFORM_ID) private readonly platformId: object) {}
+  constructor(@Inject(PLATFORM_ID) private readonly platformId: object,
+  @Inject(DOCUMENT) private readonly document: Document
+  ) {}
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId) && typeof document !== 'undefined') {
+    if (isPlatformBrowser(this.platformId) && typeof this.document !== 'undefined') {
       this.loadScript();
       // eslint-disable-next-line
-        const element: any = document?.getElementsByClassName('zammad-chat');
+        const element: any = this.document?.getElementsByClassName('zammad-chat');
       console.log('element display none', element);
       if (element?.length) {
         console.log('element display in if', element);
@@ -35,7 +38,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   loadScript() {
-    const script = document.createElement('script');
+    const script = this.document.createElement('script');
     script.src = API_URL.ZAMMAD_URL;
     script.type = 'text/javascript';
     script.async = true;
@@ -51,7 +54,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         show: false,
       });
     };
-    document.body.appendChild(script);
+    this.document.body.appendChild(script);
   }
 
   ngAfterViewInit() {

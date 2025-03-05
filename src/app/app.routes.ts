@@ -12,6 +12,8 @@ import { SolutionsComponent } from '../pages/solutions/solutions.component';
 import { SupportComponent } from '../pages/support/support.component';
 import { EachPostContentComponent } from './../pages/each-post-content/each-post-content.component';
 import { HomeComponent } from './../pages/home/home.component';
+import { PrivacyComponent } from '../pages/privacy/privacy.component';
+import { TermsComponent } from '../pages/terms/terms.component';
 export const routes: Routes = [
   { path: 'home', pathMatch: 'full', component: HomeComponent },
   { path: 'about', pathMatch: 'full', component: AboutComponent },
@@ -29,5 +31,7 @@ export const routes: Routes = [
   { path: 'post', pathMatch: 'full', component: EachPostContentComponent },
   { path: 'pricing', pathMatch: 'full', component: PricingComponent },
   { path: 'contact-us', pathMatch: 'full', component: ContactusComponent },
+  { path: 'privacy', pathMatch: 'full', component: PrivacyComponent },
+  { path: 'terms', pathMatch: 'full', component: TermsComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
