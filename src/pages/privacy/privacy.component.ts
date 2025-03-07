@@ -3,7 +3,7 @@ import { BookConsultationComponent } from '../../common/sharedComponents/book-co
 @Component({
   selector: 'app-privacy',
   standalone: true,
-  imports: [ BookConsultationComponent],
+  imports: [BookConsultationComponent],
   templateUrl: './privacy.component.html',
   styleUrl: './privacy.component.scss',
 })
