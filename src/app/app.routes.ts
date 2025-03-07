@@ -6,14 +6,14 @@ import { ContactusComponent } from '../pages/contactus/contactus.component';
 import { DemoComponent } from '../pages/demo/demo.component';
 import { PlatformComponent } from '../pages/platform/platform.component';
 import { PricingComponent } from '../pages/pricing/pricing.component';
+import { PrivacyComponent } from '../pages/privacy/privacy.component';
 import { ResourcesComponent } from '../pages/resources/resources.component';
 import { SelfcheckoutComponent } from '../pages/selfcheckout/selfcheckout.component';
 import { SolutionsComponent } from '../pages/solutions/solutions.component';
 import { SupportComponent } from '../pages/support/support.component';
+import { TermsComponent } from '../pages/terms/terms.component';
 import { EachPostContentComponent } from './../pages/each-post-content/each-post-content.component';
 import { HomeComponent } from './../pages/home/home.component';
-import { PrivacyComponent } from '../pages/privacy/privacy.component';
-import { TermsComponent } from '../pages/terms/terms.component';
 export const routes: Routes = [
   { path: 'home', pathMatch: 'full', component: HomeComponent },
   { path: 'about', pathMatch: 'full', component: AboutComponent },

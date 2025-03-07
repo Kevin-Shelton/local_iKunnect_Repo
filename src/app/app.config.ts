@@ -10,7 +10,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 // import { PdfViewerComponent } from 'ng2-pdf-viewer';
 export const appConfig: ApplicationConfig = {
-  // imports: [PdfViewerComponent], 
+  // imports: [PdfViewerComponent],
   providers: [
     importProvidersFrom(BrowserAnimationsModule),
     provideZoneChangeDetection({ eventCoalescing: true }),

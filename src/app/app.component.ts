@@ -15,17 +15,21 @@ import { API_URL } from '../config/env-config';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AppHeaderComponent, AppFooterComponent,],
+  imports: [RouterOutlet, AppHeaderComponent, AppFooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'konnect-invictus';
-  constructor(@Inject(PLATFORM_ID) private readonly platformId: object,
-  @Inject(DOCUMENT) private readonly document: Document
+  constructor(
+    @Inject(PLATFORM_ID) private readonly platformId: object,
+    @Inject(DOCUMENT) private readonly document: Document
   ) {}
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId) && typeof this.document !== 'undefined') {
+    if (
+      isPlatformBrowser(this.platformId) &&
+      typeof this.document !== 'undefined'
+    ) {
       this.loadScript();
       // eslint-disable-next-line
         const element: any = this.document?.getElementsByClassName('zammad-chat');
