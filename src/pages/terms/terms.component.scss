@@ -1,0 +1,66 @@
+.terms-page {
+  font-size: 15px;
+  h2 {
+    font-size: 55px;
+    line-height: 60px;
+    padding: 16px 0 40px 0;
+    text-align: center;
+    font-weight: 500;
+  }
+  .mt-4 {
+    margin-top: 32px;
+  }
+  &-bg {
+    background-image: linear-gradient(0deg, #ffffff 40%, #e4fcf6 50%);
+  }
+  .white-bg {
+    background: white;
+    padding: 60px 60px 80px 60px;
+  }
+  h6 {
+    font-weight: 600;
+    margin: 0 0 4px 0;
+  }
+  .lh-normal {
+    line-height: normal;
+    margin: 0 0 4px 0;
+  }
+  p {
+    line-height: 24px;
+    margin-bottom: 32px;
+  }
+  ul {
+    margin: 0;
+    padding: 0 0 0 32px;
+    li {
+      margin: 0 0 4px 0;
+      padding: 0;
+      line-height: 22px;
+    }
+  }
+  @media (max-width: 991px) {
+    .white-bg {
+      padding: 40px;
+    }
+    h2 {
+      font-size: 40px;
+      line-height: normal;
+    }
+  }
+  @media (max-width: 767px) {
+    h2 {
+      font-size: 28px;
+      line-height: normal;
+      padding: 16px;
+    }
+    .white-bg {
+      padding: 20px;
+    }
+  }
+  @media (max-width: 576px) {
+    font-size: 14px;
+    h2 {
+      font-size: 20px;
+    }
+  }
+}

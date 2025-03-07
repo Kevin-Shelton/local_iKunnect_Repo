@@ -8,4 +8,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   templateUrl: './app-footer.component.html',
   styleUrl: './app-footer.component.scss',
 })
-export class AppFooterComponent {}
+export class AppFooterComponent {
+  constructor() {}
+  navgateToPrivacy() {}
+}
