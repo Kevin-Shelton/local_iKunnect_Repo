@@ -41,7 +41,7 @@ export enum ProductNames {
   Endpoint_Lic_Startup = 'Endpoint Lic. (Startup)',
   Predictive_Dialer_Startup = 'Predictive Dialer (Startup)',
   Advanced_Omnichannel_Startup = 'Advanced Omnichannel (Startup)',
-  Adv_iKunnect_Intelligence_Startup = 'Adv Kunnect Intelligence (Startup)',
+  Adv_iKunnect_Intelligence_Startup = 'Adv iKunnect Intelligence (Startup)',
   Endpoint_Lic_Growth = 'Endpoint Lic. (Growth)',
   Predictive_Dialer_Growth = 'Predictive Dialer (Growth)',
 }

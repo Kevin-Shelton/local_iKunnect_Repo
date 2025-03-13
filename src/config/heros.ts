@@ -5,9 +5,10 @@ export const HerosData = {
       'Deliver faster, smarter, and more connected customer experiences with iKunnect - an AI-powered, omnichannel platform designed to streamline operations and maximize engagemet.',
   },
   solution: {
-    title: 'Effortless Contact Center Management - Powered by Invictus, Optimized with iKunnect',
+    title:
+      'Effortless Contact Center Management - Powered by Invictus, Optimized with iKunnect',
     description:
-      'Invictus runs your contact center while iKunnect's AI-driven platform optimizes every interaction - boosting efficiency, scalability, and customer satisfaction without the hassle.',
+      "Invictus runs your contact center while iKunnect's AI-driven platform optimizes every interaction - boosting efficiency, scalability, and customer satisfaction without the hassle.",
   },
   about: {
     title: ' We empower strategic advantage',
