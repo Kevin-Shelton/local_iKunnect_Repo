@@ -33,7 +33,7 @@ export class PricingTableComponent implements OnInit {
     month: { Trial: [], StartUp: [], Growth: [], Scale: [] },
   };
   priceDetByDuration = this.stripeBundlePricing?.year;
-  planPeriod = PlanDuration.ANNUALLY;
+  planPeriod = PlanDuration.MONTHLY;
 
   constructor(
     private readonly router: Router,
