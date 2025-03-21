@@ -90,11 +90,14 @@ export class BookademoComponent implements OnInit {
       next: res => {
         if (res) {
           this.isLoading = false;
-          this._snackBar.open(`Successfully book a demo`, 'close', {
+          this._snackBar.open(`Successfully booked`, 'close', {
             duration: 8000,
             panelClass: ['blue-snackbar'],
           });
           this.form.reset();
+          this.f['phoneNumber'].setValue('');
+          this.f['companyName'].setValue('');
+          this.f['message'].setValue('');
         }
       },
       error: error => {
