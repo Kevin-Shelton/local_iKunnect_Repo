@@ -1,10 +1,10 @@
 export const environment = {
-  CORE_URL: 'https://uat-hero.ikunnect.com/api/',
+  CORE_URL: 'https://api.ikunnect.com/',
   STRIPE_CLIENT_TOKEN:
-    'pk_test_51QH3UxLmtmaPxNqrWwTvjcQV6EBcTsGygwjM9TWj894k7FOQmwgaaYZj1DhwWjPfbeDZvwLSSrsm6jn7LPPz60ft00A0V4a7v7',
+    'pk_live_51QH3UxLmtmaPxNqrrBxFnzhVgcHt0nUygPUEWLgfiJbJdzkhHtFd4yKS8MmLfajaUidRpfoNMHI9MlIrXdNzw1fi00hfhrfwsG',
   LOG_LEVEL: 2,
   ENV: 'prod',
-  ZAMMAD_CHAT_URL: 'https://uat-helpdesk.ikunnect.com/',
-  ZAMMAD_WEBSOCKET: `wss://uat-helpdesk.ikunnect.com/ws`,
+  ZAMMAD_CHAT_URL: 'https://helpdesk.ikunnect.com/',
+  ZAMMAD_WEBSOCKET: `wss://helpdesk.ikunnect.com/ws`,
   WORD_PRESS: 'https://ikunnect.com/wp-json/wp/v2/',
 };
