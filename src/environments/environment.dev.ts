@@ -6,5 +6,5 @@ export const environment = {
   ENV: 'dev',
   ZAMMAD_CHAT_URL: 'https://invictusdemo.qa.helpdesk.ikunnect.com/',
   ZAMMAD_WEBSOCKET: `wss://invictusdemo.qa.helpdesk.ikunnect.com/ws`,
-  WORD_PRESS: 'https://ikunnect.com/wp-json/wp/v2/',
+  WORD_PRESS: 'https://blog.ikunnect.com/wp-json/wp/v2/',
 };
