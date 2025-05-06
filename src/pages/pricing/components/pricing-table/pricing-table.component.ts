@@ -32,7 +32,7 @@ export class PricingTableComponent implements OnInit {
     year: { Trial: [], StartUp: [], Growth: [], Scale: [] },
     month: { Trial: [], StartUp: [], Growth: [], Scale: [] },
   };
-  priceDetByDuration = this.stripeBundlePricing?.year;
+  priceDetByDuration = this.stripeBundlePricing?.month;
   planPeriod = PlanDuration.MONTHLY;
 
   constructor(
@@ -119,7 +119,7 @@ export class PricingTableComponent implements OnInit {
           }
         });
       });
-    this.priceDetByDuration = this.stripeBundlePricing.year;
+    this.priceDetByDuration = this.stripeBundlePricing.month;
   }
 
   addBundlePrice(price: StripePrice, bundleTyep: string) {
