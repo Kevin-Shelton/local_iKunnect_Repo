@@ -28,7 +28,6 @@ export class LetsChatComponent implements OnInit, OnDestroy {
       setTimeout(() => {
         // eslint-disable-next-line
         const element: any = document?.getElementsByClassName('zammad-chat');
-        console.log('on init zammad element :::::::::::::::: ', element);
         if (element?.length) {
           element[0].style.display = 'block';
           element[0].className = 'zammad-chat chat-client';
@@ -57,7 +56,6 @@ export class LetsChatComponent implements OnInit, OnDestroy {
 
     this.mutationObserver = new MutationObserver(() => {
       const domElement: any = document.querySelector('.zammad-chat-modal-text');
-      console.log('domElement', domElement);
       if (domElement && domElement.innerText.includes('colleagues are busy')) {
         domElement.innerText =
           'All our agents are currently busy, will serve you at the earliest. Please be patient or try again later.';

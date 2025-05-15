@@ -100,7 +100,6 @@ export class PaymentComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('calling checkout session destroy');
     this.checkoutRef?.destroy();
   }
 }
