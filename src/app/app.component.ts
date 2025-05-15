@@ -1,4 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -10,27 +10,38 @@ import { RouterOutlet } from '@angular/router';
 import * as AOS from 'aos';
 import { AppFooterComponent } from '../common/app-footer/app-footer.component';
 import { AppHeaderComponent } from '../common/app-header/app-header.component';
+import { LetsChatComponent } from '../common/sharedComponents/lets-chat/lets-chat.component';
 import { API_URL } from '../config/env-config';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AppHeaderComponent, AppFooterComponent],
+  imports: [
+    RouterOutlet,
+    AppHeaderComponent,
+    AppFooterComponent,
+    LetsChatComponent,
+    CommonModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'konnect-invictus';
+  isChatEnabled: boolean = false;
+
   constructor(@Inject(PLATFORM_ID) private readonly platformId: object) {}
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId) && typeof document !== 'undefined') {
       this.loadScript();
-      // eslint-disable-next-line
+      const observer = new MutationObserver(() => {
         const element: any = document?.getElementsByClassName('zammad-chat');
-      console.log('element display none', element);
-      if (element?.length) {
-        console.log('element display in if', element);
-        element[0].style.display = 'none';
-      }
+        if (element?.length) {
+          console.log('chat is enabled');
+          this.isChatEnabled = true;
+          observer.disconnect(); // Stop observing after iframe is found
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
     }
   }
 

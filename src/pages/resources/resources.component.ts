@@ -49,10 +49,7 @@ export class ResourcesComponent implements OnInit {
       .getPostsByCategory(this.activeCategory.id, this.currentPage)
       .subscribe({
         next: res => {
-          console.log('res word posts ', res);
-
           this.wPPosts = [...this.wPPosts, ...res.posts];
-
           this.totalPages = res.totalPages;
           this.resourcesService.changePostsByCategory(this.wPPosts);
         },
