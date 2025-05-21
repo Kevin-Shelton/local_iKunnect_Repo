@@ -1,8 +1,8 @@
 export const HerosData = {
   home: {
-    title: 'YOUR COMPLETE CONTACT CENTER SOLUTION, BUILT TO SCALE',
+    title: 'YOUR COMPLETE MULTILINGUAL CONTACT CENTER PLATFORM',
     description:
-      'Deliver faster, smarter, and more connected customer experiences with iKunnect - an AI-powered, omnichannel platform designed to streamline operations and maximize engagemet.',
+      'Deliver seamless, real-time support in any language with iKunnect — a scalable, AI-powered Unified Experience Platform (UXP) combining multi-channel communications in any language, intelligent automations, and a dedicated ticketing system. Empower agents, shorten response times, and engage every customer — no matter where they are or what language they speak.',
   },
   solution: {
     title:
