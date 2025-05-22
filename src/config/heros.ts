@@ -2,7 +2,7 @@ export const HerosData = {
   home: {
     title: 'YOUR COMPLETE MULTILINGUAL CONTACT CENTER PLATFORM',
     description:
-      'Deliver seamless, real-time support in any language with iKunnect — a scalable, AI-powered Unified Experience Platform (UXP) combining multi-channel communications in any language, intelligent automations, and a dedicated ticketing system. Empower agents, shorten response times, and engage every customer — no matter where they are or what language they speak.',
+      'iKunnect is a scalable, AI-powered Unified Experience Platform that combines multi-channel commuinication, intelligent automation, and multilingual support. Deliver real-time service, reduce response times, and empower agents to engage customers anywhere.',
   },
   solution: {
     title:
