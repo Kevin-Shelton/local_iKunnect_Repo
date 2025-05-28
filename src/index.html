@@ -1,19 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>iKunnect Invictus</title>
-    <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  </head>
-  <body>
-    <app-root></app-root>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <title>iKunnect Invictus</title>
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+
+<body>
+  <app-root></app-root>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize chat widget with fallback
+    function initChatWidget() {
+      if (window.LeadConnector) {
+        console.log('LeadConnector already loaded');
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = "https://beta.leadconnectorhq.com/loader.js";
+      script.async = true;
+      script.dataset.resourcesUrl = 'https://beta.leadconnectorhq.com/chat-widget/loader.js';
+      script.dataset.widgetId = '67a1422f5217fddb3070bf21';
+      script.onload = function () {
+        console.log('Chat widget loaded successfully');
+      };
+      script.onerror = function () {
+        console.error('Failed to load chat widget');
+        // Retry after 3 seconds if fails
+        setTimeout(initChatWidget, 3000);
+      };
+      document.body.appendChild(script);
+    }
+
+    // Start initialization when DOM is ready
+    if (document.readyState === 'complete') {
+      initChatWidget();
+    } else {
+      window.addEventListener('DOMContentLoaded', initChatWidget);
+    }
+  </script>
+</body>
 </html>
