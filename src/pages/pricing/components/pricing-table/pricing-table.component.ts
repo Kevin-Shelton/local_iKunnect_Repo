@@ -250,6 +250,65 @@ export class PricingTableComponent implements OnInit {
     return planType === 'Trial' ? 'Start Trial' : 'Buy Now';
   }
 
+  // Calculate total licenses for a plan
+  getTotalLicenses(planType: string): number {
+    const coreLicensingFeatures = this.getFeaturesByCategory('core-licensing');
+    let totalLicenses = 0;
+
+    coreLicensingFeatures.forEach(feature => {
+      const featureName = feature['name'];
+      const planKey = this.getPlanKey(planType);
+      const featureValue = feature[planKey];
+
+      if (featureValue && this.isText(featureValue)) {
+        // Extract number from text like "5 Agent Licenses", "2 Supervisor Licenses", etc.
+        const match = featureValue.value.match(/(\d+)/);
+        if (match) {
+          totalLicenses += parseInt(match[1], 10);
+        }
+      }
+    });
+
+    return totalLicenses;
+  }
+
+  // Get plan key for accessing feature data
+  getPlanKey(planType: string): string {
+    switch (planType) {
+      case 'Trial': return 'trial';
+      case 'StartUp': return 'startUp';
+      case 'Growth': return 'growth';
+      case 'Scale': return 'scale';
+      default: return 'trial';
+    }
+  }
+
+  // Calculate per-license cost
+  getPerLicenseCost(planType: string): string {
+    if (planType === 'Trial') {
+      return 'Free';
+    }
+
+    if (!this.priceDetByDuration || !this.priceDetByDuration[planType]) {
+      return '--';
+    }
+
+    const totalPrice = this.priceDetByDuration[planType].value;
+    const totalLicenses = this.getTotalLicenses(planType);
+
+    if (totalLicenses === 0) {
+      return '--';
+    }
+
+    const perLicenseCost = totalPrice / totalLicenses;
+    return `$${perLicenseCost.toFixed(0)}`;
+  }
+
+  // Get per-license period text
+  getPerLicensePeriod(): string {
+    return this.planPeriod === PlanDuration.MONTHLY ? 'per license/month' : 'per license/year';
+  }
+
   // Get button class based on plan type
   getButtonClass(planType: string): string {
     const baseClass = 'plan-button';

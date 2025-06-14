@@ -115,6 +115,41 @@ describe('PricingTableComponent', () => {
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/self-checkout']);
   });
 
+  it('should calculate per-license costs correctly', () => {
+    // Mock license data
+    component.licenseTypes = [
+      { name: 'Agent Desktop', startUp: { value: '5 Agent Licenses' } },
+      { name: 'Supervisor Desktop', startUp: { value: '2 Supervisor Licenses' } },
+      { name: 'Admin Portal', startUp: { value: '1 Admin License' } }
+    ];
+    
+    // Mock pricing data
+    component.priceDetByDuration = {
+      StartUp: { value: 800, disValue: '$800' }
+    };
+    
+    const totalLicenses = component.getTotalLicenses('StartUp');
+    expect(totalLicenses).toBe(8); // 5 + 2 + 1
+    
+    const perLicenseCost = component.getPerLicenseCost('StartUp');
+    expect(perLicenseCost).toBe('$100'); // 800 / 8
+  });
+
+  it('should return correct plan keys', () => {
+    expect(component.getPlanKey('Trial')).toBe('trial');
+    expect(component.getPlanKey('StartUp')).toBe('startUp');
+    expect(component.getPlanKey('Growth')).toBe('growth');
+    expect(component.getPlanKey('Scale')).toBe('scale');
+  });
+
+  it('should return correct per-license period text', () => {
+    component.planPeriod = 'month' as any;
+    expect(component.getPerLicensePeriod()).toBe('per license/month');
+    
+    component.planPeriod = 'year' as any;
+    expect(component.getPerLicensePeriod()).toBe('per license/year');
+  });
+
   it('should have correct feature groups configuration', () => {
     expect(component.featureGroups).toHaveSize(4);
     

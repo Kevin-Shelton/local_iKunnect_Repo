@@ -43,6 +43,10 @@
           <span class="price-amount">Free</span>
           <span class="price-period">14-day trial</span>
         </div>
+        <div class="per-license-cost">
+          <span class="per-license-amount">{{ getPerLicenseCost('Trial') }}</span>
+          <span class="per-license-period">{{ getPerLicensePeriod() }}</span>
+        </div>
         <p class="plan-description">
           All the essential tools your teams need to operate a best-in-class digital-only global contact center.
         </p>
@@ -94,6 +98,10 @@
         <div class="plan-price">
           <span class="price-amount">{{ priceDetByDuration['StartUp'].disValue }}</span>
           <span class="price-period">{{ planPeriod === 'month' ? 'Monthly' : 'Annually' }}</span>
+        </div>
+        <div class="per-license-cost">
+          <span class="per-license-amount">{{ getPerLicenseCost('StartUp') }}</span>
+          <span class="per-license-period">{{ getPerLicensePeriod() }}</span>
         </div>
         <p class="plan-description">
           All the essential tools your teams need to operate a best-in-class digital-only global contact center.
@@ -147,6 +155,10 @@
           <span class="price-amount">{{ priceDetByDuration['Growth'].disValue }}</span>
           <span class="price-period">{{ planPeriod === 'month' ? 'Monthly' : 'Annually' }}</span>
         </div>
+        <div class="per-license-cost">
+          <span class="per-license-amount">{{ getPerLicenseCost('Growth') }}</span>
+          <span class="per-license-period">{{ getPerLicensePeriod() }}</span>
+        </div>
         <p class="plan-description">
           All capabilities of the StartUp Bundle plus chat, email, and essential GM.
         </p>
@@ -198,6 +210,10 @@
         <div class="plan-price">
           <span class="price-amount">{{ priceDetByDuration['Scale'].disValue }}</span>
           <span class="price-period">{{ planPeriod === 'month' ? 'Monthly' : 'Annually' }}</span>
+        </div>
+        <div class="per-license-cost">
+          <span class="per-license-amount">{{ getPerLicenseCost('Scale') }}</span>
+          <span class="per-license-period">{{ getPerLicensePeriod() }}</span>
         </div>
         <p class="plan-description">
           All capabilities of the Growth Bundle plus chat, email, analytics and essential GM.

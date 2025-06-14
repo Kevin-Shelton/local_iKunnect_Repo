@@ -98,7 +98,7 @@
     }
     
     .plan-price {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       
       .price-amount {
         font-size: 2.5rem;
@@ -110,6 +110,30 @@
       .price-period {
         font-size: 0.875rem;
         color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    }
+    
+    .per-license-cost {
+      background: rgba(255, 255, 255, 0.2);
+      color: inherit;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      
+      .per-license-amount {
+        font-size: 1.25rem;
+        font-weight: 700;
+        display: block;
+      }
+      
+      .per-license-period {
+        font-size: 0.75rem;
+        opacity: 0.9;
         text-transform: uppercase;
         letter-spacing: 0.05em;
       }
@@ -147,6 +171,12 @@
   .card-header {
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     
+    .per-license-cost {
+      background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+      color: white;
+      border: 1px solid rgba(100, 116, 139, 0.3);
+    }
+    
     .plan-button {
       background-color: #64748b;
       color: white;
@@ -161,6 +191,12 @@
 .startup-card {
   .card-header {
     background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    
+    .per-license-cost {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
     
     .plan-button {
       background-color: #3b82f6;
@@ -188,6 +224,12 @@
       color: #c7d2fe;
     }
     
+    .per-license-cost {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
     .plan-button {
       background-color: #ffffff;
       color: #4338ca;
@@ -212,6 +254,12 @@
     .price-period,
     .plan-description {
       color: #a7f3d0;
+    }
+    
+    .per-license-cost {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
     
     .plan-button {
