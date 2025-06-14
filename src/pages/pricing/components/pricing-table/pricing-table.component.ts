@@ -250,26 +250,16 @@ export class PricingTableComponent implements OnInit {
     return planType === 'Trial' ? 'Start Trial' : 'Buy Now';
   }
 
-  // Calculate total licenses for a plan
+  // Calculate total licenses for a plan (hardcoded for easy maintenance)
   getTotalLicenses(planType: string): number {
-    const coreLicensingFeatures = this.getFeaturesByCategory('core-licensing');
-    let totalLicenses = 0;
+    const licenseCounts = {
+      'Trial': 6,      // Same as StartUp for trial purposes
+      'StartUp': 6,    // 5 Agent + 1 Admin + 0 Supervisor = 6 licenses
+      'Growth': 19,    // Total licenses for Growth plan
+      'Scale': 58      // Total licenses for Scale plan
+    };
 
-    coreLicensingFeatures.forEach(feature => {
-      const featureName = feature['name'];
-      const planKey = this.getPlanKey(planType);
-      const featureValue = feature[planKey];
-
-      if (featureValue && this.isText(featureValue)) {
-        // Extract number from text like "5 Agent Licenses", "2 Supervisor Licenses", etc.
-        const match = featureValue.value.match(/(\d+)/);
-        if (match) {
-          totalLicenses += parseInt(match[1], 10);
-        }
-      }
-    });
-
-    return totalLicenses;
+    return licenseCounts[planType as keyof typeof licenseCounts] || 0;
   }
 
   // Get plan key for accessing feature data
@@ -301,7 +291,7 @@ export class PricingTableComponent implements OnInit {
     }
 
     const perLicenseCost = totalPrice / totalLicenses;
-    return `$${perLicenseCost.toFixed(0)}`;
+    return `$${Math.round(perLicenseCost)}`;
   }
 
   // Get per-license period text

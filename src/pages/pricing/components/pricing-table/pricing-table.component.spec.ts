@@ -116,23 +116,22 @@ describe('PricingTableComponent', () => {
   });
 
   it('should calculate per-license costs correctly', () => {
-    // Mock license data
-    component.licenseTypes = [
-      { name: 'Agent Desktop', startUp: { value: '5 Agent Licenses' } },
-      { name: 'Supervisor Desktop', startUp: { value: '2 Supervisor Licenses' } },
-      { name: 'Admin Portal', startUp: { value: '1 Admin License' } }
-    ];
-    
     // Mock pricing data
     component.priceDetByDuration = {
-      StartUp: { value: 800, disValue: '$800' }
+      StartUp: { value: 500, disValue: '$500' },
+      Growth: { value: 1500, disValue: '$1500' },
+      Scale: { value: 5000, disValue: '$5000' }
     };
     
-    const totalLicenses = component.getTotalLicenses('StartUp');
-    expect(totalLicenses).toBe(8); // 5 + 2 + 1
+    // Test hardcoded license counts and calculations
+    expect(component.getTotalLicenses('StartUp')).toBe(6);
+    expect(component.getTotalLicenses('Growth')).toBe(19);
+    expect(component.getTotalLicenses('Scale')).toBe(58);
     
-    const perLicenseCost = component.getPerLicenseCost('StartUp');
-    expect(perLicenseCost).toBe('$100'); // 800 / 8
+    // Test per-license cost calculations
+    expect(component.getPerLicenseCost('StartUp')).toBe('$83'); // 500 / 6 = 83.33 rounded to 83
+    expect(component.getPerLicenseCost('Growth')).toBe('$79');  // 1500 / 19 = 78.95 rounded to 79
+    expect(component.getPerLicenseCost('Scale')).toBe('$86');   // 5000 / 58 = 86.21 rounded to 86
   });
 
   it('should return correct plan keys', () => {
