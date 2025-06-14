@@ -214,7 +214,7 @@ export class PricingTableComponent implements OnInit {
     }
     
     return (this.featureTypes || []).filter(feature => {
-      const definition = this.getFeatureDefinition(feature.name);
+      const definition = this.getFeatureDefinition(feature['name']);
       return definition?.category === category;
     });
   }
