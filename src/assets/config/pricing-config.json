@@ -1,0 +1,68 @@
+// File: src/assets/config/pricing-config.json
+{
+"sections": [
+{
+"key": "coreLicensing",
+"label": "Core Licensing",
+"features": [
+{
+"key": "trial",
+"label": "Trial Plan",
+"description": "30-day free access",
+"tooltip": "Start with a free 30-day trial to explore all core features.",
+"details": [
+"Limit to 1 active seat",
+"Includes basic email support"
+]
+}
+]
+},
+{
+"key": "channels",
+"label": "Channels",
+"features": [
+{
+"key": "chat",
+"label": "Chat Support",
+"description": "Real-time web & mobile chat",
+"tooltip": "Engage customers via live chat.",
+"details": []
+},
+{
+"key": "voice",
+"label": "Voice Support",
+"description": "Inbound & outbound calling",
+"tooltip": "Use SIP trunking for calls.",
+"details": []
+}
+]
+},
+{
+"key": "essentialFunctionality",
+"label": "Essential Functionality",
+"features": [
+{
+"key": "recording",
+"label": "Call Recording",
+"description": "Store call audio",
+"tooltip": "Record all inbound/outbound calls.",
+"details": []
+}
+]
+},
+{
+"key": "support",
+"label": "Support",
+"features": [
+{
+"key": "worldClass",
+"label": "24/7 World Class Support",
+"description": "Round-the-clock assistance",
+"tooltip": "Access SLA-backed support anytime.",
+"details": []
+}
+]
+}
+],
+"plans": ["Digital","Core","Premium","Optimum","Ultimate"]
+}
