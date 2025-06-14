@@ -76,8 +76,9 @@
   border-radius: 16px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border: 1px solid #e5e7eb;
-  overflow: hidden;
+  overflow: visible; // Changed from hidden to visible for tooltips
   transition: all 0.3s ease;
+  position: relative; // Added for tooltip positioning
   
   &:hover {
     transform: translateY(-4px);
@@ -137,6 +138,7 @@
   
   .features-section {
     padding: 0;
+    overflow: hidden; // Keep content contained within the card
   }
 }
 
@@ -340,7 +342,8 @@
     .feature-tooltip {
       position: absolute;
       bottom: 100%;
-      right: 0;
+      left: 50%;
+      transform: translateX(-50%);
       margin-bottom: 0.5rem;
       padding: 0.75rem;
       background-color: #1f2937;
@@ -348,27 +351,40 @@
       border-radius: 8px;
       font-size: 0.75rem;
       line-height: 1.4;
-      width: 250px;
+      width: 280px;
+      max-width: 90vw;
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      z-index: 10;
+      z-index: 1000;
+      white-space: normal;
+      word-wrap: break-word;
       
       // Tooltip arrow
       &::after {
         content: '';
         position: absolute;
         top: 100%;
-        right: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
         border: 5px solid transparent;
         border-top-color: #1f2937;
       }
       
-      // Responsive positioning for mobile
+      // Responsive positioning for mobile and small screens
       @media (max-width: 767px) {
-        right: -50px;
+        width: 250px;
+        font-size: 0.7rem;
+        padding: 0.5rem;
+      }
+      
+      // Adjust positioning if tooltip would go off-screen
+      @media (max-width: 400px) {
+        left: 0;
+        transform: none;
         width: 200px;
         
         &::after {
-          right: 50px;
+          left: 2rem;
+          transform: none;
         }
       }
     }

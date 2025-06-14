@@ -52,7 +52,7 @@ export class PricingTableComponent implements OnInit {
   
   // Enhanced feature management
   expandedGroups: { [key: string]: boolean } = {};
-  selectedFeatureTooltip: string | null = null;
+  selectedFeatureTooltip: { [key: string]: string | null } = {};
 
   // Feature groups configuration
   featureGroups: FeatureGroup[] = [
@@ -228,13 +228,21 @@ export class PricingTableComponent implements OnInit {
   }
 
   // Show feature tooltip
-  showFeatureTooltip(featureName: string): void {
-    this.selectedFeatureTooltip = featureName;
+  showFeatureTooltip(featureName: string, planType: string): void {
+    const key = `${planType}-${featureName}`;
+    this.selectedFeatureTooltip[key] = featureName;
   }
 
   // Hide feature tooltip
-  hideFeatureTooltip(): void {
-    this.selectedFeatureTooltip = null;
+  hideFeatureTooltip(featureName: string, planType: string): void {
+    const key = `${planType}-${featureName}`;
+    this.selectedFeatureTooltip[key] = null;
+  }
+
+  // Check if tooltip should be shown
+  shouldShowTooltip(featureName: string, planType: string): boolean {
+    const key = `${planType}-${featureName}`;
+    return this.selectedFeatureTooltip[key] === featureName;
   }
 
   // Get button text based on plan type

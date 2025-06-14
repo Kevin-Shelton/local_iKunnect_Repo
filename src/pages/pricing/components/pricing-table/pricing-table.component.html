@@ -71,11 +71,11 @@
                   </div>
                   <span class="feature-name">{{ feature['name'] }}</span>
                   <div class="feature-info" 
-                       (mouseenter)="showFeatureTooltip(feature['name'])"
-                       (mouseleave)="hideFeatureTooltip()">
+                       (mouseenter)="showFeatureTooltip(feature['name'], 'Trial')"
+                       (mouseleave)="hideFeatureTooltip(feature['name'], 'Trial')">
                     <i class="bi bi-info-circle info-icon"></i>
                     <div class="feature-tooltip" 
-                         *ngIf="selectedFeatureTooltip === feature['name']"
+                         *ngIf="shouldShowTooltip(feature['name'], 'Trial')"
                          [innerHTML]="getFeatureDefinition(feature['name'])?.description">
                     </div>
                   </div>
@@ -123,11 +123,11 @@
                   </div>
                   <span class="feature-name">{{ feature['name'] }}</span>
                   <div class="feature-info" 
-                       (mouseenter)="showFeatureTooltip(feature['name'])"
-                       (mouseleave)="hideFeatureTooltip()">
+                       (mouseenter)="showFeatureTooltip(feature['name'], 'StartUp')"
+                       (mouseleave)="hideFeatureTooltip(feature['name'], 'StartUp')">
                     <i class="bi bi-info-circle info-icon"></i>
                     <div class="feature-tooltip" 
-                         *ngIf="selectedFeatureTooltip === feature['name']"
+                         *ngIf="shouldShowTooltip(feature['name'], 'StartUp')"
                          [innerHTML]="getFeatureDefinition(feature['name'])?.description">
                     </div>
                   </div>
@@ -175,11 +175,11 @@
                   </div>
                   <span class="feature-name">{{ feature['name'] }}</span>
                   <div class="feature-info" 
-                       (mouseenter)="showFeatureTooltip(feature['name'])"
-                       (mouseleave)="hideFeatureTooltip()">
+                       (mouseenter)="showFeatureTooltip(feature['name'], 'Growth')"
+                       (mouseleave)="hideFeatureTooltip(feature['name'], 'Growth')">
                     <i class="bi bi-info-circle info-icon"></i>
                     <div class="feature-tooltip" 
-                         *ngIf="selectedFeatureTooltip === feature['name']"
+                         *ngIf="shouldShowTooltip(feature['name'], 'Growth')"
                          [innerHTML]="getFeatureDefinition(feature['name'])?.description">
                     </div>
                   </div>
@@ -227,11 +227,11 @@
                   </div>
                   <span class="feature-name">{{ feature['name'] }}</span>
                   <div class="feature-info" 
-                       (mouseenter)="showFeatureTooltip(feature['name'])"
-                       (mouseleave)="hideFeatureTooltip()">
+                       (mouseenter)="showFeatureTooltip(feature['name'], 'Scale')"
+                       (mouseleave)="hideFeatureTooltip(feature['name'], 'Scale')">
                     <i class="bi bi-info-circle info-icon"></i>
                     <div class="feature-tooltip" 
-                         *ngIf="selectedFeatureTooltip === feature['name']"
+                         *ngIf="shouldShowTooltip(feature['name'], 'Scale')"
                          [innerHTML]="getFeatureDefinition(feature['name'])?.description">
                     </div>
                   </div>

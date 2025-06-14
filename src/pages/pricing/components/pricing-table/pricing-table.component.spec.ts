@@ -95,14 +95,15 @@ describe('PricingTableComponent', () => {
     expect(Array.isArray(coreLicensingFeatures)).toBeTruthy();
   });
 
-  it('should manage feature tooltips', () => {
-    expect(component.selectedFeatureTooltip).toBeNull();
+  it('should manage feature tooltips per card', () => {
+    expect(component.selectedFeatureTooltip).toEqual({});
     
-    component.showFeatureTooltip('Chat');
-    expect(component.selectedFeatureTooltip).toBe('Chat');
+    component.showFeatureTooltip('Chat', 'Trial');
+    expect(component.shouldShowTooltip('Chat', 'Trial')).toBeTruthy();
+    expect(component.shouldShowTooltip('Chat', 'StartUp')).toBeFalsy();
     
-    component.hideFeatureTooltip();
-    expect(component.selectedFeatureTooltip).toBeNull();
+    component.hideFeatureTooltip('Chat', 'Trial');
+    expect(component.shouldShowTooltip('Chat', 'Trial')).toBeFalsy();
   });
 
   it('should call payment services when buying a plan', () => {
