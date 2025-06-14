@@ -47,6 +47,8 @@ describe('PricingTableComponent', () => {
   it('should initialize with default values', () => {
     expect(component.expandedGroups).toEqual({});
     expect(component.planPeriod).toBeDefined();
+    expect(component.featureGroups).toBeDefined();
+    expect(component.featureDefinitions).toBeDefined();
   });
 
   it('should toggle feature groups', () => {
@@ -60,21 +62,47 @@ describe('PricingTableComponent', () => {
     expect(component.expandedGroups[groupKey]).toBeFalsy();
   });
 
-  it('should categorize essential features correctly', () => {
-    expect(component.isEssentialFeature('Blended Inbound/Outbound')).toBeTruthy();
-    expect(component.isEssentialFeature('Agent Desktop')).toBeTruthy();
-    expect(component.isEssentialFeature('Random Feature')).toBeFalsy();
+  it('should return correct button text', () => {
+    expect(component.getButtonText('Trial')).toBe('Start Trial');
+    expect(component.getButtonText('StartUp')).toBe('Buy Now');
+    expect(component.getButtonText('Growth')).toBe('Buy Now');
+    expect(component.getButtonText('Scale')).toBe('Buy Now');
   });
 
-  it('should categorize workforce features correctly', () => {
-    expect(component.isWorkforceFeature('Essentials GM')).toBeTruthy();
-    expect(component.isWorkforceFeature('Enterprise WFM')).toBeTruthy();
-    expect(component.isWorkforceFeature('Random Feature')).toBeFalsy();
+  it('should return correct button class', () => {
+    expect(component.getButtonClass('Trial')).toBe('plan-button trial-button');
+    expect(component.getButtonClass('StartUp')).toBe('plan-button startup-button');
+    expect(component.getButtonClass('Growth')).toBe('plan-button growth-button');
+    expect(component.getButtonClass('Scale')).toBe('plan-button scale-button');
   });
 
-  it('should categorize support features correctly', () => {
-    expect(component.isSupportFeature('24/7 World Class Support')).toBeTruthy();
-    expect(component.isSupportFeature('Random Feature')).toBeFalsy();
+  it('should get feature definition', () => {
+    const definition = component.getFeatureDefinition('Chat');
+    expect(definition).toBeDefined();
+    expect(definition?.name).toBe('Chat');
+    expect(definition?.category).toBe('channels');
+  });
+
+  it('should get features by category', () => {
+    // Mock some license types for testing
+    component.licenseTypes = [
+      { name: 'Agent Desktop', trial: { value: 'yes' } },
+      { name: 'Voice', trial: { value: 'yes' } }
+    ];
+    
+    const coreLicensingFeatures = component.getFeaturesByCategory('core-licensing');
+    expect(coreLicensingFeatures).toBeDefined();
+    expect(Array.isArray(coreLicensingFeatures)).toBeTruthy();
+  });
+
+  it('should manage feature tooltips', () => {
+    expect(component.selectedFeatureTooltip).toBeNull();
+    
+    component.showFeatureTooltip('Chat');
+    expect(component.selectedFeatureTooltip).toBe('Chat');
+    
+    component.hideFeatureTooltip();
+    expect(component.selectedFeatureTooltip).toBeNull();
   });
 
   it('should call payment services when buying a plan', () => {
@@ -84,6 +112,25 @@ describe('PricingTableComponent', () => {
     expect(mockPaymentHelper.changeCartItemsWithDurationDetails).toHaveBeenCalled();
     expect(mockPaymentHelper.changeWholeBundleDetails).toHaveBeenCalled();
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/self-checkout']);
+  });
+
+  it('should have correct feature groups configuration', () => {
+    expect(component.featureGroups).toHaveSize(4);
+    
+    const groupIds = component.featureGroups.map(group => group.id);
+    expect(groupIds).toContain('core-licensing');
+    expect(groupIds).toContain('channels');
+    expect(groupIds).toContain('essential-functionality');
+    expect(groupIds).toContain('support');
+  });
+
+  it('should have feature definitions for all categories', () => {
+    const categories = ['core-licensing', 'channels', 'essential-functionality', 'support'];
+    
+    categories.forEach(category => {
+      const featuresInCategory = component.featureDefinitions.filter(def => def.category === category);
+      expect(featuresInCategory.length).toBeGreaterThan(0);
+    });
   });
 });
 

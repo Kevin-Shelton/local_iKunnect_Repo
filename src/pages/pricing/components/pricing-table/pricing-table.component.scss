@@ -286,6 +286,7 @@
   gap: 0.75rem;
   padding: 0.75rem 1.5rem;
   border-bottom: 1px solid #f9fafb;
+  position: relative;
   
   &:last-child {
     border-bottom: none;
@@ -318,6 +319,100 @@
     font-size: 0.875rem;
     color: #374151;
     line-height: 1.4;
+    flex: 1;
+  }
+  
+  .feature-info {
+    position: relative;
+    flex-shrink: 0;
+    
+    .info-icon {
+      font-size: 0.875rem;
+      color: #6b7280;
+      cursor: help;
+      transition: color 0.2s ease;
+      
+      &:hover {
+        color: #3b82f6;
+      }
+    }
+    
+    .feature-tooltip {
+      position: absolute;
+      bottom: 100%;
+      right: 0;
+      margin-bottom: 0.5rem;
+      padding: 0.75rem;
+      background-color: #1f2937;
+      color: white;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      line-height: 1.4;
+      width: 250px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      z-index: 10;
+      
+      // Tooltip arrow
+      &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        right: 1rem;
+        border: 5px solid transparent;
+        border-top-color: #1f2937;
+      }
+      
+      // Responsive positioning for mobile
+      @media (max-width: 767px) {
+        right: -50px;
+        width: 200px;
+        
+        &::after {
+          right: 50px;
+        }
+      }
+    }
+  }
+}
+
+// Enhanced button styles
+.trial-button {
+  background-color: #64748b;
+  color: white;
+  
+  &:hover {
+    background-color: #475569;
+    transform: translateY(-1px);
+  }
+}
+
+.startup-button {
+  background-color: #3b82f6;
+  color: white;
+  
+  &:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+  }
+}
+
+.growth-button {
+  background-color: #ffffff;
+  color: #4338ca;
+  
+  &:hover {
+    background-color: #f8fafc;
+    transform: translateY(-1px);
+  }
+}
+
+.scale-button {
+  background-color: #ffffff;
+  color: #047857;
+  
+  &:hover {
+    background-color: #f8fafc;
+    transform: translateY(-1px);
   }
 }
 
@@ -350,6 +445,10 @@
   
   .feature-item {
     padding: 0.5rem 1rem;
+    
+    .feature-name {
+      font-size: 0.8rem;
+    }
   }
 }
 

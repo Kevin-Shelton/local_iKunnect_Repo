@@ -46,47 +46,23 @@
         <p class="plan-description">
           All the essential tools your teams need to operate a best-in-class digital-only global contact center.
         </p>
-        <button (click)="buyPlan('Trial')" class="plan-button trial-button">
-          Get a Quote
+        <button (click)="buyPlan('Trial')" [class]="getButtonClass('Trial')">
+          {{ getButtonText('Trial') }}
         </button>
       </div>
       
       <div class="features-section">
-        <!-- Channels Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('trial-channels')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-chat-dots"></i>
-              Channels
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['trial-channels']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['trial-channels']">
-            @for (license of licenseTypes; track license['name']) {
-              <div class="feature-item">
-                <div class="feature-status">
-                  <i *ngIf="getDataType(license['trial'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
-                  <i *ngIf="getDataType(license['trial'], 'no')" class="bi bi-x-circle feature-excluded"></i>
-                  <span *ngIf="isText(license['trial'])" class="feature-text">{{ license['trial'].value }}</span>
-                </div>
-                <span class="feature-name">{{ license['name'] }}</span>
-              </div>
-            }
-          </div>
-        </div>
-
-        <!-- Essential Functionality Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('trial-essential')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-gear"></i>
-              Essential Functionality
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['trial-essential']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['trial-essential']">
-            @for (feature of featureTypes; track feature['name']) {
-              @if (isEssentialFeature(feature['name'])) {
+        @for (group of featureGroups; track group.id) {
+          <div class="feature-group">
+            <div class="feature-group-header" (click)="toggleFeatureGroup('trial-' + group.id)">
+              <span class="feature-group-title">
+                <i class="feature-icon" [class]="group.icon"></i>
+                {{ group.title }}
+              </span>
+              <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['trial-' + group.id]"></i>
+            </div>
+            <div class="feature-group-content" [class.expanded]="expandedGroups['trial-' + group.id]">
+              @for (feature of getFeaturesByCategory(group.id); track feature['name']) {
                 <div class="feature-item">
                   <div class="feature-status">
                     <i *ngIf="getDataType(feature['trial'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
@@ -94,61 +70,20 @@
                     <span *ngIf="isText(feature['trial'])" class="feature-text">{{ feature['trial'].value }}</span>
                   </div>
                   <span class="feature-name">{{ feature['name'] }}</span>
-                </div>
-              }
-            }
-          </div>
-        </div>
-
-        <!-- Workforce Engagement Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('trial-workforce')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-people"></i>
-              Workforce Engagement
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['trial-workforce']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['trial-workforce']">
-            @for (feature of featureTypes; track feature['name']) {
-              @if (isWorkforceFeature(feature['name'])) {
-                <div class="feature-item">
-                  <div class="feature-status">
-                    <i *ngIf="getDataType(feature['trial'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
-                    <i *ngIf="getDataType(feature['trial'], 'no')" class="bi bi-x-circle feature-excluded"></i>
-                    <span *ngIf="isText(feature['trial'])" class="feature-text">{{ feature['trial'].value }}</span>
+                  <div class="feature-info" 
+                       (mouseenter)="showFeatureTooltip(feature['name'])"
+                       (mouseleave)="hideFeatureTooltip()">
+                    <i class="bi bi-info-circle info-icon"></i>
+                    <div class="feature-tooltip" 
+                         *ngIf="selectedFeatureTooltip === feature['name']"
+                         [innerHTML]="getFeatureDefinition(feature['name'])?.description">
+                    </div>
                   </div>
-                  <span class="feature-name">{{ feature['name'] }}</span>
                 </div>
               }
-            }
+            </div>
           </div>
-        </div>
-
-        <!-- Support Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('trial-support')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-headset"></i>
-              Support
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['trial-support']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['trial-support']">
-            @for (feature of featureTypes; track feature['name']) {
-              @if (isSupportFeature(feature['name'])) {
-                <div class="feature-item">
-                  <div class="feature-status">
-                    <i *ngIf="getDataType(feature['trial'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
-                    <i *ngIf="getDataType(feature['trial'], 'no')" class="bi bi-x-circle feature-excluded"></i>
-                    <span *ngIf="isText(feature['trial'])" class="feature-text">{{ feature['trial'].value }}</span>
-                  </div>
-                  <span class="feature-name">{{ feature['name'] }}</span>
-                </div>
-              }
-            }
-          </div>
-        </div>
+        }
       </div>
     </div>
 
@@ -163,47 +98,23 @@
         <p class="plan-description">
           All the essential tools your teams need to operate a best-in-class digital-only global contact center.
         </p>
-        <button (click)="buyPlan('StartUp')" class="plan-button startup-button">
-          Get a Quote
+        <button (click)="buyPlan('StartUp')" [class]="getButtonClass('StartUp')">
+          {{ getButtonText('StartUp') }}
         </button>
       </div>
       
       <div class="features-section">
-        <!-- Channels Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('startup-channels')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-chat-dots"></i>
-              Channels
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['startup-channels']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['startup-channels']">
-            @for (license of licenseTypes; track license['name']) {
-              <div class="feature-item">
-                <div class="feature-status">
-                  <i *ngIf="getDataType(license['startUp'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
-                  <i *ngIf="getDataType(license['startUp'], 'no')" class="bi bi-x-circle feature-excluded"></i>
-                  <span *ngIf="isText(license['startUp'])" class="feature-text">{{ license['startUp'].value }}</span>
-                </div>
-                <span class="feature-name">{{ license['name'] }}</span>
-              </div>
-            }
-          </div>
-        </div>
-
-        <!-- Essential Functionality Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('startup-essential')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-gear"></i>
-              Essential Functionality
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['startup-essential']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['startup-essential']">
-            @for (feature of featureTypes; track feature['name']) {
-              @if (isEssentialFeature(feature['name'])) {
+        @for (group of featureGroups; track group.id) {
+          <div class="feature-group">
+            <div class="feature-group-header" (click)="toggleFeatureGroup('startup-' + group.id)">
+              <span class="feature-group-title">
+                <i class="feature-icon" [class]="group.icon"></i>
+                {{ group.title }}
+              </span>
+              <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['startup-' + group.id]"></i>
+            </div>
+            <div class="feature-group-content" [class.expanded]="expandedGroups['startup-' + group.id]">
+              @for (feature of getFeaturesByCategory(group.id); track feature['name']) {
                 <div class="feature-item">
                   <div class="feature-status">
                     <i *ngIf="getDataType(feature['startUp'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
@@ -211,61 +122,20 @@
                     <span *ngIf="isText(feature['startUp'])" class="feature-text">{{ feature['startUp'].value }}</span>
                   </div>
                   <span class="feature-name">{{ feature['name'] }}</span>
-                </div>
-              }
-            }
-          </div>
-        </div>
-
-        <!-- Workforce Engagement Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('startup-workforce')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-people"></i>
-              Workforce Engagement
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['startup-workforce']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['startup-workforce']">
-            @for (feature of featureTypes; track feature['name']) {
-              @if (isWorkforceFeature(feature['name'])) {
-                <div class="feature-item">
-                  <div class="feature-status">
-                    <i *ngIf="getDataType(feature['startUp'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
-                    <i *ngIf="getDataType(feature['startUp'], 'no')" class="bi bi-x-circle feature-excluded"></i>
-                    <span *ngIf="isText(feature['startUp'])" class="feature-text">{{ feature['startUp'].value }}</span>
+                  <div class="feature-info" 
+                       (mouseenter)="showFeatureTooltip(feature['name'])"
+                       (mouseleave)="hideFeatureTooltip()">
+                    <i class="bi bi-info-circle info-icon"></i>
+                    <div class="feature-tooltip" 
+                         *ngIf="selectedFeatureTooltip === feature['name']"
+                         [innerHTML]="getFeatureDefinition(feature['name'])?.description">
+                    </div>
                   </div>
-                  <span class="feature-name">{{ feature['name'] }}</span>
                 </div>
               }
-            }
+            </div>
           </div>
-        </div>
-
-        <!-- Support Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('startup-support')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-headset"></i>
-              Support
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['startup-support']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['startup-support']">
-            @for (feature of featureTypes; track feature['name']) {
-              @if (isSupportFeature(feature['name'])) {
-                <div class="feature-item">
-                  <div class="feature-status">
-                    <i *ngIf="getDataType(feature['startUp'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
-                    <i *ngIf="getDataType(feature['startUp'], 'no')" class="bi bi-x-circle feature-excluded"></i>
-                    <span *ngIf="isText(feature['startUp'])" class="feature-text">{{ feature['startUp'].value }}</span>
-                  </div>
-                  <span class="feature-name">{{ feature['name'] }}</span>
-                </div>
-              }
-            }
-          </div>
-        </div>
+        }
       </div>
     </div>
 
@@ -280,47 +150,23 @@
         <p class="plan-description">
           All capabilities of the StartUp Bundle plus chat, email, and essential GM.
         </p>
-        <button (click)="buyPlan('Growth')" class="plan-button growth-button">
-          Get a Quote
+        <button (click)="buyPlan('Growth')" [class]="getButtonClass('Growth')">
+          {{ getButtonText('Growth') }}
         </button>
       </div>
       
       <div class="features-section">
-        <!-- Channels Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('growth-channels')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-chat-dots"></i>
-              Channels
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['growth-channels']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['growth-channels']">
-            @for (license of licenseTypes; track license['name']) {
-              <div class="feature-item">
-                <div class="feature-status">
-                  <i *ngIf="getDataType(license['growth'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
-                  <i *ngIf="getDataType(license['growth'], 'no')" class="bi bi-x-circle feature-excluded"></i>
-                  <span *ngIf="isText(license['growth'])" class="feature-text">{{ license['growth'].value }}</span>
-                </div>
-                <span class="feature-name">{{ license['name'] }}</span>
-              </div>
-            }
-          </div>
-        </div>
-
-        <!-- Essential Functionality Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('growth-essential')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-gear"></i>
-              Essential Functionality
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['growth-essential']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['growth-essential']">
-            @for (feature of featureTypes; track feature['name']) {
-              @if (isEssentialFeature(feature['name'])) {
+        @for (group of featureGroups; track group.id) {
+          <div class="feature-group">
+            <div class="feature-group-header" (click)="toggleFeatureGroup('growth-' + group.id)">
+              <span class="feature-group-title">
+                <i class="feature-icon" [class]="group.icon"></i>
+                {{ group.title }}
+              </span>
+              <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['growth-' + group.id]"></i>
+            </div>
+            <div class="feature-group-content" [class.expanded]="expandedGroups['growth-' + group.id]">
+              @for (feature of getFeaturesByCategory(group.id); track feature['name']) {
                 <div class="feature-item">
                   <div class="feature-status">
                     <i *ngIf="getDataType(feature['growth'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
@@ -328,61 +174,20 @@
                     <span *ngIf="isText(feature['growth'])" class="feature-text">{{ feature['growth'].value }}</span>
                   </div>
                   <span class="feature-name">{{ feature['name'] }}</span>
-                </div>
-              }
-            }
-          </div>
-        </div>
-
-        <!-- Workforce Engagement Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('growth-workforce')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-people"></i>
-              Workforce Engagement
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['growth-workforce']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['growth-workforce']">
-            @for (feature of featureTypes; track feature['name']) {
-              @if (isWorkforceFeature(feature['name'])) {
-                <div class="feature-item">
-                  <div class="feature-status">
-                    <i *ngIf="getDataType(feature['growth'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
-                    <i *ngIf="getDataType(feature['growth'], 'no')" class="bi bi-x-circle feature-excluded"></i>
-                    <span *ngIf="isText(feature['growth'])" class="feature-text">{{ feature['growth'].value }}</span>
+                  <div class="feature-info" 
+                       (mouseenter)="showFeatureTooltip(feature['name'])"
+                       (mouseleave)="hideFeatureTooltip()">
+                    <i class="bi bi-info-circle info-icon"></i>
+                    <div class="feature-tooltip" 
+                         *ngIf="selectedFeatureTooltip === feature['name']"
+                         [innerHTML]="getFeatureDefinition(feature['name'])?.description">
+                    </div>
                   </div>
-                  <span class="feature-name">{{ feature['name'] }}</span>
                 </div>
               }
-            }
+            </div>
           </div>
-        </div>
-
-        <!-- Support Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('growth-support')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-headset"></i>
-              Support
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['growth-support']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['growth-support']">
-            @for (feature of featureTypes; track feature['name']) {
-              @if (isSupportFeature(feature['name'])) {
-                <div class="feature-item">
-                  <div class="feature-status">
-                    <i *ngIf="getDataType(feature['growth'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
-                    <i *ngIf="getDataType(feature['growth'], 'no')" class="bi bi-x-circle feature-excluded"></i>
-                    <span *ngIf="isText(feature['growth'])" class="feature-text">{{ feature['growth'].value }}</span>
-                  </div>
-                  <span class="feature-name">{{ feature['name'] }}</span>
-                </div>
-              }
-            }
-          </div>
-        </div>
+        }
       </div>
     </div>
 
@@ -397,47 +202,23 @@
         <p class="plan-description">
           All capabilities of the Growth Bundle plus chat, email, analytics and essential GM.
         </p>
-        <button (click)="buyPlan('Scale')" class="plan-button scale-button">
-          Get a Quote
+        <button (click)="buyPlan('Scale')" [class]="getButtonClass('Scale')">
+          {{ getButtonText('Scale') }}
         </button>
       </div>
       
       <div class="features-section">
-        <!-- Channels Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('scale-channels')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-chat-dots"></i>
-              Channels
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['scale-channels']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['scale-channels']">
-            @for (license of licenseTypes; track license['name']) {
-              <div class="feature-item">
-                <div class="feature-status">
-                  <i *ngIf="getDataType(license['scale'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
-                  <i *ngIf="getDataType(license['scale'], 'no')" class="bi bi-x-circle feature-excluded"></i>
-                  <span *ngIf="isText(license['scale'])" class="feature-text">{{ license['scale'].value }}</span>
-                </div>
-                <span class="feature-name">{{ license['name'] }}</span>
-              </div>
-            }
-          </div>
-        </div>
-
-        <!-- Essential Functionality Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('scale-essential')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-gear"></i>
-              Essential Functionality
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['scale-essential']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['scale-essential']">
-            @for (feature of featureTypes; track feature['name']) {
-              @if (isEssentialFeature(feature['name'])) {
+        @for (group of featureGroups; track group.id) {
+          <div class="feature-group">
+            <div class="feature-group-header" (click)="toggleFeatureGroup('scale-' + group.id)">
+              <span class="feature-group-title">
+                <i class="feature-icon" [class]="group.icon"></i>
+                {{ group.title }}
+              </span>
+              <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['scale-' + group.id]"></i>
+            </div>
+            <div class="feature-group-content" [class.expanded]="expandedGroups['scale-' + group.id]">
+              @for (feature of getFeaturesByCategory(group.id); track feature['name']) {
                 <div class="feature-item">
                   <div class="feature-status">
                     <i *ngIf="getDataType(feature['scale'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
@@ -445,61 +226,20 @@
                     <span *ngIf="isText(feature['scale'])" class="feature-text">{{ feature['scale'].value }}</span>
                   </div>
                   <span class="feature-name">{{ feature['name'] }}</span>
-                </div>
-              }
-            }
-          </div>
-        </div>
-
-        <!-- Workforce Engagement Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('scale-workforce')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-people"></i>
-              Workforce Engagement
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['scale-workforce']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['scale-workforce']">
-            @for (feature of featureTypes; track feature['name']) {
-              @if (isWorkforceFeature(feature['name'])) {
-                <div class="feature-item">
-                  <div class="feature-status">
-                    <i *ngIf="getDataType(feature['scale'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
-                    <i *ngIf="getDataType(feature['scale'], 'no')" class="bi bi-x-circle feature-excluded"></i>
-                    <span *ngIf="isText(feature['scale'])" class="feature-text">{{ feature['scale'].value }}</span>
+                  <div class="feature-info" 
+                       (mouseenter)="showFeatureTooltip(feature['name'])"
+                       (mouseleave)="hideFeatureTooltip()">
+                    <i class="bi bi-info-circle info-icon"></i>
+                    <div class="feature-tooltip" 
+                         *ngIf="selectedFeatureTooltip === feature['name']"
+                         [innerHTML]="getFeatureDefinition(feature['name'])?.description">
+                    </div>
                   </div>
-                  <span class="feature-name">{{ feature['name'] }}</span>
                 </div>
               }
-            }
+            </div>
           </div>
-        </div>
-
-        <!-- Support Section -->
-        <div class="feature-group">
-          <div class="feature-group-header" (click)="toggleFeatureGroup('scale-support')">
-            <span class="feature-group-title">
-              <i class="feature-icon bi bi-headset"></i>
-              Support
-            </span>
-            <i class="toggle-icon bi bi-chevron-down" [class.rotated]="expandedGroups['scale-support']"></i>
-          </div>
-          <div class="feature-group-content" [class.expanded]="expandedGroups['scale-support']">
-            @for (feature of featureTypes; track feature['name']) {
-              @if (isSupportFeature(feature['name'])) {
-                <div class="feature-item">
-                  <div class="feature-status">
-                    <i *ngIf="getDataType(feature['scale'], 'yes')" class="bi bi-check-circle-fill feature-included"></i>
-                    <i *ngIf="getDataType(feature['scale'], 'no')" class="bi bi-x-circle feature-excluded"></i>
-                    <span *ngIf="isText(feature['scale'])" class="feature-text">{{ feature['scale'].value }}</span>
-                  </div>
-                  <span class="feature-name">{{ feature['name'] }}</span>
-                </div>
-              }
-            }
-          </div>
-        </div>
+        }
       </div>
     </div>
   </div>

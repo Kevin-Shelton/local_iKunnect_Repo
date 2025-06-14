@@ -16,6 +16,21 @@ import {
 import { PaymentHelperService } from '../../../selfcheckout/services/helper.service';
 import { PaymentService } from '../../../selfcheckout/services/payment.service';
 
+// Feature definition interface
+interface FeatureDefinition {
+  name: string;
+  description: string;
+  category: 'core-licensing' | 'channels' | 'essential-functionality' | 'support';
+}
+
+// Feature group configuration
+interface FeatureGroup {
+  id: string;
+  title: string;
+  icon: string;
+  description: string;
+}
+
 @Component({
   selector: 'app-pricing-table',
   standalone: true,
@@ -35,8 +50,143 @@ export class PricingTableComponent implements OnInit {
   priceDetByDuration = this.stripeBundlePricing?.month;
   planPeriod = PlanDuration.MONTHLY;
   
-  // New property for managing collapsible groups
+  // Enhanced feature management
   expandedGroups: { [key: string]: boolean } = {};
+  selectedFeatureTooltip: string | null = null;
+
+  // Feature groups configuration
+  featureGroups: FeatureGroup[] = [
+    {
+      id: 'core-licensing',
+      title: 'Core Licensing',
+      icon: 'bi-award',
+      description: 'Essential licensing and user management capabilities'
+    },
+    {
+      id: 'channels',
+      title: 'Channels',
+      icon: 'bi-chat-dots',
+      description: 'Communication channels and interaction methods'
+    },
+    {
+      id: 'essential-functionality',
+      title: 'Essential Functionality',
+      icon: 'bi-gear',
+      description: 'Core platform features and operational tools'
+    },
+    {
+      id: 'support',
+      title: 'Support',
+      icon: 'bi-headset',
+      description: 'Customer support and assistance services'
+    }
+  ];
+
+  // Feature definitions with descriptions
+  featureDefinitions: FeatureDefinition[] = [
+    // Core Licensing Features
+    {
+      name: 'Agent Desktop',
+      description: 'Comprehensive agent interface with unified workspace for handling customer interactions across all channels.',
+      category: 'core-licensing'
+    },
+    {
+      name: 'Supervisor Desktop',
+      description: 'Advanced supervisory tools for monitoring, coaching, and managing agent performance in real-time.',
+      category: 'core-licensing'
+    },
+    {
+      name: 'Admin Portal',
+      description: 'Complete administrative control panel for system configuration, user management, and reporting.',
+      category: 'core-licensing'
+    },
+    
+    // Channels Features
+    {
+      name: 'Chat',
+      description: 'Real-time web chat functionality with customizable chat widgets and automated routing.',
+      category: 'channels'
+    },
+    {
+      name: 'Voice',
+      description: 'Full-featured voice calling with advanced telephony features, call routing, and IVR capabilities.',
+      category: 'channels'
+    },
+    {
+      name: 'Email',
+      description: 'Integrated email management with automated ticketing, routing, and response templates.',
+      category: 'channels'
+    },
+    {
+      name: 'SMS/MMS',
+      description: 'Two-way SMS and multimedia messaging with automated responses and conversation threading.',
+      category: 'channels'
+    },
+    {
+      name: 'Social Messaging',
+      description: 'Unified social media messaging across platforms like Facebook, Twitter, and Instagram.',
+      category: 'channels'
+    },
+    
+    // Essential Functionality Features
+    {
+      name: 'Blended Inbound/Outbound',
+      description: 'Seamless switching between inbound and outbound operations with unified agent experience.',
+      category: 'essential-functionality'
+    },
+    {
+      name: 'Geo Redundancy',
+      description: 'Geographic redundancy and disaster recovery capabilities to ensure business continuity.',
+      category: 'essential-functionality'
+    },
+    {
+      name: 'Recording',
+      description: 'Comprehensive call and screen recording with secure storage and compliance features.',
+      category: 'essential-functionality'
+    },
+    {
+      name: 'Dialer',
+      description: 'Advanced predictive, progressive, and preview dialing capabilities for outbound campaigns.',
+      category: 'essential-functionality'
+    },
+    {
+      name: 'Essentials GM',
+      description: 'Essential gamification and motivation tools to boost agent engagement and performance.',
+      category: 'essential-functionality'
+    },
+    {
+      name: 'Enterprise GM',
+      description: 'Advanced gamification platform with comprehensive analytics and customizable reward systems.',
+      category: 'essential-functionality'
+    },
+    {
+      name: 'Enterprise WFM',
+      description: 'Complete workforce management solution with forecasting, scheduling, and adherence monitoring.',
+      category: 'essential-functionality'
+    },
+    {
+      name: 'Interaction Analytics',
+      description: 'AI-powered conversation analysis providing insights into customer sentiment and agent performance.',
+      category: 'essential-functionality'
+    },
+    {
+      name: 'Workflow Automation',
+      description: 'Automated business process workflows to streamline operations and reduce manual tasks.',
+      category: 'essential-functionality'
+    },
+    {
+      name: 'Full Platform',
+      description: 'Complete access to all platform capabilities including advanced integrations and customizations.',
+      category: 'essential-functionality'
+    },
+    
+    // Support Features
+    {
+      name: '24/7 World Class Support',
+      description: 'Round-the-clock premium support with dedicated account management and priority response times.',
+      category: 'support'
+    }
+  ];
 
   constructor(
     private readonly router: Router,
@@ -52,46 +202,61 @@ export class PricingTableComponent implements OnInit {
     });
   }
 
-  // New method to toggle feature groups
+  // Enhanced feature group management
   toggleFeatureGroup(groupKey: string): void {
     this.expandedGroups[groupKey] = !this.expandedGroups[groupKey];
   }
 
-  // New methods to categorize features
-  isEssentialFeature(featureName: string): boolean {
-    const essentialFeatures = [
-      'Blended Inbound/Outbound',
-      'Agent Desktop',
-      'Geo Redundancy',
-      'Recording',
-      'Dialer'
-    ];
-    return essentialFeatures.some(essential => 
-      featureName.toLowerCase().includes(essential.toLowerCase())
+  // Get features by category
+  getFeaturesByCategory(category: string): any[] {
+    if (category === 'core-licensing') {
+      return this.licenseTypes || [];
+    }
+    
+    return (this.featureTypes || []).filter(feature => {
+      const definition = this.getFeatureDefinition(feature.name);
+      return definition?.category === category;
+    });
+  }
+
+  // Get feature definition
+  getFeatureDefinition(featureName: string): FeatureDefinition | undefined {
+    return this.featureDefinitions.find(def => 
+      featureName.toLowerCase().includes(def.name.toLowerCase()) ||
+      def.name.toLowerCase().includes(featureName.toLowerCase())
     );
   }
 
-  isWorkforceFeature(featureName: string): boolean {
-    const workforceFeatures = [
-      'Essentials GM',
-      'Enterprise GM',
-      'Enterprise WFM',
-      'Interaction Analytics',
-      'Workflow Automation',
-      'Full Platform'
-    ];
-    return workforceFeatures.some(workforce => 
-      featureName.toLowerCase().includes(workforce.toLowerCase())
-    );
+  // Show feature tooltip
+  showFeatureTooltip(featureName: string): void {
+    this.selectedFeatureTooltip = featureName;
   }
 
-  isSupportFeature(featureName: string): boolean {
-    const supportFeatures = [
-      '24/7 World Class Support'
-    ];
-    return supportFeatures.some(support => 
-      featureName.toLowerCase().includes(support.toLowerCase())
-    );
+  // Hide feature tooltip
+  hideFeatureTooltip(): void {
+    this.selectedFeatureTooltip = null;
+  }
+
+  // Get button text based on plan type
+  getButtonText(planType: string): string {
+    return planType === 'Trial' ? 'Start Trial' : 'Buy Now';
+  }
+
+  // Get button class based on plan type
+  getButtonClass(planType: string): string {
+    const baseClass = 'plan-button';
+    switch (planType) {
+      case 'Trial':
+        return `${baseClass} trial-button`;
+      case 'StartUp':
+        return `${baseClass} startup-button`;
+      case 'Growth':
+        return `${baseClass} growth-button`;
+      case 'Scale':
+        return `${baseClass} scale-button`;
+      default:
+        return baseClass;
+    }
   }
 
   isText(type: { value: string; stripeProdName: ProductNames }) {
