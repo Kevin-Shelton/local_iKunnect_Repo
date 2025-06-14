@@ -1,6 +1,355 @@
-.loading{
+// Loading styles
+.loading {
   min-height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+// Main pricing container
+.pricing-table {
+  .title {
+    text-align: center;
+    margin-bottom: 3rem;
+    
+    h3 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+    }
+    
+    p {
+      font-size: 1.125rem;
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+    
+    .switch {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      
+      .form-check-label {
+        font-weight: 500;
+        color: #374151;
+      }
+      
+      .form-check-input {
+        width: 3rem;
+        height: 1.5rem;
+        background-color: #e5e7eb;
+        border: none;
+        border-radius: 1rem;
+        
+        &:checked {
+          background-color: #3b82f6;
+        }
+      }
+    }
+  }
+}
+
+// Cards container
+.pricing-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// Individual pricing card
+.pricing-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .card-header {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #f3f4f6;
+    
+    .plan-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #1f2937;
+    }
+    
+    .plan-price {
+      margin-bottom: 1.5rem;
+      
+      .price-amount {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1f2937;
+        display: block;
+      }
+      
+      .price-period {
+        font-size: 0.875rem;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    }
+    
+    .plan-description {
+      font-size: 0.875rem;
+      color: #6b7280;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+    
+    .plan-button {
+      width: 100%;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+  
+  .features-section {
+    padding: 0;
+  }
+}
+
+// Plan-specific styling
+.trial-card {
+  .card-header {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    
+    .plan-button {
+      background-color: #64748b;
+      color: white;
+      
+      &:hover {
+        background-color: #475569;
+      }
+    }
+  }
+}
+
+.startup-card {
+  .card-header {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    
+    .plan-button {
+      background-color: #3b82f6;
+      color: white;
+      
+      &:hover {
+        background-color: #2563eb;
+      }
+    }
+  }
+}
+
+.growth-card {
+  .card-header {
+    background: linear-gradient(135deg, #312e81 0%, #4338ca 100%);
+    color: white;
+    
+    .plan-name,
+    .price-amount {
+      color: white;
+    }
+    
+    .price-period,
+    .plan-description {
+      color: #c7d2fe;
+    }
+    
+    .plan-button {
+      background-color: #ffffff;
+      color: #4338ca;
+      
+      &:hover {
+        background-color: #f8fafc;
+      }
+    }
+  }
+}
+
+.scale-card {
+  .card-header {
+    background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+    color: white;
+    
+    .plan-name,
+    .price-amount {
+      color: white;
+    }
+    
+    .price-period,
+    .plan-description {
+      color: #a7f3d0;
+    }
+    
+    .plan-button {
+      background-color: #ffffff;
+      color: #047857;
+      
+      &:hover {
+        background-color: #f8fafc;
+      }
+    }
+  }
+}
+
+// Feature groups
+.feature-group {
+  border-bottom: 1px solid #f3f4f6;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  .feature-group-header {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9fafb;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: #f3f4f6;
+    }
+    
+    .feature-group-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      color: #374151;
+      
+      .feature-icon {
+        font-size: 1.125rem;
+        color: #6b7280;
+      }
+    }
+    
+    .toggle-icon {
+      font-size: 0.875rem;
+      color: #6b7280;
+      transition: transform 0.2s ease;
+      
+      &.rotated {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  
+  .feature-group-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    
+    &.expanded {
+      max-height: 1000px;
+    }
+  }
+}
+
+// Individual feature items
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid #f9fafb;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  .feature-status {
+    flex-shrink: 0;
+    
+    .feature-included {
+      color: #10b981;
+      font-size: 1rem;
+    }
+    
+    .feature-excluded {
+      color: #ef4444;
+      font-size: 1rem;
+    }
+    
+    .feature-text {
+      font-size: 0.75rem;
+      color: #6b7280;
+      font-weight: 500;
+      padding: 0.25rem 0.5rem;
+      background-color: #f3f4f6;
+      border-radius: 4px;
+    }
+  }
+  
+  .feature-name {
+    font-size: 0.875rem;
+    color: #374151;
+    line-height: 1.4;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 767px) {
+  .pricing-cards-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .pricing-card {
+    .card-header {
+      padding: 1.5rem 1rem;
+      
+      .plan-name {
+        font-size: 1.25rem;
+      }
+      
+      .price-amount {
+        font-size: 2rem;
+      }
+    }
+  }
+  
+  .feature-group {
+    .feature-group-header {
+      padding: 0.75rem 1rem;
+    }
+  }
+  
+  .feature-item {
+    padding: 0.5rem 1rem;
+  }
+}
+

@@ -34,12 +34,16 @@ export class PricingTableComponent implements OnInit {
   };
   priceDetByDuration = this.stripeBundlePricing?.month;
   planPeriod = PlanDuration.MONTHLY;
+  
+  // New property for managing collapsible groups
+  expandedGroups: { [key: string]: boolean } = {};
 
   constructor(
     private readonly router: Router,
     private readonly paymentHelper: PaymentHelperService,
     private readonly paymentService: PaymentService
   ) {}
+  
   ngOnInit(): void {
     this.paymentService.getProducts().subscribe({
       next: res => {
@@ -47,15 +51,60 @@ export class PricingTableComponent implements OnInit {
       },
     });
   }
+
+  // New method to toggle feature groups
+  toggleFeatureGroup(groupKey: string): void {
+    this.expandedGroups[groupKey] = !this.expandedGroups[groupKey];
+  }
+
+  // New methods to categorize features
+  isEssentialFeature(featureName: string): boolean {
+    const essentialFeatures = [
+      'Blended Inbound/Outbound',
+      'Agent Desktop',
+      'Geo Redundancy',
+      'Recording',
+      'Dialer'
+    ];
+    return essentialFeatures.some(essential => 
+      featureName.toLowerCase().includes(essential.toLowerCase())
+    );
+  }
+
+  isWorkforceFeature(featureName: string): boolean {
+    const workforceFeatures = [
+      'Essentials GM',
+      'Enterprise GM',
+      'Enterprise WFM',
+      'Interaction Analytics',
+      'Workflow Automation',
+      'Full Platform'
+    ];
+    return workforceFeatures.some(workforce => 
+      featureName.toLowerCase().includes(workforce.toLowerCase())
+    );
+  }
+
+  isSupportFeature(featureName: string): boolean {
+    const supportFeatures = [
+      '24/7 World Class Support'
+    ];
+    return supportFeatures.some(support => 
+      featureName.toLowerCase().includes(support.toLowerCase())
+    );
+  }
+
   isText(type: { value: string; stripeProdName: ProductNames }) {
     return type.value !== 'no' && type.value !== 'yes';
   }
+  
   getDataType(
     val: { value: string; stripeProdName: ProductNames },
     type: string
   ) {
     return val.value === type;
   }
+  
   buyPlan(planType: string) {
     this.paymentHelper.changeBundlePlanDetails({
       bundleType: planType as PlanType,
@@ -84,6 +133,7 @@ export class PricingTableComponent implements OnInit {
       this.featureTypes = this.plans['features'].month;
     }
   }
+  
   mergeProductsWithStripePrices(products: StripeProduct[]) {
     this.mergeBundlePrices(products);
     this.mergeStripeProdIntoJsonData(products);
@@ -156,6 +206,7 @@ export class PricingTableComponent implements OnInit {
       return prod.name === prodName;
     });
   }
+  
   getPricingCellFromJson(
     products: StripeProduct[],
     prodInfo: any,
@@ -201,3 +252,4 @@ export class PricingTableComponent implements OnInit {
       });
   }
 }
+
