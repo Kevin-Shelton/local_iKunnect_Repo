@@ -3,8 +3,8 @@
   <div class="language-switcher">
     <div class="dropdown">
       <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown">
-        <span class="flag">{{ languages.find(lang => lang.code === selectedLanguage)?.flag }}</span>
-        <span class="lang-name">{{ languages.find(lang => lang.code === selectedLanguage)?.name }}</span>
+        <span class="flag">{{ currentLanguageFlag }}</span>
+        <span class="lang-name">{{ currentLanguageName }}</span>
         <i class="bi bi-chevron-down"></i>
       </button>
       <ul class="dropdown-menu">
@@ -450,6 +450,7 @@
       </div>
     </div>
   </div>
+
   <!-- Shared Components -->
   <app-book-consultation></app-book-consultation>
   <app-explore-resources></app-explore-resources>
