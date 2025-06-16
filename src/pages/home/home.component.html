@@ -24,20 +24,24 @@
       <source src="./../../assets/images/herovideo.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
+    
+    <!-- Gradient Overlay -->
+    <div class="hero-gradient-overlay"></div>
+    
     <div class="headContent">
       <div class="container-xl">
         <div class="row">
-          <div class="offset-lg-6 col-md-12 col-12 col-lg-6">
+          <div class="col-lg-8 col-md-10 col-12">
             <div class="headContent-col">
-              <div class="col f-p headContent--head" data-aos="fade-left" data-aos-duration="1000">
+              <div class="col f-p headContent--head" data-aos="fade-right" data-aos-duration="1000">
                 {{ title }}
               </div>
-              <div class="col f-m headContent--content" data-aos="fade-left">
+              <div class="col f-m headContent--content" data-aos="fade-right" data-aos-delay="200">
                 Transform your contact center with intelligent automation, multilingual AI translation, and seamless omnichannel integration. Deliver faster resolutions and exceptional customer experiences across any language.
               </div>
               
               <!-- Multilingual Demo Preview -->
-              <div class="demo-preview" data-aos="fade-up" data-aos-delay="200">
+              <div class="demo-preview" data-aos="fade-up" data-aos-delay="400">
                 <div class="demo-card">
                   <div class="demo-header">
                     <i class="bi bi-translate"></i>
@@ -58,7 +62,7 @@
               </div>
 
               <!-- Enhanced CTAs -->
-              <div class="col headContent--btn" data-aos="fade-down">
+              <div class="col headContent--btn" data-aos="fade-up" data-aos-delay="600">
                 <button class="primaryBtn cta-primary" (click)="scheduleDemo()">
                   <i class="bi bi-calendar-check"></i>
                   Schedule a Demo
