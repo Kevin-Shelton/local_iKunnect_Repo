@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -43,6 +43,9 @@ export class HomeComponent implements OnInit {
     { code: 'fr', name: 'Français', flag: '🇫🇷' },
     { code: 'de', name: 'Deutsch', flag: '🇩🇪' }
   ];
+
+  // Collapsible capabilities
+  expandedCapabilities: { [key: number]: boolean } = {};
 
   // Metrics data
   metrics = [
@@ -144,7 +147,7 @@ export class HomeComponent implements OnInit {
 
   get platformStats() {
     return [
-      { value: '50+', label: 'Languages Supported' },
+      { value: '152+', label: 'Languages Supported' },
       { value: '99.9%', label: 'Uptime SLA' },
       { value: '40%', label: 'Faster Resolution' },
       { value: '24/7', label: 'Global Support' }
@@ -230,6 +233,11 @@ export class HomeComponent implements OnInit {
     const x = Math.cos(angle * Math.PI / 180) * radius;
     const y = Math.sin(angle * Math.PI / 180) * radius;
     return `translate(${x}px, ${y}px)`;
+  }
+
+  // Toggle capability expansion
+  toggleCapability(capabilityId: number) {
+    this.expandedCapabilities[capabilityId] = !this.expandedCapabilities[capabilityId];
   }
 
   constructor(private readonly router: Router) {}
