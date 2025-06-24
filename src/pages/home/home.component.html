@@ -217,158 +217,180 @@
                 </div>
               </div>
               
-              <!-- Capability Items -->
-              <div class="capability-item" data-position="1" data-aos="fade-in" data-aos-delay="300" (click)="toggleCapability(1)">
-                <div class="capability-number">01</div>
-                <div class="capability-icon">
-                  <i class="bi bi-headset"></i>
-                </div>
-                <div class="capability-header">
-                  <h5>Agent Workspace</h5>
-                  <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[1]"></i>
-                </div>
-                <div class="capability-content" [class.expanded]="expandedCapabilities[1]">
-                  <p>Unified omnichannel experience that empowers agents to deliver exceptional customer service across every touchpoint.</p>
-                </div>
-              </div>
-              
-              <div class="capability-item" data-position="2" data-aos="fade-in" data-aos-delay="400" (click)="toggleCapability(2)">
-                <div class="capability-number">02</div>
-                <div class="capability-icon">
-                  <i class="bi bi-telephone"></i>
-                </div>
-                <div class="capability-header">
-                  <h5>Voice</h5>
-                  <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[2]"></i>
-                </div>
-                <div class="capability-content" [class.expanded]="expandedCapabilities[2]">
-                  <p>Enterprise-grade cloud solution with intelligent call routing and advanced voice capabilities for seamless customer conversations.</p>
+              <!-- Capability Items with Mathematical Distribution -->
+              <div class="capability-item capability-1" data-aos="fade-in" data-aos-delay="300" (click)="toggleCapability(1)">
+                <div class="capability-card" [class.expanded]="expandedCapabilities[1]">
+                  <div class="capability-header">
+                    <div class="capability-number">01</div>
+                    <div class="capability-icon">
+                      <i class="bi bi-headset"></i>
+                    </div>
+                    <h5>Agent Workspace</h5>
+                    <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[1]"></i>
+                  </div>
+                  <div class="capability-content">
+                    <p>Unified omnichannel experience that empowers agents to deliver exceptional customer service across every touchpoint.</p>
+                  </div>
                 </div>
               </div>
               
-              <div class="capability-item" data-position="3" data-aos="fade-in" data-aos-delay="500" (click)="toggleCapability(3)">
-                <div class="capability-number">03</div>
-                <div class="capability-icon">
-                  <i class="bi bi-envelope"></i>
-                </div>
-                <div class="capability-header">
-                  <h5>Email</h5>
-                  <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[3]"></i>
-                </div>
-                <div class="capability-content" [class.expanded]="expandedCapabilities[3]">
-                  <p>Intelligent email management with automated routing, response suggestions, and seamless integration into your omnichannel workflow.</p>
-                </div>
-              </div>
-              
-              <div class="capability-item" data-position="4" data-aos="fade-in" data-aos-delay="600" (click)="toggleCapability(4)">
-                <div class="capability-number">04</div>
-                <div class="capability-icon">
-                  <i class="bi bi-chat-dots"></i>
-                </div>
-                <div class="capability-header">
-                  <h5>Chat</h5>
-                  <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[4]"></i>
-                </div>
-                <div class="capability-content" [class.expanded]="expandedCapabilities[4]">
-                  <p>Real-time messaging platform with AI-powered chatbots, proactive engagement, and seamless agent handoffs for instant customer support.</p>
+              <div class="capability-item capability-2" data-aos="fade-in" data-aos-delay="400" (click)="toggleCapability(2)">
+                <div class="capability-card" [class.expanded]="expandedCapabilities[2]">
+                  <div class="capability-header">
+                    <div class="capability-number">02</div>
+                    <div class="capability-icon">
+                      <i class="bi bi-telephone"></i>
+                    </div>
+                    <h5>Voice</h5>
+                    <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[2]"></i>
+                  </div>
+                  <div class="capability-content">
+                    <p>Enterprise-grade cloud solution with intelligent call routing and advanced voice capabilities for seamless customer conversations.</p>
+                  </div>
                 </div>
               </div>
               
-              <div class="capability-item" data-position="5" data-aos="fade-in" data-aos-delay="700" (click)="toggleCapability(5)">
-                <div class="capability-number">05</div>
-                <div class="capability-icon">
-                  <i class="bi bi-puzzle"></i>
-                </div>
-                <div class="capability-header">
-                  <h5>3rd Party Integration</h5>
-                  <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[5]"></i>
-                </div>
-                <div class="capability-content" [class.expanded]="expandedCapabilities[5]">
-                  <p>Open API extensible layer with 50+ pre-built integrations to connect your existing CRM, helpdesk, and business applications seamlessly.</p>
-                </div>
-              </div>
-              
-              <div class="capability-item" data-position="6" data-aos="fade-in" data-aos-delay="800" (click)="toggleCapability(6)">
-                <div class="capability-number">06</div>
-                <div class="capability-icon">
-                  <i class="bi bi-ticket-perforated"></i>
-                </div>
-                <div class="capability-header">
-                  <h5>Ticketing System</h5>
-                  <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[6]"></i>
-                </div>
-                <div class="capability-content" [class.expanded]="expandedCapabilities[6]">
-                  <p>Intelligent case management with automated workflows, SLA tracking, and cross-channel ticket resolution for superior customer service.</p>
+              <div class="capability-item capability-3" data-aos="fade-in" data-aos-delay="500" (click)="toggleCapability(3)">
+                <div class="capability-card" [class.expanded]="expandedCapabilities[3]">
+                  <div class="capability-header">
+                    <div class="capability-number">03</div>
+                    <div class="capability-icon">
+                      <i class="bi bi-envelope"></i>
+                    </div>
+                    <h5>Email</h5>
+                    <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[3]"></i>
+                  </div>
+                  <div class="capability-content">
+                    <p>Intelligent email management with automated routing, response suggestions, and seamless integration into your omnichannel workflow.</p>
+                  </div>
                 </div>
               </div>
               
-              <div class="capability-item" data-position="7" data-aos="fade-in" data-aos-delay="900" (click)="toggleCapability(7)">
-                <div class="capability-number">07</div>
-                <div class="capability-icon">
-                  <i class="bi bi-gear"></i>
-                </div>
-                <div class="capability-header">
-                  <h5>Workflow and Triggers</h5>
-                  <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[7]"></i>
-                </div>
-                <div class="capability-content" [class.expanded]="expandedCapabilities[7]">
-                  <p>Customizable business process engine that eliminates manual tasks, ensures compliance, and accelerates customer issue resolution.</p>
-                </div>
-              </div>
-              
-              <div class="capability-item" data-position="8" data-aos="fade-in" data-aos-delay="1000" (click)="toggleCapability(8)">
-                <div class="capability-number">08</div>
-                <div class="capability-icon">
-                  <i class="bi bi-graph-up"></i>
-                </div>
-                <div class="capability-header">
-                  <h5>Analytics and Dashboarding</h5>
-                  <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[8]"></i>
-                </div>
-                <div class="capability-content" [class.expanded]="expandedCapabilities[8]">
-                  <p>Real-time performance insights and predictive analytics that optimize agent productivity and deliver actionable customer experience metrics.</p>
+              <div class="capability-item capability-4" data-aos="fade-in" data-aos-delay="600" (click)="toggleCapability(4)">
+                <div class="capability-card" [class.expanded]="expandedCapabilities[4]">
+                  <div class="capability-header">
+                    <div class="capability-number">04</div>
+                    <div class="capability-icon">
+                      <i class="bi bi-chat-dots"></i>
+                    </div>
+                    <h5>Chat</h5>
+                    <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[4]"></i>
+                  </div>
+                  <div class="capability-content">
+                    <p>Real-time messaging platform with AI-powered chatbots, proactive engagement, and seamless agent handoffs for instant customer support.</p>
+                  </div>
                 </div>
               </div>
               
-              <div class="capability-item" data-position="9" data-aos="fade-in" data-aos-delay="1100" (click)="toggleCapability(9)">
-                <div class="capability-number">09</div>
-                <div class="capability-icon">
-                  <i class="bi bi-shield-check"></i>
-                </div>
-                <div class="capability-header">
-                  <h5>Administration</h5>
-                  <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[9]"></i>
-                </div>
-                <div class="capability-content" [class.expanded]="expandedCapabilities[9]">
-                  <p>Streamlined centralized platform management with role-based access, automated provisioning, and enterprise-grade security controls.</p>
-                </div>
-              </div>
-              
-              <div class="capability-item" data-position="10" data-aos="fade-in" data-aos-delay="1200" (click)="toggleCapability(10)">
-                <div class="capability-number">10</div>
-                <div class="capability-icon">
-                  <i class="bi bi-translate"></i>
-                </div>
-                <div class="capability-header">
-                  <h5>AI Translation</h5>
-                  <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[10]"></i>
-                </div>
-                <div class="capability-content" [class.expanded]="expandedCapabilities[10]">
-                  <p>Embedded real-time multilingual capability with AI-powered translation that breaks language barriers and expands your global customer reach.</p>
+              <div class="capability-item capability-5" data-aos="fade-in" data-aos-delay="700" (click)="toggleCapability(5)">
+                <div class="capability-card" [class.expanded]="expandedCapabilities[5]">
+                  <div class="capability-header">
+                    <div class="capability-number">05</div>
+                    <div class="capability-icon">
+                      <i class="bi bi-puzzle"></i>
+                    </div>
+                    <h5>3rd Party Integration</h5>
+                    <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[5]"></i>
+                  </div>
+                  <div class="capability-content">
+                    <p>Open API extensible layer with 50+ pre-built integrations to connect your existing CRM, helpdesk, and business applications seamlessly.</p>
+                  </div>
                 </div>
               </div>
               
-              <div class="capability-item" data-position="11" data-aos="fade-in" data-aos-delay="1300" (click)="toggleCapability(11)">
-                <div class="capability-number">11</div>
-                <div class="capability-icon">
-                  <i class="bi bi-currency-dollar"></i>
+              <div class="capability-item capability-6" data-aos="fade-in" data-aos-delay="800" (click)="toggleCapability(6)">
+                <div class="capability-card" [class.expanded]="expandedCapabilities[6]">
+                  <div class="capability-header">
+                    <div class="capability-number">06</div>
+                    <div class="capability-icon">
+                      <i class="bi bi-ticket-perforated"></i>
+                    </div>
+                    <h5>Ticketing System</h5>
+                    <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[6]"></i>
+                  </div>
+                  <div class="capability-content">
+                    <p>Intelligent case management with automated workflows, SLA tracking, and cross-channel ticket resolution for superior customer service.</p>
+                  </div>
                 </div>
-                <div class="capability-header">
-                  <h5>Sales and Marketing</h5>
-                  <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[11]"></i>
+              </div>
+              
+              <div class="capability-item capability-7" data-aos="fade-in" data-aos-delay="900" (click)="toggleCapability(7)">
+                <div class="capability-card" [class.expanded]="expandedCapabilities[7]">
+                  <div class="capability-header">
+                    <div class="capability-number">07</div>
+                    <div class="capability-icon">
+                      <i class="bi bi-gear"></i>
+                    </div>
+                    <h5>Workflow and Triggers</h5>
+                    <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[7]"></i>
+                  </div>
+                  <div class="capability-content">
+                    <p>Customizable business process engine that eliminates manual tasks, ensures compliance, and accelerates customer issue resolution.</p>
+                  </div>
                 </div>
-                <div class="capability-content" [class.expanded]="expandedCapabilities[11]">
-                  <p>Turn every interaction into a lead—built-in tools to capture, nurture, qualify, and convert. From first touch to closed deal—seamless lead and opportunity management.</p>
+              </div>
+              
+              <div class="capability-item capability-8" data-aos="fade-in" data-aos-delay="1000" (click)="toggleCapability(8)">
+                <div class="capability-card" [class.expanded]="expandedCapabilities[8]">
+                  <div class="capability-header">
+                    <div class="capability-number">08</div>
+                    <div class="capability-icon">
+                      <i class="bi bi-graph-up"></i>
+                    </div>
+                    <h5>Analytics and Dashboarding</h5>
+                    <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[8]"></i>
+                  </div>
+                  <div class="capability-content">
+                    <p>Real-time performance insights and predictive analytics that optimize agent productivity and deliver actionable customer experience metrics.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="capability-item capability-9" data-aos="fade-in" data-aos-delay="1100" (click)="toggleCapability(9)">
+                <div class="capability-card" [class.expanded]="expandedCapabilities[9]">
+                  <div class="capability-header">
+                    <div class="capability-number">09</div>
+                    <div class="capability-icon">
+                      <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h5>Administration</h5>
+                    <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[9]"></i>
+                  </div>
+                  <div class="capability-content">
+                    <p>Streamlined centralized platform management with role-based access, automated provisioning, and enterprise-grade security controls.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="capability-item capability-10" data-aos="fade-in" data-aos-delay="1200" (click)="toggleCapability(10)">
+                <div class="capability-card" [class.expanded]="expandedCapabilities[10]">
+                  <div class="capability-header">
+                    <div class="capability-number">10</div>
+                    <div class="capability-icon">
+                      <i class="bi bi-translate"></i>
+                    </div>
+                    <h5>AI Translation</h5>
+                    <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[10]"></i>
+                  </div>
+                  <div class="capability-content">
+                    <p>Embedded real-time multilingual capability with AI-powered translation that breaks language barriers and expands your global customer reach.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="capability-item capability-11" data-aos="fade-in" data-aos-delay="1300" (click)="toggleCapability(11)">
+                <div class="capability-card" [class.expanded]="expandedCapabilities[11]">
+                  <div class="capability-header">
+                    <div class="capability-number">11</div>
+                    <div class="capability-icon">
+                      <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <h5>Sales and Marketing</h5>
+                    <i class="bi bi-chevron-down toggle-icon" [class.rotated]="expandedCapabilities[11]"></i>
+                  </div>
+                  <div class="capability-content">
+                    <p>Turn every interaction into a lead—built-in tools to capture, nurture, qualify, and convert. From first touch to closed deal—seamless lead and opportunity management.</p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -447,20 +447,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 700px;
+    min-height: 800px;
+    padding: 50px 0;
 
     @media (max-width: 991px) {
+      min-height: 700px;
+    }
+
+    @media (max-width: 768px) {
       min-height: 600px;
     }
   }
 
   .platform-circle {
     position: relative;
-    width: 700px;
-    height: 700px;
+    width: 800px;
+    height: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 1200px) {
+      width: 700px;
+      height: 700px;
+    }
 
     @media (max-width: 768px) {
       width: 500px;
@@ -468,10 +478,9 @@
     }
 
     @media (max-width: 576px) {
-      width: 350px;
-      height: 350px;
-      flex-direction: column;
+      width: 100%;
       height: auto;
+      flex-direction: column;
       position: static;
     }
   }
@@ -481,24 +490,29 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 220px;
-    height: 220px;
+    width: 240px;
+    height: 240px;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(117, 64, 196, 0.3);
     z-index: 10;
 
+    @media (max-width: 1200px) {
+      width: 200px;
+      height: 200px;
+    }
+
     @media (max-width: 768px) {
-      width: 180px;
-      height: 180px;
+      width: 160px;
+      height: 160px;
     }
 
     @media (max-width: 576px) {
       position: static;
       transform: none;
-      margin-bottom: 30px;
-      width: 150px;
-      height: 150px;
+      margin-bottom: 40px;
+      width: 140px;
+      height: 140px;
     }
 
     .center-img {
@@ -520,9 +534,13 @@
 
       .platform-logo {
         color: white;
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         font-weight: 800;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+        @media (max-width: 1200px) {
+          font-size: 1.6rem;
+        }
 
         @media (max-width: 768px) {
           font-size: 1.4rem;
@@ -537,68 +555,120 @@
 
   .capability-item {
     position: absolute;
-    width: 300px;
-    background: white;
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e9ecef;
-    transition: all 0.3s ease;
     cursor: pointer;
-    transform-origin: center;
-
-    @media (max-width: 768px) {
-      width: 250px;
-      padding: 16px;
-    }
+    z-index: 5;
 
     @media (max-width: 576px) {
       position: static;
-      transform: none !important;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       width: 100%;
     }
 
-    &:hover {
-      transform: scale(1.05) !important;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-      border-color: rgba(117, 64, 196, 0.3);
+    .capability-card {
+      width: 280px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e9ecef;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center center;
+      overflow: hidden;
 
-      .capability-number {
-        background: linear-gradient(135deg, #7540c4 0%, #8fc44c 100%);
-        color: white;
+      @media (max-width: 1200px) {
+        width: 260px;
       }
 
-      .capability-icon i {
-        color: #7540c4;
-        transform: scale(1.1);
+      @media (max-width: 768px) {
+        width: 240px;
       }
-    }
 
-    .capability-number {
-      position: absolute;
-      top: -12px;
-      left: 20px;
-      width: 32px;
-      height: 32px;
-      background: #f8f9fa;
-      border: 2px solid #e9ecef;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 0.9rem;
-      color: #333;
-      transition: all 0.3s ease;
+      @media (max-width: 576px) {
+        width: 100%;
+      }
+
+      &:hover {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        border-color: rgba(117, 64, 196, 0.3);
+        transform: translateY(-4px);
+
+        .capability-number {
+          background: linear-gradient(135deg, #7540c4 0%, #8fc44c 100%);
+          color: white;
+        }
+
+        .capability-icon i {
+          color: #7540c4;
+          transform: scale(1.1);
+        }
+      }
+
+      &.expanded {
+        .capability-content {
+          max-height: 120px;
+          padding-top: 16px;
+          opacity: 1;
+        }
+
+        .toggle-icon {
+          transform: rotate(180deg);
+        }
+      }
     }
 
     .capability-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-top: 8px;
-      margin-bottom: 12px;
+      padding: 20px;
+      position: relative;
+
+      @media (max-width: 768px) {
+        padding: 16px;
+      }
+
+      .capability-number {
+        position: absolute;
+        top: -12px;
+        left: 20px;
+        width: 36px;
+        height: 36px;
+        background: #f8f9fa;
+        border: 2px solid #e9ecef;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 0.9rem;
+        color: #333;
+        transition: all 0.3s ease;
+        z-index: 1;
+
+        @media (max-width: 768px) {
+          width: 32px;
+          height: 32px;
+          font-size: 0.8rem;
+        }
+      }
+
+      .capability-icon {
+        margin-left: 20px;
+        margin-right: 12px;
+
+        @media (max-width: 768px) {
+          margin-left: 16px;
+          margin-right: 10px;
+        }
+
+        i {
+          font-size: 20px;
+          color: #999;
+          transition: all 0.3s ease;
+
+          @media (max-width: 768px) {
+            font-size: 18px;
+          }
+        }
+      }
 
       h5 {
         font-size: 1.1rem;
@@ -607,16 +677,20 @@
         margin: 0;
         line-height: 1.3;
         flex: 1;
+
+        @media (max-width: 768px) {
+          font-size: 1rem;
+        }
       }
 
       .toggle-icon {
         font-size: 16px;
         color: #666;
         transition: transform 0.3s ease;
-        margin-left: 10px;
+        margin-left: 8px;
 
-        &.rotated {
-          transform: rotate(180deg);
+        @media (max-width: 768px) {
+          font-size: 14px;
         }
       }
     }
@@ -624,58 +698,173 @@
     .capability-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      padding: 0 20px;
 
-      &.expanded {
-        max-height: 200px;
+      @media (max-width: 768px) {
+        padding: 0 16px;
       }
 
       p {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         color: #666;
-        line-height: 1.4;
+        line-height: 1.5;
         margin: 0;
-        padding-top: 8px;
+        padding-bottom: 20px;
+
+        @media (max-width: 768px) {
+          font-size: 0.85rem;
+          padding-bottom: 16px;
+        }
       }
     }
 
-    .capability-icon {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 8px;
+    // Mathematical distribution around the circle
+    // 11 items evenly distributed: 360° / 11 = 32.727° per item
+    // Starting from top (-90°) and going clockwise
 
-      i {
-        font-size: 20px;
-        color: #999;
-        transition: all 0.3s ease;
+    &.capability-1 {
+      transform: translate(-50%, -50%) 
+                 translate(0px, -350px);
+      
+      @media (max-width: 1200px) {
+        transform: translate(-50%, -50%) translate(0px, -300px);
+      }
+      @media (max-width: 768px) {
+        transform: translate(-50%, -50%) translate(0px, -220px);
       }
     }
 
-    // Positioning for each capability
-    &[data-position="1"] { transform: translate(-150px, -280px); }
-    &[data-position="2"] { transform: translate(80px, -320px); }
-    &[data-position="3"] { transform: translate(280px, -200px); }
-    &[data-position="4"] { transform: translate(320px, -20px); }
-    &[data-position="5"] { transform: translate(280px, 160px); }
-    &[data-position="6"] { transform: translate(80px, 280px); }
-    &[data-position="7"] { transform: translate(-150px, 240px); }
-    &[data-position="8"] { transform: translate(-350px, 160px); }
-    &[data-position="9"] { transform: translate(-390px, -20px); }
-    &[data-position="10"] { transform: translate(-350px, -200px); }
-    &[data-position="11"] { transform: translate(-150px, -280px) translateX(-200px); }
+    &.capability-2 {
+      transform: translate(-50%, -50%) 
+                 translate(190px, -290px);
+      
+      @media (max-width: 1200px) {
+        transform: translate(-50%, -50%) translate(160px, -250px);
+      }
+      @media (max-width: 768px) {
+        transform: translate(-50%, -50%) translate(120px, -180px);
+      }
+    }
 
-    @media (max-width: 768px) {
-      &[data-position="1"] { transform: translate(-125px, -230px); }
-      &[data-position="2"] { transform: translate(60px, -260px); }
-      &[data-position="3"] { transform: translate(220px, -160px); }
-      &[data-position="4"] { transform: translate(250px, -20px); }
-      &[data-position="5"] { transform: translate(220px, 120px); }
-      &[data-position="6"] { transform: translate(60px, 220px); }
-      &[data-position="7"] { transform: translate(-125px, 190px); }
-      &[data-position="8"] { transform: translate(-280px, 120px); }
-      &[data-position="9"] { transform: translate(-310px, -20px); }
-      &[data-position="10"] { transform: translate(-280px, -160px); }
-      &[data-position="11"] { transform: translate(-125px, -230px) translateX(-160px); }
+    &.capability-3 {
+      transform: translate(-50%, -50%) 
+                 translate(320px, -110px);
+      
+      @media (max-width: 1200px) {
+        transform: translate(-50%, -50%) translate(270px, -90px);
+      }
+      @media (max-width: 768px) {
+        transform: translate(-50%, -50%) translate(200px, -70px);
+      }
+    }
+
+    &.capability-4 {
+      transform: translate(-50%, -50%) 
+                 translate(320px, 110px);
+      
+      @media (max-width: 1200px) {
+        transform: translate(-50%, -50%) translate(270px, 90px);
+      }
+      @media (max-width: 768px) {
+        transform: translate(-50%, -50%) translate(200px, 70px);
+      }
+    }
+
+    &.capability-5 {
+      transform: translate(-50%, -50%) 
+                 translate(190px, 290px);
+      
+      @media (max-width: 1200px) {
+        transform: translate(-50%, -50%) translate(160px, 250px);
+      }
+      @media (max-width: 768px) {
+        transform: translate(-50%, -50%) translate(120px, 180px);
+      }
+    }
+
+    &.capability-6 {
+      transform: translate(-50%, -50%) 
+                 translate(0px, 350px);
+      
+      @media (max-width: 1200px) {
+        transform: translate(-50%, -50%) translate(0px, 300px);
+      }
+      @media (max-width: 768px) {
+        transform: translate(-50%, -50%) translate(0px, 220px);
+      }
+    }
+
+    &.capability-7 {
+      transform: translate(-50%, -50%) 
+                 translate(-190px, 290px);
+      
+      @media (max-width: 1200px) {
+        transform: translate(-50%, -50%) translate(-160px, 250px);
+      }
+      @media (max-width: 768px) {
+        transform: translate(-50%, -50%) translate(-120px, 180px);
+      }
+    }
+
+    &.capability-8 {
+      transform: translate(-50%, -50%) 
+                 translate(-320px, 110px);
+      
+      @media (max-width: 1200px) {
+        transform: translate(-50%, -50%) translate(-270px, 90px);
+      }
+      @media (max-width: 768px) {
+        transform: translate(-50%, -50%) translate(-200px, 70px);
+      }
+    }
+
+    &.capability-9 {
+      transform: translate(-50%, -50%) 
+                 translate(-320px, -110px);
+      
+      @media (max-width: 1200px) {
+        transform: translate(-50%, -50%) translate(-270px, -90px);
+      }
+      @media (max-width: 768px) {
+        transform: translate(-50%, -50%) translate(-200px, -70px);
+      }
+    }
+
+    &.capability-10 {
+      transform: translate(-50%, -50%) 
+                 translate(-190px, -290px);
+      
+      @media (max-width: 1200px) {
+        transform: translate(-50%, -50%) translate(-160px, -250px);
+      }
+      @media (max-width: 768px) {
+        transform: translate(-50%, -50%) translate(-120px, -180px);
+      }
+    }
+
+    &.capability-11 {
+      transform: translate(-50%, -50%) 
+                 translate(-60px, -340px);
+      
+      @media (max-width: 1200px) {
+        transform: translate(-50%, -50%) translate(-50px, -290px);
+      }
+      @media (max-width: 768px) {
+        transform: translate(-50%, -50%) translate(-40px, -210px);
+      }
+    }
+
+    // Position all items relative to the center of the circle
+    top: 50%;
+    left: 50%;
+
+    @media (max-width: 576px) {
+      position: static;
+      transform: none !important;
+      top: auto;
+      left: auto;
     }
   }
 }
