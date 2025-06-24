@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {
@@ -11,19 +12,17 @@ import {
 import { BookConsultationComponent } from '../../common/sharedComponents/book-consultation/book-consultation.component';
 import { ExploreResourcesComponent } from '../../common/sharedComponents/explore-resources/explore-resources.component';
 import { LetsChatComponent } from '../../common/sharedComponents/lets-chat/lets-chat.component';
-import { HerosData } from '../../config/heros';
-import { AboutComponent } from '../about/about.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    AboutComponent,
     BookConsultationComponent,
     MatInputModule,
     MatFormFieldModule,
     LetsChatComponent,
     CommonModule,
+    FormsModule,
     ExploreResourcesComponent,
     RouterLink,
     RouterLinkActive,
@@ -33,9 +32,7 @@ import { AboutComponent } from '../about/about.component';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  isChatEnabled: boolean = false;
   title: string = 'The Future of Global Contact Centers—Powered by AI & Real-Time Translation';
-  herosConfig = HerosData.home;
   
   // Language switcher
   selectedLanguage: string = 'en';
@@ -54,6 +51,16 @@ export class HomeComponent implements OnInit {
     { value: '85%', label: 'First Call Resolution', icon: 'bi-check-circle' },
     { value: '24/7', label: 'Global Support', icon: 'bi-globe' }
   ];
+
+  // Contact form data
+  contactFormData = {
+    fullName: '',
+    workEmail: '',
+    phoneNumber: '',
+    companyName: '',
+    contactCenterSize: '',
+    primaryLanguages: ''
+  };
 
   ngOnInit(): void {
     window.scrollTo({ top: 6, behavior: 'smooth' });
@@ -90,6 +97,40 @@ export class HomeComponent implements OnInit {
 
   get currentLanguageName() {
     return this.currentLanguage.name;
+  }
+
+  // Submit contact form
+  submitContactForm() {
+    if (this.isValidContactForm()) {
+      // Handle form submission logic here
+      console.log('Contact form submitted:', this.contactFormData);
+      // You can integrate with your backend API here
+      alert('Thank you for your interest! Our team will contact you soon.');
+      this.resetContactForm();
+    }
+  }
+
+  // Validate contact form
+  private isValidContactForm(): boolean {
+    return !!(
+      this.contactFormData.fullName &&
+      this.contactFormData.workEmail &&
+      this.contactFormData.phoneNumber &&
+      this.contactFormData.companyName &&
+      this.contactFormData.contactCenterSize
+    );
+  }
+
+  // Reset contact form
+  private resetContactForm() {
+    this.contactFormData = {
+      fullName: '',
+      workEmail: '',
+      phoneNumber: '',
+      companyName: '',
+      contactCenterSize: '',
+      primaryLanguages: ''
+    };
   }
 
   constructor(private readonly router: Router) {}
