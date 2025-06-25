@@ -432,356 +432,61 @@
   overflow: hidden;
   position: relative;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 30% 50%, rgba(117, 64, 196, 0.05) 0%, transparent 50%);
-    pointer-events: none;
-  }
-
   .platform-visual {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 900px;
+    min-height: 800px;
     padding: 50px 0;
 
-    @media (max-width: 991px) {
-      min-height: 800px;
-    }
-
     @media (max-width: 768px) {
-      min-height: 700px;
+      min-height: 600px;
     }
   }
 
-  .platform-circle {
+  .capabilities-container {
     position: relative;
-    width: 1000px;
-    height: 1000px;
+    width: 800px;
+    height: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    @media (max-width: 1400px) {
-      width: 900px;
-      height: 900px;
-    }
-
     @media (max-width: 1200px) {
-      width: 800px;
-      height: 800px;
-    }
-
-    @media (max-width: 991px) {
       width: 700px;
       height: 700px;
     }
 
     @media (max-width: 768px) {
-      width: 600px;
-      height: 600px;
-    }
-
-    @media (max-width: 576px) {
       width: 100%;
       height: auto;
       flex-direction: column;
-      position: static;
     }
   }
 
-  // Connection Points on Circle Edge
-  .connection-points {
+  // Central Circle
+  .central-circle {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-    z-index: 8;
-
-    @media (max-width: 1400px) {
-      width: 260px;
-      height: 260px;
-    }
-
-    @media (max-width: 1200px) {
-      width: 220px;
-      height: 220px;
-    }
-
-    @media (max-width: 991px) {
-      width: 200px;
-      height: 200px;
-    }
-
-    @media (max-width: 768px) {
-      width: 180px;
-      height: 180px;
-    }
-
-    @media (max-width: 576px) {
-      display: none;
-    }
-
-    .connection-dot {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(117, 64, 196, 0.8);
-      transform: translate(-50%, -50%);
-
-      // Position dots on circle edge - 11 dots evenly distributed
-      &.dot-1 {
-        top: 0%;
-        left: 50%;
-      }
-      &.dot-2 {
-        top: 8.7%;
-        left: 75%;
-      }
-      &.dot-3 {
-        top: 33.3%;
-        left: 93.3%;
-      }
-      &.dot-4 {
-        top: 66.7%;
-        left: 93.3%;
-      }
-      &.dot-5 {
-        top: 91.3%;
-        left: 75%;
-      }
-      &.dot-6 {
-        top: 100%;
-        left: 50%;
-      }
-      &.dot-7 {
-        top: 91.3%;
-        left: 25%;
-      }
-      &.dot-8 {
-        top: 66.7%;
-        left: 6.7%;
-      }
-      &.dot-9 {
-        top: 33.3%;
-        left: 6.7%;
-      }
-      &.dot-10 {
-        top: 8.7%;
-        left: 25%;
-      }
-      &.dot-11 {
-        top: 4%;
-        left: 35%;
-      }
-    }
-  }
-
-  // Connecting Lines from Circle Edge to Cards
-  .connecting-lines {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-
-    .line {
-      position: absolute;
-      width: 2px;
-      background: linear-gradient(to bottom, rgba(117, 64, 196, 0.6) 0%, rgba(117, 64, 196, 0.3) 50%, rgba(117, 64, 196, 0.1) 100%);
-      z-index: 1;
-
-      @media (max-width: 576px) {
-        display: none;
-      }
-
-      // Lines connecting from circle edge to each card
-      &.line-1 {
-        top: 50%;
-        left: 50%;
-        height: 250px;
-        transform: translate(-50%, -150px) rotate(0deg);
-        transform-origin: bottom center;
-        
-        @media (max-width: 1400px) { height: 230px; transform: translate(-50%, -130px) rotate(0deg); }
-        @media (max-width: 1200px) { height: 210px; transform: translate(-50%, -110px) rotate(0deg); }
-        @media (max-width: 991px) { height: 190px; transform: translate(-50%, -100px) rotate(0deg); }
-        @media (max-width: 768px) { height: 170px; transform: translate(-50%, -90px) rotate(0deg); }
-      }
-      
-      &.line-2 {
-        top: 41.3%;
-        left: 62.5%;
-        height: 180px;
-        transform: translate(-50%, 0) rotate(45deg);
-        transform-origin: bottom center;
-        
-        @media (max-width: 1400px) { height: 160px; top: 42%; left: 61%; }
-        @media (max-width: 1200px) { height: 140px; top: 43%; left: 60%; }
-        @media (max-width: 991px) { height: 120px; top: 44%; left: 59%; }
-        @media (max-width: 768px) { height: 100px; top: 45%; left: 58%; }
-      }
-      
-      &.line-3 {
-        top: 66.7%;
-        left: 71.7%;
-        height: 120px;
-        transform: translate(-50%, 0) rotate(90deg);
-        transform-origin: bottom center;
-        
-        @media (max-width: 1400px) { height: 110px; left: 70%; }
-        @media (max-width: 1200px) { height: 100px; left: 69%; }
-        @media (max-width: 991px) { height: 90px; left: 68%; }
-        @media (max-width: 768px) { height: 80px; left: 67%; }
-      }
-      
-      &.line-4 {
-        top: 83.3%;
-        left: 71.7%;
-        height: 120px;
-        transform: translate(-50%, 0) rotate(135deg);
-        transform-origin: bottom center;
-        
-        @media (max-width: 1400px) { height: 110px; left: 70%; }
-        @media (max-width: 1200px) { height: 100px; left: 69%; }
-        @media (max-width: 991px) { height: 90px; left: 68%; }
-        @media (max-width: 768px) { height: 80px; left: 67%; }
-      }
-      
-      &.line-5 {
-        top: 95.7%;
-        left: 62.5%;
-        height: 180px;
-        transform: translate(-50%, 0) rotate(225deg);
-        transform-origin: bottom center;
-        
-        @media (max-width: 1400px) { height: 160px; top: 94%; left: 61%; }
-        @media (max-width: 1200px) { height: 140px; top: 93%; left: 60%; }
-        @media (max-width: 991px) { height: 120px; top: 92%; left: 59%; }
-        @media (max-width: 768px) { height: 100px; top: 91%; left: 58%; }
-      }
-      
-      &.line-6 {
-        top: 50%;
-        left: 50%;
-        height: 250px;
-        transform: translate(-50%, 150px) rotate(180deg);
-        transform-origin: top center;
-        
-        @media (max-width: 1400px) { height: 230px; transform: translate(-50%, 130px) rotate(180deg); }
-        @media (max-width: 1200px) { height: 210px; transform: translate(-50%, 110px) rotate(180deg); }
-        @media (max-width: 991px) { height: 190px; transform: translate(-50%, 100px) rotate(180deg); }
-        @media (max-width: 768px) { height: 170px; transform: translate(-50%, 90px) rotate(180deg); }
-      }
-      
-      &.line-7 {
-        top: 95.7%;
-        left: 37.5%;
-        height: 180px;
-        transform: translate(-50%, 0) rotate(315deg);
-        transform-origin: bottom center;
-        
-        @media (max-width: 1400px) { height: 160px; top: 94%; left: 39%; }
-        @media (max-width: 1200px) { height: 140px; top: 93%; left: 40%; }
-        @media (max-width: 991px) { height: 120px; top: 92%; left: 41%; }
-        @media (max-width: 768px) { height: 100px; top: 91%; left: 42%; }
-      }
-      
-      &.line-8 {
-        top: 83.3%;
-        left: 28.3%;
-        height: 120px;
-        transform: translate(-50%, 0) rotate(270deg);
-        transform-origin: bottom center;
-        
-        @media (max-width: 1400px) { height: 110px; left: 30%; }
-        @media (max-width: 1200px) { height: 100px; left: 31%; }
-        @media (max-width: 991px) { height: 90px; left: 32%; }
-        @media (max-width: 768px) { height: 80px; left: 33%; }
-      }
-      
-      &.line-9 {
-        top: 66.7%;
-        left: 28.3%;
-        height: 120px;
-        transform: translate(-50%, 0) rotate(270deg);
-        transform-origin: bottom center;
-        
-        @media (max-width: 1400px) { height: 110px; left: 30%; }
-        @media (max-width: 1200px) { height: 100px; left: 31%; }
-        @media (max-width: 991px) { height: 90px; left: 32%; }
-        @media (max-width: 768px) { height: 80px; left: 33%; }
-      }
-      
-      &.line-10 {
-        top: 41.3%;
-        left: 37.5%;
-        height: 180px;
-        transform: translate(-50%, 0) rotate(315deg);
-        transform-origin: bottom center;
-        
-        @media (max-width: 1400px) { height: 160px; top: 42%; left: 39%; }
-        @media (max-width: 1200px) { height: 140px; top: 43%; left: 40%; }
-        @media (max-width: 991px) { height: 120px; top: 44%; left: 41%; }
-        @media (max-width: 768px) { height: 100px; top: 45%; left: 42%; }
-      }
-      
-      &.line-11 {
-        top: 47%;
-        left: 42.5%;
-        height: 200px;
-        transform: translate(-50%, 0) rotate(330deg);
-        transform-origin: bottom center;
-        
-        @media (max-width: 1400px) { height: 180px; top: 48%; left: 43%; }
-        @media (max-width: 1200px) { height: 160px; top: 49%; left: 44%; }
-        @media (max-width: 991px) { height: 140px; top: 50%; left: 45%; }
-        @media (max-width: 768px) { height: 120px; top: 51%; left: 46%; }
-      }
-    }
-  }
-
-  // Central Pulsing Orb
-  .central-orb {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #7540c4 0%, #8fc44c 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 60px rgba(117, 64, 196, 0.3);
     z-index: 10;
-
-    @media (max-width: 1400px) {
-      width: 260px;
-      height: 260px;
-    }
+    animation: pulse 4s ease-in-out infinite;
 
     @media (max-width: 1200px) {
-      width: 220px;
-      height: 220px;
-    }
-
-    @media (max-width: 991px) {
-      width: 200px;
-      height: 200px;
-    }
-
-    @media (max-width: 768px) {
       width: 180px;
       height: 180px;
     }
 
-    @media (max-width: 576px) {
+    @media (max-width: 768px) {
       position: static;
       transform: none;
       margin-bottom: 40px;
@@ -789,503 +494,241 @@
       height: 160px;
     }
 
-    .orb-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(117, 64, 196, 0.95) 0%, rgba(143, 196, 76, 0.95) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 20px 60px rgba(117, 64, 196, 0.4);
-      z-index: 2;
-
-      .platform-logo {
+    .circle-content {
+      h3 {
         color: white;
-        font-size: 2.2rem;
+        font-size: 1.8rem;
         font-weight: 800;
+        margin: 0;
         text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 
-        @media (max-width: 1400px) {
-          font-size: 2rem;
-        }
-
         @media (max-width: 1200px) {
-          font-size: 1.8rem;
-        }
-
-        @media (max-width: 991px) {
           font-size: 1.6rem;
         }
 
         @media (max-width: 768px) {
           font-size: 1.4rem;
         }
-
-        @media (max-width: 576px) {
-          font-size: 1.2rem;
-        }
-      }
-    }
-
-    .pulse-ring {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: 100%;
-      border: 2px solid rgba(117, 64, 196, 0.3);
-      border-radius: 50%;
-      animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-
-      &.pulse-ring-2 {
-        animation-delay: 2s;
-        border-color: rgba(143, 196, 76, 0.3);
       }
     }
   }
 
   @keyframes pulse {
-    0% {
+    0%, 100% {
       transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
+      box-shadow: 0 20px 60px rgba(117, 64, 196, 0.3);
     }
     50% {
-      transform: translate(-50%, -50%) scale(1.3);
-      opacity: 0.5;
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(1.6);
-      opacity: 0;
+      transform: translate(-50%, -50%) scale(1.05);
+      box-shadow: 0 25px 80px rgba(117, 64, 196, 0.4);
     }
   }
 
-  .capability-item {
+  // Capability Cards
+  .capability-card {
     position: absolute;
+    width: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     cursor: pointer;
+    transition: all 0.3s ease;
     z-index: 5;
 
-    @media (max-width: 576px) {
-      position: static;
-      margin-bottom: 20px;
-      width: 100%;
+    @media (max-width: 1200px) {
+      width: 180px;
     }
 
-    .capability-card {
-      width: 180px; // Smaller cards to prevent overlap
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      transform-origin: center center;
-      overflow: hidden;
+    @media (max-width: 768px) {
+      position: static;
+      width: 100%;
+      margin-bottom: 16px;
+      background: rgba(255, 255, 255, 0.9);
+    }
 
-      @media (max-width: 1400px) {
-        width: 160px;
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      gap: 12px;
+
+      .card-number {
+        background: rgba(117, 64, 196, 0.1);
+        color: #7540c4;
+        font-weight: 800;
+        font-size: 0.8rem;
+        padding: 4px 8px;
+        border-radius: 6px;
+        min-width: 28px;
+        text-align: center;
       }
 
-      @media (max-width: 1200px) {
-        width: 140px;
+      .card-icon {
+        font-size: 16px;
+        
+        // Colored icons
+        &.bi-headset { color: #ff6b6b; }
+        &.bi-telephone { color: #4ecdc4; }
+        &.bi-envelope { color: #45b7d1; }
+        &.bi-chat-dots { color: #96ceb4; }
+        &.bi-puzzle { color: #feca57; }
+        &.bi-ticket-perforated { color: #ff9ff3; }
+        &.bi-gear { color: #54a0ff; }
+        &.bi-graph-up { color: #5f27cd; }
+        &.bi-shield-check { color: #00d2d3; }
+        &.bi-translate { color: #ff9f43; }
+        &.bi-currency-dollar { color: #10ac84; }
       }
 
-      @media (max-width: 991px) {
-        width: 120px;
+      h5 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #333;
+        margin: 0;
+        flex: 1;
       }
 
-      @media (max-width: 768px) {
-        width: 100px;
-      }
+      .toggle-icon {
+        font-size: 12px;
+        color: #666;
+        transition: transform 0.3s ease;
 
-      @media (max-width: 576px) {
-        width: 100%;
-        background: rgba(255, 255, 255, 0.9);
-      }
-
-      &:hover {
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        border-color: rgba(117, 64, 196, 0.3);
-        transform: translateY(-4px) scale(1.02);
-        background: rgba(255, 255, 255, 0.2);
-
-        .capability-number {
-          background: linear-gradient(135deg, #7540c4 0%, #8fc44c 100%);
-          color: white;
-        }
-
-        .capability-icon i {
-          transform: scale(1.1);
-        }
-      }
-
-      &.expanded {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        border-color: rgba(117, 64, 196, 0.2);
-
-        .capability-content {
-          max-height: 120px;
-          padding-top: 16px;
-          opacity: 1;
-        }
-
-        .toggle-icon {
+        &.rotated {
           transform: rotate(180deg);
         }
       }
     }
 
-    .capability-header {
-      display: flex;
-      align-items: center;
-      padding: 14px;
-      position: relative;
-
-      @media (max-width: 991px) {
-        padding: 12px;
-      }
-
-      @media (max-width: 768px) {
-        padding: 10px;
-      }
-
-      .capability-number {
-        position: absolute;
-        top: -10px;
-        left: 14px;
-        width: 28px;
-        height: 28px;
-        background: rgba(255, 255, 255, 0.9);
-        border: 2px solid rgba(117, 64, 196, 0.2);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 800;
-        font-size: 0.75rem;
-        color: #333;
-        transition: all 0.3s ease;
-        z-index: 1;
-
-        @media (max-width: 991px) {
-          width: 24px;
-          height: 24px;
-          font-size: 0.7rem;
-          left: 12px;
-        }
-
-        @media (max-width: 768px) {
-          width: 20px;
-          height: 20px;
-          font-size: 0.65rem;
-          left: 10px;
-        }
-      }
-
-      .capability-icon {
-        margin-left: 14px;
-        margin-right: 8px;
-
-        @media (max-width: 991px) {
-          margin-left: 12px;
-          margin-right: 6px;
-        }
-
-        @media (max-width: 768px) {
-          margin-left: 10px;
-          margin-right: 4px;
-        }
-
-        i {
-          font-size: 14px;
-          transition: all 0.3s ease;
-
-          @media (max-width: 991px) {
-            font-size: 12px;
-          }
-
-          @media (max-width: 768px) {
-            font-size: 10px;
-          }
-
-          // Colored icons for each capability
-          &.bi-headset { color: #ff6b6b; }
-          &.bi-telephone { color: #4ecdc4; }
-          &.bi-envelope { color: #45b7d1; }
-          &.bi-chat-dots { color: #96ceb4; }
-          &.bi-puzzle { color: #feca57; }
-          &.bi-ticket-perforated { color: #ff9ff3; }
-          &.bi-gear { color: #54a0ff; }
-          &.bi-graph-up { color: #5f27cd; }
-          &.bi-shield-check { color: #00d2d3; }
-          &.bi-translate { color: #ff9f43; }
-          &.bi-currency-dollar { color: #10ac84; }
-        }
-      }
-
-      h5 {
-        font-size: 0.8rem;
-        font-weight: 700;
-        color: #333;
-        margin: 0;
-        line-height: 1.3;
-        flex: 1;
-
-        @media (max-width: 991px) {
-          font-size: 0.75rem;
-        }
-
-        @media (max-width: 768px) {
-          font-size: 0.7rem;
-        }
-      }
-
-      .toggle-icon {
-        font-size: 10px;
-        color: #666;
-        transition: transform 0.3s ease;
-        margin-left: 4px;
-
-        @media (max-width: 768px) {
-          font-size: 8px;
-        }
-      }
-    }
-
-    .capability-content {
+    .card-content {
       max-height: 0;
       overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
       opacity: 0;
-      padding: 0 14px;
 
-      @media (max-width: 991px) {
-        padding: 0 12px;
-      }
-
-      @media (max-width: 768px) {
-        padding: 0 10px;
+      &.expanded {
+        max-height: 100px;
+        opacity: 1;
+        padding: 0 16px 16px;
       }
 
       p {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         color: #555;
-        line-height: 1.5;
+        line-height: 1.4;
         margin: 0;
-        padding-bottom: 14px;
-
-        @media (max-width: 991px) {
-          font-size: 0.7rem;
-          padding-bottom: 12px;
-        }
-
-        @media (max-width: 768px) {
-          font-size: 0.65rem;
-          padding-bottom: 10px;
-        }
       }
     }
 
-    // Repositioned cards to prevent overlap - wider distribution
-    &.capability-1 {
-      transform: translate(-50%, -50%) translate(0px, -450px);
-      
-      @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(0px, -400px);
-      }
-      @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(0px, -350px);
-      }
-      @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(0px, -300px);
-      }
-      @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(0px, -250px);
-      }
+    &.expanded {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
     }
 
-    &.capability-2 {
-      transform: translate(-50%, -50%) translate(280px, -350px);
-      
-      @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(250px, -320px);
-      }
-      @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(220px, -280px);
-      }
-      @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(190px, -240px);
-      }
-      @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(160px, -200px);
-      }
+    // Card Positions - Clean circular distribution
+    &.card-1 {
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    &.capability-3 {
-      transform: translate(-50%, -50%) translate(420px, -80px);
-      
-      @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(380px, -70px);
-      }
-      @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(340px, -60px);
-      }
-      @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(300px, -50px);
-      }
-      @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(260px, -40px);
-      }
+    &.card-2 {
+      top: 120px;
+      right: 80px;
     }
 
-    &.capability-4 {
-      transform: translate(-50%, -50%) translate(420px, 80px);
-      
-      @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(380px, 70px);
-      }
-      @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(340px, 60px);
-      }
-      @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(300px, 50px);
-      }
-      @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(260px, 40px);
-      }
+    &.card-3 {
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
     }
 
-    &.capability-5 {
-      transform: translate(-50%, -50%) translate(280px, 350px);
-      
-      @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(250px, 320px);
-      }
-      @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(220px, 280px);
-      }
-      @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(190px, 240px);
-      }
-      @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(160px, 200px);
-      }
+    &.card-4 {
+      bottom: 120px;
+      right: 80px;
     }
 
-    &.capability-6 {
-      transform: translate(-50%, -50%) translate(0px, 450px);
-      
-      @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(0px, 400px);
-      }
-      @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(0px, 350px);
-      }
-      @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(0px, 300px);
-      }
-      @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(0px, 250px);
-      }
+    &.card-5 {
+      bottom: 50px;
+      right: 200px;
     }
 
-    &.capability-7 {
-      transform: translate(-50%, -50%) translate(-280px, 350px);
-      
-      @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(-250px, 320px);
-      }
-      @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(-220px, 280px);
-      }
-      @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(-190px, 240px);
-      }
-      @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(-160px, 200px);
-      }
+    &.card-6 {
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    &.capability-8 {
-      transform: translate(-50%, -50%) translate(-420px, 80px);
-      
-      @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(-380px, 70px);
-      }
-      @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(-340px, 60px);
-      }
-      @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(-300px, 50px);
-      }
-      @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(-260px, 40px);
-      }
+    &.card-7 {
+      bottom: 50px;
+      left: 200px;
     }
 
-    &.capability-9 {
-      transform: translate(-50%, -50%) translate(-420px, -80px);
-      
-      @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(-380px, -70px);
-      }
-      @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(-340px, -60px);
-      }
-      @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(-300px, -50px);
-      }
-      @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(-260px, -40px);
-      }
+    &.card-8 {
+      bottom: 120px;
+      left: 80px;
     }
 
-    &.capability-10 {
-      transform: translate(-50%, -50%) translate(-280px, -350px);
-      
-      @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(-250px, -320px);
-      }
-      @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(-220px, -280px);
-      }
-      @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(-190px, -240px);
-      }
-      @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(-160px, -200px);
-      }
+    &.card-9 {
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
     }
 
-    &.capability-11 {
-      transform: translate(-50%, -50%) translate(-150px, -420px);
-      
-      @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(-135px, -380px);
-      }
-      @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(-120px, -340px);
-      }
-      @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(-105px, -300px);
-      }
-      @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(-90px, -260px);
-      }
+    &.card-10 {
+      top: 120px;
+      left: 80px;
     }
 
-    // Position all items relative to the center of the circle
-    top: 50%;
-    left: 50%;
+    &.card-11 {
+      top: 50px;
+      left: 200px;
+    }
 
-    @media (max-width: 576px) {
-      position: static;
-      transform: none !important;
-      top: auto;
-      left: auto;
+    @media (max-width: 768px) {
+      &.card-1, &.card-2, &.card-3, &.card-4, &.card-5, 
+      &.card-6, &.card-7, &.card-8, &.card-9, &.card-10, &.card-11 {
+        position: static;
+        transform: none;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+      }
+    }
+  }
+
+  // Connection Lines using SVG
+  .connection-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    .line {
+      stroke: rgba(117, 64, 196, 0.3);
+      stroke-width: 2;
+      stroke-dasharray: 5, 5;
+      animation: dash 20s linear infinite;
+    }
+  }
+
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -100;
     }
   }
 
