@@ -495,7 +495,97 @@
     }
   }
 
-  // Connecting Lines - Now connecting to each card
+  // Connection Points on Circle Edge
+  .connection-points {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    z-index: 8;
+
+    @media (max-width: 1400px) {
+      width: 260px;
+      height: 260px;
+    }
+
+    @media (max-width: 1200px) {
+      width: 220px;
+      height: 220px;
+    }
+
+    @media (max-width: 991px) {
+      width: 200px;
+      height: 200px;
+    }
+
+    @media (max-width: 768px) {
+      width: 180px;
+      height: 180px;
+    }
+
+    @media (max-width: 576px) {
+      display: none;
+    }
+
+    .connection-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(117, 64, 196, 0.8);
+      transform: translate(-50%, -50%);
+
+      // Position dots on circle edge - 11 dots evenly distributed
+      &.dot-1 {
+        top: 0%;
+        left: 50%;
+      }
+      &.dot-2 {
+        top: 8.7%;
+        left: 75%;
+      }
+      &.dot-3 {
+        top: 33.3%;
+        left: 93.3%;
+      }
+      &.dot-4 {
+        top: 66.7%;
+        left: 93.3%;
+      }
+      &.dot-5 {
+        top: 91.3%;
+        left: 75%;
+      }
+      &.dot-6 {
+        top: 100%;
+        left: 50%;
+      }
+      &.dot-7 {
+        top: 91.3%;
+        left: 25%;
+      }
+      &.dot-8 {
+        top: 66.7%;
+        left: 6.7%;
+      }
+      &.dot-9 {
+        top: 33.3%;
+        left: 6.7%;
+      }
+      &.dot-10 {
+        top: 8.7%;
+        left: 25%;
+      }
+      &.dot-11 {
+        top: 4%;
+        left: 35%;
+      }
+    }
+  }
+
+  // Connecting Lines from Circle Edge to Cards
   .connecting-lines {
     position: absolute;
     top: 50%;
@@ -507,126 +597,156 @@
 
     .line {
       position: absolute;
-      top: 50%;
-      left: 50%;
       width: 2px;
-      background: linear-gradient(to bottom, rgba(117, 64, 196, 0.4) 0%, rgba(117, 64, 196, 0.2) 50%, rgba(117, 64, 196, 0.1) 100%);
-      transform-origin: bottom center;
+      background: linear-gradient(to bottom, rgba(117, 64, 196, 0.6) 0%, rgba(117, 64, 196, 0.3) 50%, rgba(117, 64, 196, 0.1) 100%);
       z-index: 1;
 
       @media (max-width: 576px) {
         display: none;
       }
 
-      // Lines connecting to each card position
-      &.line-1 { 
+      // Lines connecting from circle edge to each card
+      &.line-1 {
+        top: 50%;
+        left: 50%;
         height: 250px;
-        transform: translate(-50%, -100%) rotate(0deg);
+        transform: translate(-50%, -150px) rotate(0deg);
+        transform-origin: bottom center;
         
-        @media (max-width: 1400px) { height: 230px; }
-        @media (max-width: 1200px) { height: 210px; }
-        @media (max-width: 991px) { height: 190px; }
-        @media (max-width: 768px) { height: 170px; }
+        @media (max-width: 1400px) { height: 230px; transform: translate(-50%, -130px) rotate(0deg); }
+        @media (max-width: 1200px) { height: 210px; transform: translate(-50%, -110px) rotate(0deg); }
+        @media (max-width: 991px) { height: 190px; transform: translate(-50%, -100px) rotate(0deg); }
+        @media (max-width: 768px) { height: 170px; transform: translate(-50%, -90px) rotate(0deg); }
       }
       
-      &.line-2 { 
-        height: 240px;
-        transform: translate(-50%, -100%) rotate(32.727deg);
+      &.line-2 {
+        top: 41.3%;
+        left: 62.5%;
+        height: 180px;
+        transform: translate(-50%, 0) rotate(45deg);
+        transform-origin: bottom center;
         
-        @media (max-width: 1400px) { height: 220px; }
-        @media (max-width: 1200px) { height: 200px; }
-        @media (max-width: 991px) { height: 180px; }
-        @media (max-width: 768px) { height: 160px; }
+        @media (max-width: 1400px) { height: 160px; top: 42%; left: 61%; }
+        @media (max-width: 1200px) { height: 140px; top: 43%; left: 60%; }
+        @media (max-width: 991px) { height: 120px; top: 44%; left: 59%; }
+        @media (max-width: 768px) { height: 100px; top: 45%; left: 58%; }
       }
       
-      &.line-3 { 
-        height: 220px;
-        transform: translate(-50%, -100%) rotate(65.454deg);
+      &.line-3 {
+        top: 66.7%;
+        left: 71.7%;
+        height: 120px;
+        transform: translate(-50%, 0) rotate(90deg);
+        transform-origin: bottom center;
         
-        @media (max-width: 1400px) { height: 200px; }
-        @media (max-width: 1200px) { height: 180px; }
-        @media (max-width: 991px) { height: 160px; }
-        @media (max-width: 768px) { height: 140px; }
+        @media (max-width: 1400px) { height: 110px; left: 70%; }
+        @media (max-width: 1200px) { height: 100px; left: 69%; }
+        @media (max-width: 991px) { height: 90px; left: 68%; }
+        @media (max-width: 768px) { height: 80px; left: 67%; }
       }
       
-      &.line-4 { 
-        height: 220px;
-        transform: translate(-50%, -100%) rotate(98.181deg);
+      &.line-4 {
+        top: 83.3%;
+        left: 71.7%;
+        height: 120px;
+        transform: translate(-50%, 0) rotate(135deg);
+        transform-origin: bottom center;
         
-        @media (max-width: 1400px) { height: 200px; }
-        @media (max-width: 1200px) { height: 180px; }
-        @media (max-width: 991px) { height: 160px; }
-        @media (max-width: 768px) { height: 140px; }
+        @media (max-width: 1400px) { height: 110px; left: 70%; }
+        @media (max-width: 1200px) { height: 100px; left: 69%; }
+        @media (max-width: 991px) { height: 90px; left: 68%; }
+        @media (max-width: 768px) { height: 80px; left: 67%; }
       }
       
-      &.line-5 { 
-        height: 240px;
-        transform: translate(-50%, -100%) rotate(130.908deg);
+      &.line-5 {
+        top: 95.7%;
+        left: 62.5%;
+        height: 180px;
+        transform: translate(-50%, 0) rotate(225deg);
+        transform-origin: bottom center;
         
-        @media (max-width: 1400px) { height: 220px; }
-        @media (max-width: 1200px) { height: 200px; }
-        @media (max-width: 991px) { height: 180px; }
-        @media (max-width: 768px) { height: 160px; }
+        @media (max-width: 1400px) { height: 160px; top: 94%; left: 61%; }
+        @media (max-width: 1200px) { height: 140px; top: 93%; left: 60%; }
+        @media (max-width: 991px) { height: 120px; top: 92%; left: 59%; }
+        @media (max-width: 768px) { height: 100px; top: 91%; left: 58%; }
       }
       
-      &.line-6 { 
+      &.line-6 {
+        top: 50%;
+        left: 50%;
         height: 250px;
-        transform: translate(-50%, -100%) rotate(163.635deg);
+        transform: translate(-50%, 150px) rotate(180deg);
+        transform-origin: top center;
         
-        @media (max-width: 1400px) { height: 230px; }
-        @media (max-width: 1200px) { height: 210px; }
-        @media (max-width: 991px) { height: 190px; }
-        @media (max-width: 768px) { height: 170px; }
+        @media (max-width: 1400px) { height: 230px; transform: translate(-50%, 130px) rotate(180deg); }
+        @media (max-width: 1200px) { height: 210px; transform: translate(-50%, 110px) rotate(180deg); }
+        @media (max-width: 991px) { height: 190px; transform: translate(-50%, 100px) rotate(180deg); }
+        @media (max-width: 768px) { height: 170px; transform: translate(-50%, 90px) rotate(180deg); }
       }
       
-      &.line-7 { 
-        height: 240px;
-        transform: translate(-50%, -100%) rotate(196.362deg);
+      &.line-7 {
+        top: 95.7%;
+        left: 37.5%;
+        height: 180px;
+        transform: translate(-50%, 0) rotate(315deg);
+        transform-origin: bottom center;
         
-        @media (max-width: 1400px) { height: 220px; }
-        @media (max-width: 1200px) { height: 200px; }
-        @media (max-width: 991px) { height: 180px; }
-        @media (max-width: 768px) { height: 160px; }
+        @media (max-width: 1400px) { height: 160px; top: 94%; left: 39%; }
+        @media (max-width: 1200px) { height: 140px; top: 93%; left: 40%; }
+        @media (max-width: 991px) { height: 120px; top: 92%; left: 41%; }
+        @media (max-width: 768px) { height: 100px; top: 91%; left: 42%; }
       }
       
-      &.line-8 { 
-        height: 220px;
-        transform: translate(-50%, -100%) rotate(229.089deg);
+      &.line-8 {
+        top: 83.3%;
+        left: 28.3%;
+        height: 120px;
+        transform: translate(-50%, 0) rotate(270deg);
+        transform-origin: bottom center;
         
-        @media (max-width: 1400px) { height: 200px; }
-        @media (max-width: 1200px) { height: 180px; }
-        @media (max-width: 991px) { height: 160px; }
-        @media (max-width: 768px) { height: 140px; }
+        @media (max-width: 1400px) { height: 110px; left: 30%; }
+        @media (max-width: 1200px) { height: 100px; left: 31%; }
+        @media (max-width: 991px) { height: 90px; left: 32%; }
+        @media (max-width: 768px) { height: 80px; left: 33%; }
       }
       
-      &.line-9 { 
-        height: 220px;
-        transform: translate(-50%, -100%) rotate(261.816deg);
+      &.line-9 {
+        top: 66.7%;
+        left: 28.3%;
+        height: 120px;
+        transform: translate(-50%, 0) rotate(270deg);
+        transform-origin: bottom center;
         
-        @media (max-width: 1400px) { height: 200px; }
-        @media (max-width: 1200px) { height: 180px; }
-        @media (max-width: 991px) { height: 160px; }
-        @media (max-width: 768px) { height: 140px; }
+        @media (max-width: 1400px) { height: 110px; left: 30%; }
+        @media (max-width: 1200px) { height: 100px; left: 31%; }
+        @media (max-width: 991px) { height: 90px; left: 32%; }
+        @media (max-width: 768px) { height: 80px; left: 33%; }
       }
       
-      &.line-10 { 
-        height: 240px;
-        transform: translate(-50%, -100%) rotate(294.543deg);
+      &.line-10 {
+        top: 41.3%;
+        left: 37.5%;
+        height: 180px;
+        transform: translate(-50%, 0) rotate(315deg);
+        transform-origin: bottom center;
         
-        @media (max-width: 1400px) { height: 220px; }
-        @media (max-width: 1200px) { height: 200px; }
-        @media (max-width: 991px) { height: 180px; }
-        @media (max-width: 768px) { height: 160px; }
+        @media (max-width: 1400px) { height: 160px; top: 42%; left: 39%; }
+        @media (max-width: 1200px) { height: 140px; top: 43%; left: 40%; }
+        @media (max-width: 991px) { height: 120px; top: 44%; left: 41%; }
+        @media (max-width: 768px) { height: 100px; top: 45%; left: 42%; }
       }
       
-      &.line-11 { 
-        height: 235px;
-        transform: translate(-50%, -100%) rotate(327.27deg);
+      &.line-11 {
+        top: 47%;
+        left: 42.5%;
+        height: 200px;
+        transform: translate(-50%, 0) rotate(330deg);
+        transform-origin: bottom center;
         
-        @media (max-width: 1400px) { height: 215px; }
-        @media (max-width: 1200px) { height: 195px; }
-        @media (max-width: 991px) { height: 175px; }
-        @media (max-width: 768px) { height: 155px; }
+        @media (max-width: 1400px) { height: 180px; top: 48%; left: 43%; }
+        @media (max-width: 1200px) { height: 160px; top: 49%; left: 44%; }
+        @media (max-width: 991px) { height: 140px; top: 50%; left: 45%; }
+        @media (max-width: 768px) { height: 120px; top: 51%; left: 46%; }
       }
     }
   }
@@ -754,8 +874,8 @@
     }
 
     .capability-card {
-      width: 200px; // Reduced from 260px
-      background: rgba(255, 255, 255, 0.1); // Transparent background
+      width: 180px; // Smaller cards to prevent overlap
+      background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
       border-radius: 16px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
@@ -765,19 +885,19 @@
       overflow: hidden;
 
       @media (max-width: 1400px) {
-        width: 180px;
-      }
-
-      @media (max-width: 1200px) {
         width: 160px;
       }
 
-      @media (max-width: 991px) {
+      @media (max-width: 1200px) {
         width: 140px;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 991px) {
         width: 120px;
+      }
+
+      @media (max-width: 768px) {
+        width: 100px;
       }
 
       @media (max-width: 576px) {
@@ -802,7 +922,7 @@
       }
 
       &.expanded {
-        background: rgba(255, 255, 255, 0.95); // Opaque when expanded
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(20px);
         border-color: rgba(117, 64, 196, 0.2);
 
@@ -821,23 +941,23 @@
     .capability-header {
       display: flex;
       align-items: center;
-      padding: 16px;
+      padding: 14px;
       position: relative;
 
       @media (max-width: 991px) {
-        padding: 14px;
+        padding: 12px;
       }
 
       @media (max-width: 768px) {
-        padding: 12px;
+        padding: 10px;
       }
 
       .capability-number {
         position: absolute;
-        top: -12px;
-        left: 16px;
-        width: 32px;
-        height: 32px;
+        top: -10px;
+        left: 14px;
+        width: 28px;
+        height: 28px;
         background: rgba(255, 255, 255, 0.9);
         border: 2px solid rgba(117, 64, 196, 0.2);
         border-radius: 50%;
@@ -845,50 +965,50 @@
         align-items: center;
         justify-content: center;
         font-weight: 800;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         color: #333;
         transition: all 0.3s ease;
         z-index: 1;
 
         @media (max-width: 991px) {
-          width: 28px;
-          height: 28px;
-          font-size: 0.75rem;
-          left: 14px;
-        }
-
-        @media (max-width: 768px) {
           width: 24px;
           height: 24px;
           font-size: 0.7rem;
           left: 12px;
         }
+
+        @media (max-width: 768px) {
+          width: 20px;
+          height: 20px;
+          font-size: 0.65rem;
+          left: 10px;
+        }
       }
 
       .capability-icon {
-        margin-left: 16px;
-        margin-right: 10px;
+        margin-left: 14px;
+        margin-right: 8px;
 
         @media (max-width: 991px) {
-          margin-left: 14px;
-          margin-right: 8px;
-        }
-
-        @media (max-width: 768px) {
           margin-left: 12px;
           margin-right: 6px;
         }
 
+        @media (max-width: 768px) {
+          margin-left: 10px;
+          margin-right: 4px;
+        }
+
         i {
-          font-size: 16px;
+          font-size: 14px;
           transition: all 0.3s ease;
 
           @media (max-width: 991px) {
-            font-size: 14px;
+            font-size: 12px;
           }
 
           @media (max-width: 768px) {
-            font-size: 12px;
+            font-size: 10px;
           }
 
           // Colored icons for each capability
@@ -907,7 +1027,7 @@
       }
 
       h5 {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         font-weight: 700;
         color: #333;
         margin: 0;
@@ -915,22 +1035,22 @@
         flex: 1;
 
         @media (max-width: 991px) {
-          font-size: 0.8rem;
+          font-size: 0.75rem;
         }
 
         @media (max-width: 768px) {
-          font-size: 0.75rem;
+          font-size: 0.7rem;
         }
       }
 
       .toggle-icon {
-        font-size: 12px;
+        font-size: 10px;
         color: #666;
         transition: transform 0.3s ease;
-        margin-left: 6px;
+        margin-left: 4px;
 
         @media (max-width: 768px) {
-          font-size: 10px;
+          font-size: 8px;
         }
       }
     }
@@ -940,223 +1060,220 @@
       overflow: hidden;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       opacity: 0;
-      padding: 0 16px;
+      padding: 0 14px;
 
       @media (max-width: 991px) {
-        padding: 0 14px;
-      }
-
-      @media (max-width: 768px) {
         padding: 0 12px;
       }
 
+      @media (max-width: 768px) {
+        padding: 0 10px;
+      }
+
       p {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         color: #555;
         line-height: 1.5;
         margin: 0;
-        padding-bottom: 16px;
+        padding-bottom: 14px;
 
         @media (max-width: 991px) {
-          font-size: 0.75rem;
-          padding-bottom: 14px;
+          font-size: 0.7rem;
+          padding-bottom: 12px;
         }
 
         @media (max-width: 768px) {
-          font-size: 0.7rem;
-          padding-bottom: 12px;
+          font-size: 0.65rem;
+          padding-bottom: 10px;
         }
       }
     }
 
-    // Mathematical distribution around the circle - 11 items evenly distributed
-    // Radius calculations: Large screens = 400px, scaling down responsively
-    // Angle per item: 360° / 11 = 32.727°
-
+    // Repositioned cards to prevent overlap - wider distribution
     &.capability-1 {
-      transform: translate(-50%, -50%) translate(0px, -400px);
+      transform: translate(-50%, -50%) translate(0px, -450px);
       
       @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(0px, -360px);
+        transform: translate(-50%, -50%) translate(0px, -400px);
       }
       @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(0px, -320px);
+        transform: translate(-50%, -50%) translate(0px, -350px);
       }
       @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(0px, -280px);
+        transform: translate(-50%, -50%) translate(0px, -300px);
       }
       @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(0px, -240px);
+        transform: translate(-50%, -50%) translate(0px, -250px);
       }
     }
 
     &.capability-2 {
-      transform: translate(-50%, -50%) translate(216px, -340px);
+      transform: translate(-50%, -50%) translate(280px, -350px);
       
       @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(194px, -306px);
+        transform: translate(-50%, -50%) translate(250px, -320px);
       }
       @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(173px, -272px);
+        transform: translate(-50%, -50%) translate(220px, -280px);
       }
       @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(151px, -238px);
+        transform: translate(-50%, -50%) translate(190px, -240px);
       }
       @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(130px, -204px);
+        transform: translate(-50%, -50%) translate(160px, -200px);
       }
     }
 
     &.capability-3 {
-      transform: translate(-50%, -50%) translate(370px, -120px);
+      transform: translate(-50%, -50%) translate(420px, -80px);
       
       @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(333px, -108px);
+        transform: translate(-50%, -50%) translate(380px, -70px);
       }
       @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(296px, -96px);
+        transform: translate(-50%, -50%) translate(340px, -60px);
       }
       @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(259px, -84px);
+        transform: translate(-50%, -50%) translate(300px, -50px);
       }
       @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(222px, -72px);
+        transform: translate(-50%, -50%) translate(260px, -40px);
       }
     }
 
     &.capability-4 {
-      transform: translate(-50%, -50%) translate(370px, 120px);
+      transform: translate(-50%, -50%) translate(420px, 80px);
       
       @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(333px, 108px);
+        transform: translate(-50%, -50%) translate(380px, 70px);
       }
       @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(296px, 96px);
+        transform: translate(-50%, -50%) translate(340px, 60px);
       }
       @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(259px, 84px);
+        transform: translate(-50%, -50%) translate(300px, 50px);
       }
       @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(222px, 72px);
+        transform: translate(-50%, -50%) translate(260px, 40px);
       }
     }
 
     &.capability-5 {
-      transform: translate(-50%, -50%) translate(216px, 340px);
+      transform: translate(-50%, -50%) translate(280px, 350px);
       
       @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(194px, 306px);
+        transform: translate(-50%, -50%) translate(250px, 320px);
       }
       @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(173px, 272px);
+        transform: translate(-50%, -50%) translate(220px, 280px);
       }
       @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(151px, 238px);
+        transform: translate(-50%, -50%) translate(190px, 240px);
       }
       @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(130px, 204px);
+        transform: translate(-50%, -50%) translate(160px, 200px);
       }
     }
 
     &.capability-6 {
-      transform: translate(-50%, -50%) translate(0px, 400px);
+      transform: translate(-50%, -50%) translate(0px, 450px);
       
       @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(0px, 360px);
+        transform: translate(-50%, -50%) translate(0px, 400px);
       }
       @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(0px, 320px);
+        transform: translate(-50%, -50%) translate(0px, 350px);
       }
       @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(0px, 280px);
+        transform: translate(-50%, -50%) translate(0px, 300px);
       }
       @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(0px, 240px);
+        transform: translate(-50%, -50%) translate(0px, 250px);
       }
     }
 
     &.capability-7 {
-      transform: translate(-50%, -50%) translate(-216px, 340px);
+      transform: translate(-50%, -50%) translate(-280px, 350px);
       
       @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(-194px, 306px);
+        transform: translate(-50%, -50%) translate(-250px, 320px);
       }
       @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(-173px, 272px);
+        transform: translate(-50%, -50%) translate(-220px, 280px);
       }
       @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(-151px, 238px);
+        transform: translate(-50%, -50%) translate(-190px, 240px);
       }
       @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(-130px, 204px);
+        transform: translate(-50%, -50%) translate(-160px, 200px);
       }
     }
 
     &.capability-8 {
-      transform: translate(-50%, -50%) translate(-370px, 120px);
+      transform: translate(-50%, -50%) translate(-420px, 80px);
       
       @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(-333px, 108px);
+        transform: translate(-50%, -50%) translate(-380px, 70px);
       }
       @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(-296px, 96px);
+        transform: translate(-50%, -50%) translate(-340px, 60px);
       }
       @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(-259px, 84px);
+        transform: translate(-50%, -50%) translate(-300px, 50px);
       }
       @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(-222px, 72px);
+        transform: translate(-50%, -50%) translate(-260px, 40px);
       }
     }
 
     &.capability-9 {
-      transform: translate(-50%, -50%) translate(-370px, -120px);
+      transform: translate(-50%, -50%) translate(-420px, -80px);
       
       @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(-333px, -108px);
+        transform: translate(-50%, -50%) translate(-380px, -70px);
       }
       @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(-296px, -96px);
+        transform: translate(-50%, -50%) translate(-340px, -60px);
       }
       @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(-259px, -84px);
+        transform: translate(-50%, -50%) translate(-300px, -50px);
       }
       @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(-222px, -72px);
+        transform: translate(-50%, -50%) translate(-260px, -40px);
       }
     }
 
     &.capability-10 {
-      transform: translate(-50%, -50%) translate(-216px, -340px);
+      transform: translate(-50%, -50%) translate(-280px, -350px);
       
       @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(-194px, -306px);
+        transform: translate(-50%, -50%) translate(-250px, -320px);
       }
       @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(-173px, -272px);
+        transform: translate(-50%, -50%) translate(-220px, -280px);
       }
       @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(-151px, -238px);
+        transform: translate(-50%, -50%) translate(-190px, -240px);
       }
       @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(-130px, -204px);
+        transform: translate(-50%, -50%) translate(-160px, -200px);
       }
     }
 
     &.capability-11 {
-      transform: translate(-50%, -50%) translate(-130px, -380px);
+      transform: translate(-50%, -50%) translate(-150px, -420px);
       
       @media (max-width: 1400px) {
-        transform: translate(-50%, -50%) translate(-117px, -342px);
+        transform: translate(-50%, -50%) translate(-135px, -380px);
       }
       @media (max-width: 1200px) {
-        transform: translate(-50%, -50%) translate(-104px, -304px);
+        transform: translate(-50%, -50%) translate(-120px, -340px);
       }
       @media (max-width: 991px) {
-        transform: translate(-50%, -50%) translate(-91px, -266px);
+        transform: translate(-50%, -50%) translate(-105px, -300px);
       }
       @media (max-width: 768px) {
-        transform: translate(-50%, -50%) translate(-78px, -228px);
+        transform: translate(-50%, -50%) translate(-90px, -260px);
       }
     }
 
