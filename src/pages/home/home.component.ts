@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {
@@ -23,6 +23,7 @@ import { LetsChatComponent } from '../../common/sharedComponents/lets-chat/lets-
     LetsChatComponent,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     ExploreResourcesComponent,
     RouterLink,
     RouterLinkActive,
@@ -33,6 +34,9 @@ import { LetsChatComponent } from '../../common/sharedComponents/lets-chat/lets-
 })
 export class HomeComponent implements OnInit {
   title: string = 'The Future of Global Contact Centers—Powered by AI & Real-Time Translation';
+  
+  // Contact form
+  contactForm: FormGroup;
   
   // Language switcher
   selectedLanguage: string = 'en';
@@ -64,6 +68,20 @@ export class HomeComponent implements OnInit {
     contactCenterSize: '',
     primaryLanguages: ''
   };
+
+  constructor(private readonly router: Router, private fb: FormBuilder) {
+    // Initialize reactive form
+    this.contactForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: [''],
+      company: ['', Validators.required],
+      jobTitle: [''],
+      message: [''],
+      consent: [false, Validators.requiredTrue]
+    });
+  }
 
   ngOnInit(): void {
     window.scrollTo({ top: 6, behavior: 'smooth' });
@@ -104,12 +122,17 @@ export class HomeComponent implements OnInit {
 
   // Submit contact form
   submitContactForm() {
-    if (this.isValidContactForm()) {
+    if (this.contactForm.valid) {
       // Handle form submission logic here
-      console.log('Contact form submitted:', this.contactFormData);
+      console.log('Contact form submitted:', this.contactForm.value);
       // You can integrate with your backend API here
       alert('Thank you for your interest! Our team will contact you soon.');
-      this.resetContactForm();
+      this.contactForm.reset();
+    } else {
+      // Mark all fields as touched to show validation errors
+      Object.keys(this.contactForm.controls).forEach(key => {
+        this.contactForm.get(key)?.markAsTouched();
+      });
     }
   }
 
@@ -239,7 +262,5 @@ export class HomeComponent implements OnInit {
   toggleCapability(capabilityId: number) {
     this.expandedCapabilities[capabilityId] = !this.expandedCapabilities[capabilityId];
   }
-
-  constructor(private readonly router: Router) {}
 }
 
