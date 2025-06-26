@@ -79,21 +79,28 @@
     z-index: 1;
   }
 
-  // Updated gradient overlay to match reference image
+  // Updated gradient overlay - lighter with radial spotlight effect
   .hero-gradient-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      135deg, 
-      rgba(117, 64, 196, 0.85) 0%,     // Purple overlay
-      rgba(139, 69, 19, 0.75) 25%,     // Purple-brown mix
-      rgba(186, 85, 211, 0.65) 50%,    // Medium purple
-      rgba(147, 112, 219, 0.55) 75%,   // Light purple
-      rgba(221, 160, 221, 0.45) 100%   // Very light purple/plum
-    );
+    background: 
+      radial-gradient(
+        ellipse 60% 50% at 30% 40%, 
+        rgba(117, 64, 196, 0.2) 0%,     // Very light purple in center (around face)
+        rgba(117, 64, 196, 0.35) 40%,   // Slightly darker purple
+        rgba(117, 64, 196, 0.55) 100%   // Darker purple at edges
+      ),
+      linear-gradient(
+        135deg, 
+        rgba(147, 112, 219, 0.3) 0%,    // Light purple overlay
+        rgba(186, 85, 211, 0.25) 25%,   // Very light purple-pink
+        rgba(221, 160, 221, 0.2) 50%,   // Very light plum
+        rgba(147, 112, 219, 0.3) 75%,   // Light purple
+        rgba(117, 64, 196, 0.4) 100%    // Medium purple at bottom-right
+      );
     z-index: 2;
   }
 
