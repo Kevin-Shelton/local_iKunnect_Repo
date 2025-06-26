@@ -136,7 +136,7 @@
     }
 
     .demo-preview {
-      margin: 32px 0;
+      margin: 0;
       
       .demo-card {
         background: rgba(255, 255, 255, 0.95);
@@ -145,6 +145,13 @@
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.3);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        transform: translateY(0);
+        transition: all 0.3s ease;
+        
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
         
         .demo-header {
           display: flex;
@@ -160,42 +167,90 @@
           }
         }
         
-        .language-pair {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 15px;
-          margin-bottom: 20px;
-          
-          .lang-from, .lang-to {
-            background: #f8f9fa;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            border: 1px solid #e9ecef;
+        .demo-content {
+          .language-pair {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            
+            .lang-from, .lang-to {
+              background: #f8f9fa;
+              padding: 8px 12px;
+              border-radius: 8px;
+              font-size: 14px;
+              font-weight: 600;
+              border: 1px solid #e9ecef;
+            }
+            
+            i {
+              color: #7540c4;
+              font-size: 18px;
+            }
           }
           
-          i {
-            color: #7540c4;
-            font-size: 18px;
+          .demo-text {
+            text-align: center;
+            
+            .original {
+              font-style: italic;
+              color: #666;
+              margin-bottom: 8px;
+              font-size: 1rem;
+            }
+            
+            .translated {
+              font-weight: 600;
+              color: #333;
+              font-size: 1rem;
+            }
           }
         }
+      }
+      
+      // Mobile responsiveness
+      @media (max-width: 991px) {
+        margin-top: 40px;
         
-        .demo-text {
-          text-align: center;
+        .demo-card {
+          padding: 20px;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        margin-top: 30px;
+        
+        .demo-card {
+          padding: 16px;
           
-          .original {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 8px;
+          .demo-header {
             font-size: 1rem;
+            
+            i {
+              font-size: 20px;
+            }
           }
           
-          .translated {
-            font-weight: 600;
-            color: #333;
-            font-size: 1rem;
+          .demo-content {
+            .language-pair {
+              gap: 10px;
+              
+              .lang-from, .lang-to {
+                padding: 6px 10px;
+                font-size: 12px;
+              }
+              
+              i {
+                font-size: 16px;
+              }
+            }
+            
+            .demo-text {
+              .original, .translated {
+                font-size: 0.9rem;
+              }
+            }
           }
         }
       }
